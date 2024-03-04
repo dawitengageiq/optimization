@@ -1,0 +1,20 @@
+div#main-container{
+    position: absolute;
+    top: 50%;
+    margin-top: -20%;/* half of #content height*/
+    left: 0;
+    width: 100%;
+}
+
+div.centered-content{
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+}
+
+.panel-default > .panel-heading {
+    color: #fff;
+    background-color: #286090;
+    border-color: #ddd;
+}

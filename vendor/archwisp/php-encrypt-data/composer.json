@@ -1,0 +1,29 @@
+{
+    "name": "archwisp/php-encrypt-data",
+    "description": "Simple Data Encryption Library For PHP 5.3+",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bryan C. Geraghty",
+            "email": "bryan@ravensight.org"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"PHPEncryptData\\": "src"}
+    },
+    "require": {
+        "ext-mcrypt": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~3.7",
+        "satooshi/php-coveralls": "~1.0"
+    },
+    "config": {
+        "bin-dir": "vendor/bin"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}

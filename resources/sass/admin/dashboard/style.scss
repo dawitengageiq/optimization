@@ -1,0 +1,11 @@
+@import "../../_variables";
+
+.panel-default > .panel-heading {
+  color: $white;
+  background-color: $report-tab-color;
+  border-color: #ddd;
+}
+
+.modal-body {
+  padding: 20px 15px;
+}

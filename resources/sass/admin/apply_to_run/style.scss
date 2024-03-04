@@ -1,0 +1,14 @@
+@import "../../_variables";
+@import "mixins";
+
+.success-modal-header {
+  @include header-style($apply-to-run-green);
+}
+
+.primary-modal-header {
+  @include header-style($apply-to-run-blue);
+}
+
+.danger-modal-header {
+  @include header-style($apply-to-run-red);
+}

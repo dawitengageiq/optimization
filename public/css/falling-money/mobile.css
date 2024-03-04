@@ -1,0 +1,403 @@
+/*--------------------------------------------------------------
+11.0 Media Queries - Falling Money
+--------------------------------------------------------------*/
+@media screen and (min-width: 860px) and (max-width: 1004px) {
+	/* width: 1004px; */
+	/* Falling-money edits */
+	.wrapper { width: 100% !important; }
+	#contentbox_main { width: 100% !important; }
+	.qtext { font-size: 13px; margin-left: 30% !important; width: 70% !important; }
+	.read_more_box { width: 70%; }
+	/* Falling-money edits */
+}
+
+@media screen and (max-width: 859px) {
+	/* width: 859px; */
+	
+	/* CLINICAL QUESTIONS */
+	.clinical-questions { width: auto; }
+	.clinical-questions h2 { font-size: 18px; }
+	.clinical-questions h3 { font-size: 17px; margin-bottom: 20px; }
+	.new-question-indi > p { font-size: 12px; width: 100%; float: none; }
+	/* CLINICAL QUESTIONS */
+	
+	/* Falling-money edits */
+	body { background-image:url(../images/q5bg.jpg); }
+	#headline2 img.prog-question { display: none; }
+	.qtext { width: 100% !important; margin-left: 0 !important; }
+	.cpawall-header-falling-money { display: none; }
+	/* Falling-money edits */
+	
+	.bottom-form-pad { padding-bottom: 50px !important; }
+	
+	p.PD_GeoIpCancelled { font-size: 18px !important; line-height: normal !important; }
+	
+	input.css-checkbox[type="checkbox"] + label.css-label { font-size: 12px !important; }
+	
+	.last-page-content { width: 100% !important; }
+	.exit-content-inner h3 { font-size: 18px !important; }
+	.exit-content-inner p { font-size: 16px !important; }
+	
+	.yes-no-desktop { display: none; }
+	.yes-no-mobile { display: block; }
+	.confirm-form-desktop { display: none; }
+	.confirm-form-mobile { display: block; }
+	
+	table#formtable tr td { font-size: 13px !important; padding-bottom: 15px; }
+	table#formtable tr td #comments { margin-bottom: 30px; }
+	table#formtable tr td:first-child { width: 38%; }
+	table#formtable tr td label.error[for="comments"] { position: absolute; }
+	.check-confirm-offer { font-size: 15px !important; }
+	
+	.content-desktop { width: 100%; display: none; }
+	.content-desktop .home-img { padding: 0; max-width: 100%; float: none; }
+	.content-mobile { display: block; padding: 0 0 80px; }
+	.wrapper { width: 100%; }
+	#headline1 { display: none; }
+	#headline2 { background: none; text-align: center; height: auto; margin: 0; padding: 15px 15px 10px; }
+	#headline2 img.img-logo { width: auto; height: auto; }
+	#headline2 img.img-logo-2 { width: auto; height: auto; }
+	#headline2 img.first-step-img { display: block; margin: 0 auto; max-width: 100%; }
+	#contentbox_main { /* Falling-money edits */ background: url(../images_survey/qbg-mobile.png) no-repeat center top !important; width: auto !important; height: auto !important; /* Falling-money edits */ font-size: 12px; margin: 0 !important; padding: 60px 15px 110px !important; }
+	#contentbox_main > div { width: auto !important; float: none !important; text-align: left !important; padding: 0 !important; }
+	#contentbox_main > div form { text-align: center; padding: 20px 0 0; }
+	.title_text { font-size: 23px; }
+	.subtitle_text { font-size:13px; }	
+	.subtitle_text > strong { font-weight: normal; }
+	#hostedform_main input[type="radio"] { display: none; }
+	#hostedform_main input[type="radio"] + label.class-yes {
+		background: url(../images/yes-button.png) no-repeat center #458b04;
+		color: #fff;
+		display: inline-block;
+		padding: 10px 30px;
+		width: 90px;
+		height: 28px;
+		font-size: 0 !important;
+		text-transform: uppercase;
+		font-weight: 700;
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		margin: 0 15px 10px;
+		cursor: pointer;
+		vertical-align: middle;
+	}
+	#hostedform_main input[type="radio"] + label.class-no {
+		background: url(../images/no-button.png) no-repeat center #c61e2f;
+		color: #fff;
+		display: inline-block;
+		padding: 10px 30px;
+		width: 90px;
+		height: 28px;
+		font-size: 0 !important;
+		text-transform: uppercase;
+		font-weight: 700;
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		margin: 0 15px 10px;
+		cursor: pointer;
+		vertical-align: middle;
+	}
+	
+	#contentbox { 
+		font-size: 20px; 
+		margin: 0 auto; 
+		padding: 0 15px 30px; 
+		text-align: left; 
+		width: 100%; 
+		box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+	}
+	#contentbox > p { display: none; }
+	#contentbox #form_box form {
+		margin: 0 auto;
+		width: 320px;
+		font-size: 12px;
+	}
+	
+	#contentbox_main > div > div > input[type="radio"], 
+	#contentbox > div > input[type="radio"], 
+	#contentbox > div > div > input[type="radio"], 
+	#contentbox > form > div > input[type="radio"],
+	#contentbox > form > div > div > input[type="radio"],
+	#formtable > tbody > tr > td > input[type="radio"],
+	#formtable > tbody > tr > td > div > input[type="radio"] { 
+		display: none; 
+	}
+	#contentbox_main > div > div > input[type="radio"] + label.class-yes, 
+	#contentbox > div > input[type="radio"] + label.class-yes, 
+	#contentbox > div > div > input[type="radio"] + label.class-yes,
+	#contentbox > form > div > input[type="radio"] + label.class-yes,
+	#contentbox > form > div > div > input[type="radio"] + label.class-yes,
+	#formtable > tbody > tr > td > input[type="radio"] + label.class-yes {
+		background: url(../images/yes-button.png) no-repeat center #458b04;
+		color: #fff;
+		display: inline-block;
+		padding: 10px 30px;
+		width: 90px;
+		height: 28px;
+		font-size: 0 !important;
+		text-transform: uppercase;
+		font-weight: 700;
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		margin: 0 15px 10px;
+		cursor: pointer;
+		vertical-align: middle;
+	}
+	#formtable > tbody > tr > td > div > input[type="radio"] + label.class-yes {
+		background: url(../images/submit-button.png) no-repeat center #458b04;
+		color: #fff;
+		display: inline-block;
+		padding: 10px 30px;
+		width: 90px;
+		height: 28px;
+		font-size: 0 !important;
+		text-transform: uppercase;
+		font-weight: 700;
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		margin: 0 15px 10px;
+		cursor: pointer;
+		vertical-align: middle;
+	}
+	#contentbox_main > div > div > input[type="radio"] + label.class-no, 
+	#contentbox > div > input[type="radio"] + label.class-no, 
+	#contentbox > div > div > input[type="radio"] + label.class-no,
+	#contentbox > form > div > input[type="radio"] + label.class-no,
+	#contentbox > form > div > div > input[type="radio"] + label.class-no,
+	#formtable > tbody > tr > td > input[type="radio"] + label.class-no {
+		background: url(../images/no-button.png) no-repeat center #c61e2f;
+		color: #fff;
+		display: inline-block;
+		padding: 10px 30px;
+		width: 90px;
+		height: 28px;
+		font-size: 0 !important;
+		text-transform: uppercase;
+		font-weight: 700;
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		margin: 0 15px 10px;
+		cursor: pointer;
+		vertical-align: middle;
+	}
+	#formtable > tbody > tr > td > div > input[type="radio"] + label.class-no {
+		background: url(../images/cancel-button.png) no-repeat center #c61e2f;
+		color: #fff;
+		display: inline-block;
+		padding: 10px 30px;
+		width: 90px;
+		height: 28px;
+		font-size: 0 !important;
+		text-transform: uppercase;
+		font-weight: 700;
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		margin: 0 15px 10px;
+		cursor: pointer;
+		vertical-align: middle;
+	}
+	#progress_bar_box { background: none; width: 100%; height: auto; padding: 0; position: relative; }
+	#progress_bar_holder { padding: 0; width: 100%; display: block; }
+	#progress_bar_table { width: 100%; border-collapse: collapse; }
+	#progress_bar_row { display: none; }
+	#progress_bar_table tr { background-color: #909090; }
+	#progress_bar_table tr td { color: #fff; padding: 5px 0; position: relative; z-index: 100; }
+	#progress_bar_table tr td strong { font-size: 20px; }	
+	#contentbox > div { padding: 0 !important; }
+	#contentbox div#form_box { width: 100% !important; }
+	#form_box label { display: inline-block; height: 25px; padding-right: 10px; text-align: left; }
+	#contentbox div#form_box form input[type="text"] { border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border: 1px solid #d7d7d7; padding: 5px; }
+	#contentbox div#form_box form select { font-size: 12px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border: 1px solid #d7d7d7; padding: 5px; }
+	#form_box div { padding: 0 !important; }
+	.submit_button_form { background: none repeat scroll 0 0 #458b04; border: medium none; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; color: #fff; cursor: pointer; font-size: 25px; font-weight: 700; height: auto; margin-top: 15px; padding: 7px 20px; width: 100%; }
+	#contentbox strong { font-weight: normal; }
+	.second-step { display: none; }	
+	#contentbox img { width: 100%; margin: 0 0 20px; }
+	
+	.desktop-tcpa-1 { display: none; }
+	#form_box2 { padding: 0 0 110px; width: auto; }
+	#form_box2 label {
+		display: block;
+		height: auto;
+		text-align: center;
+		width: 100%;
+		margin: 0 0 3px;
+		font-size: 18px;
+	}
+	#form_box2 input[type="text"] {
+		border: 1px solid #d7d7d7;
+		border-radius: 5px;
+		margin: 0 0 10px;
+		padding: 10px !important;
+		font-size: 18px;
+		display: block;
+		margin: 0 auto;
+		text-align: center;
+		box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+	}
+	#form_box2 input.phone-size { width: 146px !important; }
+	#form_box2 select {
+		border: 1px solid #d7d7d7;
+		border-radius: 5px;
+		margin: 0 0 10px;
+		padding: 5px !important;
+		width: 100% !important;
+		box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+	}
+	#contentbox table { width: 100%; }
+	#contentbox table tr td img { width: auto; max-width: 100%; height: auto; }
+	
+	.content-mobile img { display: inline-block; max-width: 100%; width: auto !important; margin: 0 0 15px !important; }
+	.content-mobile p { text-align: left; font-size: 25px; color: #515151; }
+	.content-mobile ol { text-align: left; }
+	.content-mobile ol li { font-size: 15px; }
+	.content-mobile ol li strong { font-weight: 700; }
+	
+	.blue { color: #1169bb; }
+	.green { color: #458b04; }
+	.orange { color: #ff9900; }
+	.red { color: #ff3333; }
+	.yellow { color: #f3bf1e; }
+	.violet { color: #9b2387; }
+	.pink { color: #da326f; }
+	.purple { color: #691eae; }
+	
+	#footer1 { display: none; }
+	#footer1 hr { display: none; }
+	
+	.form-input-section label { line-height: 29px; }
+	#form_box .form-input-gender { padding: 4px 0 0 !important; }
+	
+	.the-progress { display: block; }
+	
+	#TMGOfferTD1 table tr td table tr td img { height: 1px; }
+	#TMGOfferTD2 table tr td table tr td img { height: 1px; }
+	
+	#contentbox div#form_box form .form-select-birth .selectmonthcont select { width: 55px !important; }
+	#contentbox div#form_box form .form-select-birth .selectdaycont select { width: 55px !important; }
+	#contentbox div#form_box form .form-select-birth .selectyearcont select { width: 66px !important; }
+	#form_box .form-select-birth .dash { padding: 7px 3px !important; }
+	
+	#form_box label.error { padding: 0; width: auto; font-size: 10px; margin-left: 0; }
+	
+	.fixed-button {
+		text-align: center;
+		display: block;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		z-index: 100;
+		width: 100%;
+		padding: 10px 0 0;
+		background-color: #ccc;
+		box-shadow: 0 0 4px rgba(0,0,0,0.10);
+		-moz-box-shadow: 0 0 4px rgba(0,0,0,0.10);
+		-webkit-box-shadow: 0 0 4px rgba(0,0,0,0.10);
+	}
+	.act-more { display: block; color: #ff3333; cursor: pointer; }
+	.act-more:hover { color: #ff3333 !important; }
+	.act-more:active { color: #ff3333 !important; }
+	.fixed-button { padding: 30px 0 20px; }
+	.more-content { display: block; }
+	
+	#formtable > tbody > tr > td > input[name="phone1"] { width: 30px !important; }
+	#formtable > tbody > tr > td > input[name="phone2"] { width: 30px !important; }
+	#formtable > tbody > tr > td > input[name="phone3"] { width: 35px !important; }
+	#formtable strong { display: block; padding: 18px 15px 0; }
+	
+}
+
+
+@media screen and (max-width: 48em) {
+	/* width 768px */
+	
+}
+
+@media screen and (max-width: 767px) {
+
+	#contentbox table tr td img { width: 100%; max-width: 100%; height: auto; }
+	#contentbox iframe#iff-parentiframe { height: 3000px; }
+	.loading-entrance-icon { width: 50px; height: auto; display: block; margin: 0 auto; text-align: center; }
+
+}
+
+
+@media screen and (max-width: 30em) {
+	/* width 480px */
+	input.css-checkbox[type="checkbox"] + label.css-label { font-size: 10px; }
+	#contentbox table tr td { font-size: 10px; }
+	#headline2 h1 { font-size: 12px; }
+	#headline2 img.img-logo { width: 70px; height: auto; }
+	#headline2 img.img-logo-2 { width: 45px; height: auto; }
+	.title_text { font-size: 20px !important; }	
+	#hostedform_main input[type="radio"] + label.class-yes { margin: 0 10px 10px; padding: 10px 30px; width: 60px; }
+	#hostedform_main input[type="radio"] + label.class-no { margin: 0 10px 10px; padding: 10px 30px; width: 60px; }
+	
+	#contentbox #form_box form { width: auto; }
+	#contentbox iframe#iff-parentiframe { height: 3000px; }
+	
+	
+	#contentbox_main > div > div > input[type="radio"] + label.class-yes, 
+	#contentbox > div > input[type="radio"] + label.class-yes, 
+	#contentbox > div > div > input[type="radio"] + label.class-yes,
+	#contentbox > form > div > input[type="radio"] + label.class-yes,
+	#contentbox > form > div > div > input[type="radio"] + label.class-yes,
+	#formtable > tbody > tr > td > input[type="radio"] + label.class-yes,
+	#formtable > tbody > tr > td > div > input[type="radio"] + label.class-yes { margin: 0 10px 10px; padding: 10px 30px; width: 60px; }
+	
+	#contentbox_main > div > div > input[type="radio"] + label.class-no, 
+	#contentbox > div > input[type="radio"] + label.class-no, 
+	#contentbox > div > div > input[type="radio"] + label.class-no,
+	#contentbox > form > div > input[type="radio"] + label.class-no,
+	#contentbox > form > div > div > input[type="radio"] + label.class-no,
+	#formtable > tbody > tr > td > input[type="radio"] + label.class-no,
+	#formtable > tbody > tr > td > div > input[type="radio"] + label.class-no { margin: 0 10px 10px; padding: 10px 30px; width: 60px; }
+	
+	.content-mobile { display: block; padding: 0 0 50px; }
+	.content-mobile p { text-align: left; font-size: 20px; }
+	.form-select-birth > select { font-size: 10px; width: 21% !important; }
+	.form-input-section label { width: 30%; }
+	.form-input-section input[type="text"] { width: 70%; }
+	.form-input-section select { width: 70%; }
+	.content-mobile .m-badge { width: 40% !important; }
+	.content-mobile .m-logo { width: 57% !important; }
+	
+	#infobox {
+		background: #fff;
+		float: left;
+		font-family: Verdana,Arial,Helvetica,sans-serif;
+		font-size: 16px;
+		height: auto;
+		padding: 25px 20px 50px 15px;
+		width: 230px;
+		margin-top: 10px;
+		margin-bottom: 20px;
+	}
+	.loading-entrance-icon { width: 50px; height: auto; display: block; margin: 0 auto; text-align: center; }
+	.act-more { display: block; }
+	.more-content { display: none; }
+	.fixed-button { padding: 10px 0 0; }
+	
+}
+@media screen and (min-width: 321px) and (max-width: 479px) {
+	#contentbox iframe#iff-parentiframe { height: 3000px; }
+}
+
+@media screen and (max-width: 320px) {
+	
+	#contentbox iframe#iff-parentiframe { height: 3000px; }
+	.subtitle_text { font-size:18px; }	
+	
+}

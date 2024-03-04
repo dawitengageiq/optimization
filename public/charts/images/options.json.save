@@ -1,0 +1,92 @@
+{
+<<<<<<< HEAD
+            series: [{"name":"LEADS","stack":"1","pointWidth":4,"data":[1543,1435,660,307,288,164]},{"name":"DUPLICATES","stack":"2","pointWidth":4,"data":[0,1346.042915,0,34.01043012,6.99522912,17.00446464]},{"name":"OTHERS","stack":"2","pointWidth":4,"data":[1253.0703,0.9639182000000001,332.97,245.99749746,254.99837088,129.99757824]},{"name":"FILTER ISSUE","stack":"2","pointWidth":4,"data":[20.059,0,282.018,2.00227242,0,1.00635648]},{"name":"PRE-POP ISSUE","stack":"2","pointWidth":4,"data":[270.025,30.0191668,45.012,0,0,0]}]
+=======
+            series: [{"name":"LEADS","stack":"1","pointWidth":4,"data":[]},{"name":"DUPLICATES","stack":"2","pointWidth":4,"data":[]},{"name":"OTHERS","stack":"2","pointWidth":4,"data":[]},{"name":"FILTER ISSUE","stack":"2","pointWidth":4,"data":[]},{"name":"PRE-POP ISSUE","stack":"2","pointWidth":4,"data":[
+                ,chart: {
+                    type: 'column',
+                    events: {
+                    	load: function () {
+                    		var label = this.renderer.label("STATUS: CRITICAL")
+                    		.css({
+                    			width: '400px',
+                    			fontSize: '12px',
+                    			textAlign: 'right'
+                    		})
+                    		.add();
+                    		label.align(Highcharts.extend(label.getBBox(), {
+                                align: 'right',
+                                x: 0, // offset
+                                verticalAlign: 'bottom',
+                                y: 40 // set the right offset
+                            }), null, 'spacingBox');
+                    	}
+                    },
+                    spacingBottom: 60
+                }
+                ,title: {
+                    text: 'Lead Reactor Leads Graph'
+                }
+                ,xAxis:{
+<<<<<<< HEAD
+                    categories: ["1 - 80","1 - 80",1204,973,1204,1118,1294,1118,1204,973,1204,1118,1294,1118],
+=======
+                    categories: [],
+
+>>>>>>> 5e78db104bb32c3a441a0fbd0e8f0ce3ff3970a7
+                    labels: {
+                        rotation: -45,
+                        style: {
+                            fontSize:'6px'
+                        }
+                    }
+                }
+                ,yAxis: {
+                    allowDecimals: false,
+                    min: 0,
+                    title: {
+                        text: 'Number of Leads'
+                    },
+                    labels: {
+                        style: {
+                            fontSize:'6px'
+                        }
+                    }
+                }
+                ,legend: {
+                    useHTML:true,
+                    symbolHeight: 4,
+                    symbolWidth: 4,
+                    symbolRadius: 0,
+                    enabled: true,
+                    itemStyle: {
+                        fontWeight: 'bold',
+                        fontSize: '5px',
+                        verticalalign:'top'
+                    }
+                }
+                ,plotOptions: {
+                    column: {
+                        stacking: 'normal',
+<<<<<<< HEAD
+                        groupPadding: 0.24,
+=======
+                        groupPadding: 0.48,
+>>>>>>> 5e78db104bb32c3a441a0fbd0e8f0ce3ff3970a7
+                        borderWidth: 0,
+                        maxPointWidth: 3
+                    },
+                    series: {
+                        pointPadding: 0
+                    }
+                }
+                ,navigator : {
+                    enabled : false
+                },rangeSelector:{
+                    enabled:false
+                },scrollbar : {
+                    enabled : false
+                },credits: {
+                    enabled: false
+                }
+            }

@@ -1,0 +1,197 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: #edf7ff;
+    font-family: 'Segoe UI', 'Segoe UI Light', Helvetica, 'sans-serif', Arial;
+}
+
+body > .container {
+    padding: 60px 15px 0;
+    background-color: white;
+}
+.container .text-muted {
+    margin: 20px 0;
+}
+
+code {
+    font-size: 80%;
+}
+
+/*NAVIGATION*/
+
+.affix {
+    top: 0;
+    width: 100%;
+}
+
+.affix + .container-fluid {
+    padding-top: 70px;
+}
+
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+.navbar-default {
+    background-color: #063153;
+    border: none;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: white;
+    font-size: 16px;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+    color: #063153;
+    background-color: #e7e7e7;
+    transition: 0.4s;
+}
+
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:focus,
+.navbar-default .navbar-nav>.active>a:hover {
+    color: #063153;
+    font-weight: 500;
+}
+
+.navbar-brand-engageiq {
+    padding: 0;
+    margin-right: 40px;
+}
+
+.navbar-brand-engageiq>img {
+    height: 100%;
+}
+
+.navbar-top > li > a {
+    line-height: 60px;
+}
+
+.navbar>.container .navbar-brand-engageiq {
+    margin-left: 0;
+}
+
+.navbar-menu > li > a {
+    line-height: 60px;
+}
+
+#top-nav {
+    height: 90px;
+    background-color: white;
+}
+
+/*PAGER*/
+
+.pager {
+    margin: 0;
+    float: right;
+}
+
+.pager li > a,
+.pager li > span {
+    border: none;
+    padding: 25px 0;
+    border-radius: 0;
+    width: 104px;
+    font-weight: 500;
+    color: white;
+}
+
+.pager li > a:hover {
+    transition: 0.6s;
+    opacity: 0.6;
+}
+
+/*END-PAGER*/
+
+/*END-NAVIGATION*/
+
+
+/*LOGIN*/
+
+#login-wrap {
+    padding: 20px 35px;
+    border: 3px solid #ed1b24;
+    margin-top: 50px;
+}
+
+#login-logo {
+    width: 75%;
+    margin: 35px auto;
+    float: none;
+    display: block;
+}
+
+.center_me {
+    margin: 0 auto;
+    float: none;
+    display: block;
+}
+.form-signin {
+    max-width: 600px;
+    margin: 20px auto 0;
+    background-image: url("../../images/login-bg.png");
+    background-repeat: no-repeat;
+    height: 580px;
+}
+
+.form-login {
+    max-width: 360px;
+    padding-top: 210px;
+    margin-left: 150px;
+}
+
+.login-control {
+    margin: 2px 0;
+    background-color: #d9d9d9;
+    border-radius: 0;
+
+}
+
+.btn-login {
+    width: 200px;
+    margin: 15px auto 0;
+    border-radius: 20px;
+    background-color: #ed1b24;
+    border: none;
+}
+
+.btn-login:hover {
+    background-color: #ed1b24;
+    transition: 0.6s;
+    opacity: 0.8;
+}
+
+.forgot-details {
+    margin-left: 30px;
+}
+
+.login-error{
+    margin-bottom: 0px;
+    padding: 5px;
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+/*END-LOGIN*/
+
+/*FOOTER*/
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    background-color: #f5f5f5;
+}
+
+/*END-FOOTER*/

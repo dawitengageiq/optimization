@@ -1,0 +1,80 @@
+#oi_main_div #oi_page .oiOfferContent { margin-left: 240px; width: auto; }
+	#oi_main_div #oi_page .oiInputBox { margin: 0; }
+	#oi_main_div span.oiRadioSelect { display: block !important; }
+
+	#oi_main_div #oi_page input[type="radio"] { display: none; }
+	#oi_main_div #oi_page .yes-button-content input[type="radio"] + label {
+		background: url("../images/diabetes_buttons.png") no-repeat;
+		color: #fff;
+		cursor: pointer;
+		display: block;
+		font-size: 0 !important;
+		height: 34px;
+		width: 84px;
+	}
+	#oi_main_div #oi_page .yes-button-content input[type="radio"]:checked + label {
+		background-position: 0 -34px;
+	}
+	#oi_main_div #oi_page .no-button-content input[type="radio"] + label {
+		background: url(../images/diabetes_buttons.png) no-repeat -84px 0;
+		color: #fff;
+		cursor: pointer;
+		display: block;
+		font-size: 0 !important;
+		height: 34px;
+		width: 84px;
+	}
+	#oi_main_div #oi_page .no-button-content input[type="radio"]:checked + label {
+		background-position: -84px -34px;
+	}
+	#oi_main_div .oiArrowIndicator { display: none !important; }
+
+@media screen and (max-width: 859px) {
+
+	#oi_main_div #oi_page .oiOfferContent { margin-left: 240px; width: auto; }
+	#oi_main_div #oi_page .oiInputBox { margin: 0; }
+	#oi_main_div span.oiRadioSelect { display: block !important; }
+
+	#oi_main_div #oi_page input[type="radio"] { display: none; }
+	#oi_main_div #oi_page .yes-button-content input[type="radio"] + label {
+		background: url("../images/diabetes_buttons.png") no-repeat;
+		color: #fff;
+		cursor: pointer;
+		display: block;
+		font-size: 0 !important;
+		height: 34px;
+		width: 84px;
+	}
+	#oi_main_div #oi_page .yes-button-content input[type="radio"]:checked + label {
+		background-position: 0 -34px;
+	}
+	#oi_main_div #oi_page .no-button-content input[type="radio"] + label {
+		background: url(../images/diabetes_buttons.png) no-repeat -84px 0;
+		color: #fff;
+		cursor: pointer;
+		display: block;
+		font-size: 0 !important;
+		height: 34px;
+		width: 84px;
+	}
+	#oi_main_div #oi_page .no-button-content input[type="radio"]:checked + label {
+		background-position: -84px -34px;
+	}
+
+}
+
+@media screen and (max-width: 767px) {
+	
+	
+
+}
+
+@media screen and (max-width: 30em) {
+	
+	#oi_main_div #oi_page .oiOfferContent { margin-left: 0; width: 100%; }
+	#oi_main_div .oiInteractDivide { float: none !important; width: 100% !important; margin: 0 0 15px; }
+	#oi_main_div .oiInputBox { width: auto !important; }
+	#oi_main_div span.oiRadioSelect { display: block; }
+	
+}
+

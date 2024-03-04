@@ -1,0 +1,6 @@
+@mixin header-style($bgcolor: $nav-bar-blue){
+  background-color: $bgcolor;
+  color: $white;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}

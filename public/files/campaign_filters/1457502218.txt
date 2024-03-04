@@ -1,0 +1,80 @@
+SHADOW SHOPPER
+http://leadreactor.engageiq.com/sendLead/?callback=jQuery111109431109425381328_1454290587331&eiq_campaign_id=13&eiq_affiliate_id=1&eiq_email=sample%40gmail.com&rev_tracker=CD1&rev_tracker_map=1&ip=122.53.187.130&first_name=sample&last_name=sample&zip=10001&_=1454290587332
+
+BEN CARSON
+http://leadreactor.engageiq.com/sendLead/?callback=jQuery111105112853781584492_1454291922838&eiq_campaign_id=11&eiq_affiliate_id=1&eiq_email=sample%40gmail.com&rev_tracker=CD1&ip=122.53.187.130&time=01%2F31%2F2016+20%3A59%3A24&first_name=sample&last_name=sample&dobMonth=09&dobDay=11&dobYear=1989&city=new+york&state=NY&zipcode=10001&address1=125+Boradway&address2=103&xxTrustedFormToken=https%3A%2F%2Fcert.trustedform.com%2F57aad9d913265317aa1c002ee13ddbd4bff01252&xxTrustedFormCertUrl=https%3A%2F%2Fcert.trustedform.com%2F57aad9d913265317aa1c002ee13ddbd4bff01252&_=1454291922839
+
+Vindale Research
+http://leadreactor.engageiq.com/sendLead/?callback=jQuery1111002510293827258292_1454291943850&eiq_campaign_id=12&eiq_affiliate_id=1&eiq_email=sample%40gmail.com&rev_tracker=1&ip=122.53.187.130&firstname=sample&lastname=sample&zip=10001&date_of_birth=09%2F11%2F1989&gender=M&createDate=01%2F31%2F2016+20%3A59%3A45&_=1454291943851
+
+Survey Spot
+http://leadreactor.engageiq.com/sendLead/?callback=jQuery1111039928696248061035_1454296956880&eiq_campaign_id=3&eiq_affiliate_id=1&eiq_email=sample%40gmail.com&rev_tracker=1&aff_sub=1&email=sample%40gmail.com&first_name=sample&last_name=sample&gender=M&_=1454296956881
+
+NME
+http://leadreactor.engageiq.com/sendLead/?callback=jQuery111106671791179204238_1454297000053&eiq_campaign_id=5&eiq_affiliate_id=1&eiq_email=sample%40gmail.com&rev_tracker=1&first_name=sample&last_name=sample&email=sample%40gmail.com&city=new+york&state=NY&zip=10001&ip=122.53.187.130&today=01%2F31%2F2016&optin=By+entering+your+phone+number+and+clicking+%22Yes%2C%22+you+are+providing+your+electronic+signature+expressly+authorizing+and+consenting+to+receive+calls+(including+calls+from+an+automated+telephone+dialing+system+or+calls+containing+pre-recorded+messaging%2C+to+your&address=125+Broadway&phone=445+656+3202&_=1454297000054
+
+Toluna
+http://leadreactor.engageiq.com/sendLead/?callback=jQuery1111025240955084725725_1454297049530&eiq_campaign_id=1&eiq_affiliate_id=1&eiq_email=sample%40gmail.com&rev_tracker=1&first_name=sample&last_name=sample&zip=10001&gender=M&birth_date=1989-09-11&_=1454297049531
+
+Global Test Market
+http://leadreactor.engageiq.com/sendLead/?callback=jQuery111108511571823204875_1454297505295&eiq_campaign_id=4&eiq_affiliate_id=1&eiq_email=sample%40gmail.com&rev_tracker=1&first_name=sample&last_name=sample&address=&city=new+york&state=NY&zip=10001&email=sample%40gmail.com&dobday=11&dobmonth=09&dobyear=1989&title=Mr.&_=1454297505296
+
+Jobs2Shop
+http://leadreactor.engageiq.com/sendLead/?callback=jQuery1111032836569840427343_1454297542467&eiq_campaign_id=7&eiq_affiliate_id=1&eiq_email=sample%40gmail.com&rev_tracker=1&first_name=sample&last_name=sample&ip=122.53.187.130&_=1454297542468
+
+Smokers Desktop
+http://leadreactor.engageiq.com/sendLead/?callback=jQuery111104437768216410892_1454297741264&eiq_campaign_id=9&eiq_affiliate_id=1&eiq_email=sample%40gmail.com&rev_tracker=1&s=125934&webclientspost=1&datetime=01%2F31%2F2016+22%3A36%3A22&ip=122.53.187.130&first_name=sample&last_name=sample&dobmonth=09&dobday=11&dobyear=1989&dob=09%2F11%2F1989&zip=10001&city=new+york&state=NY&conemail=sample%40gmail.com&title=Mrs&first_name=sample&last_name=sample&dobmonth=9&dobday=5&dobyear=1989&address=125+Broadway&apt=125&zip=10001&city=new+york&state=NY&phone1=456&phone2=456&phone3=4856&email=sample%40gmail.com&conemail=sample%40gmail.com&giid=yes&moved=no&giid_address=&giid_address2=&giid_city=&giid_state=&giid_zip=&prev_address=&prev_address2=&prev_city=&prev_state=&prev_zip=&brand=0413&menthol=0520&reg_packing=&packaging2=&always_brand=0594&prev_brand=&how_buy=0518&brand_unavailable=A&use_cigars=7263&cigar_brand=7185&smokeless_brand=&snus_brand=&ecig_brand=&mail_coupon=0594&compare=0595&signature=X&xxTrustedFormToken=https%3A%2F%2Fcert.trustedform.com%2F1675046fb48004b74898621ffd52530bc46eb7fe&xxTrustedFormCertUrl=https%3A%2F%2Fcert.trustedform.com%2F1675046fb48004b74898621ffd52530bc46eb7fe&_=1454297741265
+
+Verde Energy
+http://leadreactor.engageiq.com/sendLead/?callback=jQuery111109157000584825109_1454297782102&eiq_campaign_id=15&eiq_affiliate_id=1&eiq_email=sample%40gmail.com&rev_tracker=1&ip=122.53.187.130&first_name=sample&last_name=sample&zip=10001&dob_month=09&dob_day=11&dob_year=1989&zip=10001&state=NY&city=new+york&gender=M&today=2016-01-31&datetime=2016-01-31+22%3A37&leadid=201601312237&leadfile=Verde-ENGAGEIQ-2016-01-31&address=125+Broadway&phone=445+656+3202&_=1454297782103
+
+Inbox Dollars
+http://leadreactor.engageiq.com/sendLead/?callback=jQuery111102836359464239221_1454297848513&eiq_campaign_id=17&eiq_affiliate_id=1&eiq_email=sample%40gmail.com&rev_tracker=1&ip=122.53.187.130&first_name=sample&last_name=sample&city=new+york&state=NY&zip=10001&address=&phone=&_=1454297848514
+
+Fusion Cash
+http://leadreactor.engageiq.com/sendLead/?callback=jQuery1111004989621857721316_1454297873190&eiq_campaign_id=20&eiq_affiliate_id=1&eiq_email=sample%40gmail.com&rev_tracker=1&first_name=sample&last_name=sample&zip=10001&ip=122.53.187.130&postedstamp=2016-01-31+22%3A38%3A34&_=1454297873191
+
+QuickBucks 
+http://leadreactor.engageiq.com/sendLead/?callback=jQuery111109438417104577977_1454299495899&eiq_campaign_id=27&eiq_affiliate_id=1&eiq_email=sample%40gmail.com&rev_tracker=1&ip=122.53.187.130&first_name=sample&last_name=sample&zip=10001&_=1454299495900
+
+Survey4Bucks
+http://leadreactor.engageiq.com/sendLead/?callback=jQuery111108957122604246138_1454299502357&eiq_campaign_id=30&eiq_affiliate_id=1&eiq_email=sample%40gmail.com&rev_tracker=1&ip=122.53.187.130&first_name=sample&last_name=sample&timestamp=01%2F31%2F2016+23%3A05%3A43&_=1454299502358
+
+Paid in Pajamas
+http://leadreactor.engageiq.com/sendLead/?callback=jQuery1111029352911914325264_1454299529903&eiq_campaign_id=31&eiq_affiliate_id=1&eiq_email=sample%40gmail.com&rev_tracker=1&ip=122.53.187.130&first_name=sample&dj=2016-01-31+23%3A06%3A11&_=1454299529904
+
+MyDailyMoment
+http://leadreactor.engageiq.com/sendLead/?callback=jQuery111106056507680847587_1454299547010&eiq_campaign_id=33&eiq_affiliate_id=1&eiq_email=sample%40gmail.com&rev_tracker=1&first_name=sample&last_name=sample&dob=01%2F31%2F2016&zip=10001&gender=M&ip=122.53.187.130&_=1454299547011
+
+GoFreebies
+http://leadreactor.engageiq.com/sendLead/?callback=jQuery111106490226853019767_1454299564972&eiq_campaign_id=34&eiq_affiliate_id=1&eiq_email=sample%40gmail.com&rev_tracker=1&ip=122.53.187.130&first_name=sample&last_name=sample&zip=10001&dob_month=01&dob_day=31&dob_year=2016&_=1454299564973
+
+SurveyJob Opportunities
+http://leadreactor.engageiq.com/sendLead/?callback=jQuery111102718075140739751_1454299579119&eiq_campaign_id=35&eiq_affiliate_id=1&eiq_email=sample%40gmail.com&rev_tracker=1&first_name=sample&last_name=sample&zip=10001&ip=122.53.187.130&jdate=20160131230700&_=1454299579120
+
+Personal Injury
+http://leadreactor.engageiq.com/sendLead/?callback=jQuery111107159438457017959_1454305118125&eiq_campaign_id=36&eiq_affiliate_id=1&eiq_email=sample%40gmail.com&rev_tracker=1&ip=122.53.187.130&first_name=sample&last_name=sample&zip=10001&yesno_top=&first_name=sample&last_name=sample&phone=445+656+3202&q1=1&q2=2&q3=1&q4=2&otherComments=&xxTrustedFormToken=https%3A%2F%2Fcert.trustedform.com%2F3564706cefd9ea4a1b86e7353f3480b4503ebe2e&xxTrustedFormCertUrl=https%3A%2F%2Fcert.trustedform.com%2F3564706cefd9ea4a1b86e7353f3480b4503ebe2e&_=1454305118126
+
+Xarelto
+http://leadreactor.engageiq.com/sendLead/?callback=jQuery111106223424245014306_1454305175481&eiq_campaign_id=37&eiq_affiliate_id=1&eiq_email=sample%40gmail.com&rev_tracker=1&age=26&ip=122.53.187.130&datetime=02%2F01%2F2016+00%3A40%3A16&first_name=sample&last_name=sample&yesno_top=&phone=445+656+3202&address=125+Broadway&zip=10001&city=new+york&state=NY&q2=Yes&q3=Yes&q4=No&xxTrustedFormToken=https%3A%2F%2Fcert.trustedform.com%2F7bc4cad068f15fb5ee3db7dfc841f19790c31458&xxTrustedFormCertUrl=https%3A%2F%2Fcert.trustedform.com%2F7bc4cad068f15fb5ee3db7dfc841f19790c31458&_=1454305175482
+
+Auto Accident
+http://leadreactor.engageiq.com/sendLead/?callback=jQuery1111014857073307323965_1454305228873&eiq_campaign_id=39&eiq_affiliate_id=1&eiq_email=sample%40gmail.com&rev_tracker=1&first_name=sample&last_name=sample&zip=10001&ip=122.53.187.130&yesno_top=&phone=445+656+3202&q1=2&q2=1&q3=1&q4=2&q5=2&otherComments=asfasgasgd&terms=1&xxTrustedFormToken=https%3A%2F%2Fcert.trustedform.com%2Fe0508b82b1d402cd143cbfcb9f5920aa009e7a18&xxTrustedFormCertUrl=https%3A%2F%2Fcert.trustedform.com%2Fe0508b82b1d402cd143cbfcb9f5920aa009e7a18&_=1454305228874
+
+Invokana
+http://leadreactor.engageiq.com/sendLead/?callback=jQuery111109754330860551228_1454305409238&eiq_campaign_id=41&eiq_affiliate_id=1&eiq_email=sample%40gmail.com&rev_tracker=1&age=26&datetime=02%2F01%2F2016+00%3A44%3A10&ip=122.53.187.130&yesno_top=&first_name=sample&last_name=sample&phone=445+656+3202&address=125+Broadway&zip=10001&city=new+york&state=NY&InvokanaDrugUsed=Invokana+canagliflozin&InvokanaDiagnosis=Diabetic+Coma&InvokanaYear=2015&Attorney=No&xxTrustedFormToken=https%3A%2F%2Fcert.trustedform.com%2F6854f3868a928460ea81e11f6b33496f5ea650d9&xxTrustedFormCertUrl=https%3A%2F%2Fcert.trustedform.com%2F6854f3868a928460ea81e11f6b33496f5ea650d9&_=1454305409239
+
+Risperdal
+http://leadreactor.engageiq.com/sendLead/?callback=jQuery111107067987923992392_1454306165948&eiq_campaign_id=42&eiq_affiliate_id=1&eiq_email=sample%40gmail.com&rev_tracker=1&age=26&datetime=02%2F01%2F2016+00%3A56%3A47&ip=122.53.187.130&yesno_top=&first_name=sample&last_name=sample&phone=445+656+3202&address=125+Broadway&zip=10001&city=new+york&state=NY&q1=Yes&q2=No&q3=Breast+Growth&q4=2015&otherComments=&xxTrustedFormToken=https%3A%2F%2Fcert.trustedform.com%2F103dec4930c07bc0abea93a68fd0c8c8974c0d8f&xxTrustedFormCertUrl=https%3A%2F%2Fcert.trustedform.com%2F103dec4930c07bc0abea93a68fd0c8c8974c0d8f&_=1454306165949
+
+Acurian Ulcerative Colitis
+http://leadreactor.engageiq.com/sendLead/?callback=jQuery1111035678950574458657_1454306198182&eiq_campaign_id=43&eiq_affiliate_id=1&eiq_email=sample%40gmail.com&rev_tracker=1&datetime=02%2F01%2F2016+00%3A57%3A19&ip=122.53.187.130&gender=M&yesno_top=&first_name=sample&last_name=sample&phone=445+656+3202&zip=10001&dob=02-01-2016&q1=Yes&q2=Yes&q3=Yes&q4=Yes&q5=Yes&xxTrustedFormToken=https%3A%2F%2Fcert.trustedform.com%2F0a0076504d94e37ee2658ea918f3c21152721fc0&xxTrustedFormCertUrl=https%3A%2F%2Fcert.trustedform.com%2F0a0076504d94e37ee2658ea918f3c21152721fc0&_=1454306198183
+
+Acurian Heart Failure
+http://leadreactor.engageiq.com/sendLead/?callback=jQuery111104225378431104122_1454306238533&eiq_campaign_id=45&eiq_affiliate_id=1&eiq_email=sample%40gmail.com&rev_tracker=1&datetime=02%2F01%2F2016+00%3A57%3A59&ip=122.53.187.130&yesno_top=&first_name=sample&last_name=sample&phone=445+656+3202&zip=10001&dob=02-01-2016&gender=M&q1=Yes&q2=Yes&q3=Yes&q4=Yes&q5=Yes&xxTrustedFormToken=https%3A%2F%2Fcert.trustedform.com%2Fc832de446122a58333bebf1e6a7630410d573b14&xxTrustedFormCertUrl=https%3A%2F%2Fcert.trustedform.com%2Fc832de446122a58333bebf1e6a7630410d573b14&_=1454306238534
+
+
+IVC
+http://leadreactor.engageiq.com/sendLead/?callback=jQuery1111043953754488550334_1454306293469&eiq_campaign_id=46&eiq_affiliate_id=1&eiq_email=sample%40gmail.com&rev_tracker=1&datetime=02%2F01%2F2016+00%3A58%3A54&ip=122.53.187.130&phone=&yesno_top=&first_name=sample&last_name=sample&phone=445+656+3202&address=125+Broadway&zip=10001&city=new+york&state=NY&q1=Yes&q2=Broken+or+Splintered&q3=Bard&q4=2015&q5=No&xxTrustedFormToken=https%3A%2F%2Fcert.trustedform.com%2F1abe7b3885903ba45ba55978ab408d3a07cd8fda&xxTrustedFormCertUrl=https%3A%2F%2Fcert.trustedform.com%2F1abe7b3885903ba45ba55978ab408d3a07cd8fda&_=1454306293470
+
+

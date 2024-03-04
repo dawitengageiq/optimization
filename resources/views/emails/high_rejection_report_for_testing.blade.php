@@ -1,0 +1,1 @@
+Attached is the report to check whether high rejection report is accurate.

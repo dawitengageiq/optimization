@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<phpunit bootstrap="vendor/autoload.php" stopOnError="false" stopOnFailure="false" verbose="true">
+    <logging />
+    <testsuites>
+        <testsuite name="All">
+            <file>./tests/SimpleTest.php</file>
+        </testsuite>
+    </testsuites>
+</phpunit>

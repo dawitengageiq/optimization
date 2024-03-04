@@ -1,0 +1,27 @@
+@import "../../_variables";
+//@import "mixins";
+
+.publisher_reports_table_design {
+
+  thead tr {
+    background-color: $report-table-header-color;
+    color: $white;
+  }
+
+  tfoot tr{
+    background-color: $report-table-footer-color;
+  }
+
+  tbody tr td{
+    text-align: center;
+  }
+
+  tfoot tr td{
+    text-align: center;
+  }
+
+  tbody tr td:nth-child(1){
+    text-align: left;
+  }
+
+}

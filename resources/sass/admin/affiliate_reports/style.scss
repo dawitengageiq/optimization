@@ -1,0 +1,223 @@
+@import "../../_variables";
+@import "mixins";
+
+#publisher_reports_tab_list {
+
+  border-bottom: 1px solid $report-tab-color;
+
+  li a {
+    color: $white;
+    border: 1px solid $report-tab-color;
+    background-color: $non-active-report-tab-color;
+  }
+
+  li.active a {
+    background-color: $report-tab-color;
+  }
+
+}
+
+.publisher_reports_tab_title {
+  background-color: $report-tab-color;
+  color: $white;
+  margin-bottom: 10px;
+}
+
+.publisher_reports_table_design {
+
+  thead tr {
+    background-color: $report-table-header-color;
+    color: $white;
+  }
+
+  tbody tr td:nth-child(2){
+    background-color: $cake-indicator-color
+  }
+
+  tbody tr td:nth-child(3){
+    background-color: $cake-indicator-color
+  }
+
+  tbody tr td:nth-child(4){
+    background-color: $nlr-indicator-color
+  }
+
+  tbody tr td:nth-child(5){
+    background-color: $nlr-indicator-color
+  }
+
+  tfoot tr{
+    background-color: $report-table-footer-color;
+  }
+
+  tbody tr td{
+    text-align: center;
+  }
+
+  tfoot tr td{
+    text-align: center;
+  }
+
+  tbody tr td:nth-child(1){
+    text-align: left;
+  }
+
+}
+
+.publisher_reports_subid_table_design {
+
+  thead tr {
+    background-color: $report-table-header-color;
+    color: $white;
+  }
+
+  tbody tr td:nth-child(6){
+    background-color: $cake-indicator-color
+  }
+
+  tbody tr td:nth-child(7){
+    background-color: $cake-indicator-color
+  }
+
+  tbody tr td:nth-child(8){
+    background-color: $nlr-indicator-color
+  }
+
+  tbody tr td:nth-child(9){
+    background-color: $nlr-indicator-color
+  }
+
+  tfoot tr{
+    background-color: $report-table-footer-color;
+  }
+
+  tbody tr td{
+    text-align: center;
+  }
+
+  tfoot tr td{
+    text-align: center;
+  }
+
+  tbody tr td:nth-child(1),tbody tr td:nth-child(2), tbody tr td:nth-child(3), tbody tr td:nth-child(4), tbody tr td:nth-child(5){
+    text-align: left;
+  }
+}
+
+.publisher_reports_aff_subid_table_design {
+
+  thead tr {
+    background-color: $report-table-header-color;
+    color: $white;
+  }
+
+  tbody tr td:nth-child(7){
+    background-color: $cake-indicator-color
+  }
+
+  tbody tr td:nth-child(8){
+    background-color: $cake-indicator-color
+  }
+
+  tbody tr td:nth-child(9){
+    background-color: $nlr-indicator-color
+  }
+
+  tbody tr td:nth-child(10){
+    background-color: $nlr-indicator-color
+  }
+
+  tfoot tr{
+    background-color: $report-table-footer-color;
+  }
+
+  tbody tr td{
+    text-align: center;
+  }
+
+  tfoot tr td{
+    text-align: center;
+  }
+
+  tbody tr td:nth-child(1),tbody tr td:nth-child(2), tbody tr td:nth-child(3), tbody tr td:nth-child(4), tbody tr td:nth-child(5), tbody tr td:nth-child(6){
+    text-align: left;
+  }
+}
+
+.modal-header {
+  background-color: $report-tab-color;
+  color: $white;
+}
+
+#prAffiliateWebsiteModal {
+  .modal-header {
+    @include modalHeader($report-tab-color,$white);
+  }
+}
+
+#handp-table, #internal-iframe-table{
+  width: 100% !important;
+}
+
+#revenueTrackerDetailsModal {
+  .modal-header {
+    @include modalHeader($report-tab-color,$white);
+  }
+  /*top:5%;
+  left:30%;
+  outline: none;*/
+}
+
+.pr_sp_periord {
+  text-transform: lowercase;
+}
+
+.modal:nth-of-type(even) {
+  z-index: 1042 !important;
+}
+
+.modal-backdrop.in:nth-of-type(even) {
+  z-index: 1041 !important;
+}
+
+#cakeColorIndicator{
+  background-color: $cake-indicator-color;
+  margin-right: 10px;
+  color: $cake-indicator-color;
+}
+
+#nlrColorIndicator{
+  background-color: $nlr-indicator-color;
+  margin-right: 10px;
+  color: $nlr-indicator-color;
+}
+
+.modal-open #affReportPage-wrapper, .modal-open  #affReportPage-wrapper {
+  /*-webkit-filter: blur(5px) grayscale(90%);*/
+}
+
+#subIDBreakdownTable_length {
+  /*width: 25%;*/
+  /*margin: 0;*/
+  float: left;
+  /*display: inline;*/
+}
+
+.addToolbar {
+  /*width: 25%;
+  margin: 0;
+  float: left;
+  display: inline;*/
+  float: right;
+  /*margin-right: 10px;*/
+}
+
+.addToolbar label {
+  float: right;
+}
+
+#subIDBreakdownTable_filter {
+  /*width: 25%;
+  float: left;*/
+  float: right;
+}

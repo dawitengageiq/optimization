@@ -1,0 +1,31 @@
+@import "../../_variables";
+
+#coregReport-table tbody tr td:nth-child(1) {
+  text-align: center;
+}
+
+#coregReport-table_length {
+  width: 25%;
+  /*margin: 0;*/
+  float: left;
+  /*display: inline;*/
+}
+
+.addToolbar {
+  /*width: 25%;
+  margin: 0;
+  float: left;
+  display: inline;*/
+  float: right;
+  /*margin-right: 10px;*/
+}
+
+.addToolbar label {
+  float: right;
+}
+
+#coregReport-table_filter {
+  /*width: 25%;
+  float: left;*/
+  float: right;
+}

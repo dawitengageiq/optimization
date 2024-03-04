@@ -1,0 +1,169 @@
+#_eiqXYZFromContainer * {
+  	margin: 0;
+  	padding: 0;
+  	border: none;
+  	font-family: Arial, sans-serif;
+  	box-sizing: border-box;
+}
+
+#_eiqXYZFromContainer {
+  	font-size: 14px;
+  	background: none;
+}
+
+#_eiqXYZFromContainer .logo {
+	float: left;
+	width: 54%;
+	padding-left: 15px;
+}
+#_eiqXYZFromContainer .logo img {
+	display: block;
+	padding-top: 16px;
+}
+#_eiqXYZFromContainer .logo h5 {
+	color: #fff;
+	text-align: right;
+	font-weight: normal;
+	font-size: 13px;
+}
+#_eiqXYZFromContainer .money {
+	float: left;
+	width: 46%;
+	text-align: right;
+}
+#_eiqXYZFromContainer .yellow {
+	background: #f6d500;
+	padding: 15px;
+	text-align: center;
+}
+#_eiqXYZFromContainer .yellow p {
+	color: #000;
+	font-size: 10px;
+	margin: 0;
+}
+#_eiqXYZFromContainer .blue {
+	padding: 90px 0;
+	background: #062937;
+}
+#_eiqXYZFromContainer.form-container {
+	margin: 0 auto;
+	max-width: 600px;
+	width: 100%;
+	border: 3px solid #fad800;
+	box-shadow: 0 0 20px #fad800;
+	background-image: linear-gradient(#001f58, #064671, #062941);
+	position: relative;
+}
+#_eiqXYZFromContainer .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+#_eiqXYZFromContainer.form-container h1 {
+	color: #dcaf27;
+	text-transform: uppercase;
+	font-size: 47px;
+	font-family: "impact", sans-serif;
+	font-weight: normal;
+	text-align: center;
+	padding: 23px 0;
+	-webkit-text-stroke-width: 2px;
+  	-webkit-text-stroke-color: black;
+}
+#_eiqXYZFromContainer.form-container h1 span {
+	font-family: "impact", sans-serif;
+	background: -webkit-linear-gradient(#d7ad00, #feecb3, #ea9816);
+  	-webkit-background-clip: text;
+  	-webkit-text-fill-color: transparent;
+  	line-height: 40px;
+    display: block;
+    margin-top: 8px;
+}
+#_eiqXYZFromContainer .ribbon {
+	background-image: linear-gradient(to right, #8c0b0a, #f51c18, #8c0b0a);
+	text-align: center;
+	border-top: 3px solid #fda400;
+	border-bottom: 3px solid #fda400;
+}
+#_eiqXYZFromContainer .ribbon h4 {
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 20px;
+	padding: 8px 0;
+	font-weight: normal;
+}
+#_eiqXYZFromContainer.form-container form {
+	max-width: 280px;
+	width: 95%;
+	margin: 0 auto;
+	padding: 20px 0 30px;
+}
+#_eiqXYZFromContainer.form-container form p {
+	color: #fff;
+	text-align: center;
+	display: block;
+	margin: 0 0 20px;
+	font-size: 15px;
+}
+#_eiqXYZFromContainer.form-container form .form-input input[type="text"],
+#_eiqXYZFromContainer.form-container form .form-input input[type="email"] {
+	border: 1px solid #001b42;
+	background: #fff;
+	padding: 10px 15px;
+	width: 100%;
+	font-size: 16px;
+	font-style: italic;
+	margin: 0 0 13px;
+	display: block;
+}
+#_eiqXYZFromContainer.form-container form .form-input input[type="submit"] {
+	display: block;
+	width: 150px;
+	margin: 30px auto 0;
+	padding: 14px 10px 12px;
+	text-align: center;
+	border-radius: 10px;
+	border: 2px solid #000;
+	color: 000;
+	text-transform: uppercase;
+	font-size: 20px;
+	font-weight: 700;
+	background-image: linear-gradient(#fde300, #f79200);
+}
+
+@media screen and (max-width: 750px) {
+
+	#_eiqXYZFromContainer .money {
+		display: none;
+	}
+	#_eiqXYZFromContainer .logo {
+		width: 100%;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	#_eiqXYZFromContainer .logo img {
+		margin: 0 auto;
+		padding-top: 0;
+		max-width: 100%;
+	}
+	#_eiqXYZFromContainer .logo h5 {
+		text-align: center;
+	}
+
+}
+@media screen and (max-width: 480px) {
+
+	#_eiqXYZFromContainer .blue {
+    	padding: 30px 0;
+    }
+    #_eiqXYZFromContainer .form-container h1 {
+    	font-size: 35px;
+    }
+    #_eiqXYZFromContainer .form-container h1 span {
+    	margin: 0;
+    }
+
+}

@@ -1,0 +1,8 @@
+1.1 Build
+    1.) In order to remove existing duplicates using artisan command remove:LeadDuplicates.
+    2.) Execute migration.
+
+1.6 Build
+    1.) Execute migration (archiving tables).
+    2.) Execute seeder for settings.
+    3.) Create a cron that will execute php artisan archive:leads.
