@@ -51,7 +51,7 @@ class UserActionLogController extends Controller
                 return $q->select('id', DB::raw('CONCAT(first_name, " ", middle_name, " ", last_name) AS full_name'));
             }])
             ->groupBy(['sub_section_id', 'reference_id', 'action', 'date'])
-            ->orderBy('created_at', 'desc')
+            ->orderByDesc('created_at')
             ->get();
 
         // Exception ...
@@ -108,7 +108,7 @@ class UserActionLogController extends Controller
             }])
             ->skip($request->get('start'))
             ->take($request->get('length'))
-            ->orderBy('created_at', 'desc')
+            ->orderByDesc('created_at')
             ->get();
 
         // Exception ...
@@ -157,7 +157,7 @@ class UserActionLogController extends Controller
             }])
             ->skip($request->get('start'))
             ->take($request->get('length'))
-            ->orderBy('created_at', 'desc')
+            ->orderByDesc('created_at')
             ->get();
 
         // Exception ...
@@ -196,7 +196,7 @@ class UserActionLogController extends Controller
             $query->whereDate('created_at', '=', $request->get('date'));
         }
 
-        $activities = $query->orderBy('created_at', 'desc')->get();
+        $activities = $query->orderByDesc('created_at')->get();
 
         // format records when not empty
         // $activities = tap(

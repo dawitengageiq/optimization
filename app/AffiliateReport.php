@@ -142,7 +142,7 @@ class AffiliateReport extends Model
             $order_dir = $params['order'][0]['dir'];
             $query->orderBy($order_col, $order_dir);
         } else {
-            $query->orderBy('affiliate_name', 'asc');
+            $query->orderBy('affiliate_name');
         }
     }
 
@@ -294,7 +294,7 @@ class AffiliateReport extends Model
         });
 
         $query->groupBy('affiliate_reports.revenue_tracker_id')
-            ->orderBy('affiliate_reports.revenue_tracker_id', 'asc');
+            ->orderBy('affiliate_reports.revenue_tracker_id');
 
         return $query;
     }
@@ -346,7 +346,7 @@ class AffiliateReport extends Model
             $groupQuery->whereRaw('created_at >= ? AND created_at <= ?', [$dateFrom, $dateTo]);
         });
 
-        $query->orderBy('campaign_id', 'asc');
+        $query->orderBy('campaign_id');
 
         return $query;
     }
@@ -482,13 +482,13 @@ class AffiliateReport extends Model
 
         $query->groupBy(['affiliate_id', 'revenue_tracker_id', 'campaign_id', 's1', 's2', 's3', 's4', 's5']);
 
-        $query->orderBy('revenue_tracker_id', 'asc')
-            ->orderBy('s1', 'asc')
-            ->orderBy('s2', 'asc')
-            ->orderBy('s3', 'asc')
-            ->orderBy('s4', 'asc')
-            ->orderBy('s5', 'asc')
-            ->orderBy('campaigns.name', 'asc');
+        $query->orderBy('revenue_tracker_id')
+            ->orderBy('s1')
+            ->orderBy('s2')
+            ->orderBy('s3')
+            ->orderBy('s4')
+            ->orderBy('s5')
+            ->orderBy('campaigns.name');
 
         return $query;
     }
@@ -525,7 +525,7 @@ class AffiliateReport extends Model
 
         $query->groupBy(['affiliate_id', 'revenue_tracker_id', 'campaign_id']);
 
-        $query->orderBy('revenue_tracker_id', 'asc');
+        $query->orderBy('revenue_tracker_id');
         //->orderBy('campaigns.name','asc');
 
         return $query;

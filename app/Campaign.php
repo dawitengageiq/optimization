@@ -126,7 +126,7 @@ class Campaign extends Model
     public function scopeGetExternals($query)
     {
         return $query->where('name', 'like', 'External%')
-            ->orderBy('name', 'ASC');
+            ->orderBy('name');
     }
 
     public function scopeActiveCampaigns($query, $param = null)
@@ -142,7 +142,7 @@ class Campaign extends Model
             $query->where('id', '=', DB::raw('(SELECT campaigns.id FROM campaigns WHERE campaigns.advertiser_id='.$param['advertiser_id'].')'));
         }
 
-        $query->orderBy('id', 'asc');
+        $query->orderBy('id');
     }
 
     public function filter_groups()
@@ -249,13 +249,13 @@ class Campaign extends Model
 
             if ($filters != null && isset($filters['show_inactive']) && $filters['show_inactive'] != '') {
                 // $query->orderByRaw('FIELD(campaigns.status, 2, 1, 3, 0)');
-                $query->orderBy('campaigns.status', 'ASC');
+                $query->orderBy('campaigns.status');
             }
         } else {
             if ($filters != null && isset($filters['show_inactive']) && $filters['show_inactive'] != '') {
                 // $query->orderByRaw('FIELD(campaigns.status, 2, 1, 3, 0)');
-                $query->orderBy('campaigns.status', 'ASC');
-                $query->orderBy('campaigns.priority', 'ASC');
+                $query->orderBy('campaigns.status');
+                $query->orderBy('campaigns.priority');
             }
         }
 
@@ -324,7 +324,7 @@ class Campaign extends Model
 
         if ($order_col != null && $order_dir != null) {
             if ($order_col > -1) {
-                $query->orderBy(DB::RAW('-affiliate_campaign.lead_cap_type'), 'DESC');
+                $query->orderByDesc(DB::RAW('-affiliate_campaign.lead_cap_type'));
                 $query->orderBy($order_col, $order_dir);
             }
         }
@@ -362,7 +362,7 @@ class Campaign extends Model
             ->havingRaw('((status = 2) OR (status = 1 AND affiliate_campaign_exists IS NOT NULL))')
             ->havingRaw('((lead_cap_type = 0) OR (lead_cap_type != 0 AND lead_cap_value > campaign_lead_count))')
             ->havingRaw('((aff_cap_type IS NULL) OR (aff_cap_type = 0) OR (aff_cap_value > campaign_affiliate_lead_count))')
-            ->orderBy('campaigns.priority', 'ASC');
+            ->orderBy('campaigns.priority');
 
         if ($limit != null) {
             $query->take($limit);

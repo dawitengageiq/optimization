@@ -184,7 +184,7 @@ class CampaignList2Controller extends Controller
             }])
             ->with('filter_groups.filters.filter_type')
             ->select('status', 'lead_cap_type', 'lead_cap_value', 'priority', 'campaign_type', 'id')
-            ->orderBy('priority', 'asc')->get();
+            ->orderBy('priority')->get();
 
         $accepted_campaigns = [];
         $stack = [];
@@ -571,7 +571,7 @@ class CampaignList2Controller extends Controller
         /*** TIMER ***/ $time1 = microtime(true);
 
         /* GET ACTIVE CAMPAIGNS */
-        $campaigns = Campaign::where('status', '!=', 0)->where('status', '!=', 3)->orderBy('priority', 'asc')->get();
+        $campaigns = Campaign::where('status', '!=', 0)->where('status', '!=', 3)->orderBy('priority')->get();
 
         /*** TIMER ***/ $time2 = microtime(true);
 
@@ -1279,7 +1279,7 @@ class CampaignList2Controller extends Controller
             }])
             ->with('filter_groups.filters.filter_type')
             ->select('status', 'lead_cap_type', 'lead_cap_value', 'priority', 'campaign_type', 'id')
-            ->orderBy('priority', 'asc')->get();
+            ->orderBy('priority')->get();
         // \Log::info(\DB::connection('mysql')->getQueryLog());
         // \Log::info(\DB::connection('secondary')->getQueryLog());
 

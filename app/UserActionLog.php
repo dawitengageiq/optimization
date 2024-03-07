@@ -142,7 +142,7 @@ class UserActionLog extends Model
         }
 
         // always order the records by date descending
-        $query->orderBy('user_action_logs.created_at', 'desc');
+        $query->orderByDesc('user_action_logs.created_at');
 
         return $query;
     }
@@ -175,7 +175,7 @@ class UserActionLog extends Model
 
         $query->groupBy(['user_action_logs.created_at', 'reference_id', 'section_id', 'sub_section_id', 'user_id', 'type']);
 
-        $query->orderBy('user_action_logs.created_at', 'DESC');
+        $query->orderByDesc('user_action_logs.created_at');
 
         return $query;
     }

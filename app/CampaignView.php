@@ -74,7 +74,7 @@ class CampaignView extends Model
         }
 
         // order by create date
-        $query->orderBy('created_at', 'desc');
+        $query->orderByDesc('created_at');
 
         $query->groupBy('campaign_id', 'creative_id', 'path_id', 'affiliate_id');
 

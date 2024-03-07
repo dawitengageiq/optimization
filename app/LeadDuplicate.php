@@ -83,7 +83,7 @@ class LeadDuplicate extends Model
         }
 
         //order by create date
-        $query->orderBy('created_at', 'desc');
+        $query->orderByDesc('created_at');
 
         if (isset($params['limit_rows']) && $params['limit_rows'] !== '') {
             $query->take($params['limit_rows']);

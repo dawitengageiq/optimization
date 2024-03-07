@@ -56,7 +56,7 @@ class WebsitesViewTracker extends Model
     {
         if ($query->where(['email' => $email, 'status' => 'active'])
             ->where('created_at', '>=', Carbon::now()->subHours($timeInterval))
-            ->orderBy('created_at', 'DESC')
+            ->orderByDesc('created_at')
             ->exists()
         ) {
             return false;

@@ -82,7 +82,7 @@ class Affiliate extends Model
             ->whereNull('affiliate_campaign.id')
             ->where('status', 1)
             ->select('affiliates.id', DB::raw('CONCAT(affiliates.id, " - ",company) AS name'))
-            ->orderBy('affiliates.id', 'asc');
+            ->orderBy('affiliates.id');
 
         // $affiliated = AffiliateCampaign::where('campaign_id','=',$id)->lists('affiliate_id')->toArray();
         // return $query->select('affiliates.id', DB::raw('CONCAT(affiliates.id, " - ",company) AS name'))
@@ -103,7 +103,7 @@ class Affiliate extends Model
             ->whereNull('campaign_payouts.id')
             ->where('status', 1)
             ->select('affiliates.id', DB::raw('CONCAT(affiliates.id, " - ",company) AS name'))
-            ->orderBy('affiliates.id', 'asc');
+            ->orderBy('affiliates.id');
 
         // $payouts = CampaignPayout::where('campaign_id','=',$id)->lists('affiliate_id')->toArray();
         // return $query->select('id', DB::raw('CONCAT(id, " - ",company) AS name'))
@@ -197,7 +197,7 @@ class Affiliate extends Model
         if ($order_col != null && $order_dir != null) {
             if ($order_col > -1) {
                 // $query->orderBy(DB::RAW('-affiliate_campaign.lead_cap_type'),'DESC');
-                $query->orderBy('is_affiliate_campaign', 'DESC');
+                $query->orderByDesc('is_affiliate_campaign');
                 $query->orderBy($order_col, $order_dir);
             }
         }

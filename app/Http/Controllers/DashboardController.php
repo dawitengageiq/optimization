@@ -33,7 +33,7 @@ class DashboardController extends Controller
             ->select(DB::RAW('offer_goes_downs.*, campaigns.name'))
             ->where('revenue', '>', 0)
             ->where('revenue', '>=', $filter)
-            ->orderBy('updated_at', 'DESC')
+            ->orderByDesc('updated_at')
             ->skip($start)->take($length)->get();
         $campaignsData = [];
 

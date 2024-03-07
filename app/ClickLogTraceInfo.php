@@ -105,7 +105,7 @@ class ClickLogTraceInfo extends Model
 
             if ($order_col != '') {
                 // this means there is no column ordering specified
-                $query->orderBy($columns[0], 'desc');
+                $query->orderByDesc($columns[0]);
                 $query->orderBy($order_col, $order_dir);
             }
         }

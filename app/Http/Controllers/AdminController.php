@@ -472,7 +472,7 @@ class AdminController extends Controller
         $advertisers = [null => ''] + Bus::dispatch(new GetAdvertisersCompanyIDPair());
 
         $affiliates = Affiliate::select('id', DB::raw('CONCAT(id, " - ",company) AS company_name'))
-            ->orderBy('id', 'asc')
+            ->orderBy('id')
             ->pluck('company_name', 'id')->toArray();
 
         $lead_types = config('constants.LEAD_CAP_TYPES');
@@ -480,7 +480,7 @@ class AdminController extends Controller
         $campaign_statuses = config('constants.CAMPAIGN_STATUS');
 
         $filter_types = FilterType::select('id', DB::raw('CONCAT(type, " - ",name) AS filter_name'))
-            ->orderBy('filter_name', 'asc')
+            ->orderBy('filter_name')
             ->pluck('filter_name', 'id')->toArray();
 
         $categories = Category::where('status', '=', 1)->pluck('name', 'id')->toArray();
@@ -544,7 +544,7 @@ class AdminController extends Controller
         session(['pors_default_benchmark' => $benchmarks]);
 
         //get campaigns per campaign type
-        $all_campaigns = Campaign::orderBy('name', 'ASC')->select('id', 'campaign_type', 'name', 'linkout_offer_id')->get();
+        $all_campaigns = Campaign::orderBy('name')->select('id', 'campaign_type', 'name', 'linkout_offer_id')->get();
         $campaigns = [];
         $linkout_campaigns = [];
         foreach ($all_campaigns as $c) {
@@ -1167,7 +1167,7 @@ class AdminController extends Controller
 
     public function clicksVsRegsStats(Request $request): View
     {
-        $affiliates = Affiliate::select('id', DB::raw('CONCAT(id, " - ", company) AS id_company'))->where('status', 1)->orderBy('id_company', 'asc')->pluck('id_company', 'id')->toArray();
+        $affiliates = Affiliate::select('id', DB::raw('CONCAT(id, " - ", company) AS id_company'))->where('status', 1)->orderBy('id_company')->pluck('id_company', 'id')->toArray();
 
         return view('admin.clicksvsregstats', compact('affiliates'));
     }
@@ -1535,7 +1535,7 @@ class AdminController extends Controller
     public function pageViewStats(Request $request): View
     {
         $inputs = $request->all();
-        $affiliates = Affiliate::select('id', DB::raw('CONCAT(id, " - ", company) AS id_company'))->where('status', 1)->orderBy('id_company', 'asc')->pluck('id_company', 'id')->toArray();
+        $affiliates = Affiliate::select('id', DB::raw('CONCAT(id, " - ", company) AS id_company'))->where('status', 1)->orderBy('id_company')->pluck('id_company', 'id')->toArray();
 
         return view('admin.pageViewStats', compact('affiliates', 'inputs'));
     }
@@ -2951,7 +2951,7 @@ class AdminController extends Controller
      */
     public function revenueTrackers(): View
     {
-        $affiliates = Affiliate::select('id', DB::raw('CONCAT(id, " - ", company) AS id_company'))->where('status', 1)->orderBy('id_company', 'asc')->pluck('id_company', 'id')->toArray();
+        $affiliates = Affiliate::select('id', DB::raw('CONCAT(id, " - ", company) AS id_company'))->where('status', 1)->orderBy('id_company')->pluck('id_company', 'id')->toArray();
         $path_types = config('constants.PATH_TYPES');
         $campaignStatuses = config('constants.CAMPAIGN_STATUS');
 
@@ -2959,7 +2959,7 @@ class AdminController extends Controller
         $campaignTypes = config('constants.CAMPAIGN_TYPES');
         $campaignOrdering = [];
         $mixeCoregTypes = config('constants.MIXED_COREG_TYPE_FOR_ORDERING');
-        $campaigns = Campaign::select('id', 'name', 'campaign_type', 'status')->orderBy('priority', 'asc')->get();
+        $campaigns = Campaign::select('id', 'name', 'campaign_type', 'status')->orderBy('priority')->get();
         $default_order = [];
         $default_mixed_coreg_campaign_order = [];
         $exit_page_campaigns = [];
@@ -4103,7 +4103,7 @@ class AdminController extends Controller
         $campaigns = Lead::select('campaign_id', DB::raw('COUNT(*) as total'))
             ->whereRaw('date(created_at) = "'.$the_date.'"')
             ->groupBy('campaign_id')
-            ->orderBy('total', 'desc')
+            ->orderByDesc('total')
             ->take(10)
             ->pluck('campaign_id')
             ->toArray();
@@ -4121,7 +4121,7 @@ class AdminController extends Controller
             $leads = $leads->orderByRaw('FIELD(leads.campaign_id, '.implode(',', $campaigns).')');
         }
 
-        $leads = $leads->orderBy('leads.lead_status', 'ASC')
+        $leads = $leads->orderBy('leads.lead_status')
             ->get()->toArray();
 
         $stats = [];
@@ -4517,7 +4517,7 @@ class AdminController extends Controller
     {
         // users
         $users = User::select('id', DB::raw('CONCAT(first_name, " ", middle_name, " ", last_name, " (",id,") ") AS full_name'))
-            ->orderBy('full_name', 'asc')
+            ->orderBy('full_name')
             ->pluck('full_name', 'id')
             ->toArray();
 

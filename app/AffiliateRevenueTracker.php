@@ -124,7 +124,7 @@ class AffiliateRevenueTracker extends Model
     public function scopeCakePublisher($query, $revenueTrackerID)
     {
         return $query->where('revenue_tracker_id', '=', $revenueTrackerID)
-            ->orderBy('id', 'ASC');
+            ->orderBy('id');
     }
 
     public function scopeWithAffiliates($query, $params)
@@ -250,6 +250,6 @@ class AffiliateRevenueTracker extends Model
                     ->orWhere('exit_page_id', '!=', $exit_page);
             });
         }
-        $query->orderBy('revenue_tracker_id', 'asc');
+        $query->orderBy('revenue_tracker_id');
     }
 }

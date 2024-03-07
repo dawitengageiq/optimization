@@ -581,7 +581,7 @@ class CampaignController extends Controller
 
     public function xxsample()
     {
-        $campaigns = Campaign::orderBy('priority', 'asc')->pluck('id', 'priority');
+        $campaigns = Campaign::orderBy('priority')->pluck('id', 'priority');
         $new_prio = Campaign::max('priority');
         $old_prio = 49;
         $id = 49;
@@ -675,7 +675,7 @@ class CampaignController extends Controller
         $campaign = $request->input('id');
 
         /* FILTER GROUPS */
-        $filter_groups = CampaignFilterGroup::where('campaign_id', $campaign)->orderBy('name', 'asc')->get();
+        $filter_groups = CampaignFilterGroup::where('campaign_id', $campaign)->orderBy('name')->get();
         $list_filter_groups = [];
         foreach ($filter_groups as $fg) {
             $list_filter_groups[$fg->name] = $fg->id;
@@ -689,7 +689,7 @@ class CampaignController extends Controller
         $affiliated = AffiliateCampaign::join('affiliates', 'affiliates.id', '=', 'affiliate_campaign.affiliate_id')
             ->where('campaign_id', '=', $campaign)
             ->select(['affiliate_campaign.id', 'affiliate_id', 'affiliates.company', 'lead_cap_type', 'lead_cap_value'])
-            ->orderBy('affiliate_id', 'asc')->get();
+            ->orderBy('affiliate_id')->get();
         $c = 0;
         $lead_cap_type = config('constants.LEAD_CAP_TYPES');
 
@@ -723,7 +723,7 @@ class CampaignController extends Controller
         $payouts = CampaignPayout::join('affiliates', 'affiliates.id', '=', 'campaign_payouts.affiliate_id')
             ->where('campaign_id', '=', $campaign)
             ->select(['campaign_payouts.id', 'affiliate_id', 'affiliates.company', 'received', 'payout', 'campaign_id'])
-            ->orderBy('affiliate_id', 'asc')->get();
+            ->orderBy('affiliate_id')->get();
         $k = 0;
         foreach ($payouts as $payout) {
             $pay_return['affiliate'][$k]['id'] = $payout->id;
@@ -1309,7 +1309,7 @@ class CampaignController extends Controller
     {
         // Log::info('DUPE CHECKER');
         // Log::info($id.' - '.$old_prio.' - '.$new_prio);
-        $campaigns = Campaign::orderBy('priority', 'asc')->pluck('priority', 'id')->toArray();
+        $campaigns = Campaign::orderBy('priority')->pluck('priority', 'id')->toArray();
         $count_campaigns = count($campaigns);
         // Log::info($campaigns);
 
@@ -1397,7 +1397,7 @@ class CampaignController extends Controller
     public function getNameIDPriority()
     {
         $campaigns = Campaign::select('id', 'name', 'priority', 'campaign_type', 'status')
-            ->orderBy('priority', 'asc')->get()->toArray();
+            ->orderBy('priority')->get()->toArray();
 
         $campaign_types = config('constants.CAMPAIGN_TYPES');
         $campaign_status = config('constants.CAMPAIGN_STATUS');
@@ -1424,9 +1424,9 @@ class CampaignController extends Controller
             ->groupBy('leads.lead_status')
             ->orderByRaw('leads.lead_status IS NULL')
             ->orderByRaw('FIELD(leads.lead_status,1,0,2,3)')
-            ->orderBy('total', 'desc')
+            ->orderByDesc('total')
             ->orderByRaw('FIELD(campaigns.campaign_type, '.implode(',', $stack_type_order).')')
-            ->orderBy('priority', 'asc')
+            ->orderBy('priority')
             ->get()->toArray();
 
         $campaigns = [];

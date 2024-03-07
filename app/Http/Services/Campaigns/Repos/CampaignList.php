@@ -293,7 +293,7 @@ final class CampaignList
     protected function orderBy($orderBy = '')
     {
         if (! $orderBy || count($orderBy) > 0) {
-            $this->query->orderBy('priority', 'ASC');
+            $this->query->orderBy('priority');
 
             return $this;
         }

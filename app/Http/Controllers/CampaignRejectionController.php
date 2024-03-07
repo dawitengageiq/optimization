@@ -49,7 +49,7 @@ class CampaignRejectionController extends Controller
 
         $data = CampaignRejectionStatistic::whereBetween('created_at', [$date_from, $date_to])
             ->select(DB::RAW('campaign_id, SUM(total_count) as total_count, SUM(reject_count) as reject_count, SUM(acceptable_reject_count) as acceptable_reject_count, SUM(duplicate_count) as duplicate_count, SUM(filter_count) as filter_count, SUM(prepop_count) as prepop_count, SUM(other_count) as other_count'))
-            ->groupBy('campaign_id')->orderBy('total_count', 'DESC')->get();
+            ->groupBy('campaign_id')->orderByDesc('total_count')->get();
 
         $process = [];
         $stats = [];
@@ -175,7 +175,7 @@ class CampaignRejectionController extends Controller
         $data = CampaignFullRejectionStatistics::whereBetween('created_at', [$date_from, $date_to])
             ->select(DB::RAW('campaign_id, SUM(total_count) as total_count, SUM(reject_count) as reject_count, SUM(acceptable_reject_count) as acceptable_reject_count, SUM(duplicate_count) as duplicate_count, SUM(filter_count) as filter_count, SUM(prepop_count) as prepop_count, SUM(other_count) as other_count'))
             // ->where(DB::RAW('total_count'), '=', DB::RAW('reject_count'))
-            ->groupBy('campaign_id')->orderBy('total_count', 'DESC')->get();
+            ->groupBy('campaign_id')->orderByDesc('total_count')->get();
         // \Log::info(\DB::getQueryLog());
         // \Log::info(\DB::connection('secondary')->getQueryLog());
         //\Log::info($data);

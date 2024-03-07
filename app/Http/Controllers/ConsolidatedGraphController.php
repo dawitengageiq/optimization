@@ -600,7 +600,7 @@ class ConsolidatedGraphController extends Controller
 
         $base = false;
         if ($base_date == '') {
-            $qry = ConsolidatedGraph::whereBetween('created_at', [$date_from, $date_to])->orderBy('created_at', 'desc')->first();
+            $qry = ConsolidatedGraph::whereBetween('created_at', [$date_from, $date_to])->orderByDesc('created_at')->first();
             if ($qry) {
                 $base_date = Carbon::parse($qry->created_at)->toDateString();
                 // Log::info('Today: '. $base_date);
@@ -612,7 +612,7 @@ class ConsolidatedGraphController extends Controller
 
         //Yesterday
         $yesterday = false;
-        $qry = ConsolidatedGraph::where(DB::RAW('created_at'), '<', $base_date)->orderBy('created_at', 'desc')->first();
+        $qry = ConsolidatedGraph::where(DB::RAW('created_at'), '<', $base_date)->orderByDesc('created_at')->first();
         $yesterday_date = $qry ? Carbon::parse($qry->created_at)->toDateString() : '';
         // Log::info('Yesterday: '. $yesterday_date);
         if ($yesterday_date != '') {

@@ -85,7 +85,7 @@ class NotesController extends Controller
         $notes = Note::leftJoin('note_trackings', function ($q) use ($user) {
             $q->on('notes.id', '=', 'note_trackings.note_id')
                 ->where('note_trackings.user_id', '=', $user);
-        })->where('category_id', $id)->select(DB::RAW('notes.*, note_trackings.id as ifNew'))->orderBy('updated_at', 'DESC')->get();
+        })->where('category_id', $id)->select(DB::RAW('notes.*, note_trackings.id as ifNew'))->orderByDesc('updated_at')->get();
 
         return response()->json($notes, 200);
     }

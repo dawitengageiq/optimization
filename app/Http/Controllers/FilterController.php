@@ -121,7 +121,7 @@ class FilterController extends Controller
         /*** TIMER ***/ $time1 = microtime(true);
 
         /* GET ACTIVE CAMPAIGNS */
-        $campaigns = Campaign::where('status', '!=', 0)->where('status', '!=', 3)->orderBy('priority', 'asc')->get();
+        $campaigns = Campaign::where('status', '!=', 0)->where('status', '!=', 3)->orderBy('priority')->get();
 
         /*** TIMER ***/ $time2 = microtime(true);
 
@@ -677,7 +677,7 @@ class FilterController extends Controller
         /*** TIMER ***/ $time1 = microtime(true);
 
         /* GET ACTIVE CAMPAIGNS */
-        $campaigns = Campaign::where('status', '!=', 0)->where('status', '!=', 3)->orderBy('priority', 'asc')->get();
+        $campaigns = Campaign::where('status', '!=', 0)->where('status', '!=', 3)->orderBy('priority')->get();
 
         /*** TIMER ***/ $time2 = microtime(true);
 
@@ -1676,7 +1676,7 @@ class FilterController extends Controller
             ->select('id', 'name', 'advertiser_id', 'status', 'lead_cap_type', 'lead_cap_value', 'default_received', 'default_payout', 'priority', 'campaign_type', 'linkout_offer_id',
                 // DB::raw('(SELECT count FROM lead_counts WHERE campaign_id = campaigns.id AND affiliate_id IS NULL) AS lead_count'))
                 DB::raw('(CASE WHEN campaign_type = 5 THEN (SELECT count FROM link_out_counts WHERE campaign_id = campaigns.id AND affiliate_id IS NULL) ELSE (SELECT count FROM lead_counts WHERE campaign_id = campaigns.id AND affiliate_id IS NULL) END ) AS lead_count'))
-            ->orderBy('priority', 'ASC')
+            ->orderBy('priority')
             ->get();
 
         /*** For Testing ***/ /*** TIMER ***/ $time2 = microtime(true);
@@ -2194,7 +2194,7 @@ class FilterController extends Controller
                         ->whereNull('lead_counts.affiliate_id');
                 })
                     ->whereIn('campaigns.id', $inputs['the_filter_free_campaigns'])
-                    ->orderBy('priority', 'ASC')
+                    ->orderBy('priority')
                     ->select(['campaigns.id', 'campaigns.name', 'campaigns.lead_cap_type', 'campaigns.lead_cap_value', 'lead_counts.count'])
                     ->get();
             } else {
@@ -2209,7 +2209,7 @@ class FilterController extends Controller
                     })
                     ->whereNull('campaign_filter_groups.campaign_id')->where('campaigns.status', 2)
                     ->whereIn('campaigns.campaign_type', [1, 2, 8, 13])
-                    ->orderBy('priority', 'ASC')
+                    ->orderBy('priority')
                     ->limit($limit)
                     ->select(['campaigns.id', 'campaigns.name', 'campaigns.lead_cap_type', 'campaigns.lead_cap_value', 'lead_counts.count'])
                     ->get();
@@ -2326,7 +2326,7 @@ class FilterController extends Controller
         $campaigns = \App\Campaign::leftJoin('campaign_filter_groups', 'campaigns.id', '=', 'campaign_filter_groups.campaign_id')
             ->whereNull('campaign_filter_groups.campaign_id')->where('campaigns.status', 2)
             ->whereIn('campaigns.campaign_type', [1, 2, 8, 13])
-            ->orderBy('priority', 'ASC')
+            ->orderBy('priority')
             ->limit($limit)
             ->pluck('campaigns.id');
     }
@@ -2338,7 +2338,7 @@ class FilterController extends Controller
 
         return $campaigns = Campaign::leftJoin('campaign_creatives', 'campaign_creatives.id', '=', DB::RAW('(SELECT MIN(campaign_creatives.id) FROM campaign_creatives WHERE campaign_creatives.campaign_id = campaigns.id AND weight != 0)'))
             ->where('status', '!=', 0)->where('status', '!=', 3)->where('campaign_type', $ct_id)
-            ->orderBy('priority', 'ASC')
+            ->orderBy('priority')
             ->selectRaw('campaign_creatives.id as creative_id, campaigns.id')
             ->pluck('creative_id', 'campaigns.id');
     }
@@ -2346,7 +2346,7 @@ class FilterController extends Controller
     public function getAllCampaignsForQA(Request $request)
     {
         $campaigns = Campaign::leftJoin('campaign_creatives', 'campaign_creatives.id', '=', DB::RAW('(SELECT MIN(campaign_creatives.id) FROM campaign_creatives WHERE campaign_creatives.campaign_id = campaigns.id AND weight != 0)'))
-            ->orderBy('priority', 'ASC')
+            ->orderBy('priority')
             ->selectRaw('campaigns.id, status, campaign_type, campaign_creatives.id as creative_id, campaigns.name')
             ->get();
         $statuses = config('constants.CAMPAIGN_STATUS');

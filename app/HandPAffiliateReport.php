@@ -363,7 +363,7 @@ class HandPAffiliateReport extends Model
         }
 
         $query->groupBy('handp_affiliate_reports.affiliate_id', 'handp_affiliate_reports.s1', 'handp_affiliate_reports.campaign_id');
-        $query->orderBy('handp_affiliate_reports.affiliate_id', 'asc');
+        $query->orderBy('handp_affiliate_reports.affiliate_id');
 
         return $query;
     }

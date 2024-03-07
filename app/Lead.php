@@ -218,7 +218,7 @@ class Lead extends Model
         }
 
         // order by create date
-        $query->orderBy('leads.created_at', 'desc');
+        $query->orderByDesc('leads.created_at');
 
         if (isset($params['limit_rows']) && $params['limit_rows'] !== '') {
             $query->take($params['limit_rows']);
@@ -553,7 +553,7 @@ class Lead extends Model
             $query->orderBy($order_col, $order_dir);
         } else {
             // $query->orderBy('leads.created_at','desc');
-            $query->orderBy('lead_date', 'desc');
+            $query->orderByDesc('lead_date');
         }
 
         return $query;
@@ -842,7 +842,7 @@ class Lead extends Model
         return $query->select('id', 'campaign_id', 'lead_email', 'lead_status')
             ->where('campaign_id', '=', $params['campaign_id'])
             ->where('lead_email', '=', $params['lead_email'])
-            ->orderBy('id', 'ASC');
+            ->orderBy('id');
     }
 
     public function scopeMonthOld($query)
@@ -957,7 +957,7 @@ class Lead extends Model
         }
 
         // order by create date
-        $query->orderBy('leads.created_at', 'desc');
+        $query->orderByDesc('leads.created_at');
 
         // if(isset($params['limit_rows']) && $params['limit_rows']!=='')
         // {

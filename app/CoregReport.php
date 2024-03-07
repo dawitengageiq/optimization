@@ -81,7 +81,7 @@ class CoregReport extends Model
         if (isset($params['excel']) && $params['excel'] == 1) {
             // $query->orderBy('revenue_tracker_id','asc');
             // $query->orderBy('campaign_name','asc');
-            $query->orderBy('we_get', 'desc');
+            $query->orderByDesc('we_get');
         }
 
         if ($start != null) {

@@ -192,12 +192,12 @@ class GraphByDateRangeMultiple extends GraphByDateRange implements \App\Http\Ser
 
         $records = [];
         $this->records = $query
-            ->orderBy('revenue_tracker_id', 'ASC')
-            ->orderBy('date', 'ASC')
-            ->orderBy('s1', 'ASC')
-            ->orderBy('s2', 'ASC')
-            ->orderBy('s3', 'ASC')
-            ->orderBy('s4', 'ASC')
+            ->orderBy('revenue_tracker_id')
+            ->orderBy('date')
+            ->orderBy('s1')
+            ->orderBy('s2')
+            ->orderBy('s3')
+            ->orderBy('s4')
             ->get()
             // ->groupBy(function($data) {
             //      return $this->carbon->parse($data->created_at)->format('Y-m-d');

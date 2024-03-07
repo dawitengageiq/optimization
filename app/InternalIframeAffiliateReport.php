@@ -153,7 +153,7 @@ class InternalIframeAffiliateReport extends Model
         });
 
         $query->groupBy('iframe_affiliate_reports.revenue_tracker_id')
-            ->orderBy('iframe_affiliate_reports.revenue_tracker_id', 'asc');
+            ->orderBy('iframe_affiliate_reports.revenue_tracker_id');
 
         return $query;
     }
@@ -190,7 +190,7 @@ class InternalIframeAffiliateReport extends Model
             $groupQuery->whereRaw('created_at >= ? AND created_at <= ?', [$dateFrom, $dateTo]);
         });
 
-        $query->orderBy('campaign_id', 'asc');
+        $query->orderBy('campaign_id');
 
         return $query;
     }

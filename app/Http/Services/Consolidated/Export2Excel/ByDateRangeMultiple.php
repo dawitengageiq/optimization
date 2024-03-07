@@ -126,12 +126,12 @@ class ByDateRangeMultiple extends \App\Http\Services\Consolidated\GraphByDateRan
 
         //RECORDS
         $records = $query
-            ->orderBy('revenue_tracker_id', 'ASC')
-            ->orderBy('date', 'ASC')
-            ->orderBy('s1', 'ASC')
-            ->orderBy('s2', 'ASC')
-            ->orderBy('s3', 'ASC')
-            ->orderBy('s4', 'ASC')
+            ->orderBy('revenue_tracker_id')
+            ->orderBy('date')
+            ->orderBy('s1')
+            ->orderBy('s2')
+            ->orderBy('s3')
+            ->orderBy('s4')
             ->get();
         $this->records = $records;
 
@@ -150,11 +150,11 @@ class ByDateRangeMultiple extends \App\Http\Services\Consolidated\GraphByDateRan
             $sumQuery->groupBy('s4');
         }
 
-        $this->subIDSummaryRecords = $sumQuery->orderBy('revenue_tracker_id', 'ASC')
-            ->orderBy('s1', 'ASC')
-            ->orderBy('s2', 'ASC')
-            ->orderBy('s3', 'ASC')
-            ->orderBy('s4', 'ASC')
+        $this->subIDSummaryRecords = $sumQuery->orderBy('revenue_tracker_id')
+            ->orderBy('s1')
+            ->orderBy('s2')
+            ->orderBy('s3')
+            ->orderBy('s4')
             ->get();
         // Log::info($this->subIDSummaryRecords);
 
@@ -238,12 +238,12 @@ class ByDateRangeMultiple extends \App\Http\Services\Consolidated\GraphByDateRan
         }
 
         $this->perSubIDRecords = $perQuery
-            ->orderBy('revenue_tracker_id', 'ASC')
-            ->orderBy('s1', 'ASC')
-            ->orderBy('s2', 'ASC')
-            ->orderBy('s3', 'ASC')
-            ->orderBy('s4', 'ASC')
-            ->orderBy('date', 'ASC')
+            ->orderBy('revenue_tracker_id')
+            ->orderBy('s1')
+            ->orderBy('s2')
+            ->orderBy('s3')
+            ->orderBy('s4')
+            ->orderBy('date')
             ->get();
         $this->perSubIDRecords;
 

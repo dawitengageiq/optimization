@@ -17,13 +17,13 @@ class Category extends Model
     public function scopeGetAllNames($query)
     {
         return $query->select('name')
-            ->orderBy('name', 'asc');
+            ->orderBy('name');
     }
 
     public function scopeGetAllActiveNames($query)
     {
         return $query->select('name')
             ->where('status', '=', 1)
-            ->orderBy('name', 'asc');
+            ->orderBy('name');
     }
 }

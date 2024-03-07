@@ -98,7 +98,7 @@ class ListsWithJson
             ->with(['config' => function ($q) {
                 $q->select('id', 'ping_url', 'ping_success');
             }])
-            ->orderBy('priority', 'ASC')
+            ->orderBy('priority')
             ->get();
 
         $this->campaigns = ($campaigns) ? $campaigns : [];

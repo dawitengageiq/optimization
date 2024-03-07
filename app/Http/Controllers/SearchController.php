@@ -58,7 +58,7 @@ class SearchController extends Controller
                 $query->where('company', 'LIKE', "%$term%")
                     ->orWhere('id', '=', $term);
             })
-            ->orderBy('name', 'asc')
+            ->orderBy('name')
             ->get();
 
         $responseData = [
@@ -82,7 +82,7 @@ class SearchController extends Controller
                 $query->where('company', 'LIKE', "%$term%")
                     ->orWhere('id', '=', $term);
             })
-            ->orderBy('name', 'asc')
+            ->orderBy('name')
             ->get();
 
         $responseData = [
@@ -141,7 +141,7 @@ class SearchController extends Controller
 
         $actives = AffiliateRevenueTracker::select('id', 'revenue_tracker_id')
             ->where('revenue_tracker_id', 'LIKE', '%'.$term.'%')
-            ->orderBy('revenue_tracker_id', 'asc')
+            ->orderBy('revenue_tracker_id')
             ->get();
 
         $responseData = [
