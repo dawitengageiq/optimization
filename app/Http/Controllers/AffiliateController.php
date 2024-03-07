@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateAffiliateWebsitesPayoutsAffiliateRequest;
+use App\Http\Requests\EditWebsiteAffiliateRequest;
+use App\Http\Requests\AddWebsiteAffiliateRequest;
 use App\Advertiser;
 use App\Affiliate;
 use App\AffiliateRevenueTracker;
@@ -1111,13 +1114,8 @@ class AffiliateController extends Controller
         return response()->json($response, 200);
     }
 
-    public function addWebsite(Request $request)
+    public function addWebsite(AddWebsiteAffiliateRequest $request)
     {
-        $this->validate($request, [
-            'website_name' => 'required',
-            'website_payout' => 'required|numeric',
-            'revenue_tracker_id' => 'required|numeric',
-        ]);
 
         $inputs = $request->all();
         $status = 0;
@@ -1153,14 +1151,8 @@ class AffiliateController extends Controller
         return $website->id;
     }
 
-    public function editWebsite(Request $request)
+    public function editWebsite(EditWebsiteAffiliateRequest $request)
     {
-        $this->validate($request, [
-            'website_name' => 'required',
-            'website_payout' => 'required|numeric',
-            'revenue_tracker_id' => 'required|numeric',
-
-        ]);
 
         $inputs = $request->all();
 
@@ -1200,12 +1192,9 @@ class AffiliateController extends Controller
         return 1;
     }
 
-    public function updateAffiliateWebsitesPayouts(Request $request)
+    public function updateAffiliateWebsitesPayouts(UpdateAffiliateWebsitesPayoutsAffiliateRequest $request)
     {
 
-        $this->validate($request, [
-            'website_payout' => 'required|numeric',
-        ]);
 
         $inputs = $request->all();
 

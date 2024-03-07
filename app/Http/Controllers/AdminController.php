@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\GetDashboardGraphsStatisticsProcessorAdminRequest;
 use App\Action;
 use App\ActionRole;
 use App\Advertiser;
@@ -3710,7 +3711,7 @@ class AdminController extends Controller
     /**
      * Get Received Statistics By Affiliate, Get Total Received Revenue Statistics & Total Survey Takers Per Revenue Tracker / Affiliate
      */
-    public function getDashboardGraphsStatisticsProcessor(Request $request): JsonResponse
+    public function getDashboardGraphsStatisticsProcessor(GetDashboardGraphsStatisticsProcessorAdminRequest $request): JsonResponse
     {
         Validator::extend('date_greater_equal', function ($attribute, $value, $parameters) {
             $max = Carbon::parse($value);
@@ -3720,10 +3721,6 @@ class AdminController extends Controller
         });
 
         // DB::enableQueryLog();
-        $this->validate($request, [
-            'from_date' => 'required_with:to_date|date',
-            'to_date' => 'required_with:from_date|date|date_greater_equal:from_date',
-        ]);
 
         $from_date = $request->input('from_date');
         $to_date = $request->input('to_date');

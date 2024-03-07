@@ -2,6 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EditCampaignFilterGroupCampaignRequest;
+use App\Http\Requests\AddCampaignFilterGroupCampaignRequest;
+use App\Http\Requests\EditCampaignPostingInstructionCampaignRequest;
+use App\Http\Requests\EditCampaignHighPayingContentCampaignRequest;
+use App\Http\Requests\EditCampaignStackContentCampaignRequest;
+use App\Http\Requests\EditCampaignLongContentCampaignRequest;
+use App\Http\Requests\CampaignConfigInterfaceCampaignRequest;
+use App\Http\Requests\EditCampaignConfigCampaignRequest;
+use App\Http\Requests\EditCampaignPayoutCampaignRequest;
+use App\Http\Requests\AddCampaignPayoutCampaignRequest;
+use App\Http\Requests\EditCampaignAffiliateCampaignRequest;
+use App\Http\Requests\AddCampaignAffiliateCampaignRequest;
+use App\Http\Requests\UpdateCampaignRequest;
+use App\Http\Requests\StoreCampaignRequest;
 use App\Affiliate;
 use App\AffiliateCampaign;
 use App\AffiliateCampaignRequest;
@@ -224,23 +238,8 @@ class CampaignController extends Controller
     /**
      * Store newly create campaign
      */
-    public function store(Request $request): JsonResponse
+    public function store(StoreCampaignRequest $request): JsonResponse
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'advertiser' => 'required|exists:advertisers,id',
-            'lead_type' => 'required',
-            'lead_value' => 'required_unless:lead_type,0|numeric',
-            // 'default_payout'    => 'required|numeric',
-            // 'default_received'  => 'required|numeric',
-            //'image'             => 'image|mimes:jpeg,bmp,png',
-            //'description'   => 'required',
-            'status' => 'required',
-            'campaign_type' => 'required',
-            'category' => 'required',
-            'linkout_offer_id' => 'required_if:campaign_type,5|numeric',
-            'program_id' => 'numeric',
-        ]);
 
         $fileName = null;
 
@@ -341,25 +340,11 @@ class CampaignController extends Controller
         return response()->json($responseData, 200);
     }
 
-    public function update(Request $request): JsonResponse
+    public function update(UpdateCampaignRequest $request): JsonResponse
     {
         // Log::info($request->all());
         // Log::info(apache_request_headers());
         // Log::info('Header: ' . $request->header('X-CSRF-Token'));
-        $this->validate($request, [
-            'name' => 'required',
-            'advertiser' => 'required',
-            'lead_type' => 'required',
-            'lead_value' => 'required_unless:lead_type,0|numeric',
-            'priority' => 'required',
-            'default_payout' => 'sometimes|numeric',
-            'default_received' => 'sometimes|numeric',
-            'status' => 'required',
-            'campaign_type' => 'required',
-            'category' => 'required',
-            'linkout_offer_id' => 'required_if:campaign_type,5|numeric',
-            'program_id' => 'numeric',
-        ]);
 
         $errors = [];
         $noErrors = true;
@@ -818,13 +803,9 @@ class CampaignController extends Controller
         return $return_value;
     }
 
-    public function addCampaignAffiliate(Request $request)
+    public function addCampaignAffiliate(AddCampaignAffiliateCampaignRequest $request)
     {
         // Log::info($request->all());
-        $this->validate($request, [
-            'lead_cap_type' => 'required',
-            'lead_cap_value' => 'numeric',
-        ]);
 
         $campaign_id = $request->input('this_campaign');
         $affiliates = $request->input('affiliates');
@@ -871,15 +852,10 @@ class CampaignController extends Controller
         return $new_affiliates;
     }
 
-    public function editCampaignAffiliate(Request $request)
+    public function editCampaignAffiliate(EditCampaignAffiliateCampaignRequest $request)
     {
         // Log::info($request->all());
 
-        $this->validate($request, [
-            'edit_lead_cap_type' => 'required',
-            'edit_lead_cap_value' => 'numeric',
-            'selected_affiliate' => 'required',
-        ]);
 
         // $affiliates = $request->input('select_affiliate');
         $affiliates = $request->input('selected_affiliate');
@@ -988,14 +964,8 @@ class CampaignController extends Controller
         return Affiliate::getAvailableAffiliates($campaign)->pluck('name', 'id')->toArray();
     }
 
-    public function addCampaignPayout(Request $request)
+    public function addCampaignPayout(AddCampaignPayoutCampaignRequest $request)
     {
-        $this->validate($request, [
-            'this_campaign' => 'required',
-            'payout_receivable' => 'required|numeric',
-            'payout_payable' => 'required|numeric',
-            'payout' => 'required',
-        ]);
 
         $affiliates = $request->input('payout');
 
@@ -1015,13 +985,8 @@ class CampaignController extends Controller
         return $new_affiliates;
     }
 
-    public function editCampaignPayout(Request $request)
+    public function editCampaignPayout(EditCampaignPayoutCampaignRequest $request)
     {
-        $this->validate($request, [
-            'edit_payout_payable' => 'required|numeric',
-            'edit_payout_receivable' => 'required|numeric',
-            'selected_payout' => 'required',
-        ]);
 
         $affiliates = $request->input('selected_payout');
 
@@ -1058,19 +1023,8 @@ class CampaignController extends Controller
         return $affiliates;
     }
 
-    public function editCampaignConfig(Request $request)
+    public function editCampaignConfig(EditCampaignConfigCampaignRequest $request)
     {
-        $this->validate($request, [
-            'post_url' => 'required|url',
-            'post_header' => 'required',
-            'post_data' => 'required',
-            'post_data_map' => 'required',
-            'post_method' => 'required',
-            'post_success' => 'required',
-            'post_data_fixed_value' => 'required',
-            // 'ping_url'       => 'required',
-            // 'ping_success'   => 'required'
-        ]);
 
         $id = $request->input('this_campaign');
         $config = CampaignConfig::FirstOrNew(['id' => $id]);
@@ -1120,14 +1074,9 @@ class CampaignController extends Controller
         $this->logger->log(3, 35, $id, null, $current_state, $config->toArray(), $key_mask, $value_mask);
     }
 
-    public function campaignConfigInterface(Request $request)
+    public function campaignConfigInterface(CampaignConfigInterfaceCampaignRequest $request)
     {
         // Log::info($request->all());
-        $this->validate($request, [
-            'post_url' => 'required|url',
-            'post_method' => 'required',
-            'post_success' => 'required',
-        ]);
 
         $inputs = $request->all();
 
@@ -1166,11 +1115,8 @@ class CampaignController extends Controller
         return $config;
     }
 
-    public function editCampaignLongContent(Request $request)
+    public function editCampaignLongContent(EditCampaignLongContentCampaignRequest $request)
     {
-        $this->validate($request, [
-            'content' => 'required|max:65533',
-        ]);
 
         $id = $request->input('this_campaign');
 
@@ -1193,13 +1139,10 @@ class CampaignController extends Controller
         ], null);
     }
 
-    public function editCampaignStackContent(Request $request): Response
+    public function editCampaignStackContent(EditCampaignStackContentCampaignRequest $request): Response
     {
         // Log::info($request->all());
         // Log::info(mb_strlen($request->input('content')));
-        $this->validate($request, [
-            'content' => 'required|max:65533',
-        ]);
 
         $errors = [];
         $noErrors = true;
@@ -1251,14 +1194,8 @@ class CampaignController extends Controller
     //        $content->save();
     //    }
 
-    public function editCampaignHighPayingContent(Request $request): Response
+    public function editCampaignHighPayingContent(EditCampaignHighPayingContentCampaignRequest $request): Response
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'description' => 'required',
-            'sticker' => 'required',
-            'deal' => 'required',
-        ]);
 
         $campaign = CampaignContent::find($request->id);
         $current_state = $campaign->toArray();
@@ -1276,12 +1213,8 @@ class CampaignController extends Controller
         return response(['code' => 400, 'message' => 'Bad Request']);
     }
 
-    public function editCampaignPostingInstruction(Request $request)
+    public function editCampaignPostingInstruction(EditCampaignPostingInstructionCampaignRequest $request)
     {
-        $this->validate($request, [
-            'sample_code' => 'required|max:65533',
-            'posting_instruction' => 'required|max:65533',
-        ]);
 
         $id = $request->input('this_campaign');
 
@@ -1568,15 +1501,11 @@ class CampaignController extends Controller
         return $filters;
     }
 
-    public function addCampaignFilterGroup(Request $request)
+    public function addCampaignFilterGroup(AddCampaignFilterGroupCampaignRequest $request)
     {
         $campaign_id = $request->input('this_campaign');
         $campaign_filter_groups = CampaignFilterGroup::where('campaign_id', $campaign_id)->pluck('name')->toArray();
         $campaign_filter_groups = implode($campaign_filter_groups, ',');
-        $this->validate($request, [
-            'filter_group_name' => 'required|not_in:'.$campaign_filter_groups,
-            'filter_group_status' => 'required',
-        ]);
 
         $filter_group = new CampaignFilterGroup();
         $filter_group->campaign_id = $campaign_id;
@@ -1591,12 +1520,8 @@ class CampaignController extends Controller
         return $filter_group->id;
     }
 
-    public function editCampaignFilterGroup(Request $request)
+    public function editCampaignFilterGroup(EditCampaignFilterGroupCampaignRequest $request)
     {
-        $this->validate($request, [
-            'filter_group_name' => 'required',
-            'filter_group_status' => 'required',
-        ]);
 
         $id = $request->input('this_id');
 

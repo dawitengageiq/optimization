@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateLeadUserBannedRequest;
+use App\Http\Requests\StoreLeadUserBannedRequest;
 use App\LeadUserBanned;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -63,14 +65,8 @@ class LeadUserBannedController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): JsonResponse
+    public function store(StoreLeadUserBannedRequest $request): JsonResponse
     {
-        $this->validate($request, [
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required_without_all:phone|email',
-            'phone' => 'required_without_all:email|numeric',
-        ]);
 
         $lead = new LeadUserBanned;
         $lead->first_name = $request->first_name;
@@ -92,14 +88,8 @@ class LeadUserBannedController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(UpdateLeadUserBannedRequest $request)
     {
-        $this->validate($request, [
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'email' => 'email|required_without_all:phone',
-            'phone' => 'numeric|required_without_all:email',
-        ]);
 
         $lead = LeadUserBanned::find($request->id);
         $lead->first_name = $request->first_name;

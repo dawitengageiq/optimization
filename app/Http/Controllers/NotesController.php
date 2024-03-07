@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateCategoryNoteRequest;
+use App\Http\Requests\StoreCategoryNoteRequest;
 use App\Note;
 use App\NoteCategory;
 use Illuminate\Support\Facades\Auth;
@@ -25,12 +27,9 @@ class NotesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store_category(Request $request,
+    public function store_category(StoreCategoryNoteRequest $request,
         \App\Http\Services\UserActionLogger $userAction)
     {
-        $this->validate($request, [
-            'name' => 'required|unique:note_categories,name',
-        ]);
 
         $category = new NoteCategory;
         $category->name = $request->input('name');
@@ -42,13 +41,10 @@ class NotesController extends Controller
         return $category->id;
     }
 
-    public function update_category(Request $request,
+    public function update_category(UpdateCategoryNoteRequest $request,
         \App\Http\Services\UserActionLogger $userAction
     ) {
         $id = $request->input('id');
-        $this->validate($request, [
-            'name' => 'required|unique:note_categories,name,'.$id,
-        ]);
         $category = NoteCategory::find($id);
 
         $current_state = $category->toArray(); //For Logging
