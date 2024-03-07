@@ -541,7 +541,7 @@ Route::post('uploadCampaignPayout','CampaignController@uploadCampaignPayout');
 /**
  * Graph and creative page in admin
  */
-Route::group(array('prefix' => 'admin'), function ()
+Route::group(['prefix' => 'admin'], function ()
 {
     Route::get('/chart', 'ChartController@view');
     Route::get('/chart/{version}', 'ChartController@view');
@@ -624,7 +624,7 @@ Route::group(['prefix' => 'reports'], function () {
 Route::get('embed/campaign', 'FilterController@campaignStackProcessorPhp');
 
 
-Route::group(array('namespace' => 'Test'), function ()
+Route::group(['namespace' => 'Test'], function ()
 {
     Route::any('test/{method}','TestController@index');
 });
@@ -767,8 +767,8 @@ Route::get('karla', function() {
 // array_splice($a1,1,0,$a2);
 // print_r($a1);
 // exit;
-	$a = array('a', 'b', 'e', 'f');
-	return array_splice($a, 1, 0, array('c', 'd'));
+	$a = ['a', 'b', 'e', 'f'];
+	return array_splice($a, 1, 0, ['c', 'd']);
 	$arr = [1,2,3,4,5];
 	$ayy = [6,7,8];
 	//return floor(count($arr) / 2);
@@ -979,7 +979,7 @@ Route::get('check', function() {
         $content_stack = str_replace('<--', '', $content_stack);
 
         $newStr  = '';
-        $commentTokens = array(T_COMMENT);
+        $commentTokens = [T_COMMENT];
 
         if (defined('T_DOC_COMMENT'))
             $commentTokens[] = T_DOC_COMMENT; // PHP 5
@@ -1035,7 +1035,7 @@ Route::get('check', function() {
 
 	    $nodes = $xpath->query('//*');
 
-		$names = array();
+		$names = [];
 		$elements = [];
 		$removedPCode = false;
 		foreach ($nodes as $node)
@@ -1269,7 +1269,7 @@ Route::get('check1/{id}', function($id) {
 
 	    $nodes = $xpath->query('//*');
 
-		$names = array();
+		$names = [];
 		$elements = [];
 		foreach ($nodes as $node)
 		{
@@ -1381,7 +1381,7 @@ Route::get('code_checker', function() {
         $content_stack = str_replace('<--', '', $content_stack);
 
         $newStr  = '';
-        $commentTokens = array(T_COMMENT);
+        $commentTokens = [T_COMMENT];
 
         if (defined('T_DOC_COMMENT'))
             $commentTokens[] = T_DOC_COMMENT; // PHP 5
