@@ -3,14 +3,12 @@
 namespace App;
 
 use Carbon\Carbon;
-use DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class ExternalPathAffiliateReport extends Model
 {
     protected $connection;
-
-    protected $table = 'external_path_affiliate_reports';
 
     public $timestamps = false;
 

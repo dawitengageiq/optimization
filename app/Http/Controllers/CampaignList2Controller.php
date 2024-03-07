@@ -14,10 +14,10 @@ use App\MixedCoregCampaignOrder;
 use App\Setting;
 use App\WebsitesViewTracker;
 use App\ZipCode;
-use Bus;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Bus;
 use Illuminate\Support\Facades\Mail;
 use RandomProbability;
 
@@ -184,7 +184,7 @@ class CampaignList2Controller extends Controller
             }])
             ->with('filter_groups.filters.filter_type')
             ->select('status', 'lead_cap_type', 'lead_cap_value', 'priority', 'campaign_type', 'id')
-            ->orderBy('priority', 'asc')->get();
+            ->orderBy('priority')->get();
 
         $accepted_campaigns = [];
         $stack = [];
@@ -571,7 +571,7 @@ class CampaignList2Controller extends Controller
         /*** TIMER ***/ $time1 = microtime(true);
 
         /* GET ACTIVE CAMPAIGNS */
-        $campaigns = Campaign::where('status', '!=', 0)->where('status', '!=', 3)->orderBy('priority', 'asc')->get();
+        $campaigns = Campaign::where('status', '!=', 0)->where('status', '!=', 3)->orderBy('priority')->get();
 
         /*** TIMER ***/ $time2 = microtime(true);
 
@@ -907,6 +907,7 @@ class CampaignList2Controller extends Controller
         $exec_time['check_cap'] = $lead_cap_total;
         $exec_time['check_campaign_filter'] = $campaign_filter_total;
         Log::info('/*** EXEC TIME: STACK PATH ***/', $exec_time);
+
         // Log::info(DB::getQueryLog());
         return $the_path;
     }
@@ -1278,7 +1279,7 @@ class CampaignList2Controller extends Controller
             }])
             ->with('filter_groups.filters.filter_type')
             ->select('status', 'lead_cap_type', 'lead_cap_value', 'priority', 'campaign_type', 'id')
-            ->orderBy('priority', 'asc')->get();
+            ->orderBy('priority')->get();
         // \Log::info(\DB::connection('mysql')->getQueryLog());
         // \Log::info(\DB::connection('secondary')->getQueryLog());
 

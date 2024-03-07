@@ -3,12 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ClickLogRevTrackers extends Model
 {
     protected $connection;
-
-    protected $table = 'click_log_rev_trackers';
 
     protected $fillable = [
         'affiliate_id',
@@ -23,7 +22,7 @@ class ClickLogRevTrackers extends Model
         }
     }
 
-    public function revenue_tracker()
+    public function revenue_tracker(): BelongsTo
     {
         return $this->belongsTo(AffiliateRevenueTracker::class, 'revenue_tracker_id', 'revenue_tracker_id');
     }

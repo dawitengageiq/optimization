@@ -13,7 +13,7 @@ class Cors
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $urls = env('REPORTS_ALLOW_ORIGIN', 'http://leadreactor.engageiq.com');
+        $urls = config('settings.reports_allow_origin');
         $allowedOrigins = explode(',', $urls);
         $origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
 

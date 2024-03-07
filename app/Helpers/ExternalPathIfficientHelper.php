@@ -10,7 +10,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\TransferStats;
 use Illuminate\Database\QueryException;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 class ExternalPathIfficientHelper
 {

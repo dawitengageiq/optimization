@@ -2,14 +2,12 @@
 
 namespace App;
 
-use DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class CreativeReport extends Model
 {
     protected $connection;
-
-    protected $table = 'creative_reports';
 
     public $timestamps = false;
 

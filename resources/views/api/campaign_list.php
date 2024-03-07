@@ -41,22 +41,22 @@
         if ($redirect_url) {
             echo '<input type="hidden" name="redirect_url" id="redirect_url" value="'.$redirect_url.'" />'."\n\r";
         }
-        if ($reload_parent_frame) {
-            echo '<input type="hidden" name="reload_parent_frame" id="reload_parent_frame" value="'.$reload_parent_frame.'" />'."\n\r";
-        }
-        if (is_array($data) && array_key_exists('message', $data)) {
-            echo '<h3>'.$data['message'].'</h3>';
-            if ($redirect_url) {
-                echo '<a id="skip">Skip</a>';
-            }
-        } else {
-            $age = date_diff(date_create($user_details['birthdate']), date_create('today'))->y;
+if ($reload_parent_frame) {
+    echo '<input type="hidden" name="reload_parent_frame" id="reload_parent_frame" value="'.$reload_parent_frame.'" />'."\n\r";
+}
+if (is_array($data) && array_key_exists('message', $data)) {
+    echo '<h3>'.$data['message'].'</h3>';
+    if ($redirect_url) {
+        echo '<a id="skip">Skip</a>';
+    }
+} else {
+    $age = date_diff(date_create($user_details['birthdate']), date_create('today'))->y;
 
-            echo '<input type="hidden" name="user_phone" id="user_phone" value="'.$user_details['phone1'].$user_details['phone2'].$user_details['phone3'].'" />'."\n\r";
-            echo '<input type="hidden" name="user_address" id="user_address" value="'.$user_details['address'].'" />'."\n\r";
-            echo '<input type="hidden" name="error_validation_counter" id="error_validation_counter" value="0" />'."\n\r";
-            eval('?>'.$data);
-        }
+    echo '<input type="hidden" name="user_phone" id="user_phone" value="'.$user_details['phone1'].$user_details['phone2'].$user_details['phone3'].'" />'."\n\r";
+    echo '<input type="hidden" name="user_address" id="user_address" value="'.$user_details['address'].'" />'."\n\r";
+    echo '<input type="hidden" name="error_validation_counter" id="error_validation_counter" value="0" />'."\n\r";
+    eval('?>'.$data);
+}
 ?>
 
     <?php if (! is_array($data)) { ?>

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Request;
-use Validator;
+use Illuminate\Support\Facades\Validator;
 
 class AdminSettingRequest extends FormRequest
 {
@@ -33,15 +33,41 @@ class AdminSettingRequest extends FormRequest
         // });
 
         return [
-            'send_pending_lead_cron_expiration' => 'required|integer',
+            'send_pending_lead_cron_expiration' => [
+                'required',
+                'integer',
+            ],
             // 'number_of_campaign_per_stack'      => 'required|integer',
-            'campaign_filter_process_status' => 'required',
-            'leads_archiving_age_in_days' => 'required|integer',
-            'min_high_reject_rate' => 'required|numeric|max:99',
-            'max_high_reject_rate' => 'required|numeric|max:99|num_greater_than:min_high_reject_rate',
-            'num_leads_to_process_for_send_pending_leads' => 'required|integer',
-            'campaign_type_view_count' => 'required|integer',
-            'user_nos_before_not_displaying_campaign' => 'required|integer',
+            'campaign_filter_process_status' => [
+                'required',
+            ],
+            'leads_archiving_age_in_days' => [
+                'required',
+                'integer',
+            ],
+            'min_high_reject_rate' => [
+                'required',
+                'numeric',
+                'max:99',
+            ],
+            'max_high_reject_rate' => [
+                'required',
+                'numeric',
+                'max:99',
+                'num_greater_than:min_high_reject_rate',
+            ],
+            'num_leads_to_process_for_send_pending_leads' => [
+                'required',
+                'integer',
+            ],
+            'campaign_type_view_count' => [
+                'required',
+                'integer',
+            ],
+            'user_nos_before_not_displaying_campaign' => [
+                'required',
+                'integer',
+            ],
             // 'min_critical_reject_rate'          => 'required|numeric|max:99.9|num_greater_than:max_high_reject_rate',
             // 'max_critical_reject_rate'          => 'required|numeric|max:100|num_greater_than:min_critical_reject_rate',
         ];

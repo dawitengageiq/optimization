@@ -8,8 +8,6 @@ class CampaignJsonContent extends Model
 {
     protected $connection;
 
-    protected $table = 'campaign_json_contents';
-
     protected $fillable = [
         'id',
         'json',

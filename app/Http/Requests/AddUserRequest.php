@@ -20,14 +20,34 @@ class AddUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'first_name' => 'required',
-            'middle_name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required|email|unique:users',
-            'role_id' => 'required',
-            'mobile_number' => 'numeric',
-            'phone_number' => 'numeric',
-            'password' => 'required|confirmed|min:5',
+            'first_name' => [
+                'required',
+            ],
+            'middle_name' => [
+                'required',
+            ],
+            'last_name' => [
+                'required',
+            ],
+            'email' => [
+                'required',
+                'email',
+                'unique:users',
+            ],
+            'role_id' => [
+                'required',
+            ],
+            'mobile_number' => [
+                'numeric',
+            ],
+            'phone_number' => [
+                'numeric',
+            ],
+            'password' => [
+                'required',
+                'confirmed',
+                'min:5',
+            ],
         ];
     }
 

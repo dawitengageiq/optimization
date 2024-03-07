@@ -10,11 +10,11 @@ use App\CampaignPostingInstruction;
 use App\Http\Requests;
 use App\Jobs\Email\AdminApplyToRunRequest;
 use App\User;
-use DB;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Log;
-use Mail;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class AffiliateRequestController extends Controller
 {

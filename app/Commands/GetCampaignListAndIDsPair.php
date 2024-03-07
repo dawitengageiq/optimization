@@ -3,7 +3,7 @@
 namespace App\Commands;
 
 use App\Campaign;
-use Cache;
+use Illuminate\Support\Facades\Cache;
 
 class GetCampaignListAndIDsPair extends Command
 {
@@ -20,7 +20,7 @@ class GetCampaignListAndIDsPair extends Command
     /**
      * Execute the command.
      */
-    public function handle()
+    public function handle(): int
     {
         // \Log::info('Here');
         // \Log::info($this->status);

@@ -8,7 +8,7 @@ use App\Lead;
 use App\LeadCount;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 class SendPendingLeadsWithJobQueue extends Command
 {
@@ -46,7 +46,7 @@ class SendPendingLeadsWithJobQueue extends Command
         $this->info('Executing send pending leads...');
 
         //this is to prevent slave to execute at the same time as master server
-        if (env('APP_SERVER', 'master') == 'slave') {
+        if (config('settings.app_server') == 'slave') {
             sleep(5);
         }
 

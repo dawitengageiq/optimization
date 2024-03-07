@@ -2,13 +2,12 @@
 
 namespace App\Http\Services\Charts;
 
-use Config;
-use File;
+use Illuminate\Support\Facades\File;
 
 final class CreateChartImage extends Factories\ChartFactory
 {
-    use Utils\JSonData;
     use Utils\DummyData;
+    use Utils\JSonData;
 
     /**
      * Load the  needed configuration
@@ -16,7 +15,7 @@ final class CreateChartImage extends Factories\ChartFactory
     public function __construct()
     {
         //Initial Vars
-        $this->config = Config::get('charts');
+        $this->config = config('charts');
     }
 
     /**

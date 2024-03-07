@@ -6,7 +6,7 @@ use App\AffiliateReport;
 use App\AffiliateRevenueTracker;
 use App\Campaign;
 use ErrorException;
-use Log;
+use Illuminate\Support\Facades\Log;
 use PDOException;
 use Sabre\Xml\Reader;
 

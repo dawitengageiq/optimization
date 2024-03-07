@@ -9,7 +9,7 @@ use App\PageViewStatistics;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 class GenerateCakePageViewStatistics extends Job implements ShouldQueue
 {
@@ -167,7 +167,7 @@ class GenerateCakePageViewStatistics extends Job implements ShouldQueue
             // $this->touch();
         }
 
-        $emailNotificationRecipient = env('REPORTS_EMAIL_NOTIFICATION_RECIPIENT', 'marwilburton@hotmail.com');
+        $emailNotificationRecipient = config('settings.reports_email_notification_recipient');
 
         //send email to Burt to notify that Affiliate Report Queue was successfully finished
         Mail::send('emails.page_views_statistics',

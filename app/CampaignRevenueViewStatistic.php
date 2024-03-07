@@ -2,21 +2,14 @@
 
 namespace App;
 
-use DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class CampaignRevenueViewStatistic extends Model
 {
     protected $connection;
 
     public $timestamps = false;
-
-    /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
-    protected $table = 'campaign_revenue_view_statistics';
 
     /**
      * The attributes that are mass assignable.

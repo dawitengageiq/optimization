@@ -72,7 +72,7 @@
             </div>
         </div>
 
-        <input type="hidden" id="allInboxCampaignID" value="{{ env('ALL_INBOX_CAMPAIGN_ID', 286) }}"/>
+        <input type="hidden" id="allInboxCampaignID" value="{{ config('settings.all_inbox_campaign_id') }}"/>
         <div class="container-fluid col-md-4 col-lg-4">
             <div class="panel panel-default ">
                 <div class="panel-heading dashboard-item-heading">
@@ -97,7 +97,7 @@
             </div>
         </div>
 
-        <input type="hidden" id="pushProCampaignID" value="{{ env('PUSH_PRO_CAMPAIGN_ID', 1672) }}"/>
+        <input type="hidden" id="pushProCampaignID" value="{{ config('settings.push_pro_campaign_id') }}"/>
         <div class="container-fluid col-md-4 col-lg-4">
             <div class="panel panel-default ">
                 <div class="panel-heading dashboard-item-heading">

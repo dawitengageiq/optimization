@@ -7,8 +7,8 @@ use App\Lead;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
-use Mail;
 
 class SendLeadExcelEmailFeed extends Job implements ShouldQueue
 {

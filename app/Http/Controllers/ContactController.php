@@ -6,12 +6,12 @@ use App\Commands\GetUserActionPermission;
 use App\Http\Requests\AddContactRequest;
 use App\Http\Requests\UpdateContactRequest;
 use App\User;
-use Bus;
-use DB;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Bus;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 class ContactController extends Controller
 {

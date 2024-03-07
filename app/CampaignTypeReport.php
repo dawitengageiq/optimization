@@ -3,11 +3,10 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class CampaignTypeReport extends Model
 {
-    protected $table = 'campaign_type_reports';
-
     protected $fillable = [
         'campaign_type_id',
         'revenue_tracker_id',
@@ -19,7 +18,7 @@ class CampaignTypeReport extends Model
         's5',
     ];
 
-    public function revenueTracker()
+    public function revenueTracker(): BelongsTo
     {
         return $this->belongsTo(AffiliateRevenueTracker::class, 'revenue_tracker_id', 'revenue_tracker_id');
     }

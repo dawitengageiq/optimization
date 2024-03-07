@@ -3,14 +3,14 @@
 namespace App;
 
 use Carbon\Carbon;
-use DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\Facades\DB;
 
 class Lead extends Model
 {
     protected $connection;
-
-    protected $table = 'leads';
 
     protected $fillable = [
         'campaign_id',
@@ -38,42 +38,42 @@ class Lead extends Model
         }
     }
 
-    public function campaign()
+    public function campaign(): BelongsTo
     {
         return $this->belongsTo(Campaign::class);
     }
 
-    public function affiliate()
+    public function affiliate(): BelongsTo
     {
         return $this->belongsTo(Affiliate::class);
     }
 
-    public function leadMessage()
+    public function leadMessage(): HasOne
     {
         return $this->hasOne(LeadMessage::class, 'id');
     }
 
-    public function leadDataADV()
+    public function leadDataADV(): HasOne
     {
         return $this->hasOne(LeadDataAdv::class, 'id');
     }
 
-    public function leadDataCSV()
+    public function leadDataCSV(): HasOne
     {
         return $this->hasOne(LeadDataCsv::class, 'id');
     }
 
-    public function leadSentResult()
+    public function leadSentResult(): HasOne
     {
         return $this->hasOne(LeadSentResult::class, 'id');
     }
 
-    public function campaignCreative()
+    public function campaignCreative(): BelongsTo
     {
         return $this->belongsTo(CampaignCreative::class);
     }
 
-    public function campaignViewReport()
+    public function campaignViewReport(): BelongsTo
     {
         return $this->belongsTo(CampaignViewReport::class, 'campaign_id', 'campaign_id');
     }
@@ -218,7 +218,7 @@ class Lead extends Model
         }
 
         // order by create date
-        $query->orderBy('leads.created_at', 'desc');
+        $query->orderByDesc('leads.created_at');
 
         if (isset($params['limit_rows']) && $params['limit_rows'] !== '') {
             $query->take($params['limit_rows']);
@@ -553,7 +553,7 @@ class Lead extends Model
             $query->orderBy($order_col, $order_dir);
         } else {
             // $query->orderBy('leads.created_at','desc');
-            $query->orderBy('lead_date', 'desc');
+            $query->orderByDesc('lead_date');
         }
 
         return $query;
@@ -842,7 +842,7 @@ class Lead extends Model
         return $query->select('id', 'campaign_id', 'lead_email', 'lead_status')
             ->where('campaign_id', '=', $params['campaign_id'])
             ->where('lead_email', '=', $params['lead_email'])
-            ->orderBy('id', 'ASC');
+            ->orderBy('id');
     }
 
     public function scopeMonthOld($query)
@@ -957,7 +957,7 @@ class Lead extends Model
         }
 
         // order by create date
-        $query->orderBy('leads.created_at', 'desc');
+        $query->orderByDesc('leads.created_at');
 
         // if(isset($params['limit_rows']) && $params['limit_rows']!=='')
         // {

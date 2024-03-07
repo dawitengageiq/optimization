@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\PageView;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 
 class CleanPageViewTable extends Command
 {
@@ -40,7 +41,7 @@ class CleanPageViewTable extends Command
     public function handle(): void
     {
         $this->info('Initiating Page Views cleanup');
-        \Log::info('Initiating Page Views cleanup');
+        Log::info('Initiating Page Views cleanup');
         $date = $this->option('date');
 
         //NEW VERSION
@@ -53,6 +54,6 @@ class CleanPageViewTable extends Command
 
         $views = PageView::where('created_at', '<=', $date)->delete();
         $this->info('Page Views Cleanup Done!');
-        \Log::info('Page Views Cleanup Done!');
+        Log::info('Page Views Cleanup Done!');
     }
 }

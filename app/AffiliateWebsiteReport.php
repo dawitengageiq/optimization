@@ -3,14 +3,13 @@
 namespace App;
 
 use Carbon\Carbon;
-use DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\DB;
 
 class AffiliateWebsiteReport extends Model
 {
     protected $connection;
-
-    protected $table = 'affiliate_website_reports';
 
     public $timestamps = false;
 
@@ -36,7 +35,7 @@ class AffiliateWebsiteReport extends Model
         }
     }
 
-    public function website()
+    public function website(): BelongsTo
     {
         return $this->belongsTo(AffiliateWebsite::class, 'id', 'website_id');
     }

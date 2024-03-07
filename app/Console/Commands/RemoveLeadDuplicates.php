@@ -4,8 +4,8 @@ namespace App\Console\Commands;
 
 use App\Lead;
 use Carbon\Carbon;
-use DB;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 
 class RemoveLeadDuplicates extends Command
 {

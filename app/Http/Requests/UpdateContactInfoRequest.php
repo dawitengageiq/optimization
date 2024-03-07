@@ -20,15 +20,34 @@ class UpdateContactInfoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required',
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'gender' => 'required',
-            'email' => 'required|email',
-            'address' => 'required',
-            'position' => 'required',
-            'mobile_number' => 'numeric',
-            'phone_number' => 'numeric',
+            'title' => [
+                'required',
+            ],
+            'first_name' => [
+                'required',
+            ],
+            'last_name' => [
+                'required',
+            ],
+            'gender' => [
+                'required',
+            ],
+            'email' => [
+                'required',
+                'email',
+            ],
+            'address' => [
+                'required',
+            ],
+            'position' => [
+                'required',
+            ],
+            'mobile_number' => [
+                'numeric',
+            ],
+            'phone_number' => [
+                'numeric',
+            ],
         ];
     }
 }

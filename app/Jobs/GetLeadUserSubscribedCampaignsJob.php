@@ -4,11 +4,11 @@ namespace App\Jobs;
 
 use App\LeadUserRequest;
 use Carbon\Carbon;
-use DB;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Log;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class GetLeadUserSubscribedCampaignsJob extends Job implements ShouldQueue
 {

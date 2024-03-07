@@ -47,12 +47,12 @@ trait AffiliateReport
         }
 
         $this->setRevenue('source_revenue', $affiliateReport->sum('revenue'), false);
-        $this->setRevenue('cpa_revenue', env('CPA_WALL_ENGAGEIQ_CAMPAIGN_ID', 94), true, $this->revenues['lsp_revenue']);
-        $this->setRevenue('pd_revenue', env('EXTERNAL_PATH_PERMISSION_DATA_CAMPAIGN_I', 283), true);
-        $this->setRevenue('tb_revenue', env('EXTERNAL_PATH_TIBURON_CAMPAIGN_ID', 290), true);
-        $this->setRevenue('iff_revenue', env('EXTERNAL_PATH_IFFICIENT_CAMPAIGN_ID', 287), true);
-        $this->setRevenue('rexadz_revenue', env('EXTERNAL_PATH_REXADS_CAMPAIGN_ID', 289), true);
-        $this->setRevenue('push_revenue', env('PUSH_CREW_NOTIFICATIONS_CAMPAIGN_ID', 733), true);
+        $this->setRevenue('cpa_revenue', config('settings.cpa_wall_engageiq_campaign_id'), true, $this->revenues['lsp_revenue']);
+        $this->setRevenue('pd_revenue', config('settings.external_path_permission_data_campaign_i'), true);
+        $this->setRevenue('tb_revenue', config('settings.external_path_tiburon_campaign_id'), true);
+        $this->setRevenue('iff_revenue', config('settings.external_path_ifficient_campaign_id'), true);
+        $this->setRevenue('rexadz_revenue', config('settings.external_path_rexads_campaign_id'), true);
+        $this->setRevenue('push_revenue', config('settings.push_crew_notifications_campaign_id'), true);
 
     }
 }

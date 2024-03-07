@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCategoryNoteRequest;
+use App\Http\Requests\UpdateCategoryNoteRequest;
 use App\Note;
 use App\NoteCategory;
-use Auth;
-use DB;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Log;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class NotesController extends Controller
 {
@@ -25,12 +27,9 @@ class NotesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store_category(Request $request,
+    public function store_category(StoreCategoryNoteRequest $request,
         \App\Http\Services\UserActionLogger $userAction)
     {
-        $this->validate($request, [
-            'name' => 'required|unique:note_categories,name',
-        ]);
 
         $category = new NoteCategory;
         $category->name = $request->input('name');
@@ -42,13 +41,10 @@ class NotesController extends Controller
         return $category->id;
     }
 
-    public function update_category(Request $request,
+    public function update_category(UpdateCategoryNoteRequest $request,
         \App\Http\Services\UserActionLogger $userAction
     ) {
         $id = $request->input('id');
-        $this->validate($request, [
-            'name' => 'required|unique:note_categories,name,'.$id,
-        ]);
         $category = NoteCategory::find($id);
 
         $current_state = $category->toArray(); //For Logging
@@ -85,7 +81,7 @@ class NotesController extends Controller
         $notes = Note::leftJoin('note_trackings', function ($q) use ($user) {
             $q->on('notes.id', '=', 'note_trackings.note_id')
                 ->where('note_trackings.user_id', '=', $user);
-        })->where('category_id', $id)->select(DB::RAW('notes.*, note_trackings.id as ifNew'))->orderBy('updated_at', 'DESC')->get();
+        })->where('category_id', $id)->select(DB::RAW('notes.*, note_trackings.id as ifNew'))->orderByDesc('updated_at')->get();
 
         return response()->json($notes, 200);
     }

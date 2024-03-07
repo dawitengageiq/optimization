@@ -11,12 +11,12 @@ use App\PageViewStatistics;
 use App\RevenueTrackerCakeStatistic;
 use App\Setting;
 use Carbon\Carbon;
-use DB;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Log;
-use Mail;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class ConsolidatedGraphGenerator extends Job implements ShouldQueue
 {
@@ -46,14 +46,14 @@ class ConsolidatedGraphGenerator extends Job implements ShouldQueue
         Log::info('Consolidated Graph Start for '.$date);
 
         //get campaign ids
-        $all_inbox_offer_id = env('ALL_INBOX_CAMPAIGN_ID', '286');
-        $push_crew_id = env('PUSH_PRO_CAMPAIGN_ID', '1672');
-        $cpawall_id = env('CPA_WALL_ENGAGEIQ_CAMPAIGN_ID', '94');
-        $pd_external_id = env('EXTERNAL_PATH_PERMISSION_DATA_CAMPAIGN_ID', '283');
-        $tbr_external_id = env('EXTERNAL_PATH_TIBURON_CAMPAIGN_ID', '290');
-        $rex_external_id = env('EXTERNAL_PATH_REXADS_CAMPAIGN_ID', '289');
-        $iff_external_id = env('EXTERNAL_PATH_IFFICIENT_CAMPAIGN_ID', '287');
-        $ads_external_id = env('EXTERNAL_PATH_ADSMITH_CAMPAIGN_ID', '2127');
+        $all_inbox_offer_id = config('settings.all_inbox_campaign_id');
+        $push_crew_id = config('settings.push_pro_campaign_id');
+        $cpawall_id = config('settings.cpa_wall_engageiq_campaign_id');
+        $pd_external_id = config('settings.external_path_permission_data_campaign_id');
+        $tbr_external_id = config('settings.external_path_tiburon_campaign_id');
+        $rex_external_id = config('settings.external_path_rexads_campaign_id');
+        $iff_external_id = config('settings.external_path_ifficient_campaign_id');
+        $ads_external_id = config('settings.external_path_adsmith_campaign_id');
         $external_ids = [$pd_external_id, $tbr_external_id, $rex_external_id, $iff_external_id]; //, $ads_external_id
 
         $data = [];

@@ -166,7 +166,7 @@ return [
         //maatwebsite/excel
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-       // Spatie\ServerMonitor\ServerMonitorServiceProvider::class,
+        // Spatie\ServerMonitor\ServerMonitorServiceProvider::class,
         //Collective\Remote\RemoteServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,

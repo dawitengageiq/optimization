@@ -3,6 +3,7 @@
 namespace App\Http\Services\Consolidated\Export2Excel;
 
 use App\ConsolidatedGraph;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Consolidate graph class.
@@ -19,7 +20,7 @@ class ByDateWithAllInbox extends \App\Http\Services\Consolidated\GraphAllInbox i
     {
         $this->records = $this->model
             ->select(
-                \DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d") as date'),
+                DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d") as date'),
                 'survey_takers',
                 'source_revenue',
                 'source_revenue_per_survey_takers',

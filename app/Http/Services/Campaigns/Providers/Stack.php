@@ -45,8 +45,6 @@ class Stack
 
     /**
      * Instantiate.
-     *
-     *  @param  Illuminate\Foundation\Application  $app
      */
     public function __construct(
         \Illuminate\Foundation\Application $app,
@@ -62,8 +60,6 @@ class Stack
 
     /**
      * Static function.
-     *
-     *  @param  Illuminate\Foundation\Application  $app
      */
     public static function bind(
         \Illuminate\Foundation\Application $app,
@@ -88,7 +84,7 @@ class Stack
      */
     protected function resolveStackType(): string
     {
-        if ('test/get_campaign_list_by_api' != $this->path
+        if ($this->path != 'test/get_campaign_list_by_api'
         && in_array($this->type, $this->pathOrderType)) {
             $this->stackType = str_ireplace(' ', '_', strtolower($this->type));
         }

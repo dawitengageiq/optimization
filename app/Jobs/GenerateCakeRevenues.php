@@ -8,8 +8,8 @@ use App\Helpers\Repositories\AffiliateReportCurl;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
-use Log;
 
 class GenerateCakeRevenues extends Job implements ShouldQueue
 {
@@ -64,7 +64,7 @@ class GenerateCakeRevenues extends Job implements ShouldQueue
             }
         }
 
-        $emailNotificationRecipient = env('REPORTS_EMAIL_NOTIFICATION_RECIPIENT', 'marwilburton@hotmail.com');
+        $emailNotificationRecipient = config('settings.reports_email_notification_recipient');
 
         // send email to Burt to notify that Affiliate Report Queue was successfully finished
         Mail::send('emails.cake_revenues',

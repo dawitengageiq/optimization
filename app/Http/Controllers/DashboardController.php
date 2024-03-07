@@ -6,12 +6,12 @@ use App\CampaignRevenueBreakdown;
 use App\OfferGoesDown;
 use App\PathSpeed;
 use App\Setting;
-use Cache;
 use Carbon\Carbon;
-use DB;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Log;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class DashboardController extends Controller
 {
@@ -33,7 +33,7 @@ class DashboardController extends Controller
             ->select(DB::RAW('offer_goes_downs.*, campaigns.name'))
             ->where('revenue', '>', 0)
             ->where('revenue', '>=', $filter)
-            ->orderBy('updated_at', 'DESC')
+            ->orderByDesc('updated_at')
             ->skip($start)->take($length)->get();
         $campaignsData = [];
 

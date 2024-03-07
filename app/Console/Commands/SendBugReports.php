@@ -4,7 +4,7 @@ namespace App\Console\Commands;
 
 use App\Jobs\SendBugReportsV2;
 use Illuminate\Console\Command;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 class SendBugReports extends Command
 {

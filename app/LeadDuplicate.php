@@ -2,8 +2,9 @@
 
 namespace App;
 
-use DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\DB;
 
 class LeadDuplicate extends Model
 {
@@ -35,12 +36,12 @@ class LeadDuplicate extends Model
         $this->attributes['path_id'] = $value ?: null;
     }
 
-    public function campaign()
+    public function campaign(): BelongsTo
     {
         return $this->belongsTo(Campaign::class);
     }
 
-    public function affiliate()
+    public function affiliate(): BelongsTo
     {
         return $this->belongsTo(Affiliate::class);
     }
@@ -83,7 +84,7 @@ class LeadDuplicate extends Model
         }
 
         //order by create date
-        $query->orderBy('created_at', 'desc');
+        $query->orderByDesc('created_at');
 
         if (isset($params['limit_rows']) && $params['limit_rows'] !== '') {
             $query->take($params['limit_rows']);

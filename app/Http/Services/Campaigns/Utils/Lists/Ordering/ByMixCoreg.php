@@ -33,7 +33,7 @@ final class ByMixCoreg
      * @param  int  $revenueTrackerID
      * @param  int  $campaignTypID
      *
-     * @var  array
+     * @var array
      */
     public function get($revenueTrackerID)
     {

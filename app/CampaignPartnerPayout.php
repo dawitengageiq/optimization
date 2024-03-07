@@ -3,11 +3,10 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class CampaignPartnerPayout extends Model
 {
-    protected $table = 'campaign_partner_payouts';
-
     protected $fillable = [
         'campaign_id',
         'affiliate_id',
@@ -15,12 +14,12 @@ class CampaignPartnerPayout extends Model
         'effective_date',
     ];
 
-    public function campaign()
+    public function campaign(): BelongsTo
     {
         return $this->belongsTo(\App\Campaign::class);
     }
 
-    public function affiliate()
+    public function affiliate(): BelongsTo
     {
         return $this->belongsTo(\App\Affiliate::class);
     }

@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    protected $table = 'categories';
-
     protected $fillable = [
         'name',
         'description',
@@ -17,13 +15,13 @@ class Category extends Model
     public function scopeGetAllNames($query)
     {
         return $query->select('name')
-            ->orderBy('name', 'asc');
+            ->orderBy('name');
     }
 
     public function scopeGetAllActiveNames($query)
     {
         return $query->select('name')
             ->where('status', '=', 1)
-            ->orderBy('name', 'asc');
+            ->orderBy('name');
     }
 }

@@ -15,7 +15,7 @@
 @stop
 
 @section('content')
-{!! Form::hidden('eiq_iframe_id', env('EIQ_IFRAME_ID',0),array('id' => 'eiq_iframe_id')) !!}
+{!! Form::hidden('eiq_iframe_id', config('settings.eiq_iframe_id'),array('id' => 'eiq_iframe_id')) !!}
 
 <!-- MORE DETAILS MODAL -->
 <div id="campaignMoreDetailsModal" class="modal fade" role="dialog">

@@ -6,12 +6,12 @@ use App\HandPAffiliateReport;
 use App\Jobs\Job;
 use App\Lead;
 use Carbon\Carbon;
-use DB;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
-use Log;
 
 class HandPReports extends Job implements ShouldQueue
 {
@@ -87,7 +87,7 @@ class HandPReports extends Job implements ShouldQueue
         $endLog = Carbon::now();
         $diffInHours = $startLog->diffInHours($endLog).' hours';
 
-        $emailNotificationRecipient = env('REPORTS_EMAIL_NOTIFICATION_RECIPIENT', 'marwilburton@hotmail.com');
+        $emailNotificationRecipient = config('settings.reports_email_notification_recipient');
 
         //send email to Burt to notify that Internal Iframe Affiliate Report Queue was successfully finished
         Mail::send('emails.affiliate_report_execution_email',

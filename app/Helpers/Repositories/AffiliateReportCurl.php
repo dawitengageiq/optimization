@@ -4,7 +4,7 @@ namespace App\Helpers\Repositories;
 
 use Curl\Curl;
 use Exception;
-use Log;
+use Illuminate\Support\Facades\Log;
 use Sabre\Xml\Reader;
 
 class AffiliateReportCurl implements AffiliateReportCurlInterface

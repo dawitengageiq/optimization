@@ -3,12 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class CampaignCreative extends Model
 {
     protected $connection;
-
-    protected $table = 'campaign_creatives';
 
     protected $fillable = [
         'weight',
@@ -17,7 +16,7 @@ class CampaignCreative extends Model
         'description',
     ];
 
-    public function campaign()
+    public function campaign(): BelongsTo
     {
         return $this->belongsTo(Campaign::class);
     }

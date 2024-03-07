@@ -8,8 +8,6 @@ class CakeRevenue extends Model
 {
     protected $connection;
 
-    protected $table = 'cake_revenues';
-
     public $timestamps = false;
 
     protected $fillable = [

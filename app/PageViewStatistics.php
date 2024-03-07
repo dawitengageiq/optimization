@@ -3,14 +3,12 @@
 namespace App;
 
 use Carbon\Carbon;
-use DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class PageViewStatistics extends Model
 {
     protected $connection;
-
-    protected $table = 'page_view_statistics';
 
     public $timestamps = false;
 
@@ -179,8 +177,8 @@ class PageViewStatistics extends Model
             $order_dir = $params['order'][0]['dir'];
             $query->orderBy(DB::RAW($order_col), $order_dir);
         } else {
-            $query->orderBy('page_view_statistics.revenue_tracker_id', 'asc');
-            $query->orderBy('page_view_statistics.created_at', 'asc');
+            $query->orderBy('page_view_statistics.revenue_tracker_id');
+            $query->orderBy('page_view_statistics.created_at');
         }
 
         // Override the default ordering during download
@@ -198,7 +196,7 @@ class PageViewStatistics extends Model
 
             if ($order_col != '') {
                 // this means there is no column ordering specified
-                $query->orderBy($columns[0], 'desc');
+                $query->orderByDesc($columns[0]);
                 $query->orderBy($order_col, $order_dir);
             }
 
@@ -273,8 +271,8 @@ class PageViewStatistics extends Model
             if (isset($params['order'])) {
                 $query->orderBy($params['order_col'], $params['order'][0]['dir']);
             }
-            $query->orderBy('page_view_statistics.revenue_tracker_id', 'ASC');
-            $query->orderBy('page_view_statistics.created_at', 'ASC');
+            $query->orderBy('page_view_statistics.revenue_tracker_id');
+            $query->orderBy('page_view_statistics.created_at');
 
             if (isset($params['start']) && $params['start'] != null) {
                 $query->skip($params['start']);

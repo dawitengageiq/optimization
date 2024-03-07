@@ -6,7 +6,7 @@ use App\Events\UserActionEvent;
 use App\UserActionLog;
 use Carbon\Carbon;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 class UserActionListener implements ShouldQueue
     // class UserActionListener
@@ -26,7 +26,7 @@ class UserActionListener implements ShouldQueue
     /**
      * Handle the event.
      */
-    public function handle(UserActionEvent $event)
+    public function handle(UserActionEvent $event): void
     {
         $logData = $event->logData;
 

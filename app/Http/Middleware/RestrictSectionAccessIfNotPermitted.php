@@ -3,10 +3,10 @@
 namespace App\Http\Middleware;
 
 use App\Commands\GetUserActionPermission;
-use Bus;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Bus;
 
 class RestrictSectionAccessIfNotPermitted
 {

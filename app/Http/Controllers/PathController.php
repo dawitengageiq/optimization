@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePathRequest;
+use App\Http\Requests\UpdatePathRequest;
 use App\Path;
 use Illuminate\Http\Request;
 
@@ -32,12 +34,8 @@ class PathController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePathRequest $request)
     {
-        $this->validate($request, [
-            'name' => 'required|unique:paths|max:100',
-            'url' => 'required|unique:paths|max:255|url',
-        ]);
 
         $path = new Path;
         $path->name = $request->input('name');
@@ -73,14 +71,9 @@ class PathController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(UpdatePathRequest $request)
     {
         $id = $request->input('id');
-
-        $this->validate($request, [
-            'name' => 'required|unique:paths,name,'.$id.'|max:100',
-            'url' => 'required|unique:paths,url,'.$id.'|max:255|url',
-        ]);
 
         $path = Path::find($id);
         $path->name = $request->input('name');

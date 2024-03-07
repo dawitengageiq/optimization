@@ -31,7 +31,7 @@
                         </div>
                     @endif
 
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    @csrf
 
                     <!-- EMAIL -->
                     <label for="inputEmail" class="sr-only">Email address</label>

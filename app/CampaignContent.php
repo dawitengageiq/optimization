@@ -3,12 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class CampaignContent extends Model
 {
     protected $connection;
-
-    protected $table = 'campaign_contents';
 
     protected $fillable = [
         'id',
@@ -30,12 +29,12 @@ class CampaignContent extends Model
         'rules' => 'array',
     ];
 
-    public function campaign()
+    public function campaign(): BelongsTo
     {
         return $this->belongsTo(\App\Campaign::class, 'id', 'id');
     }
 
-    public function campaign_type()
+    public function campaign_type(): BelongsTo
     {
         return $this->belongsTo(\App\Campaign::class, 'id', 'id')->select(['id', 'campaign_type']);
     }

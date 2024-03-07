@@ -199,10 +199,10 @@ class Excel extends \App\Http\Services\Factories\ExportExcel
     /**
      * Fill worksheet from values in array
      *
-     * @param  array  $source Source array
-     * @param  mixed  $nullValue Value in source array that stands for blank cell
-     * @param  string  $startCell Insert array starting from this cell address as the top left coordinate
-     * @param  bool  $strictNullComparison Apply strict comparison when testing for null values in the array
+     * @param  array  $source  Source array
+     * @param  mixed  $nullValue  Value in source array that stands for blank cell
+     * @param  string  $startCell  Insert array starting from this cell address as the top left coordinate
+     * @param  bool  $strictNullComparison  Apply strict comparison when testing for null values in the array
      *
      * @throws PhpExcelException
      */

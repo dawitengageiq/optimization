@@ -2,14 +2,16 @@
 
 namespace App;
 
-use DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\Facades\DB;
 
 class Campaign extends Model
 {
     protected $connection;
-
-    protected $table = 'campaigns';
 
     protected $fillable = [
         'name',
@@ -43,73 +45,73 @@ class Campaign extends Model
         }
     }
 
-    public function payouts()
+    public function payouts(): BelongsToMany
     {
         return $this->belongsToMany(Affiliate::class, 'campaign_payouts', 'campaign_id', 'affiliate_id')->withPivot('received');
     }
 
-    public function category()
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
 
-    public function advertiser()
+    public function advertiser(): BelongsTo
     {
         return $this->belongsTo(Advertiser::class);
     }
 
-    public function affiliates()
+    public function affiliates(): BelongsToMany
     {
         return $this->belongsToMany(Affiliate::class, 'affiliate_campaign', 'campaign_id', 'affiliate_id');
     }
 
-    public function affiliateCampaign()
+    public function affiliateCampaign(): HasMany
     {
         return $this->hasMany(AffiliateCampaign::class);
     }
 
-    public function firstAffiliateCampaign()
+    public function firstAffiliateCampaign(): HasOne
     {
         return $this->hasOne(AffiliateCampaign::class);
     }
 
-    public function leads()
+    public function leads(): HasMany
     {
         return $this->hasMany(Lead::class);
     }
 
     /*
-    public function leadCounts()
+    public function leadCounts(): HasMany
     {
         return $this->hasMany(LeadCount::class);
     }
     */
-    public function filters()
+    public function filters(): HasMany
     {
         return $this->hasMany(CampaignFilter::class);
     }
 
-    public function config()
+    public function config(): HasOne
     {
         return $this->hasOne(CampaignConfig::class, 'id', 'id');
     }
 
-    public function content()
+    public function content(): HasOne
     {
         return $this->hasOne(CampaignContent::class, 'id', 'id');
     }
 
-    public function noTracker()
+    public function noTracker(): HasOne
     {
         return $this->hasOne(CampaignNoTracker::class, 'campaign_id');
     }
 
-    public function linkOutCounts()
+    public function linkOutCounts(): HasOne
     {
         return $this->hasOne(LinkOutCount::class, 'campaign_id');
     }
 
-    public function leadCounts()
+    public function leadCounts(): HasMany
     {
         if (! in_array($this->campaign_type, [4, 5, 6])) {
             return $this->hasMany(LeadCount::class, 'campaign_id');
@@ -118,7 +120,7 @@ class Campaign extends Model
         }
     }
 
-    public function creatives()
+    public function creatives(): HasMany
     {
         return $this->hasMany(CampaignCreative::class, 'campaign_id');
     }
@@ -126,7 +128,7 @@ class Campaign extends Model
     public function scopeGetExternals($query)
     {
         return $query->where('name', 'like', 'External%')
-            ->orderBy('name', 'ASC');
+            ->orderBy('name');
     }
 
     public function scopeActiveCampaigns($query, $param = null)
@@ -142,15 +144,15 @@ class Campaign extends Model
             $query->where('id', '=', DB::raw('(SELECT campaigns.id FROM campaigns WHERE campaigns.advertiser_id='.$param['advertiser_id'].')'));
         }
 
-        $query->orderBy('id', 'asc');
+        $query->orderBy('id');
     }
 
-    public function filter_groups()
+    public function filter_groups(): HasMany
     {
         return $this->hasMany(CampaignFilterGroup::class)->where('status', 1);
     }
 
-    public function affiliateCampaignRequest()
+    public function affiliateCampaignRequest(): HasMany
     {
         return $this->hasMany(AffiliateCampaignRequest::class);
     }
@@ -249,13 +251,13 @@ class Campaign extends Model
 
             if ($filters != null && isset($filters['show_inactive']) && $filters['show_inactive'] != '') {
                 // $query->orderByRaw('FIELD(campaigns.status, 2, 1, 3, 0)');
-                $query->orderBy('campaigns.status', 'ASC');
+                $query->orderBy('campaigns.status');
             }
         } else {
             if ($filters != null && isset($filters['show_inactive']) && $filters['show_inactive'] != '') {
                 // $query->orderByRaw('FIELD(campaigns.status, 2, 1, 3, 0)');
-                $query->orderBy('campaigns.status', 'ASC');
-                $query->orderBy('campaigns.priority', 'ASC');
+                $query->orderBy('campaigns.status');
+                $query->orderBy('campaigns.priority');
             }
         }
 
@@ -276,13 +278,13 @@ class Campaign extends Model
             $query->join('affiliate_campaign', function ($join) use ($affiliate) {
                 $join->on('campaigns.id', '=', 'affiliate_campaign.campaign_id')
                     ->where('affiliate_campaign.affiliate_id', '=', $affiliate)
-                    ->where('campaigns.id', '!=', env('EIQ_IFRAME_ID', 0));
+                    ->where('campaigns.id', '!=', config('settings.eiq_iframe_id'));
             });
         } else {
             $query->leftJoin('affiliate_campaign', function ($join) use ($affiliate) {
                 $join->on('campaigns.id', '=', 'affiliate_campaign.campaign_id')
                     ->where('affiliate_campaign.affiliate_id', '=', $affiliate)
-                    ->where('campaigns.id', '!=', env('EIQ_IFRAME_ID', 0));
+                    ->where('campaigns.id', '!=', config('settings.eiq_iframe_id'));
             });
         }
 
@@ -324,7 +326,7 @@ class Campaign extends Model
 
         if ($order_col != null && $order_dir != null) {
             if ($order_col > -1) {
-                $query->orderBy(DB::RAW('-affiliate_campaign.lead_cap_type'), 'DESC');
+                $query->orderByDesc(DB::RAW('-affiliate_campaign.lead_cap_type'));
                 $query->orderBy($order_col, $order_dir);
             }
         }
@@ -362,7 +364,7 @@ class Campaign extends Model
             ->havingRaw('((status = 2) OR (status = 1 AND affiliate_campaign_exists IS NOT NULL))')
             ->havingRaw('((lead_cap_type = 0) OR (lead_cap_type != 0 AND lead_cap_value > campaign_lead_count))')
             ->havingRaw('((aff_cap_type IS NULL) OR (aff_cap_type = 0) OR (aff_cap_value > campaign_affiliate_lead_count))')
-            ->orderBy('campaigns.priority', 'ASC');
+            ->orderBy('campaigns.priority');
 
         if ($limit != null) {
             $query->take($limit);

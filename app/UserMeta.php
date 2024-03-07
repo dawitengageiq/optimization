@@ -3,12 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class UserMeta extends Model
 {
     protected $connection;
-
-    protected $table = 'user_metas';
 
     /**
      * The attributes that are mass assignable.
@@ -29,7 +28,7 @@ class UserMeta extends Model
         }
     }
 
-    public function user()
+    public function user(): BelongsTo
     {
         $con = config('app.type') == 'reports' ? 'secondary' : 'mysql';
 

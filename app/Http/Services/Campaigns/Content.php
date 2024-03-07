@@ -226,6 +226,7 @@ class Content
 
             return true;
         }
+
         // continue parent looping
         return false;
     }

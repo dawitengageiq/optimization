@@ -2,7 +2,7 @@
 
 namespace App\Http\Services\Campaigns\Utils\Lists;
 
-use Bus;
+use Illuminate\Support\Facades\Bus;
 use RandomProbability;
 
 final class Creatives

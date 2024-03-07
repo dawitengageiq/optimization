@@ -3,7 +3,7 @@
 namespace App\Helpers;
 
 use Curl\Curl;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 class JSONParser
 {

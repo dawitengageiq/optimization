@@ -6,10 +6,10 @@ use App\Helpers\Repositories\Settings;
 use App\Jobs\Job;
 use App\Setting;
 use Carbon\Carbon;
-use DB;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 class GenerateLeadFailTimeoutReport extends Job implements ShouldQueue
@@ -58,7 +58,7 @@ class GenerateLeadFailTimeoutReport extends Job implements ShouldQueue
             }
         }
 
-        $emailNotificationRecipient = env('REPORTS_EMAIL_NOTIFICATION_RECIPIENT', 'marwilburton@hotmail.com');
+        $emailNotificationRecipient = config('settings.reports_email_notification_recipient');
 
         //$recipients=[$defaultAdminEmail => 'EngageIQ Admin'];
         $recipients = [$defaultAdminEmail, $emailNotificationRecipient];

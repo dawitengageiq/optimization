@@ -7,13 +7,13 @@ use App\Campaign;
 use App\LinkOutCount;
 use Carbon\Carbon;
 use Curl\Curl;
-use DB;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Database\QueryException;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
-use Log;
 use Sabre\Xml\Reader;
 
 class GetCakeConversions extends Job implements ShouldQueue
@@ -326,7 +326,7 @@ class GetCakeConversions extends Job implements ShouldQueue
             }
         }
 
-        $emailNotificationRecipient = env('REPORTS_EMAIL_NOTIFICATION_RECIPIENT', 'marwilburton@hotmail.com');
+        $emailNotificationRecipient = config('settings.reports_email_notification_recipient');
 
         //send email to Burt to notify that Atchive Leads Queue was successfully finished
         Mail::send('emails.get_cake_conversions',

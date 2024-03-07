@@ -3,12 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Advertiser extends Model
 {
     protected $connection;
-
-    protected $table = 'advertisers';
 
     protected $fillable = [
         'company',
@@ -31,7 +30,7 @@ class Advertiser extends Model
         }
     }
 
-    public function user()
+    public function user(): HasOne
     {
         return $this->hasOne(\App\User::class, 'advertiser_id', 'id');
     }

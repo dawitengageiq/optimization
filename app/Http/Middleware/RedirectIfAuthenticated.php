@@ -31,11 +31,11 @@ class RedirectIfAuthenticated
     {
         if ($this->auth->check()) {
             if ($request->user()->isAdministrator()) {
-                return redirect('/admin');
+                return redirect()->to('/admin');
             } elseif ($request->user()->affiliate) {
-                return redirect('/affiliate/dashboard');
+                return redirect()->to('/affiliate/dashboard');
             } else {
-                return redirect('/advertiser/dashboard');
+                return redirect()->to('/advertiser/dashboard');
             }
         }
 

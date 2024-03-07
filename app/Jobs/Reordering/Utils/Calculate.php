@@ -12,8 +12,6 @@ class Calculate
     /**
      * Set campaign order
      * This is the saved campaign ids order from previous ordering
-     *
-     * @param  array  $campaignOrder
      */
     public function setCampaignOrder(array $campaignOrder)
     {
@@ -22,8 +20,6 @@ class Calculate
 
     /**
      * Get campaign ids Order with calculated revenue per views
-     *
-     * @return array
      */
     public function getOrders(): array
     {
@@ -32,8 +28,6 @@ class Calculate
 
     /**
      * Go through all campaign ids order and execute calculation
-     *
-     * @param  eloquentCollection  $leads
      */
     public function revenuePerViews(eloquentCollection $leads)
     {
@@ -45,7 +39,7 @@ class Calculate
      *
      * @return yield
      */
-    protected function getCalculation($leads)
+    protected function getCalculation($leads): yield
     {
         for ($i = 0; $i < count($this->campaignOrder); $i++) {
             $campaignID = $this->campaignOrder[$i];
@@ -56,8 +50,6 @@ class Calculate
     /**
      * Execute the calculation of revenue per views
      *
-     * @param  int  $campaignID
-     * @param  eloquentCollection  $leads
      * @return float|int
      */
     protected function calculate(int $campaignID, eloquentCollection $leads)

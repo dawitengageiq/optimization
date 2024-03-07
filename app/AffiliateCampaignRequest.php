@@ -3,23 +3,22 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class AffiliateCampaignRequest extends Model
 {
-    protected $table = 'affiliate_campaign_requests';
-
     protected $fillable = [
         'campaign_id',
         'affiliate_id',
         'status',
     ];
 
-    public function campaign()
+    public function campaign(): BelongsTo
     {
         return $this->belongsTo(\App\Campaign::class);
     }
 
-    public function affiliate()
+    public function affiliate(): BelongsTo
     {
         return $this->belongsTo(\App\Affiliate::class);
     }

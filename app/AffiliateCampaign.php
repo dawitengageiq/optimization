@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class AffiliateCampaign extends Model
 {
@@ -25,22 +27,22 @@ class AffiliateCampaign extends Model
         }
     }
 
-    public function campaign()
+    public function campaign(): BelongsTo
     {
         return $this->belongsTo(\App\Campaign::class);
     }
 
-    public function affiliate()
+    public function affiliate(): BelongsTo
     {
         return $this->belongsTo(\App\Affiliate::class);
     }
 
-    public function linkOutCount()
+    public function linkOutCount(): HasOne
     {
         return $this->hasOne(LinkOutCount::class, 'campaign_id', 'campaign_id');
     }
 
-    public function leadCount()
+    public function leadCount(): HasOne
     {
         return $this->hasOne(LeadCount::class, 'campaign_id', 'campaign_id');
     }
@@ -94,7 +96,7 @@ class AffiliateCampaign extends Model
             }
         }
 
-        $query->where('campaigns.id', '!=', env('EIQ_IFRAME_ID', 0));
+        $query->where('campaigns.id', '!=', config('settings.eiq_iframe_id'));
 
         if ($order_col != null && $order_dir != null) {
             if ($order_col > -1) {

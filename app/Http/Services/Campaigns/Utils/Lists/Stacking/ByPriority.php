@@ -2,8 +2,6 @@
 
 namespace App\Http\Services\Campaigns\Utils\Lists\Stacking;
 
-use Config;
-
 class ByPriority implements \App\Http\Services\Campaigns\Utils\Lists\Contracts\StackContract
 {
     /*
@@ -87,7 +85,7 @@ class ByPriority implements \App\Http\Services\Campaigns\Utils\Lists\Contracts\S
      * Stack the qualified campaign
      */
     public function stackCampaign(
-         $campaign,
+        $campaign,
         int $pathType)
     {
         //Long Path
@@ -150,7 +148,7 @@ class ByPriority implements \App\Http\Services\Campaigns\Utils\Lists\Contracts\S
                     }
 
                     // If exit page, do random
-                    if ($type == array_search('Exit Page', Config::get('constants.CAMPAIGN_TYPES'))) {
+                    if ($type == array_search('Exit Page', config('constants.CAMPAIGN_TYPES'))) {
                         // Return random in array
                         return $this->exitPage->randomID($this->stack, $type);
                     }
@@ -191,7 +189,7 @@ class ByPriority implements \App\Http\Services\Campaigns\Utils\Lists\Contracts\S
      *
      * @var array
      */
-    protected function stackCampaignCoreg( $campaign)
+    protected function stackCampaignCoreg($campaign)
     {
         // Pre populate
         if (! array_key_exists($campaign->campaign_type, $this->stack)) {

@@ -3,8 +3,8 @@
 namespace App\Console\Commands;
 
 use App\Http\Services\Charts\CreateChartImage;
-use Cache;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Cache;
 
 class GenerateCharts extends Command
 {

@@ -4,9 +4,9 @@ namespace App\Providers;
 
 use App\Events\UserActionEvent;
 use App\User;
-use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
+
 class EventServiceProvider extends ServiceProvider
 {
     /**

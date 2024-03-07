@@ -7,8 +7,8 @@ use Carbon\Carbon;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
-use Log;
 
 class GenerateAffiliateExcelReport extends Job implements ShouldQueue
 {
@@ -55,7 +55,7 @@ class GenerateAffiliateExcelReport extends Job implements ShouldQueue
     public function mail()
     {
 
-        $emailNotificationRecipient = env('REPORTS_EMAIL_NOTIFICATION_RECIPIENT', 'marwilburton@hotmail.com');
+        $emailNotificationRecipient = config('settings.reports_email_notification_recipient');
 
         $diffInHours = $this->startLog->diffInMinutes($this->endLog).' minute/s';
         $path = $this->excel->getPathToFile();

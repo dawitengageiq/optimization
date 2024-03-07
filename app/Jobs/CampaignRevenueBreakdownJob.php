@@ -6,11 +6,11 @@ use App\AffiliateReport;
 use App\CampaignRevenueBreakdown;
 use App\LeadUser;
 use Carbon\Carbon;
-use DB;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Log;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class CampaignRevenueBreakdownJob extends Job implements ShouldQueue
 {
@@ -42,7 +42,7 @@ class CampaignRevenueBreakdownJob extends Job implements ShouldQueue
 
         $this->thirty_date = Carbon::parse($date)->subDay(30)->toDateString();
 
-        $this->all_inbox_id = env('ALL_INBOX_CAMPAIGN_ID', 286);
+        $this->all_inbox_id = config('settings.all_inbox_campaign_id');
 
         // Log::info($this->campaign);
         // Log::info($this->date);

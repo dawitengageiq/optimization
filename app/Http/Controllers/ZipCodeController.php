@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\ZipCode;
-use Cache;
-use DB;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Log;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class ZipCodeController extends Controller
 {

@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Affiliate;
 use App\AffiliateRevenueTracker;
-use DB;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Log;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 /**
  * This Controller is primarily used as ajax remote data provider for Select2 select drop downs.
@@ -58,7 +58,7 @@ class SearchController extends Controller
                 $query->where('company', 'LIKE', "%$term%")
                     ->orWhere('id', '=', $term);
             })
-            ->orderBy('name', 'asc')
+            ->orderBy('name')
             ->get();
 
         $responseData = [
@@ -82,7 +82,7 @@ class SearchController extends Controller
                 $query->where('company', 'LIKE', "%$term%")
                     ->orWhere('id', '=', $term);
             })
-            ->orderBy('name', 'asc')
+            ->orderBy('name')
             ->get();
 
         $responseData = [
@@ -141,7 +141,7 @@ class SearchController extends Controller
 
         $actives = AffiliateRevenueTracker::select('id', 'revenue_tracker_id')
             ->where('revenue_tracker_id', 'LIKE', '%'.$term.'%')
-            ->orderBy('revenue_tracker_id', 'asc')
+            ->orderBy('revenue_tracker_id')
             ->get();
 
         $responseData = [

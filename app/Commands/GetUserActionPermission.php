@@ -20,7 +20,7 @@ class GetUserActionPermission extends Command
     /**
      * Execute the command.
      */
-    public function handle() : int
+    public function handle(): int
     {
 
         if ($this->user == null || $this->user->role == null) {

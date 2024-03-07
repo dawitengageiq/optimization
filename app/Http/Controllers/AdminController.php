@@ -17,6 +17,7 @@ use App\Cron;
 use App\Events\UserActionEvent;
 use App\FilterType;
 use App\Http\Requests\AdminSettingRequest;
+use App\Http\Requests\GetDashboardGraphsStatisticsProcessorAdminRequest;
 use App\Http\Services\RejectedLeads as RejectedLeadsHandler;
 use App\Http\Services\UserActionLogger;
 use App\Lead;
@@ -31,22 +32,22 @@ use App\Path;
 use App\Setting;
 use App\User;
 use App\UserActionLog;
-use Bus;
-use Cache;
 use Carbon\Carbon;
-use DB;
 use Excel;
 use GetAdvertisersCompanyIDPair;
 use GetInternalAffiliatesCompanyIDPair;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Bus;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Request as Input;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\View\View;
-use Log;
-use Session;
-use Illuminate\Support\Facades\Storage;;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class AdminController extends Controller
@@ -431,6 +432,7 @@ class AdminController extends Controller
         //$affiliates = Affiliate::all();
         $states = config('constants.US_STATES_ABBR');
         $types = config('constants.AFFILIATE_TYPE');
+
         //return view('admin.affiliates',compact('affiliates','states'));
         return view('admin.affiliates', compact('states', 'types'));
     }
@@ -471,7 +473,7 @@ class AdminController extends Controller
         $advertisers = [null => ''] + Bus::dispatch(new GetAdvertisersCompanyIDPair());
 
         $affiliates = Affiliate::select('id', DB::raw('CONCAT(id, " - ",company) AS company_name'))
-            ->orderBy('id', 'asc')
+            ->orderBy('id')
             ->pluck('company_name', 'id')->toArray();
 
         $lead_types = config('constants.LEAD_CAP_TYPES');
@@ -479,7 +481,7 @@ class AdminController extends Controller
         $campaign_statuses = config('constants.CAMPAIGN_STATUS');
 
         $filter_types = FilterType::select('id', DB::raw('CONCAT(type, " - ",name) AS filter_name'))
-            ->orderBy('filter_name', 'asc')
+            ->orderBy('filter_name')
             ->pluck('filter_name', 'id')->toArray();
 
         $categories = Category::where('status', '=', 1)->pluck('name', 'id')->toArray();
@@ -543,7 +545,7 @@ class AdminController extends Controller
         session(['pors_default_benchmark' => $benchmarks]);
 
         //get campaigns per campaign type
-        $all_campaigns = Campaign::orderBy('name', 'ASC')->select('id', 'campaign_type', 'name', 'linkout_offer_id')->get();
+        $all_campaigns = Campaign::orderBy('name')->select('id', 'campaign_type', 'name', 'linkout_offer_id')->get();
         $campaigns = [];
         $linkout_campaigns = [];
         foreach ($all_campaigns as $c) {
@@ -1151,7 +1153,7 @@ class AdminController extends Controller
 
                 $sheet->loadView('admin.pageoptinrate_excel', compact('activeTypes', 'campaign_types', 'campaigns', 'benchmarks', 'statsData', 'no_leads', 'external_campaigns'));
             });
-        },$title.'.xls','downloads');
+        }, $title.'.xls', 'downloads');
 
         $file_path = storage_path('downloads').'/'.$title.'.xls';
 
@@ -1166,7 +1168,7 @@ class AdminController extends Controller
 
     public function clicksVsRegsStats(Request $request): View
     {
-        $affiliates = Affiliate::select('id', DB::raw('CONCAT(id, " - ", company) AS id_company'))->where('status', 1)->orderBy('id_company', 'asc')->pluck('id_company', 'id')->toArray();
+        $affiliates = Affiliate::select('id', DB::raw('CONCAT(id, " - ", company) AS id_company'))->where('status', 1)->orderBy('id_company')->pluck('id_company', 'id')->toArray();
 
         return view('admin.clicksvsregstats', compact('affiliates'));
     }
@@ -1518,7 +1520,7 @@ class AdminController extends Controller
                 ]);
 
             });
-        },$reportTitle.'.xls','downloads');
+        }, $reportTitle.'.xls', 'downloads');
 
         $file_path = storage_path('downloads').'/'.$reportTitle.'.xls';
 
@@ -1534,7 +1536,7 @@ class AdminController extends Controller
     public function pageViewStats(Request $request): View
     {
         $inputs = $request->all();
-        $affiliates = Affiliate::select('id', DB::raw('CONCAT(id, " - ", company) AS id_company'))->where('status', 1)->orderBy('id_company', 'asc')->pluck('id_company', 'id')->toArray();
+        $affiliates = Affiliate::select('id', DB::raw('CONCAT(id, " - ", company) AS id_company'))->where('status', 1)->orderBy('id_company')->pluck('id_company', 'id')->toArray();
 
         return view('admin.pageViewStats', compact('affiliates', 'inputs'));
     }
@@ -2045,7 +2047,7 @@ class AdminController extends Controller
                     $cells->setValignment('center');
                 });
             });
-        },$reportTitle.'.xls','downloads');
+        }, $reportTitle.'.xls', 'downloads');
 
         $file_path = storage_path('downloads').'/'.$reportTitle.'.xls';
 
@@ -2247,6 +2249,7 @@ class AdminController extends Controller
             'recordsFiltered' => $totalFiltered, // total number of records after searching, if there is no searching then totalFiltered = totalData
             'data' => $leadData,   // total data array
         ];
+
         // Log::info(DB::getQueryLog());
         return response()->json($responseData, 200);
     }
@@ -2470,6 +2473,7 @@ class AdminController extends Controller
             'totalRevenue' => sprintf('%.2f', $totalRevenue),
             'totalProfit' => sprintf('%.2f', $totalProfit),
         ];
+
         // Log::info(DB::getQueryLog());
         // Log::info(DB::connection('secondary')->getQueryLog());
         return response()->json($responseData, 200);
@@ -2679,7 +2683,7 @@ class AdminController extends Controller
                     ]);
                 }
             });
-        },$title.'.xls','downloads');
+        }, $title.'.xls', 'downloads');
 
         $file_path = storage_path('downloads').'/'.$title.'.xls';
 
@@ -2928,7 +2932,7 @@ class AdminController extends Controller
                     $totalProfit,
                 ]);
             });
-        },$title.'.xls','downloads');
+        }, $title.'.xls', 'downloads');
 
         $file_path = storage_path('downloads').'/'.$title.'.xls';
 
@@ -2948,7 +2952,7 @@ class AdminController extends Controller
      */
     public function revenueTrackers(): View
     {
-        $affiliates = Affiliate::select('id', DB::raw('CONCAT(id, " - ", company) AS id_company'))->where('status', 1)->orderBy('id_company', 'asc')->pluck('id_company', 'id')->toArray();
+        $affiliates = Affiliate::select('id', DB::raw('CONCAT(id, " - ", company) AS id_company'))->where('status', 1)->orderBy('id_company')->pluck('id_company', 'id')->toArray();
         $path_types = config('constants.PATH_TYPES');
         $campaignStatuses = config('constants.CAMPAIGN_STATUS');
 
@@ -2956,7 +2960,7 @@ class AdminController extends Controller
         $campaignTypes = config('constants.CAMPAIGN_TYPES');
         $campaignOrdering = [];
         $mixeCoregTypes = config('constants.MIXED_COREG_TYPE_FOR_ORDERING');
-        $campaigns = Campaign::select('id', 'name', 'campaign_type', 'status')->orderBy('priority', 'asc')->get();
+        $campaigns = Campaign::select('id', 'name', 'campaign_type', 'status')->orderBy('priority')->get();
         $default_order = [];
         $default_mixed_coreg_campaign_order = [];
         $exit_page_campaigns = [];
@@ -2991,11 +2995,11 @@ class AdminController extends Controller
         //$files =  Storage::disk('public')->has('images\gallery\logo-globaltestmarket-1.png');
         $images = Storage::disk('public')->files('images/gallery');
         //$images = File::allFiles('images\gallery');
-     
+
         $col_num = 4;
         $counter = 0;
         $row = 0;
-        $gallery = array();
+        $gallery = [];
         foreach ($images as $image) {
             $gallery[$row][] = $image;
             //echo "x";
@@ -3013,7 +3017,7 @@ class AdminController extends Controller
                 }
             }
         }
-        
+
         return view('admin.gallery', compact('gallery'));
     }
 
@@ -3051,6 +3055,7 @@ class AdminController extends Controller
             'f' => 'Filter',
             'a' => 'Acceptable',
         ];
+
         // return $settings;
         // Log::info(json_decode($settings['campaign_type_benchmarks']));
         return view('admin.settings', compact('settings', 'campaign_types', 'path_order', 'statuses', 'rejection_rates', 'campaign_type_limit', 'campaigns', 'high_rejection_type_names'));
@@ -3706,7 +3711,7 @@ class AdminController extends Controller
     /**
      * Get Received Statistics By Affiliate, Get Total Received Revenue Statistics & Total Survey Takers Per Revenue Tracker / Affiliate
      */
-    public function getDashboardGraphsStatisticsProcessor(Request $request): JsonResponse
+    public function getDashboardGraphsStatisticsProcessor(GetDashboardGraphsStatisticsProcessorAdminRequest $request): JsonResponse
     {
         Validator::extend('date_greater_equal', function ($attribute, $value, $parameters) {
             $max = Carbon::parse($value);
@@ -3716,10 +3721,6 @@ class AdminController extends Controller
         });
 
         // DB::enableQueryLog();
-        $this->validate($request, [
-            'from_date' => 'required_with:to_date|date',
-            'to_date' => 'required_with:from_date|date|date_greater_equal:from_date',
-        ]);
 
         $from_date = $request->input('from_date');
         $to_date = $request->input('to_date');
@@ -4071,7 +4072,7 @@ class AdminController extends Controller
                     $total_total,
                 ]);
             });
-        },$title.'.xls','downloads');
+        }, $title.'.xls', 'downloads');
 
         $file_path = storage_path('downloads').'/'.$title.'.xls';
 
@@ -4099,7 +4100,7 @@ class AdminController extends Controller
         $campaigns = Lead::select('campaign_id', DB::raw('COUNT(*) as total'))
             ->whereRaw('date(created_at) = "'.$the_date.'"')
             ->groupBy('campaign_id')
-            ->orderBy('total', 'desc')
+            ->orderByDesc('total')
             ->take(10)
             ->pluck('campaign_id')
             ->toArray();
@@ -4117,7 +4118,7 @@ class AdminController extends Controller
             $leads = $leads->orderByRaw('FIELD(leads.campaign_id, '.implode(',', $campaigns).')');
         }
 
-        $leads = $leads->orderBy('leads.lead_status', 'ASC')
+        $leads = $leads->orderBy('leads.lead_status')
             ->get()->toArray();
 
         $stats = [];
@@ -4270,7 +4271,7 @@ class AdminController extends Controller
                     ]);
                 }
             });
-        },$title.'.xls','downloads');
+        }, $title.'.xls', 'downloads');
 
         $file_path = storage_path('downloads').'/'.$title.'.xls';
 
@@ -4491,7 +4492,7 @@ class AdminController extends Controller
                     ]);
                 }
             });
-        },$title.'.xls','downloads');
+        }, $title.'.xls', 'downloads');
 
         $file_path = storage_path('downloads').'/'.$title.'.xls';
 
@@ -4513,7 +4514,7 @@ class AdminController extends Controller
     {
         // users
         $users = User::select('id', DB::raw('CONCAT(first_name, " ", middle_name, " ", last_name, " (",id,") ") AS full_name'))
-            ->orderBy('full_name', 'asc')
+            ->orderBy('full_name')
             ->pluck('full_name', 'id')
             ->toArray();
 

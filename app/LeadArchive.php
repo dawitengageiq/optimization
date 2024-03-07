@@ -3,8 +3,10 @@
 namespace App;
 
 use Carbon\Carbon;
-use DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\Facades\DB;
 
 class LeadArchive extends Model
 {
@@ -49,32 +51,32 @@ class LeadArchive extends Model
         $this->attributes['path_id'] = $value ?: null;
     }
 
-    public function campaign()
+    public function campaign(): BelongsTo
     {
         return $this->belongsTo(Campaign::class);
     }
 
-    public function affiliate()
+    public function affiliate(): BelongsTo
     {
         return $this->belongsTo(Affiliate::class);
     }
 
-    public function leadMessage()
+    public function leadMessage(): HasOne
     {
         return $this->hasOne(LeadMessageArchive::class, 'id');
     }
 
-    public function leadDataADV()
+    public function leadDataADV(): HasOne
     {
         return $this->hasOne(LeadDataAdvArchive::class, 'id');
     }
 
-    public function leadDataCSV()
+    public function leadDataCSV(): HasOne
     {
         return $this->hasOne(LeadDataCsvArchive::class, 'id');
     }
 
-    public function leadSentResult()
+    public function leadSentResult(): HasOne
     {
         return $this->hasOne(LeadSentResultArchive::class, 'id');
     }
@@ -170,7 +172,7 @@ class LeadArchive extends Model
         }
 
         //order by create date
-        $query->orderBy('leads_archive.created_at', 'desc');
+        $query->orderByDesc('leads_archive.created_at');
 
         if (isset($params['limit_rows']) && $params['limit_rows'] !== '') {
             $query->take($params['limit_rows']);
@@ -427,7 +429,7 @@ class LeadArchive extends Model
             $order_dir = $params['order'][0]['dir'];
             $query->orderBy($order_col, $order_dir);
         } else {
-            $query->orderBy('lead_date', 'desc');
+            $query->orderByDesc('lead_date');
         }
 
         if (isset($params['group_by']) && $params['group_by'] !== '') {

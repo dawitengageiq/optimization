@@ -2,8 +2,8 @@
 
 namespace App;
 
-use DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class ConsolidatedGraph extends Model
 {

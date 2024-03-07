@@ -8,8 +8,6 @@ class LinkOutCount extends Model
 {
     protected $connection;
 
-    protected $table = 'link_out_counts';
-
     protected $fillable = [
         'campaign_id',
         'affiliate_id',

@@ -9,7 +9,7 @@ class RandomProbability extends Command
     /**
      * Pass the weight and id to randomize probability
      */
-    public function __construct( $set = [])
+    public function __construct($set = [])
     {
         $this->set = $set;
     }

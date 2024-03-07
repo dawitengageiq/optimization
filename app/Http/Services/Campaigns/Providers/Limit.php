@@ -39,8 +39,7 @@ class Limit
     /**
      * Instantiate.
      *
-     *  @param  Illuminate\Foundation\Application  $app
-     *  @param  string  $mixedCoregLimit
+     * @param  Illuminate\Foundation\Application  $app
      */
     public function __construct(
         \Illuminate\Foundation\Application $app,
@@ -64,7 +63,7 @@ class Limit
      *
      * @param  array  $args
      */
-    public static function bind(...$args)
+    public static function bind(array ...$args)
     {
         new static(
             $args[0],
@@ -90,7 +89,7 @@ class Limit
      *
      * @return string
      */
-    protected function resolveLimitData()
+    protected function resolveLimitData(): string
     {
         $pathTypeLimit = $this->settings->pathTypeLimit();
 
@@ -131,8 +130,6 @@ class Limit
 
     /**
      * Set limits per campaign type
-     *
-     * @return string
      */
     protected function limit(): string
     {
@@ -157,10 +154,9 @@ class Limit
      * Iterate and apply limit
      *
      * @param  array  $mixedCoregs
-     * @param  string  $limit
      * @return yield
      */
-    protected function applyLimit($coregTypes, string $limit)
+    protected function applyLimit($coregTypes, string $limit): yield
     {
         // foreach($mixedCoregs as $mixedCoreg) {
         for ($i = 0; $i < count($coregTypes); $i++) {

@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Commands\GetUserActionPermission;
 use App\FilterType;
-use Bus;
-use DB;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Bus;
+use Illuminate\Support\Facades\DB;
 
 class FilterTypeController extends Controller
 {

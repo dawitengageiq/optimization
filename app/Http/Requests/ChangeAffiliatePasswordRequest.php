@@ -27,8 +27,15 @@ class ChangeAffiliatePasswordRequest extends FormRequest
         });
 
         return [
-            'existing_password' => 'required|old_password_match',
-            'password' => 'required|confirmed|min:5',
+            'existing_password' => [
+                'required',
+                'old_password_match',
+            ],
+            'password' => [
+                'required',
+                'confirmed',
+                'min:5',
+            ],
         ];
     }
 }

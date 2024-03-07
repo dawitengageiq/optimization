@@ -2,8 +2,6 @@
 
 namespace App\Http\Services\Charts;
 
-use Config;
-
 final class OLRChart extends Factories\ChartFactory implements \App\Http\Services\Contracts\ChartContract
 {
     use Utils\DummyData;
@@ -52,7 +50,7 @@ final class OLRChart extends Factories\ChartFactory implements \App\Http\Service
     public function __construct()
     {
         //Initial Vars
-        $this->config = Config::get('charts');
+        $this->config = config('charts');
     }
 
     /**

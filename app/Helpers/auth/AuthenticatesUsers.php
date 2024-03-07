@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
-use Log;
 
 trait AuthenticatesUsers
 {
@@ -40,7 +40,7 @@ trait AuthenticatesUsers
         // the login attempts for this application. We'll key this by the username and
         // the IP address of the client making these requests into this application.
         $throttles = $this->isUsingThrottlesLoginsTrait();
-        // 
+        //
         if ($throttles && $this->hasTooManyLoginAttempts($request)) {
             return $this->sendLockoutResponse($request);
         }
@@ -69,7 +69,7 @@ trait AuthenticatesUsers
             $this->incrementLoginAttempts($request);
         }
 
-        return redirect($this->loginPath())
+        return redirect()->to($this->loginPath())
             ->withInput($request->only($this->loginUsername(), 'remember'))
             ->withErrors([
                 //$this->loginUsername() => $this->getFailedLoginMessage(),
@@ -118,7 +118,7 @@ trait AuthenticatesUsers
     {
         Auth::logout();
 
-        return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/');
+        return redirect()->to(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/');
         //This is to force redirect to previous page and will eventually redirect to login page in order to prevent the cached internal pages to be viewed when user clicks back after logout.
         //return redirect()->back();
     }
@@ -149,5 +149,4 @@ trait AuthenticatesUsers
             ThrottlesLogins::class, class_uses_recursive(get_class($this))
         );
     }
-    
 }

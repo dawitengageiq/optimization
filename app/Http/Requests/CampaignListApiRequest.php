@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Http\Response;
-use View;
+use Illuminate\Support\Facades\View;
 
 class CampaignListApiRequest extends CampaignListRequest
 {

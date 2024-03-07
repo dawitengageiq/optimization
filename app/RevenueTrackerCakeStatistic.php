@@ -2,19 +2,13 @@
 
 namespace App;
 
-use DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\DB;
 
 class RevenueTrackerCakeStatistic extends Model
 {
     protected $connection;
-
-    /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
-    protected $table = 'revenue_tracker_cake_statistics';
 
     /**
      * The attributes that are mass assignable.
@@ -46,7 +40,7 @@ class RevenueTrackerCakeStatistic extends Model
         }
     }
 
-    public function affiliate()
+    public function affiliate(): BelongsTo
     {
         return $this->belongsTo(Affiliate::class);
     }
@@ -350,13 +344,13 @@ class RevenueTrackerCakeStatistic extends Model
 
         $query->groupBy('revenue_tracker_cake_statistics.affiliate_id', 'revenue_tracker_cake_statistics.revenue_tracker_id', 'revenue_tracker_cake_statistics.s1', 'revenue_tracker_cake_statistics.s2', 'revenue_tracker_cake_statistics.s3', 'revenue_tracker_cake_statistics.s4', 'revenue_tracker_cake_statistics.s5');
 
-        $query->orderBy('revenue_tracker_cake_statistics.affiliate_id', 'asc')
-            ->orderBy('revenue_tracker_cake_statistics.revenue_tracker_id', 'asc')
-            ->orderBy('revenue_tracker_cake_statistics.s1', 'asc')
-            ->orderBy('revenue_tracker_cake_statistics.s2', 'asc')
-            ->orderBy('revenue_tracker_cake_statistics.s3', 'asc')
-            ->orderBy('revenue_tracker_cake_statistics.s4', 'asc')
-            ->orderBy('revenue_tracker_cake_statistics.s5', 'asc');
+        $query->orderBy('revenue_tracker_cake_statistics.affiliate_id')
+            ->orderBy('revenue_tracker_cake_statistics.revenue_tracker_id')
+            ->orderBy('revenue_tracker_cake_statistics.s1')
+            ->orderBy('revenue_tracker_cake_statistics.s2')
+            ->orderBy('revenue_tracker_cake_statistics.s3')
+            ->orderBy('revenue_tracker_cake_statistics.s4')
+            ->orderBy('revenue_tracker_cake_statistics.s5');
 
         return $query;
     }
@@ -418,7 +412,7 @@ class RevenueTrackerCakeStatistic extends Model
 
         $query->groupBy('revenue_tracker_cake_statistics.affiliate_id', 'revenue_tracker_cake_statistics.revenue_tracker_id');
 
-        $query->orderBy('revenue_tracker_cake_statistics.affiliate_id', 'asc')
+        $query->orderBy('revenue_tracker_cake_statistics.affiliate_id')
             ->orderBy('revenue_tracker_cake_statistics.revenue_tracker_id', 'asc');
 
         return $query;

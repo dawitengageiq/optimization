@@ -7,7 +7,7 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract
@@ -17,13 +17,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     protected $connection;
 
     use Authenticatable, CanResetPassword;
-
-    /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
-    protected $table = 'users';
 
     /**
      * The attributes that are mass assignable.
@@ -104,12 +97,12 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     /**
      * check if user is affiliate
      */
-    public function affiliate()
+    public function affiliate(): BelongsTo
     {
         return $this->belongsTo(Affiliate::class);
     }
 
-    public function advertiser()
+    public function advertiser(): BelongsTo
     {
         return $this->belongsTo(Advertiser::class);
     }
@@ -117,7 +110,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     /**
      * check user's role
      */
-    public function role()
+    public function role(): BelongsTo
     {
         return $this->belongsTo(Role::class);
     }

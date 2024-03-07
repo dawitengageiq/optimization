@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Action;
 use App\Role;
-use DB;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
-use Log;
 
 class RoleController extends Controller
 {

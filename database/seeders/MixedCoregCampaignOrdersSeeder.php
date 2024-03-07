@@ -44,7 +44,7 @@ class MixedCoregCampaignOrdersSeeder extends Seeder
             foreach ($mixeCoregTypes as $key => $value) {
                 $query->orWhere('campaign_type', '=', $key);
             }
-        })->orderBy('priority', 'asc')->get();
+        })->orderBy('priority')->get();
 
         $defaultCampaignOrder = [];
 

@@ -6,11 +6,11 @@ use App\AffiliateReport;
 use App\Jobs\Job;
 use App\PrepopStatistic;
 use App\RevenueTrackerCakeStatistic;
-use DB;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Log;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class GeneratePrepopStatisticsV2 extends Job implements ShouldQueue
 {
@@ -21,10 +21,10 @@ class GeneratePrepopStatisticsV2 extends Job implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param $skip
-     * @param $take
-     * @param $dateFromStr
-     * @param $dateToStr
+     * @param  $skip
+     * @param  $take
+     * @param  $dateFromStr
+     * @param  $dateToStr
      */
     public function __construct($date)
     {

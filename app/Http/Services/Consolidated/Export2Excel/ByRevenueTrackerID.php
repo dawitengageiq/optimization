@@ -3,6 +3,7 @@
 namespace App\Http\Services\Consolidated\Export2Excel;
 
 use App\ConsolidatedGraph;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Consolidate graph class.
@@ -20,7 +21,7 @@ class ByRevenueTrackerID extends \App\Http\Services\Consolidated\GraphByRevenueT
 
         $this->records = $this->model
             ->select(
-                \DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d") as date'),
+                DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d") as date'),
                 'revenue_tracker_id',
                 // 's1',
                 // 's2',

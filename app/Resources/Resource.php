@@ -46,7 +46,7 @@ class Resource
     /**
      * Transform the resource into an HTTP response.
      */
-    public function response(int $statusCode = null): JsonResponse
+    public function response(?int $statusCode = null): JsonResponse
     {
         return $this->toResponse($statusCode);
     }
@@ -54,7 +54,7 @@ class Resource
     /**
      * Create an HTTP response that represents the object.
      */
-    public function toResponse(int $statusCode = null): JsonResponse
+    public function toResponse(?int $statusCode = null): JsonResponse
     {
         $this->request = Container::getInstance()->make('request');
 
@@ -124,7 +124,7 @@ class Resource
     /**
      * Calculate the appropriate status code for the response.
      */
-    protected function calculateStatus(int $statusCode = null): int
+    protected function calculateStatus(?int $statusCode = null): int
     {
         if ($statusCode) {
             return $statusCode;

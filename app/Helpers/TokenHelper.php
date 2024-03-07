@@ -5,7 +5,7 @@ namespace App\Helpers;
 use App\User;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Support\Facades\Crypt;
-use Log;
+use Illuminate\Support\Facades\Log;
 use Mockery\CountValidator\Exception;
 use PHPEncryptData\Simple;
 
@@ -77,8 +77,8 @@ class TokenHelper
             */
 
             //decrypt the token
-            $encryptionKey = env('ENCRYPTION_KEY');
-            $macKey = env('MAC_KEY');
+            $encryptionKey = config('settings.encryption_key');
+            $macKey = config('settings.mac_key');
 
             $encryptor = new Simple($encryptionKey, $macKey);
             $decryptedToken = $encryptor->decrypt($token);

@@ -3,10 +3,10 @@
 namespace App\Http\Requests;
 
 use App\User;
-use Auth;
 use Illuminate\Foundation\Http\FormRequest;
-use Session;
-use Validator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class ChangeContactPasswordRequest extends FormRequest
 {
@@ -51,8 +51,15 @@ class ChangeContactPasswordRequest extends FormRequest
         });
 
         return [
-            'old_password' => 'required|old_password_match',
-            'password' => 'required|confirmed|min:5',
+            'old_password' => [
+                'required',
+                'old_password_match',
+            ],
+            'password' => [
+                'required',
+                'confirmed',
+                'min:5',
+            ],
         ];
     }
 

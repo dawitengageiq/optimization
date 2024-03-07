@@ -2,19 +2,13 @@
 
 namespace App;
 
-use DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\DB;
 
 class UserActionLog extends Model
 {
     protected $connection;
-
-    /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
-    protected $table = 'user_action_logs';
 
     /**
      * The attributes that are mass assignable.
@@ -41,7 +35,7 @@ class UserActionLog extends Model
         }
     }
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
@@ -142,7 +136,7 @@ class UserActionLog extends Model
         }
 
         // always order the records by date descending
-        $query->orderBy('user_action_logs.created_at', 'desc');
+        $query->orderByDesc('user_action_logs.created_at');
 
         return $query;
     }
@@ -175,7 +169,7 @@ class UserActionLog extends Model
 
         $query->groupBy(['user_action_logs.created_at', 'reference_id', 'section_id', 'sub_section_id', 'user_id', 'type']);
 
-        $query->orderBy('user_action_logs.created_at', 'DESC');
+        $query->orderByDesc('user_action_logs.created_at');
 
         return $query;
     }

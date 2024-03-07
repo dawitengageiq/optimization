@@ -10,13 +10,11 @@ use App\Setting;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Route;
 use Illuminate\View\View;
 use RevenueTracker;
-use Route;
 use SurveyStack;
 use Zip;
-
-
 
 class CampaignListController extends Controller
 {
@@ -155,6 +153,7 @@ class CampaignListController extends Controller
             'ordering' => ($this->campaignList->stacking->hasOrder()) ? $this->campaignList->stacking->orderType().' ordering' : 'Proirity ordering',
             'limit' => $request->limitType().' limit',
         ];
+
         // \Log::info(\DB::getQueryLog());
         // \Log::info($arry);
         return $arry;
@@ -294,7 +293,7 @@ class CampaignListController extends Controller
     /**
      * Save user details
      *
-     * @param  bool  $toSave   whether to save the user details
+     * @param  bool  $toSave  whether to save the user details
      */
     protected function saveUserDetails(
         Services\Campaigns\Repos\Zip $zip,

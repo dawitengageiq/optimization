@@ -2,16 +2,16 @@
 
 namespace App\Console\Commands;
 
-use DB;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 //use App\Campaign;
 //use App\Lead;
 //use Carbon\Carbon;
-use Log;
+use Illuminate\Support\Facades\Log;
 //use App\CoregReport;
 //use App\AffiliateRevenueTracker;
 //use Maatwebsite\Excel\Facades\Excel;
-use Mail;
+use Illuminate\Support\Facades\Mail;
 
 class GetCoregPerformanceReport extends Command
 {

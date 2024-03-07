@@ -31,8 +31,6 @@ class RevenueTrackers
     /**
      * Set revenue tracker id
      * It will be used to query specific revenue tracker.
-     *
-     * @param  int  $revenueTRrackerID
      */
     public function setRevenueTRrackerID(int $revenueTRrackerID)
     {
@@ -42,8 +40,6 @@ class RevenueTrackers
     /**
      * Set the time
      * It will be used to query revenue tracker match on this time
-     *
-     * @param  int  $hour
      */
     public function setTime(int $hour)
     {
@@ -53,8 +49,6 @@ class RevenueTrackers
     /**
      * Set mixe coreg Type ids
      * Use to query related campaign view reports with campaign type id is in $mixeCoregTypes
-     *
-     * @param  array  $mixeCoregTypes
      */
     public function setMixeCoregTypeIDs(array $mixeCoregTypes)
     {
@@ -64,8 +58,6 @@ class RevenueTrackers
 
     /**
      * Check if there is revenue trackers
-     *
-     * @return bool
      */
     public function notExists(): bool
     {
@@ -78,8 +70,6 @@ class RevenueTrackers
 
     /**
      * Get all revenue trackers
-     *
-     * @return array
      */
     public function get(): array
     {
@@ -91,7 +81,7 @@ class RevenueTrackers
      *
      * @return yield
      */
-    public function getRevenueTracker()
+    public function getRevenueTracker(): yield
     {
         for ($i = 0; $i < count($this->revenueTrackers); $i++) {
             // Revenue tracker trait

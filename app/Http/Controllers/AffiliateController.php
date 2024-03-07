@@ -14,25 +14,28 @@ use App\ExternalPathAffiliateReport;
 use App\FilterType;
 use App\HandPAffiliateReport;
 use App\Http\Requests;
+use App\Http\Requests\AddWebsiteAffiliateRequest;
 use App\Http\Requests\AffiliateRequest;
 use App\Http\Requests\ChangeAffiliatePasswordRequest;
 use App\Http\Requests\ChangeContactPasswordRequest;
+use App\Http\Requests\EditWebsiteAffiliateRequest;
+use App\Http\Requests\UpdateAffiliateWebsitesPayoutsAffiliateRequest;
 use App\Http\Requests\UpdateContactInfoRequest;
 use App\Lead;
 use App\LeadSentResult;
 use App\Setting;
 use App\User;
 use App\UserMeta;
-use Bus;
 use Carbon\Carbon;
-use DB;
 use Excel;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Bus;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
-use Log;
-use Session;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class AffiliateController extends Controller
@@ -164,7 +167,7 @@ class AffiliateController extends Controller
         $length = $inputs['length'];
         $category = $inputs['datatable_category'];
         $status = $inputs['datatable_status'];
-        $eiq_iframe_id = env('EIQ_IFRAME_ID', 0);
+        $eiq_iframe_id = config('settings.eiq_iframe_id');
 
         $columns = [
             // datatable column index  => database column name
@@ -559,7 +562,7 @@ class AffiliateController extends Controller
             // Log::info($setting);
         }
 
-        return redirect('/affiliate/edit_account');
+        return redirect()->to('/affiliate/edit_account');
 
         // $responseData = [
         //     'id' => $user->id,
@@ -1111,13 +1114,8 @@ class AffiliateController extends Controller
         return response()->json($response, 200);
     }
 
-    public function addWebsite(Request $request)
+    public function addWebsite(AddWebsiteAffiliateRequest $request)
     {
-        $this->validate($request, [
-            'website_name' => 'required',
-            'website_payout' => 'required|numeric',
-            'revenue_tracker_id' => 'required|numeric',
-        ]);
 
         $inputs = $request->all();
         $status = 0;
@@ -1153,14 +1151,8 @@ class AffiliateController extends Controller
         return $website->id;
     }
 
-    public function editWebsite(Request $request)
+    public function editWebsite(EditWebsiteAffiliateRequest $request)
     {
-        $this->validate($request, [
-            'website_name' => 'required',
-            'website_payout' => 'required|numeric',
-            'revenue_tracker_id' => 'required|numeric',
-
-        ]);
 
         $inputs = $request->all();
 
@@ -1200,12 +1192,8 @@ class AffiliateController extends Controller
         return 1;
     }
 
-    public function updateAffiliateWebsitesPayouts(Request $request)
+    public function updateAffiliateWebsitesPayouts(UpdateAffiliateWebsitesPayoutsAffiliateRequest $request)
     {
-
-        $this->validate($request, [
-            'website_payout' => 'required|numeric',
-        ]);
 
         $inputs = $request->all();
 

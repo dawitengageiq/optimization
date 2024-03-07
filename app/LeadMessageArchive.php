@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class LeadMessageArchive extends Model
 {
@@ -15,7 +16,7 @@ class LeadMessageArchive extends Model
         'updated_at',
     ];
 
-    public function lead()
+    public function lead(): BelongsTo
     {
         return $this->belongsTo(LeadArchive::class);
     }

@@ -9,7 +9,7 @@
 namespace App\Helpers\Repositories;
 
 use Carbon\Carbon;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 class LeadCounts implements LeadCountsInterface
 {

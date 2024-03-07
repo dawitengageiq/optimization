@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Validator;
+use Illuminate\Support\Facades\Validator;
 
 class AdvertiserRequest extends FormRequest
 {
@@ -29,14 +29,37 @@ class AdvertiserRequest extends FormRequest
         });
 
         return [
-            'company' => 'required|max:100',
-            'website_url' => 'required|filter_validate_url',
-            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/',
-            'address' => 'required',
-            'city' => 'required',
-            'state' => 'required|alpha|max:2',
-            'zip' => 'required|numeric|min:5',
-            'status' => 'required',
+            'company' => [
+                'required',
+                'max:100',
+            ],
+            'website_url' => [
+                'required',
+                'filter_validate_url',
+            ],
+            'phone' => [
+                'required',
+                'regex:/^([0-9\s\-\+\(\)]*)$/',
+            ],
+            'address' => [
+                'required',
+            ],
+            'city' => [
+                'required',
+            ],
+            'state' => [
+                'required',
+                'alpha',
+                'max:2',
+            ],
+            'zip' => [
+                'required',
+                'numeric',
+                'min:5',
+            ],
+            'status' => [
+                'required',
+            ],
         ];
     }
 

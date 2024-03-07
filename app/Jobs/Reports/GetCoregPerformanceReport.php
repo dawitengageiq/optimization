@@ -11,14 +11,14 @@ use App\Jobs\Job;
 use App\Lead;
 use App\Setting;
 use Carbon\Carbon;
-use DB;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Log;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
-use Mail;
-use Storage;
 
 class GetCoregPerformanceReport extends Job implements ShouldQueue
 {
@@ -41,7 +41,7 @@ class GetCoregPerformanceReport extends Job implements ShouldQueue
             return;
         }
 
-        $lr_build = env('APP_BUILD', 'NLR');
+        $lr_build = config('settings.app_build');
         $date_yesterday = Carbon::yesterday()->toDateString();
 
         Log::info('Generating Report for '.$date_yesterday);
@@ -785,7 +785,7 @@ class GetCoregPerformanceReport extends Job implements ShouldQueue
             Log::info('Sending Email...');
             $excelAttachment = $file_path;
 
-            $emailNotificationRecipient = env('REPORTS_EMAIL_NOTIFICATION_RECIPIENT', 'marwilburton@hotmail.com');
+            $emailNotificationRecipient = config('settings.reports_email_notification_recipient');
 
             Mail::send('emails.coreg_report', ['url' => config('constants.APP_BASE_URL').'/admin/coregReports', 'date' => $date_yesterday],
                 function ($message) use ($excelAttachment, $lr_build, $emailNotificationRecipient, $report_recipients) {

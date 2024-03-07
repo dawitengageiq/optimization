@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class AffiliateWebsite extends Model
 {
@@ -11,7 +12,6 @@ class AffiliateWebsite extends Model
     /**
      * Table
      */
-    protected $table = 'affiliate_websites';
 
     /**
      * Editable fields
@@ -37,7 +37,7 @@ class AffiliateWebsite extends Model
     /**
      * Reltionship
      */
-    public function view()
+    public function view(): HasMany
     {
         return $this->hasMany(WebsitesViewTracker::class, 'id', 'website_id');
     }
@@ -45,7 +45,7 @@ class AffiliateWebsite extends Model
     /**
      * Reltionship
      */
-    public function dupe()
+    public function dupe(): HasMany
     {
         return $this->hasMany(WebsitesViewTrackerDuplicate::class, 'website_id', 'id');
     }

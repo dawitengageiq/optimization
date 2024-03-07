@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Request;
-use Validator;
+use Illuminate\Support\Facades\Validator;
 
 class CampaignFilterGroupFilterRequest extends FormRequest
 {
@@ -46,18 +46,51 @@ class CampaignFilterGroupFilterRequest extends FormRequest
         });
 
         return [
-            'filter_type' => 'required',
-            'value_type' => 'required',
-            'filter_group' => 'required',
-            'filter_value_01_text' => 'required_if:value_type,1',
-            'filter_value_01_select' => 'required_if:value_type,2|boolean',
-            'filter_value_01_date' => 'required_if:value_type,3|date',
-            'filter_value_02_date' => 'required_if:value_type,3|date|date_greater_equal:filter_value_01_date',
-            'filter_value_01_input' => 'required_if:value_type,4|numeric|',
-            'filter_value_02_input' => 'required_if:value_type,4|numeric|num_greater_than:filter_value_01_input',
-            'filter_value_01_array' => 'required_if:value_type,5',
-            'filter_value_01_time' => 'required_if:value_type,6',
-            'filter_value_02_time' => 'required_if:value_type,6|date_greater_equal:filter_value_01_time',
+            'filter_type' => [
+                'required',
+            ],
+            'value_type' => [
+                'required',
+            ],
+            'filter_group' => [
+                'required',
+            ],
+            'filter_value_01_text' => [
+                'required_if:value_type,1',
+            ],
+            'filter_value_01_select' => [
+                'required_if:value_type,2',
+                'boolean',
+            ],
+            'filter_value_01_date' => [
+                'required_if:value_type,3',
+                'date',
+            ],
+            'filter_value_02_date' => [
+                'required_if:value_type,3',
+                'date',
+                'date_greater_equal:filter_value_01_date',
+            ],
+            'filter_value_01_input' => [
+                'required_if:value_type,4',
+                'numeric',
+                '',
+            ],
+            'filter_value_02_input' => [
+                'required_if:value_type,4',
+                'numeric',
+                'num_greater_than:filter_value_01_input',
+            ],
+            'filter_value_01_array' => [
+                'required_if:value_type,5',
+            ],
+            'filter_value_01_time' => [
+                'required_if:value_type,6',
+            ],
+            'filter_value_02_time' => [
+                'required_if:value_type,6',
+                'date_greater_equal:filter_value_01_time',
+            ],
         ];
     }
 

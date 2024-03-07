@@ -13,7 +13,7 @@ use Curl\Curl;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 class SendLeadToAdvertiser extends Job implements ShouldQueue
 {

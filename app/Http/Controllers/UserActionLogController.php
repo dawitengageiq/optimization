@@ -8,6 +8,7 @@ use App\Resources\UserActionLogDetailsDatatable as ResourceDetalsCollection;
 use App\UserActionLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 class UserActionLogController extends Controller
 {
@@ -43,14 +44,14 @@ class UserActionLogController extends Controller
 
         $activities = $userLog
             ->select(
-                \DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d") as date, SUBSTRING_INDEX(summary, " ", 1) AS action'),
+                DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d") as date, SUBSTRING_INDEX(summary, " ", 1) AS action'),
                 ...$this->selection
             )
             ->with(['user' => function ($q) {
-                return $q->select('id', \DB::raw('CONCAT(first_name, " ", middle_name, " ", last_name) AS full_name'));
+                return $q->select('id', DB::raw('CONCAT(first_name, " ", middle_name, " ", last_name) AS full_name'));
             }])
             ->groupBy(['sub_section_id', 'reference_id', 'action', 'date'])
-            ->orderBy('created_at', 'desc')
+            ->orderByDesc('created_at')
             ->get();
 
         // Exception ...
@@ -91,7 +92,7 @@ class UserActionLogController extends Controller
         // Query the selection
         $query = $userLog
             ->select(
-                \DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d") as date, SUBSTRING_INDEX(summary, " ", 1) AS action'),
+                DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d") as date, SUBSTRING_INDEX(summary, " ", 1) AS action'),
                 ...$this->selection
             )
             ->where('section_id', $sectionID)
@@ -103,11 +104,11 @@ class UserActionLogController extends Controller
         // Take only the requeste from query
         $activities = $query
             ->with(['user' => function ($q) {
-                return $q->select('id', \DB::raw('CONCAT(first_name, " ", middle_name, " ", last_name) AS full_name'));
+                return $q->select('id', DB::raw('CONCAT(first_name, " ", middle_name, " ", last_name) AS full_name'));
             }])
             ->skip($request->get('start'))
             ->take($request->get('length'))
-            ->orderBy('created_at', 'desc')
+            ->orderByDesc('created_at')
             ->get();
 
         // Exception ...
@@ -139,7 +140,7 @@ class UserActionLogController extends Controller
         // Query the selection
         $query = $userLog
             ->select(
-                \DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d") as date, SUBSTRING_INDEX(summary, " ", 1) AS action'),
+                DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d") as date, SUBSTRING_INDEX(summary, " ", 1) AS action'),
                 ...$this->selection
             )
             ->where('section_id', $sectionID)
@@ -152,11 +153,11 @@ class UserActionLogController extends Controller
         // Take only the requeste from query
         $activities = $query
             ->with(['user' => function ($q) {
-                return $q->select('id', \DB::raw('CONCAT(first_name, " ", middle_name, " ", last_name) AS full_name'));
+                return $q->select('id', DB::raw('CONCAT(first_name, " ", middle_name, " ", last_name) AS full_name'));
             }])
             ->skip($request->get('start'))
             ->take($request->get('length'))
-            ->orderBy('created_at', 'desc')
+            ->orderByDesc('created_at')
             ->get();
 
         // Exception ...
@@ -184,18 +185,18 @@ class UserActionLogController extends Controller
         }
 
         $query = $userLog->select(
-            \DB::raw('SUBSTRING_INDEX(summary, " ", 1) AS action'),
+            DB::raw('SUBSTRING_INDEX(summary, " ", 1) AS action'),
             ...$this->detailSelection
         )
             ->where('section_id', $sectionID)
             ->where('reference_id', $referenceID)
-            ->where(\DB::raw('SUBSTRING_INDEX(summary, " ", 1)'), ucwords(strtolower($action)));
+            ->where(DB::raw('SUBSTRING_INDEX(summary, " ", 1)'), ucwords(strtolower($action)));
 
         if ($request->has('date')) {
             $query->whereDate('created_at', '=', $request->get('date'));
         }
 
-        $activities = $query->orderBy('created_at', 'desc')->get();
+        $activities = $query->orderByDesc('created_at')->get();
 
         // format records when not empty
         // $activities = tap(
@@ -226,7 +227,7 @@ class UserActionLogController extends Controller
     /**
      *  Check if the arguments is valid
      */
-    protected function isInvalid(array $args, string $url = null): bool
+    protected function isInvalid(array $args, ?string $url = null): bool
     {
         foreach ($args as $required => $method) {
             if (method_exists($this, camelCase($method))) {

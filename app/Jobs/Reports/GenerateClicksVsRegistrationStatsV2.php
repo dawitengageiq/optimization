@@ -8,13 +8,13 @@ use App\Jobs\Job;
 use App\LeadUser;
 use Carbon\Carbon;
 use Curl\Curl;
-use DB;
 use Exception;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
-use Log;
 
 class GenerateClicksVsRegistrationStatsV2 extends Job implements ShouldQueue
 {
@@ -399,7 +399,7 @@ class GenerateClicksVsRegistrationStatsV2 extends Job implements ShouldQueue
     {
 
         $diffInHours = $this->startLog->diffInMinutes($this->endLog).' minute/s';
-        $emailNotificationRecipient = env('REPORTS_EMAIL_NOTIFICATION_RECIPIENT', 'marwilburton@hotmail.com');
+        $emailNotificationRecipient = config('settings.reports_email_notification_recipient');
 
         //send email to Burt to notify that Affiliate Report Queue was successfully finished
         Mail::send('emails.clicks_vs_registrations',

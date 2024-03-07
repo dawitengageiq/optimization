@@ -2,14 +2,12 @@
 
 namespace App;
 
-use DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class PrepopStatistic extends Model
 {
     protected $connection;
-
-    protected $table = 'prepop_statistics';
 
     public $timestamps = false;
 

@@ -3,7 +3,7 @@
 namespace App\Jobs\Reordering\Helpers;
 
 use App\Lead;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class Leads
 {

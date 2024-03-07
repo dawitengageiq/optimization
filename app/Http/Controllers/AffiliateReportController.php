@@ -13,18 +13,18 @@ use App\InternalIframeAffiliateReport;
 use App\Jobs\GenerateAffiliateExcelReport;
 use App\RevenueTrackerCakeStatistic;
 use App\RevenueTrackerWebsiteViewStatistic;
-use Cache;
 use Carbon\Carbon;
 use Curl\Curl;
-use DB;
 use ErrorException;
-use File;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Log;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
-use Storage;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class AffiliateReportController extends Controller

@@ -3,17 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class CampaignTypeOrder extends Model
 {
     public $timestamps = false;
-
-    /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
-    protected $table = 'campaign_type_orders';
 
     /**
      * The attributes that are mass assignable.
@@ -27,7 +21,7 @@ class CampaignTypeOrder extends Model
         'reorder_reference_date',
     ];
 
-    public function affiliateRevenueTracker()
+    public function affiliateRevenueTracker(): HasOne
     {
         return $this->hasOne(AffiliateRevenueTracker::class, 'revenue_tracker_id', 'revenue_tracker_id');
     }

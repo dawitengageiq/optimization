@@ -2,13 +2,13 @@
 
 namespace App;
 
-use DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\DB;
 
 class CampaignViewReport extends Model
 {
-    protected $table = 'campaign_view_reports';
-
     protected $fillable = [
         'campaign_type_id',
         'campaign_id',
@@ -22,7 +22,7 @@ class CampaignViewReport extends Model
         's5',
     ];
 
-    public function campaign()
+    public function campaign(): BelongsTo
     {
         return $this->belongsTo(Campaign::class);
     }
@@ -32,7 +32,7 @@ class CampaignViewReport extends Model
         return $this->hasone(Campaign::class, 'id', 'campaign_id');
     }
 
-    public function affiliateCampaign()
+    public function affiliateCampaign(): HasMany
     {
         return $this->hasMany(AffiliateCampaign::class, 'campaign_id', 'campaign_id');
     }

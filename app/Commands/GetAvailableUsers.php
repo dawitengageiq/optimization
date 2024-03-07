@@ -3,7 +3,7 @@
 namespace App\Commands;
 
 use App\User;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class GetAvailableUsers extends Command
 {

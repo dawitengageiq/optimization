@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\BugReport;
+use App\Http\Requests\ReceiveBugReportRequest;
 use App\Jobs\Jira\CreateJIRAIssueTicket;
 use Carbon\Carbon;
-use File;
-use Illuminate\Http\Request;
-use Log;
-use Mail;
-use Storage;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 
-// use Validator;
+// use Illuminate\Support\Facades\Validator;
 
 class BugReportController extends Controller
 {
@@ -20,12 +20,8 @@ class BugReportController extends Controller
      *
      * @return int
      */
-    public function receive(Request $request)
+    public function receive(ReceiveBugReportRequest $request)
     {
-        $this->validate($request, [
-            'bug_summary' => 'required',
-            'bug_description' => 'required',
-        ]);
 
         // Log::info('Hello');
         // Log::info($request->all());

@@ -10,13 +10,13 @@ use App\Jobs\Job;
 use App\Lead;
 use App\RevenueTrackerWebsiteViewStatistic;
 use Carbon\Carbon;
-use DB;
 use ErrorException;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
-use Log;
 
 class IframeAffiliateReports extends Job implements ShouldQueue
 {
@@ -126,7 +126,7 @@ class IframeAffiliateReports extends Job implements ShouldQueue
         $endLog = Carbon::now();
         $diffInHours = $startLog->diffInHours($endLog).' hours';
 
-        $emailNotificationRecipient = env('REPORTS_EMAIL_NOTIFICATION_RECIPIENT', 'marwilburton@hotmail.com');
+        $emailNotificationRecipient = config('settings.reports_email_notification_recipient');
 
         //send email to Burt to notify that Internal Iframe Affiliate Report Queue was successfully finished
         Mail::send('emails.affiliate_report_execution_email',
@@ -145,7 +145,7 @@ class IframeAffiliateReports extends Job implements ShouldQueue
     private function cpaWallReports($affiliateID, $revenueTrackerID, $affiliateReportCurl)
     {
         //get the EngageIQ CPA WALL from ENV file
-        $cpaWALLEngageIQCampaignID = env('CPA_WALL_ENGAGEIQ_CAMPAIGN_ID', 0);
+        $cpaWALLEngageIQCampaignID = config('settings.cpa_wall_engageiq_campaign_id');
         $campaign = Campaign::find($cpaWALLEngageIQCampaignID);
         $engageiqSourceAffiliateSummaryCakeAPIBaseURL = config('constants.CAKE_API_SOURCE_AFFILIATE_SUMMARY_BASE_URL_V3');
 
@@ -159,7 +159,7 @@ class IframeAffiliateReports extends Job implements ShouldQueue
         }
 
         //get the CPA WALL Affluent ID from env file
-        $cpaWALLAffluentCampaignID = env('CPA_WALL_AFFLUENT_CAMPAIGN_ID', 0);
+        $cpaWALLAffluentCampaignID = config('settings.cpa_wall_affluent_campaign_id');
         $campaign = Campaign::find($cpaWALLAffluentCampaignID);
         $affluentSourceAffiliateSummaryCakeAPIBaseURL = config('constants.AFFLUENT_CAKE_API_CAMPAIGN_SUMMARY_BASE_URL_V6');
 
@@ -173,7 +173,7 @@ class IframeAffiliateReports extends Job implements ShouldQueue
         }
 
         //get the CPA WALL SBG ID from env file
-        $cpaWALLSBGCampaignID = env('CPA_WALL_SBG_CAMPAIGN_ID', 0);
+        $cpaWALLSBGCampaignID = config('settings.cpa_wall_sbg_campaign_id');
         $campaign = Campaign::find($cpaWALLSBGCampaignID);
         $sbgCampaignSummaryCakeAPIBaseURL = config('constants.SBG_CAKE_API_CAMPAIGN_SUMMARY_BASE_URL_V6');
 

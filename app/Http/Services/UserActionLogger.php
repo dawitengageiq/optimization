@@ -2,8 +2,9 @@
 
 namespace App\Http\Services;
 
-use Log;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+
 class UserActionLogger
 {
     protected $user;
@@ -12,7 +13,7 @@ class UserActionLogger
 
     public function __construct()
     {
-        $this->user = Auth::user() ;
+        $this->user = Auth::user();
         $this->section_types = config('constants.USER_ACTION_SECTION_TYPE');
     }
 
@@ -274,7 +275,7 @@ class UserActionLogger
     /**
      * Create user action log entry array
      *
-     * @param $user
+     * @param  $user
      */
     public function createUserActionLogEntry($settingCode, $oldValue, $newValue): ?array
     {

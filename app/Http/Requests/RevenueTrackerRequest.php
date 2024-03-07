@@ -20,21 +20,44 @@ class RevenueTrackerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'website' => 'required',
-            'affiliate' => 'required|integer',
-            'campaign' => 'required|integer',
-            'offer' => 'required|integer',
-            'revenue_tracker' => 'required|integer',
+            'website' => [
+                'required',
+            ],
+            'affiliate' => [
+                'required',
+                'integer',
+            ],
+            'campaign' => [
+                'required',
+                'integer',
+            ],
+            'offer' => [
+                'required',
+                'integer',
+            ],
+            'revenue_tracker' => [
+                'required',
+                'integer',
+            ],
             // 's1'                => 'integer',
             // 's2'                => 'integer',
             // 's3'                => 'integer',
             // 's4'                => 'integer',
             // 's5'                => 'integer',
-            'link' => 'required|url',
+            'link' => [
+                'required',
+                'url',
+            ],
             // 'notes'             => 'required',
-            'crg_limit' => 'integer',
-            'ext_limit' => 'integer',
-            'lnk_limit' => 'integer',
+            'crg_limit' => [
+                'integer',
+            ],
+            'ext_limit' => [
+                'integer',
+            ],
+            'lnk_limit' => [
+                'integer',
+            ],
         ];
     }
 }

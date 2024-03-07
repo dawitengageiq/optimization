@@ -3,12 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class CampaignView extends Model
 {
     protected $connection;
-
-    protected $table = 'campaign_views';
 
     protected $fillable = [
         'campaign_id',
@@ -31,12 +30,12 @@ class CampaignView extends Model
         }
     }
 
-    public function campaign()
+    public function campaign(): BelongsTo
     {
         return $this->belongsTo(Campaign::class);
     }
 
-    public function affiliate()
+    public function affiliate(): BelongsTo
     {
         return $this->belongsTo(Affiliate::class);
     }
@@ -74,7 +73,7 @@ class CampaignView extends Model
         }
 
         // order by create date
-        $query->orderBy('created_at', 'desc');
+        $query->orderByDesc('created_at');
 
         $query->groupBy('campaign_id', 'creative_id', 'path_id', 'affiliate_id');
 

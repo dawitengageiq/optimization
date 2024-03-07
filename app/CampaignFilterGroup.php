@@ -3,12 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class CampaignFilterGroup extends Model
 {
     protected $connection;
-
-    protected $table = 'campaign_filter_groups';
 
     protected $fillable = [
         'campaign_id',
@@ -25,12 +25,12 @@ class CampaignFilterGroup extends Model
         }
     }
 
-    public function campaign()
+    public function campaign(): BelongsTo
     {
         return $this->belongsTo(\App\Campaign::class, 'campaign_id', 'id');
     }
 
-    public function filters()
+    public function filters(): HasMany
     {
         return $this->hasMany(CampaignFilterGroupFilter::class);
     }

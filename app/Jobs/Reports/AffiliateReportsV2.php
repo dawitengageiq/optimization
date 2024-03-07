@@ -17,13 +17,13 @@ use App\Lead;
 use App\RevenueTrackerCakeStatistic;
 use Carbon\Carbon;
 use Curl\Curl;
-use DB;
 use ErrorException;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
-use Log;
 use PDOException;
 use Sabre\Xml\Reader;
 
@@ -249,31 +249,31 @@ class AffiliateReportsV2 extends Job implements ShouldQueue
     {
         $parser = new JSONParser();
 
-        $cpaWallSurveySpotCampaignID = env('CPA_WALL_SURVEY_SPOT_CAMPAIGN_ID', 0);
+        $cpaWallSurveySpotCampaignID = config('settings.cpa_wall_survey_spot_campaign_id');
         Log::info('---CPA WALL SURVEY SPOT---');
         Log::info('campaign_id: '.$cpaWallSurveySpotCampaignID);
         $cpaWallSurveySpotHelper = new CPAWallSurveySpotHelper($cpaWallSurveySpotCampaignID, Carbon::parse($this->dateFromStr), Carbon::parse($this->dateToStr), $parser);
         $cpaWallSurveySpotHelper->processConversions();
 
-        $externalPathTiburonCampaignID = env('EXTERNAL_PATH_TIBURON_CAMPAIGN_ID', 0);
+        $externalPathTiburonCampaignID = config('settings.external_path_tiburon_campaign_id');
         Log::info('---EXTERNAL PATH TIBURON CAMPAIGN_ID---');
         Log::info('campaign_id: '.$externalPathTiburonCampaignID);
         $externalPathTiburonHelper = new ExternalPathTiburonDataHelper($externalPathTiburonCampaignID, $this->dateFromStr, $this->dateFromStr, $parser);
         $externalPathTiburonHelper->getReports();
 
-        $externalPathRexAdsCampaignID = env('EXTERNAL_PATH_REXADS_CAMPAIGN_ID', 289);
+        $externalPathRexAdsCampaignID = config('settings.external_path_rexads_campaign_id');
         Log::info('---EXTERNAL PATH REXADS CAMPAIGN_ID---');
         Log::info('campaign_id: '.$externalPathRexAdsCampaignID);
         $externalRexAdsHelper = new ExternalPathRexadsHelper($externalPathRexAdsCampaignID, Carbon::parse($this->dateFromStr), Carbon::parse($this->dateFromStr), $parser);
         $externalRexAdsHelper->getReports();
 
-        $cpaWallEpollSurveysCampaignID = env('CPA_WALL_EPOLL_CAMPAIGN_ID', 285);
+        $cpaWallEpollSurveysCampaignID = config('settings.cpa_wall_epoll_campaign_id');
         Log::info('---CPA WALL EPOLL CAMPAIGN_ID---');
         Log::info('campaign_id: '.$cpaWallEpollSurveysCampaignID);
         $cpaWallEpollSurveysHelper = new CPAWallEpollSurveysHelper($cpaWallEpollSurveysCampaignID, Carbon::parse($this->dateFromStr), Carbon::parse($this->dateFromStr), $parser);
         $cpaWallEpollSurveysHelper->getStats();
 
-        $cpaWallJobToShopCampaignID = env('CPA_WALL_JOB_TO_SHOP_CAMPAIGN_ID', 297);
+        $cpaWallJobToShopCampaignID = config('settings.cpa_wall_job_to_shop_campaign_id');
         Log::info('---CPA WALL JOB TO SHOP CAMPAIGN_ID---');
         Log::info('campaign_id: '.$cpaWallJobToShopCampaignID);
         $cpaWallJobToShopHelper = new CPAWallJobToShopHelper($cpaWallJobToShopCampaignID, Carbon::parse($this->dateFromStr), Carbon::parse($this->dateFromStr), $parser);
@@ -297,7 +297,7 @@ class AffiliateReportsV2 extends Job implements ShouldQueue
         //clear first all the data
         //$affiliateReports = AffiliateReport::getReportsByRevenueTrackerAndDate($affiliateID,$revenueTrackerID,$this->dateFromStr)->get();
 
-        $cpaWALLCampaigns = env('CPA_WALL_CAMPAIGN_IDS');
+        $cpaWALLCampaigns = config('settings.cpa_wall_campaign_ids');
         $cpaWALLCampaigns = \GuzzleHttp\json_decode($cpaWALLCampaigns);
 
         $affiliateReports = AffiliateReport::getReportsByRevenueTrackerAndDate($affiliateID, $revenueTrackerID, $this->dateFromStr)
@@ -337,7 +337,7 @@ class AffiliateReportsV2 extends Job implements ShouldQueue
     private function cpaWallReports($affiliateID, $revenueTrackerID)
     {
         //get the EngageIQ CPA WALL from ENV file
-        $cpaWALLEngageIQCampaignID = env('CPA_WALL_ENGAGEIQ_CAMPAIGN_ID', 0);
+        $cpaWALLEngageIQCampaignID = config('settings.cpa_wall_engageiq_campaign_id');
         $campaign = Campaign::find($cpaWALLEngageIQCampaignID);
         $engageiqSourceAffiliateSummaryCakeAPIBaseURL = config('constants.CAKE_API_SOURCE_AFFILIATE_SUMMARY_BASE_URL_V3');
 
@@ -368,7 +368,7 @@ class AffiliateReportsV2 extends Job implements ShouldQueue
         */
 
         //get the CPA WALL SBG ID from env file
-        $cpaWALLSBGCampaignID = env('CPA_WALL_SBG_CAMPAIGN_ID', 0);
+        $cpaWALLSBGCampaignID = config('settings.cpa_wall_sbg_campaign_id');
         $campaign = Campaign::find($cpaWALLSBGCampaignID);
         $sbgCampaignSummaryCakeAPIBaseURL = config('constants.SBG_CAKE_API_CAMPAIGN_SUMMARY_BASE_URL_V6');
 

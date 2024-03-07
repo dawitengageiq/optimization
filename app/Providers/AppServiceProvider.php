@@ -3,19 +3,19 @@
 namespace App\Providers;
 
 use App\Http\Services\Consolidated\Providers\Graph;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Queue;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\ServiceProvider;
 use League\Flysystem\Filesystem;
 use League\Flysystem\Sftp\SftpAdapter;
-use Log;
-use Queue;
-use Storage;
 
 class AppServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap any application services.
      */
-    public function boot()
+    public function boot(): void
     {
         /*Queue::after(function ($connection, $job, $data) {
 
@@ -67,7 +67,7 @@ class AppServiceProvider extends ServiceProvider
             \App\Helpers\Repositories\SettingsInterface::class,
             \App\Helpers\Repositories\Settings::class);
 
-        if (env('APP_DEBUG') == true && env('APP_BUILD') == 'JTLR') {
+        if (config('app.debug') == true && config('settings.app_build') == 'JTLR') {
             $this->app->register(\Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class);
             $this->app->register(\Barryvdh\Debugbar\ServiceProvider::class);
 

@@ -27,7 +27,7 @@ final class ByCampaignType
      * @param  int  $revenueTrackerID
      * @param  int  $campaignTypID
      *
-     * @var  array
+     * @var array
      */
     public function get($revenueTrackerID, $campaignTypID)
     {

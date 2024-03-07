@@ -71,6 +71,7 @@ class LimitMixCoregByPathType
             if ($limit = $this->pathLimit[$coregType]) {
                 $collection = collect($stacks);
                 $collection->splice($limit);
+
                 // Now the limit was applied to per campaign type
                 return $collection->toArray();
             }

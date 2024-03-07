@@ -6,8 +6,8 @@ use App\LeadUserRequest;
 use App\Setting;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
-use Log;
 use Maatwebsite\Excel\Facades\Excel;
 
 class SendOptOutReportNotJob extends Command
@@ -277,7 +277,7 @@ class SendOptOutReportNotJob extends Command
 
         $report_recipients = $this->recipients;
 
-        $lr_build = env('APP_BUILD', 'NLR');
+        $lr_build = config('settings.app_build');
         Mail::send('emails.opt_out_report', ['date' => $date],
             function ($message) use ($excelAttachment, $lr_build, $report_recipients) {
 

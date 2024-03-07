@@ -3,12 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class CampaignConfig extends Model
 {
     protected $connection;
-
-    protected $table = 'campaign_configs';
 
     protected $fillable = [
         'id',
@@ -36,7 +35,7 @@ class CampaignConfig extends Model
         'email_body',
     ];
 
-    public function campaign()
+    public function campaign(): BelongsTo
     {
         return $this->belongsTo(\App\Campaign::class, 'id', 'id');
     }

@@ -3,22 +3,21 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ClientAdvertiserContact extends Model
 {
-    protected $table = 'client_advertiser_contacts';
-
     protected $fillable = [
         'user_id',
         'advertiser_id',
     ];
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(\App\User::class);
     }
 
-    public function advertiser()
+    public function advertiser(): BelongsTo
     {
         return $this->belongsTo(\App\Advertiser::class);
     }

@@ -8,8 +8,6 @@ class BannedAttempt extends Model
 {
     protected $connection;
 
-    protected $table = 'banned_attempts';
-
     protected $fillable = [
         'first_name',
         'last_name',

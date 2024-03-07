@@ -4,6 +4,8 @@ namespace App\Http\Services\Consolidated\Export2Excel;
 
 use App\ConsolidatedGraph;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Consolidate graph class.
@@ -18,9 +20,9 @@ class ByDateRangeMultiple extends \App\Http\Services\Consolidated\GraphByDateRan
      */
     public function getConsolidatedData()
     {
-        // \Log::info($this->columns);
-        // \DB::enableQueryLog();
-        // \DB::connection('secondary')->enableQueryLog();
+        // Log::info($this->columns);
+        // DB::enableQueryLog();
+        // DB::connection('secondary')->enableQueryLog();
         $selectQry = '*';
         if (count($this->columns)) {
             $select = $this->columns;
@@ -80,14 +82,14 @@ class ByDateRangeMultiple extends \App\Http\Services\Consolidated\GraphByDateRan
 
         $query = $this->model
             ->select(
-                \DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d") as date'),
+                DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d") as date'),
                 'revenue_tracker_id',
-                $this->subid_includes['s1'] ? 's1' : \DB::RAW('"" as s1'),
-                $this->subid_includes['s2'] ? 's2' : \DB::RAW('"" as s2'),
-                $this->subid_includes['s3'] ? 's3' : \DB::RAW('"" as s3'),
-                $this->subid_includes['s4'] ? 's4' : \DB::RAW('"" as s4'),
+                $this->subid_includes['s1'] ? 's1' : DB::RAW('"" as s1'),
+                $this->subid_includes['s2'] ? 's2' : DB::RAW('"" as s2'),
+                $this->subid_includes['s3'] ? 's3' : DB::RAW('"" as s3'),
+                $this->subid_includes['s4'] ? 's4' : DB::RAW('"" as s4'),
                 's5',
-                \DB::raw($selectQry)
+                DB::raw($selectQry)
             );
 
         if (count($this->revenueTrackerIDs)) {
@@ -124,12 +126,12 @@ class ByDateRangeMultiple extends \App\Http\Services\Consolidated\GraphByDateRan
 
         //RECORDS
         $records = $query
-            ->orderBy('revenue_tracker_id', 'ASC')
-            ->orderBy('date', 'ASC')
-            ->orderBy('s1', 'ASC')
-            ->orderBy('s2', 'ASC')
-            ->orderBy('s3', 'ASC')
-            ->orderBy('s4', 'ASC')
+            ->orderBy('revenue_tracker_id')
+            ->orderBy('date')
+            ->orderBy('s1')
+            ->orderBy('s2')
+            ->orderBy('s3')
+            ->orderBy('s4')
             ->get();
         $this->records = $records;
 
@@ -148,13 +150,13 @@ class ByDateRangeMultiple extends \App\Http\Services\Consolidated\GraphByDateRan
             $sumQuery->groupBy('s4');
         }
 
-        $this->subIDSummaryRecords = $sumQuery->orderBy('revenue_tracker_id', 'ASC')
-            ->orderBy('s1', 'ASC')
-            ->orderBy('s2', 'ASC')
-            ->orderBy('s3', 'ASC')
-            ->orderBy('s4', 'ASC')
+        $this->subIDSummaryRecords = $sumQuery->orderBy('revenue_tracker_id')
+            ->orderBy('s1')
+            ->orderBy('s2')
+            ->orderBy('s3')
+            ->orderBy('s4')
             ->get();
-        // \Log::info($this->subIDSummaryRecords);
+        // Log::info($this->subIDSummaryRecords);
 
         //TOTALS PER SUBID
         $addQuery = [
@@ -194,15 +196,15 @@ class ByDateRangeMultiple extends \App\Http\Services\Consolidated\GraphByDateRan
 
         $perQuery = $this->model
             ->select(
-                \DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d") as date'),
+                DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d") as date'),
                 'revenue_tracker_id',
-                $this->subid_includes['s1'] ? 's1' : \DB::RAW('"" as s1'),
-                $this->subid_includes['s2'] ? 's2' : \DB::RAW('"" as s2'),
-                $this->subid_includes['s3'] ? 's3' : \DB::RAW('"" as s3'),
-                $this->subid_includes['s4'] ? 's4' : \DB::RAW('"" as s4'),
+                $this->subid_includes['s1'] ? 's1' : DB::RAW('"" as s1'),
+                $this->subid_includes['s2'] ? 's2' : DB::RAW('"" as s2'),
+                $this->subid_includes['s3'] ? 's3' : DB::RAW('"" as s3'),
+                $this->subid_includes['s4'] ? 's4' : DB::RAW('"" as s4'),
                 's5',
-                \DB::raw($selectQry),
-                \DB::raw(implode(', ', $addQuery))
+                DB::raw($selectQry),
+                DB::raw(implode(', ', $addQuery))
             );
 
         if (count($this->revenueTrackerIDs)) {
@@ -236,17 +238,17 @@ class ByDateRangeMultiple extends \App\Http\Services\Consolidated\GraphByDateRan
         }
 
         $this->perSubIDRecords = $perQuery
-            ->orderBy('revenue_tracker_id', 'ASC')
-            ->orderBy('s1', 'ASC')
-            ->orderBy('s2', 'ASC')
-            ->orderBy('s3', 'ASC')
-            ->orderBy('s4', 'ASC')
-            ->orderBy('date', 'ASC')
+            ->orderBy('revenue_tracker_id')
+            ->orderBy('s1')
+            ->orderBy('s2')
+            ->orderBy('s3')
+            ->orderBy('s4')
+            ->orderBy('date')
             ->get();
         $this->perSubIDRecords;
 
-        // \Log::info(\DB::getQueryLog());
-        // \Log::info(\DB::connection('secondary')->getQueryLog());
+        // Log::info(DB::getQueryLog());
+        // Log::info(DB::connection('secondary')->getQueryLog());
     }
 
     public static function stringifyZero(&$item, $key)
@@ -257,6 +259,6 @@ class ByDateRangeMultiple extends \App\Http\Services\Consolidated\GraphByDateRan
         }
         $item = is_numeric($item) && ! in_array($key, $keys) ? (float) sprintf('%0.2f', $item) : (string) $item;
 
-        // \Log::info($key.' - '. $item);
+        // Log::info($key.' - '. $item);
     }
 }

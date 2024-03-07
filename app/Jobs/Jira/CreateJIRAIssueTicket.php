@@ -8,7 +8,7 @@ use GuzzleHttp\Exception\RequestException;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 class CreateJIRAIssueTicket extends Job implements ShouldQueue
 {
@@ -74,7 +74,7 @@ class CreateJIRAIssueTicket extends Job implements ShouldQueue
         $requestBody['fields']['assignee'] = ['name' => $this->assigneeUsername];
 
         //this will return the engageiq atlassian base url if it is not specified in env
-        $baseURI = env('JIRA_API_BASE_URL', 'https://engageiq.atlassian.net');
+        $baseURI = config('settings.jira_api_base_url');
 
         $reporterUsername = $this->jiraUserName;
         $reporterPassword = $this->jiraUserPassword;

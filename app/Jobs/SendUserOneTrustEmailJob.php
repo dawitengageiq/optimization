@@ -9,9 +9,10 @@ use Carbon\Carbon;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
-use Log;
 use Maatwebsite\Excel\Facades\Excel;
 
 class SendUserOneTrustEmailJob extends Job implements ShouldQueue
@@ -98,7 +99,7 @@ class SendUserOneTrustEmailJob extends Job implements ShouldQueue
                 }
 
                 $feedTitle = 'user_data';
-                \Config::set('excel.csv.enclosure', '');
+                Config::set('excel.csv.enclosure', '');
                 Excel::create($feedTitle, function ($excel) use ($leadUser, $hasInfo) {
                     $excel->sheet('data', function ($sheet) use ($leadUser, $hasInfo) {
                         //set up the title header row

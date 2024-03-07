@@ -3,18 +3,17 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class CampaignPostingInstruction extends Model
 {
-    protected $table = 'campaign_posting_instructions';
-
     protected $fillable = [
         'id',
         'sample_code',
         'posting_instruction',
     ];
 
-    public function campaign()
+    public function campaign(): BelongsTo
     {
         return $this->belongsTo(\App\Campaign::class, 'id', 'id');
     }

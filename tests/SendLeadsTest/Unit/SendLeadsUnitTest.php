@@ -55,7 +55,7 @@ class SendLeadsUnitTest extends BrowserKitTestCase
      * @test
      *
      * @return affiliate id
-     * integer
+     *                   integer
      */
     public function check_if_affiliate_return_id(): affiliate
     {
@@ -68,7 +68,7 @@ class SendLeadsUnitTest extends BrowserKitTestCase
     public function check_if_campaign_should_return_object(): object
     {
         $campaignCount = \App\LeadCount::where('campaign_id', $this->results['eiq_campaign_id'])->first();
-        if (null !== $campaignCount) {
+        if ($campaignCount !== null) {
             $this->assertIsObject($campaignCount);
         } else {
             $this->assertNull($campaignCount);
@@ -84,7 +84,7 @@ class SendLeadsUnitTest extends BrowserKitTestCase
     public function check_if_campaign_affiliate_should_return_object(): bool
     {
         $campaignAffiliateCount = \App\LeadCount::where('campaign_id', $this->results['eiq_campaign_id'])->where('affiliate_id', $this->results['eiq_affiliate_id'])->first();
-        if (null !== $campaignAffiliateCount) {
+        if ($campaignAffiliateCount !== null) {
             $this->assertIsObject($campaignAffiliateCount);
         } else {
             $this->assertNull($campaignAffiliateCount);
@@ -95,7 +95,7 @@ class SendLeadsUnitTest extends BrowserKitTestCase
      * @test
      *
      * @return bool
-     * silly very long method name, at least you got the idea
+     *              silly very long method name, at least you got the idea
      */
     public function capreach_should_return_true_if_campaign_counts_and_campaign_affiliate_counts_were_both_not_null_and_return_false_if_campaign_counts_and_campaign_affiliate_counts_were_both_null(): bool
     {
@@ -132,7 +132,7 @@ class SendLeadsUnitTest extends BrowserKitTestCase
         /**
          * check if $campaignCounts and $campaignAffiliateCounts true
          */
-        if (null === $campaignCounts || null === $campaignAffiliateCounts) {
+        if ($campaignCounts === null || $campaignAffiliateCounts === null) {
             $response = false;
         }
         /**

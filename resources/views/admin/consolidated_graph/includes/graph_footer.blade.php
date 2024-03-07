@@ -54,11 +54,11 @@ $(function () {
 
     @if($has_records)
     // If have records, process chart.
-    CHART.init({!! json_encode($colors) !!});
+    CHART.init(@json($colors));
                      // Graph data/ column
-    CHART.setGeneralSeries({!! json_encode($series) !!})
+    CHART.setGeneralSeries(@json($series))
                      // X-axis
-                     .setGeneralCategories({!! json_encode($categories) !!})
+                     .setGeneralCategories(@json($categories))
                      // Set the chart height
                      .setChartHeight('850px')
                      // /setChartHeight('588px')
@@ -71,7 +71,7 @@ $(function () {
                      // Set the legend title and the text to trigger open modal, note: open-legends is the class name that will trigger the open modal.
                      .setLegendTitleText('LEGENDS <span class="open-legends">( Descriptions )</span>')
                      // provide the list of legends were value was converted to percentage.
-                     .setLegendsValue2Percent({!! json_encode($value_to_percent) !!})
+                     .setLegendsValue2Percent(@json($value_to_percent))
                      // Set to show y axis label
                      .setYAxisLabelEnable(($('#show_yaxis').is(':checked')) ? true : false)
                      // Set the tooltip if shared to all column or not
@@ -86,7 +86,7 @@ $(function () {
                      .populateActiveChart(0);
 
     // Legends modal
-    COMMON.setLegends({!! json_encode($legends) !!})
+    COMMON.setLegends(@json($legends))
                       .createModal();
 
     @endif

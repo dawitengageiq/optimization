@@ -2,7 +2,7 @@
 
 namespace App\Http\Services\Charts\Utils;
 
-use File;
+use Illuminate\Support\Facades\File;
 
 trait JSonData
 {

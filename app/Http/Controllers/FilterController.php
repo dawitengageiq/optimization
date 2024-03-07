@@ -27,15 +27,15 @@ use App\Path;
 use App\Setting;
 use App\ZipCode;
 use App\ZipMaster;
-use Bus;
 use Carbon\Carbon;
 use Curl\Curl;
-use DB;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
-use Log;
+use Illuminate\Support\Facades\Bus;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
 use RandomProbability;
-use Session;
 
 class FilterController extends Controller
 {
@@ -63,6 +63,7 @@ class FilterController extends Controller
             ->whereBetween('created_at', [$start, $end])
             ->where('lead_status', 1)
             ->count();
+
         // Log::info('LEAD CAP:');
         // Log::info(DB::getQueryLog());
         return $lead;
@@ -120,7 +121,7 @@ class FilterController extends Controller
         /*** TIMER ***/ $time1 = microtime(true);
 
         /* GET ACTIVE CAMPAIGNS */
-        $campaigns = Campaign::where('status', '!=', 0)->where('status', '!=', 3)->orderBy('priority', 'asc')->get();
+        $campaigns = Campaign::where('status', '!=', 0)->where('status', '!=', 3)->orderBy('priority')->get();
 
         /*** TIMER ***/ $time2 = microtime(true);
 
@@ -676,7 +677,7 @@ class FilterController extends Controller
         /*** TIMER ***/ $time1 = microtime(true);
 
         /* GET ACTIVE CAMPAIGNS */
-        $campaigns = Campaign::where('status', '!=', 0)->where('status', '!=', 3)->orderBy('priority', 'asc')->get();
+        $campaigns = Campaign::where('status', '!=', 0)->where('status', '!=', 3)->orderBy('priority')->get();
 
         /*** TIMER ***/ $time2 = microtime(true);
 
@@ -1012,6 +1013,7 @@ class FilterController extends Controller
         $exec_time['check_cap'] = $lead_cap_total;
         $exec_time['check_campaign_filter'] = $campaign_filter_total;
         Log::info('/*** EXEC TIME: STACK PATH ***/', $exec_time);
+
         // Log::info(DB::getQueryLog());
         return $the_path;
     }
@@ -1081,14 +1083,14 @@ class FilterController extends Controller
 
         //Check Mixed Coreg Reorder Global Settings
         $mcReorder = false;
-        if (env('EXECUTE_REORDER_MIXED_COREG_CAMPAIGNS', false) || env('EXECUTE_DAILY_REORDER_MIXED_COREG_CAMPAIGNS', false)) {
+        if (config('settings.execute_reorder_mixed_coreg_campaigns') || config('settings.execute_daily_reorder_mixed_coreg_campaigns')) {
             if (isset($rs['mixed_coreg_campaign_reordering_status']) && $rs['mixed_coreg_campaign_reordering_status'] == 1) {
                 $mcReorder = true;
             }
         }
         //Check Campaign Type Reorder Global Settings
         $ctReorder = false;
-        if (env('EXECUTE_REORDER_CAMPAIGNS', false)) {
+        if (config('settings.execute_reorder_campaigns')) {
             if (isset($rs['campaign_reordering_status']) && $rs['campaign_reordering_status'] == 1) {
                 $ctReorder = true;
             }
@@ -1674,7 +1676,7 @@ class FilterController extends Controller
             ->select('id', 'name', 'advertiser_id', 'status', 'lead_cap_type', 'lead_cap_value', 'default_received', 'default_payout', 'priority', 'campaign_type', 'linkout_offer_id',
                 // DB::raw('(SELECT count FROM lead_counts WHERE campaign_id = campaigns.id AND affiliate_id IS NULL) AS lead_count'))
                 DB::raw('(CASE WHEN campaign_type = 5 THEN (SELECT count FROM link_out_counts WHERE campaign_id = campaigns.id AND affiliate_id IS NULL) ELSE (SELECT count FROM lead_counts WHERE campaign_id = campaigns.id AND affiliate_id IS NULL) END ) AS lead_count'))
-            ->orderBy('priority', 'ASC')
+            ->orderBy('priority')
             ->get();
 
         /*** For Testing ***/ /*** TIMER ***/ $time2 = microtime(true);
@@ -2192,7 +2194,7 @@ class FilterController extends Controller
                         ->whereNull('lead_counts.affiliate_id');
                 })
                     ->whereIn('campaigns.id', $inputs['the_filter_free_campaigns'])
-                    ->orderBy('priority', 'ASC')
+                    ->orderBy('priority')
                     ->select(['campaigns.id', 'campaigns.name', 'campaigns.lead_cap_type', 'campaigns.lead_cap_value', 'lead_counts.count'])
                     ->get();
             } else {
@@ -2207,7 +2209,7 @@ class FilterController extends Controller
                     })
                     ->whereNull('campaign_filter_groups.campaign_id')->where('campaigns.status', 2)
                     ->whereIn('campaigns.campaign_type', [1, 2, 8, 13])
-                    ->orderBy('priority', 'ASC')
+                    ->orderBy('priority')
                     ->limit($limit)
                     ->select(['campaigns.id', 'campaigns.name', 'campaigns.lead_cap_type', 'campaigns.lead_cap_value', 'lead_counts.count'])
                     ->get();
@@ -2324,7 +2326,7 @@ class FilterController extends Controller
         $campaigns = \App\Campaign::leftJoin('campaign_filter_groups', 'campaigns.id', '=', 'campaign_filter_groups.campaign_id')
             ->whereNull('campaign_filter_groups.campaign_id')->where('campaigns.status', 2)
             ->whereIn('campaigns.campaign_type', [1, 2, 8, 13])
-            ->orderBy('priority', 'ASC')
+            ->orderBy('priority')
             ->limit($limit)
             ->pluck('campaigns.id');
     }
@@ -2336,7 +2338,7 @@ class FilterController extends Controller
 
         return $campaigns = Campaign::leftJoin('campaign_creatives', 'campaign_creatives.id', '=', DB::RAW('(SELECT MIN(campaign_creatives.id) FROM campaign_creatives WHERE campaign_creatives.campaign_id = campaigns.id AND weight != 0)'))
             ->where('status', '!=', 0)->where('status', '!=', 3)->where('campaign_type', $ct_id)
-            ->orderBy('priority', 'ASC')
+            ->orderBy('priority')
             ->selectRaw('campaign_creatives.id as creative_id, campaigns.id')
             ->pluck('creative_id', 'campaigns.id');
     }
@@ -2344,7 +2346,7 @@ class FilterController extends Controller
     public function getAllCampaignsForQA(Request $request)
     {
         $campaigns = Campaign::leftJoin('campaign_creatives', 'campaign_creatives.id', '=', DB::RAW('(SELECT MIN(campaign_creatives.id) FROM campaign_creatives WHERE campaign_creatives.campaign_id = campaigns.id AND weight != 0)'))
-            ->orderBy('priority', 'ASC')
+            ->orderBy('priority')
             ->selectRaw('campaigns.id, status, campaign_type, campaign_creatives.id as creative_id, campaigns.name')
             ->get();
         $statuses = config('constants.CAMPAIGN_STATUS');
@@ -2429,14 +2431,14 @@ class FilterController extends Controller
 
         //Check Mixed Coreg Reorder Global Settings
         $mcReorder = false;
-        if (env('EXECUTE_REORDER_MIXED_COREG_CAMPAIGNS', false) || env('EXECUTE_DAILY_REORDER_MIXED_COREG_CAMPAIGNS', false)) {
+        if (config('settings.execute_reorder_mixed_coreg_campaigns') || config('settings.execute_daily_reorder_mixed_coreg_campaigns')) {
             if (isset($rs['mixed_coreg_campaign_reordering_status']) && $rs['mixed_coreg_campaign_reordering_status'] == 1) {
                 $mcReorder = true;
             }
         }
         //Check Campaign Type Reorder Global Settings
         $ctReorder = false;
-        if (env('EXECUTE_REORDER_CAMPAIGNS', false)) {
+        if (config('settings.execute_reorder_campaigns')) {
             if (isset($rs['campaign_reordering_status']) && $rs['campaign_reordering_status'] == 1) {
                 $ctReorder = true;
             }
@@ -2700,14 +2702,14 @@ class FilterController extends Controller
 
         //Check Mixed Coreg Reorder Global Settings
         $mcReorder = false;
-        if (env('EXECUTE_REORDER_MIXED_COREG_CAMPAIGNS', false) || env('EXECUTE_DAILY_REORDER_MIXED_COREG_CAMPAIGNS', false)) {
+        if (config('settings.execute_reorder_mixed_coreg_campaigns') || config('settings.execute_daily_reorder_mixed_coreg_campaigns')) {
             if (isset($rs['mixed_coreg_campaign_reordering_status']) && $rs['mixed_coreg_campaign_reordering_status'] == 1) {
                 $mcReorder = true;
             }
         }
         //Check Campaign Type Reorder Global Settings
         $ctReorder = false;
-        if (env('EXECUTE_REORDER_CAMPAIGNS', false)) {
+        if (config('settings.execute_reorder_campaigns')) {
             if (isset($rs['campaign_reordering_status']) && $rs['campaign_reordering_status'] == 1) {
                 $ctReorder = true;
             }
@@ -2877,6 +2879,7 @@ class FilterController extends Controller
         } else {
             $response = $contents;
         }
+
         // Log::info(DB::getQueryLog());
         return response()->json($response);
     }

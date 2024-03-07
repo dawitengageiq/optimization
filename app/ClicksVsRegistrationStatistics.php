@@ -3,15 +3,13 @@
 namespace App;
 
 use Carbon\Carbon;
-use DB;
 use Illuminate\Database\Eloquent\Model;
-use Log;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class ClicksVsRegistrationStatistics extends Model
 {
     protected $connection;
-
-    protected $table = 'clicks_vs_registration_statistics';
 
     public $timestamps = false;
 
@@ -220,7 +218,7 @@ class ClicksVsRegistrationStatistics extends Model
 
             if ($order_col != '') {
                 // this means there is no column ordering specified
-                $query->orderBy($columns[0], 'desc');
+                $query->orderByDesc($columns[0]);
                 $query->orderBy($order_col, $order_dir);
             }
         }

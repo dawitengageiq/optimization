@@ -6,6 +6,7 @@ use App\Http\Controllers\AffiliateController;
 use App\Http\Controllers\AffiliateReportController;
 use App\Http\Controllers\AffiliateRequestController;
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\BannedAttemptController;
 use App\Http\Controllers\BugReportController;
 use App\Http\Controllers\CakeConversionController;
@@ -45,8 +46,9 @@ use App\Http\Controllers\UserActionLogController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ZipCodeController;
 use App\Http\Controllers\ZipMasterController;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthenticationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,13 +62,9 @@ use App\Http\Controllers\AuthenticationController;
 */
 
 //home route
-Route::get('/', function () {
-    return view('welcome');
-})->middleware('auth', 'guest');
+Route::view('/', 'welcome')->middleware('auth', 'guest');
 
-Route::get('home', function () {
-    return view('welcome');
-})->middleware('auth', 'guest');
+Route::view('home', 'welcome')->middleware('auth', 'guest');
 
 Route::get('build_number', function () {
 
@@ -549,11 +547,11 @@ Route::get('admin/clickLogTracer/download', [ClickLogTraceInfoController::class,
 /**
  * authentication routes
  */
-Route::get('auth/login',[AuthenticationController::class,'getLogin']);
-Route::post('auth/login',[AuthenticationController::class,'postLogin']);
-Route::get('auth/logout',[AuthenticationController::class,'getLogout']);
+Route::get('auth/login', [AuthenticationController::class, 'getLogin']);
+Route::post('auth/login', [AuthenticationController::class, 'postLogin']);
+Route::get('auth/logout', [AuthenticationController::class, 'getLogout']);
 //Route::resource('auth','App\Http\Controllers\AuthenticationController');
-Route::resource('password','App\Http\Controllers\Auth\PasswordController');
+Route::resource('password', \App\Http\Controllers\Auth\PasswordController::class);
 
 Route::get('check-session', function () {
     return response()->json(['guest' => Auth::guest()]);
@@ -682,7 +680,7 @@ Route::get('kk', [AffiliateReportController::class, 'generateAffiliateReportXLS1
 Route::get('karla', function () {
     return \App\AffiliateRevenueTracker::pluck('campaign_id', 'revenue_tracker_id')->toArray();
     $date = '2022-03-28';
-    \DB::enableQueryLog();
+    DB::enableQueryLog();
     $rev_trackers = \App\AffiliateReport::leftJoin('revenue_tracker_cake_statistics', function ($q) {
         $q->on('revenue_tracker_cake_statistics.created_at', '=', 'affiliate_reports.created_at')
             ->where('revenue_tracker_cake_statistics.affiliate_id', '=', 'affiliate_reports.affiliate_id')
@@ -702,7 +700,7 @@ Route::get('karla', function () {
         ->select(DB::RAW('affiliate_reports.affiliate_id, affiliate_reports.revenue_tracker_id, affiliate_reports.s1, affiliate_reports.s2, affiliate_reports.s3, affiliate_reports.s4, affiliate_reports.s5, affiliate_revenue_trackers.campaign_id'))
         ->groupBy(DB::RAW('affiliate_reports.affiliate_id, affiliate_reports.revenue_tracker_id, affiliate_reports.s1, affiliate_reports.s2, affiliate_reports.s3, affiliate_reports.s4, affiliate_reports.s5'))
         ->get();
-    \Log::info(\DB::getQueryLog());
+    Log::info(DB::getQueryLog());
 
     return $rev_trackers;
     exit;
@@ -759,7 +757,7 @@ Route::get('karla', function () {
     return array_map('trim', explode(',', '1, 2,3 ,4'));
 
     return \App\Lead::whereBetween('created_at', ['2021-02-06 00:00:00', '2021-02-07 23:59:59'])
-        ->groupBy('campaign_id')->having('total', '>', 30)->select(['campaign_id', \DB::RAW('COUNT(*) as total')])
+        ->groupBy('campaign_id')->having('total', '>', 30)->select(['campaign_id', DB::RAW('COUNT(*) as total')])
         ->pluck('campaign_id')->toArray();
 
     $date = \Carbon\Carbon::parse('2022-01-13');
@@ -784,13 +782,13 @@ Route::get('karla', function () {
     return $match[1][count($match[1]) - 1];
 
     return;
-    \DB::connection('secondary')->enableQueryLog();
+    DB::connection('secondary')->enableQueryLog();
     $from = \Carbon\Carbon::yesterday()->startOfDay();
     $to = \Carbon\Carbon::yesterday()->endOfDay();
 
     return $leads = App\Lead::where('lead_status', 4)->whereBetween('created_at', [$from, $to])->update(['lead_status' => 3]);
 
-    return \DB::connection('secondary')->getQueryLog();
+    return DB::connection('secondary')->getQueryLog();
 
     return $campaigns = \App\Campaign::where('campaign_type', 5)->where('linkout_offer_id', '!=', 0)->where('linkout_cake_status', 1)->pluck('linkout_offer_id', 'id')->toArray();
 
@@ -811,7 +809,7 @@ Route::get('karla', function () {
         ->select(['affiliate_id', 'id'])
         ->pluck('affiliate_id', 'id');
 
-    \DB::enableQueryLog();
+    DB::enableQueryLog();
     $c = \App\Campaign::where(function ($query) {
         //    $query->where(function($q) {
         //     $q->whereNotIn('campaign_type', [4,5,6]);
@@ -823,7 +821,7 @@ Route::get('karla', function () {
             });
     })->get();
 
-    return \DB::getQueryLog();
+    return DB::getQueryLog();
 
     return \App\Campaign::where('linkout_offer_id', '>', 0)->pluck('id', 'linkout_offer_id')->toArray();
     // 	$a1=array("0"=>"red","1"=>"green");
@@ -973,7 +971,7 @@ Route::get('check', function () {
     $campaigns = DB::connection('nlr')->select('SELECT id, stack FROM campaign_contents WHERE id BETWEEN 1 AND 1000');
     $response = [];
     foreach ($campaigns as $campaign) {
-        \Log::info('Campaign: '.$campaign->id);
+        Log::info('Campaign: '.$campaign->id);
         if ($campaign->stack == '') {
             continue;
         }
@@ -1069,12 +1067,12 @@ Route::get('check', function () {
         }
         $content_stack = $newStr;
 
-        // \Log::info($content_stack);
+        // Log::info($content_stack);
         $hasCode = false;
         $phpStartCount = substr_count($content_stack, '<?php') + substr_count($content_stack, '<?=');
-        //\Log::info($phpStartCount);
+        //Log::info($phpStartCount);
         $phpEndCount = substr_count($content_stack, '?>');
-        //\Log::info($phpEndCount);
+        //Log::info($phpEndCount);
 
         if ($phpStartCount != $phpEndCount) {
             $hasCode = true;
@@ -1091,8 +1089,8 @@ Route::get('check', function () {
             } catch (\Throwable $e) {
                 $errors[] = 'PHP parsing error.';
                 $errors[] = $e;
-                \Log::info('EVAL ERROR');
-                \Log::info($e);
+                Log::info('EVAL ERROR');
+                Log::info($e);
             }
         }*/
 
@@ -1314,7 +1312,7 @@ Route::get('check1/{id}', function ($id) {
                 $content_stack = str_replace($short_code, $value, $content_stack);
             }
         }
-        // \Log::info($content_stack);
+        // Log::info($content_stack);
         $content_stack = preg_replace('~<!--(.*?)-->~s', '', $content_stack);
         $content_stack = str_replace('-->', '', $content_stack);
         $content_stack = str_replace('<--', '', $content_stack);
@@ -1330,12 +1328,12 @@ Route::get('check1/{id}', function ($id) {
             } catch (\Throwable $e) {
                 $errors[] = 'PHP parsing error';
                 $errors[] = $e;
-                \Log::info('EVAL ERROR');
-                \Log::info($e);
+                Log::info('EVAL ERROR');
+                Log::info($e);
             }
         }
 
-        // \Log::info($content_stack);
+        // Log::info($content_stack);
 
         // load HTML
         $document->loadHTML($content_stack);
@@ -1387,7 +1385,7 @@ Route::get('code_checker', function () {
     $campaigns = DB::connection('nlr')->select('SELECT id, stack FROM campaign_contents WHERE id BETWEEN 1 AND 1000');
     $response = [];
     foreach ($campaigns as $campaign) {
-        //\Log::info('Campaign: ' . $campaign->id);
+        //Log::info('Campaign: ' . $campaign->id);
         if ($campaign->stack == '') {
             continue;
         }
@@ -1484,12 +1482,12 @@ Route::get('code_checker', function () {
             $newStr .= $token;
         }
         $content_stack = $newStr;
-        // \Log::info($content_stack);
+        // Log::info($content_stack);
         $hasCode = false;
         $phpStartCount = substr_count($content_stack, '<?php') + substr_count($content_stack, '<?=');
-        //\Log::info($phpStartCount);
+        //Log::info($phpStartCount);
         $phpEndCount = substr_count($content_stack, '?>');
-        //\Log::info($phpEndCount);
+        //Log::info($phpEndCount);
 
         if ($phpStartCount != $phpEndCount) {
             $hasCode = true;
@@ -1506,8 +1504,8 @@ Route::get('code_checker', function () {
                 $hasCode = true;
                 $errors[] = 'PHP parsing error.';
                 $errors[] = $e;
-                // \Log::info('EVAL ERROR');
-                // \Log::info($e);
+                // Log::info('EVAL ERROR');
+                // Log::info($e);
             }
         }*/
 
@@ -1536,12 +1534,12 @@ Route::get('code_checker', function () {
                     $elements[$node->nodeName] += 1;
                 }
             }
-            //\Log::info($node->nodeName);
+            //Log::info($node->nodeName);
             //$names[] = $node->nodeName;
         }
 
         foreach ($elements as $element => $count) {
-            // \Log::info($element.' '.$count.': '.substr_count($content_stack, "<$element").' - '.substr_count($content_stack, "</$element>"));
+            // Log::info($element.' '.$count.': '.substr_count($content_stack, "<$element").' - '.substr_count($content_stack, "</$element>"));
             if (substr_count($content_stack, "</$element>") < $count) {
                 $errors[] = "Missing closing tag for <$element>";
             }

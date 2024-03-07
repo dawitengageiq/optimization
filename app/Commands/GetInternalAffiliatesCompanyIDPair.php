@@ -3,7 +3,7 @@
 namespace App\Commands;
 
 use App\Affiliate;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class GetInternalAffiliatesCompanyIDPair extends Command
 {

@@ -3,11 +3,10 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class CampaignNoTrackerArchive extends Model
 {
-    protected $table = 'campaign_no_tracker_archives';
-
     protected $fillable = [
         'campaign_id',
         'email',
@@ -17,7 +16,7 @@ class CampaignNoTrackerArchive extends Model
         'updated_at',
     ];
 
-    public function campaign()
+    public function campaign(): BelongsTo
     {
         return $this->belongsTo(Campaign::class);
     }

@@ -8,13 +8,13 @@ use App\AffiliateRevenueTracker;
 use App\AffiliateWebsite;
 use App\Campaign;
 use App\RevenueTrackerCakeStatistic;
-use DB;
-use File;
 use Illuminate\Http\JsonResponse;
-use Log;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 use PHPExcel_Cell_DataType;
-use Storage;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class AffiliateReportExcelGeneratorHelper
@@ -85,8 +85,8 @@ class AffiliateReportExcelGeneratorHelper
      * Generating of reports
      *
      * @param  Request  $request
-     * @param $affiliate_type
-     * @param $snapshot_period
+     * @param  $affiliate_type
+     * @param  $snapshot_period
      */
     public function generate(): JsonResponse
     {

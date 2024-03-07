@@ -86,9 +86,9 @@
 			var carousel = $('.carousel').carousel();
 
 			// global variables
-			var group_categories = {!! json_encode($highcharts['group_categories']) !!};
-			var group_series = {!! json_encode($highcharts['group_series']) !!};
-			var group_padding = {!! json_encode($highcharts['group_padding']) !!};
+			var group_categories = @json($highcharts['group_categories']);
+			var group_series = @json($highcharts['group_series']);
+			var group_padding = @json($highcharts['group_padding']);
 
 			// Function to determine the points width
 			var getPointsWidth = function () {
@@ -133,8 +133,8 @@
 			// Initiate highcharts and include some global variables
 			HIGHCHARTS.init()
 				.setBaseUrl($('#baseUrl').html())
-				.setActualRejection({!! json_encode($highcharts['actual_rejection']) !!})
-				.setColumnExtraDetails({!! json_encode($highcharts['column_extra_details']) !!});
+				.setActualRejection(@json($highcharts['actual_rejection']))
+				.setColumnExtraDetails(@json($highcharts['column_extra_details']));
 
 			// Create the first in group of charts
 			@if(array_key_exists('critical', $highcharts['group_series']))

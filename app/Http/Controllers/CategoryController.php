@@ -144,6 +144,6 @@ class CategoryController extends Controller
      */
     public function getCategories()
     {
-        return Category::where('status', '=', 1)->select('name', 'id')->orderBy('name', 'asc')->get()->toArray();
+        return Category::where('status', '=', 1)->select('name', 'id')->orderBy('name')->get()->toArray();
     }
 }

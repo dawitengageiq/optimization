@@ -8,12 +8,12 @@ use App\Jobs\Job;
 use App\PrepopStatistic;
 use Carbon\Carbon;
 use Curl\Curl;
-use DB;
 use Exception;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Log;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Sabre\Xml\Reader;
 
 class GeneratePrepopStatistics extends Job implements ShouldQueue
