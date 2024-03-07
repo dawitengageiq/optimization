@@ -14,18 +14,46 @@ class UpdateCampaignRequest extends FormRequest
     public function rules()
     {
         return [
-'name'             => 'required',
-'advertiser'       => 'required',
-'lead_type'        => 'required',
-'lead_value'       => 'required_unless:lead_type,0|numeric',
-'priority'         => 'required',
-'default_payout'   => 'sometimes|numeric',
-'default_received' => 'sometimes|numeric',
-'status'           => 'required',
-'campaign_type'    => 'required',
-'category'         => 'required',
-'linkout_offer_id' => 'required_if:campaign_type,5|numeric',
-'program_id'       => 'numeric',
+'name'             => [
+                'required',
+            ],
+'advertiser'       => [
+                'required',
+            ],
+'lead_type'        => [
+                'required',
+            ],
+'lead_value'       => [
+                'required_unless:lead_type,0',
+                'numeric',
+            ],
+'priority'         => [
+                'required',
+            ],
+'default_payout'   => [
+                'sometimes',
+                'numeric',
+            ],
+'default_received' => [
+                'sometimes',
+                'numeric',
+            ],
+'status'           => [
+                'required',
+            ],
+'campaign_type'    => [
+                'required',
+            ],
+'category'         => [
+                'required',
+            ],
+'linkout_offer_id' => [
+                'required_if:campaign_type,5',
+                'numeric',
+            ],
+'program_id'       => [
+                'numeric',
+            ],
 ];
     }
 }

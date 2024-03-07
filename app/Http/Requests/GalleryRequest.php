@@ -62,9 +62,17 @@ class GalleryRequest extends FormRequest
         });
 
         return [
-            'name' => 'required|image_exists:image,img_type',
-            'image' => 'required|check_if_valid_image_url:img_type',
-            'img_type' => 'required',
+            'name' => [
+                'required',
+                'image_exists:image,img_type',
+            ],
+            'image' => [
+                'required',
+                'check_if_valid_image_url:img_type',
+            ],
+            'img_type' => [
+                'required',
+            ],
         ];
     }
 

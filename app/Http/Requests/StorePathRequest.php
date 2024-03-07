@@ -14,8 +14,17 @@ class StorePathRequest extends FormRequest
     public function rules()
     {
         return [
-'name' => 'required|unique:paths|max:100',
-'url'  => 'required|unique:paths|max:255|url',
+'name' => [
+                'required',
+                'unique:paths',
+                'max:100',
+            ],
+'url'  => [
+                'required',
+                'unique:paths',
+                'max:255',
+                'url',
+            ],
 ];
     }
 }

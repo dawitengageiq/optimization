@@ -14,10 +14,18 @@ class EditCampaignHighPayingContentCampaignRequest extends FormRequest
     public function rules()
     {
         return [
-'name'        => 'required',
-'description' => 'required',
-'sticker'     => 'required',
-'deal'        => 'required',
+'name'        => [
+                'required',
+            ],
+'description' => [
+                'required',
+            ],
+'sticker'     => [
+                'required',
+            ],
+'deal'        => [
+                'required',
+            ],
 ];
     }
 }

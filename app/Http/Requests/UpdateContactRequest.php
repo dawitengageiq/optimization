@@ -42,14 +42,26 @@ class UpdateContactRequest extends FormRequest
         });
 
         return [
-            'affiliate_id' => 'affiliate_advertiser_chosen',
-            'advertiser_id' => 'affiliate_advertiser_chosen',
-            'first_name' => 'required',
+            'affiliate_id' => [
+                'affiliate_advertiser_chosen',
+            ],
+            'advertiser_id' => [
+                'affiliate_advertiser_chosen',
+            ],
+            'first_name' => [
+                'required',
+            ],
             //'middle_name' => 'required',
-            'last_name' => 'required',
+            'last_name' => [
+                'required',
+            ],
             'email' => $validationEmailRule,
-            'mobile_number' => 'numeric',
-            'phone_number' => 'numeric',
+            'mobile_number' => [
+                'numeric',
+            ],
+            'phone_number' => [
+                'numeric',
+            ],
             //'password' => 'required|confirmed|min:5' //this is commented because admin should not be able to change any user password
         ];
     }

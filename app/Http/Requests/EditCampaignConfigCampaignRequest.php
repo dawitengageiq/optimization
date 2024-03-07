@@ -14,13 +14,28 @@ class EditCampaignConfigCampaignRequest extends FormRequest
     public function rules()
     {
         return [
-'post_url'              => 'required|url',
-'post_header'           => 'required',
-'post_data'             => 'required',
-'post_data_map'         => 'required',
-'post_method'           => 'required',
-'post_success'          => 'required',
-'post_data_fixed_value' => 'required',
+'post_url'              => [
+                'required',
+                'url',
+            ],
+'post_header'           => [
+                'required',
+            ],
+'post_data'             => [
+                'required',
+            ],
+'post_data_map'         => [
+                'required',
+            ],
+'post_method'           => [
+                'required',
+            ],
+'post_success'          => [
+                'required',
+            ],
+'post_data_fixed_value' => [
+                'required',
+            ],
 ];
     }
 }

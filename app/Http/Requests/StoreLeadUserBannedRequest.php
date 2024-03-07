@@ -14,10 +14,20 @@ class StoreLeadUserBannedRequest extends FormRequest
     public function rules()
     {
         return [
-'first_name' => 'required',
-'last_name'  => 'required',
-'email'      => 'required_without_all:phone|email',
-'phone'      => 'required_without_all:email|numeric',
+'first_name' => [
+                'required',
+            ],
+'last_name'  => [
+                'required',
+            ],
+'email'      => [
+                'required_without_all:phone',
+                'email',
+            ],
+'phone'      => [
+                'required_without_all:email',
+                'numeric',
+            ],
 ];
     }
 }

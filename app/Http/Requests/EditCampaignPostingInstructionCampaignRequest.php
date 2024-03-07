@@ -14,8 +14,14 @@ class EditCampaignPostingInstructionCampaignRequest extends FormRequest
     public function rules()
     {
         return [
-'sample_code'         => 'required|max:65533',
-'posting_instruction' => 'required|max:65533',
+'sample_code'         => [
+                'required',
+                'max:65533',
+            ],
+'posting_instruction' => [
+                'required',
+                'max:65533',
+            ],
 ];
     }
 }

@@ -13,6 +13,9 @@ class StoreCategoryNoteRequest extends FormRequest
      */
     public function rules()
     {
-        return ['name' => 'required|unique:note_categories,name'];
+        return ['name' => [
+                'required',
+                'unique:note_categories,name',
+            ],];
     }
 }

@@ -13,6 +13,9 @@ class UpdateCategoryNoteRequest extends FormRequest
      */
     public function rules()
     {
-        return ['name' => 'required|unique:note_categories,name,' . $id];
+        return ['name' => [
+                'required',
+                'unique:note_categories,name,' . $id];
+            ],
     }
 }

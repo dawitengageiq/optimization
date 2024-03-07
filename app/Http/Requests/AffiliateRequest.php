@@ -29,15 +29,40 @@ class AffiliateRequest extends FormRequest
         });
 
         return [
-            'company' => 'required|max:100',
-            'website' => 'required|filter_validate_url',
-            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/',
-            'address' => 'required',
-            'city' => 'required',
-            'state' => 'required|alpha|max:2',
-            'zip' => 'required|numeric|min:5',
-            'status' => 'required',
-            'type' => 'required',
+            'company' => [
+                'required',
+                'max:100',
+            ],
+            'website' => [
+                'required',
+                'filter_validate_url',
+            ],
+            'phone' => [
+                'required',
+                'regex:/^([0-9\s\-\+\(\)]*)$/',
+            ],
+            'address' => [
+                'required',
+            ],
+            'city' => [
+                'required',
+            ],
+            'state' => [
+                'required',
+                'alpha',
+                'max:2',
+            ],
+            'zip' => [
+                'required',
+                'numeric',
+                'min:5',
+            ],
+            'status' => [
+                'required',
+            ],
+            'type' => [
+                'required',
+            ],
         ];
     }
 

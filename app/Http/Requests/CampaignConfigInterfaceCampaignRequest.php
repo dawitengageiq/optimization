@@ -14,9 +14,16 @@ class CampaignConfigInterfaceCampaignRequest extends FormRequest
     public function rules()
     {
         return [
-'post_url'     => 'required|url',
-'post_method'  => 'required',
-'post_success' => 'required',
+'post_url'     => [
+                'required',
+                'url',
+            ],
+'post_method'  => [
+                'required',
+            ],
+'post_success' => [
+                'required',
+            ],
 ];
     }
 }

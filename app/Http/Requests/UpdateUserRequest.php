@@ -30,13 +30,25 @@ class UpdateUserRequest extends FormRequest
         }
 
         return [
-            'first_name' => 'required',
-            'middle_name' => 'required',
-            'last_name' => 'required',
+            'first_name' => [
+                'required',
+            ],
+            'middle_name' => [
+                'required',
+            ],
+            'last_name' => [
+                'required',
+            ],
             'email' => $validationEmailRule,
-            'role_id' => 'required',
-            'mobile_number' => 'numeric',
-            'phone_number' => 'numeric',
+            'role_id' => [
+                'required',
+            ],
+            'mobile_number' => [
+                'numeric',
+            ],
+            'phone_number' => [
+                'numeric',
+            ],
             //'password' => 'required|confirmed|min:5' //this is commented because admin should not be able to change any user password
         ];
     }

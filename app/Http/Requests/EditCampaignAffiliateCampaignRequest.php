@@ -14,9 +14,15 @@ class EditCampaignAffiliateCampaignRequest extends FormRequest
     public function rules()
     {
         return [
-'edit_lead_cap_type'  => 'required',
-'edit_lead_cap_value' => 'numeric',
-'selected_affiliate'  => 'required',
+'edit_lead_cap_type'  => [
+                'required',
+            ],
+'edit_lead_cap_value' => [
+                'numeric',
+            ],
+'selected_affiliate'  => [
+                'required',
+            ],
 ];
     }
 }

@@ -31,8 +31,15 @@ class ChangePasswordRequest extends FormRequest
         });
 
         return [
-            'old_password' => 'required|old_password_match',
-            'password' => 'required|confirmed|min:5',
+            'old_password' => [
+                'required',
+                'old_password_match',
+            ],
+            'password' => [
+                'required',
+                'confirmed',
+                'min:5',
+            ],
         ];
     }
 

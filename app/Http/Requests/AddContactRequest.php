@@ -33,15 +33,35 @@ class AddContactRequest extends FormRequest
         });
 
         return [
-            'affiliate_id' => 'affiliate_advertiser_chosen',
-            'advertiser_id' => 'affiliate_advertiser_chosen',
-            'first_name' => 'required',
+            'affiliate_id' => [
+                'affiliate_advertiser_chosen',
+            ],
+            'advertiser_id' => [
+                'affiliate_advertiser_chosen',
+            ],
+            'first_name' => [
+                'required',
+            ],
             //'middle_name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required|email|unique:users',
-            'mobile_number' => 'numeric',
-            'phone_number' => 'numeric',
-            'password' => 'required|confirmed|min:5',
+            'last_name' => [
+                'required',
+            ],
+            'email' => [
+                'required',
+                'email',
+                'unique:users',
+            ],
+            'mobile_number' => [
+                'numeric',
+            ],
+            'phone_number' => [
+                'numeric',
+            ],
+            'password' => [
+                'required',
+                'confirmed',
+                'min:5',
+            ],
         ];
     }
 

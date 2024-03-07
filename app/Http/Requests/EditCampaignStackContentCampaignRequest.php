@@ -13,6 +13,9 @@ class EditCampaignStackContentCampaignRequest extends FormRequest
      */
     public function rules()
     {
-        return ['content' => 'required|max:65533'];
+        return ['content' => [
+                'required',
+                'max:65533',
+            ],];
     }
 }

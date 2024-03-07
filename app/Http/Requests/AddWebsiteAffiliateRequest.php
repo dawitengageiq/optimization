@@ -14,9 +14,17 @@ class AddWebsiteAffiliateRequest extends FormRequest
     public function rules()
     {
         return [
-'website_name'       => 'required',
-'website_payout'     => 'required|numeric',
-'revenue_tracker_id' => 'required|numeric',
+'website_name'       => [
+                'required',
+            ],
+'website_payout'     => [
+                'required',
+                'numeric',
+            ],
+'revenue_tracker_id' => [
+                'required',
+                'numeric',
+            ],
 ];
     }
 }
