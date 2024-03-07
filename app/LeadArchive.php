@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
@@ -49,32 +51,32 @@ class LeadArchive extends Model
         $this->attributes['path_id'] = $value ?: null;
     }
 
-    public function campaign()
+    public function campaign(): BelongsTo
     {
         return $this->belongsTo(Campaign::class);
     }
 
-    public function affiliate()
+    public function affiliate(): BelongsTo
     {
         return $this->belongsTo(Affiliate::class);
     }
 
-    public function leadMessage()
+    public function leadMessage(): HasOne
     {
         return $this->hasOne(LeadMessageArchive::class, 'id');
     }
 
-    public function leadDataADV()
+    public function leadDataADV(): HasOne
     {
         return $this->hasOne(LeadDataAdvArchive::class, 'id');
     }
 
-    public function leadDataCSV()
+    public function leadDataCSV(): HasOne
     {
         return $this->hasOne(LeadDataCsvArchive::class, 'id');
     }
 
-    public function leadSentResult()
+    public function leadSentResult(): HasOne
     {
         return $this->hasOne(LeadSentResultArchive::class, 'id');
     }

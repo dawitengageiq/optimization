@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Model;
 
 class MixedCoregCampaignOrder extends Model
@@ -15,7 +16,7 @@ class MixedCoregCampaignOrder extends Model
 
     public $timestamps = false;
 
-    public function affiliateRevenueTracker()
+    public function affiliateRevenueTracker(): HasOne
     {
         return $this->hasOne(AffiliateRevenueTracker::class, 'revenue_tracker_id', 'revenue_tracker_id');
     }

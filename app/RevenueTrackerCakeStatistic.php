@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 
@@ -39,7 +40,7 @@ class RevenueTrackerCakeStatistic extends Model
         }
     }
 
-    public function affiliate()
+    public function affiliate(): BelongsTo
     {
         return $this->belongsTo(Affiliate::class);
     }

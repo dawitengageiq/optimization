@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Model;
 
 class AffiliateCampaign extends Model
@@ -25,22 +27,22 @@ class AffiliateCampaign extends Model
         }
     }
 
-    public function campaign()
+    public function campaign(): BelongsTo
     {
         return $this->belongsTo(\App\Campaign::class);
     }
 
-    public function affiliate()
+    public function affiliate(): BelongsTo
     {
         return $this->belongsTo(\App\Affiliate::class);
     }
 
-    public function linkOutCount()
+    public function linkOutCount(): HasOne
     {
         return $this->hasOne(LinkOutCount::class, 'campaign_id', 'campaign_id');
     }
 
-    public function leadCount()
+    public function leadCount(): HasOne
     {
         return $this->hasOne(LeadCount::class, 'campaign_id', 'campaign_id');
     }

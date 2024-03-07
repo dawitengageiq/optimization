@@ -15,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-    public function boot()
+    public function boot(): void
     {
         /*Queue::after(function ($connection, $job, $data) {
 

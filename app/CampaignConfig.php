@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 
 class CampaignConfig extends Model
@@ -34,7 +35,7 @@ class CampaignConfig extends Model
         'email_body',
     ];
 
-    public function campaign()
+    public function campaign(): BelongsTo
     {
         return $this->belongsTo(\App\Campaign::class, 'id', 'id');
     }

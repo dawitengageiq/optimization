@@ -28,7 +28,7 @@ class RouteServiceProvider extends ServiceProvider
      * @param  \Illuminate\Routing\Router  $router
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         //
 
@@ -40,7 +40,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function map(Router $router)
+    public function map(Router $router): void
     {
         Route::middleware('web')
             ->group(base_path('routes/web.php'));

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 
 class ClientAffiliateContact extends Model
@@ -12,12 +13,12 @@ class ClientAffiliateContact extends Model
         'affiliate_id',
     ];
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(\App\User::class);
     }
 
-    public function affiliate()
+    public function affiliate(): BelongsTo
     {
         return $this->belongsTo(\App\Affiliate::class);
     }

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 
 class AffiliateCampaignRequest extends Model
@@ -13,12 +14,12 @@ class AffiliateCampaignRequest extends Model
         'status',
     ];
 
-    public function campaign()
+    public function campaign(): BelongsTo
     {
         return $this->belongsTo(\App\Campaign::class);
     }
 
-    public function affiliate()
+    public function affiliate(): BelongsTo
     {
         return $this->belongsTo(\App\Affiliate::class);
     }

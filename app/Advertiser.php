@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Model;
 
 class Advertiser extends Model
@@ -29,7 +30,7 @@ class Advertiser extends Model
         }
     }
 
-    public function user()
+    public function user(): HasOne
     {
         return $this->hasOne(\App\User::class, 'advertiser_id', 'id');
     }

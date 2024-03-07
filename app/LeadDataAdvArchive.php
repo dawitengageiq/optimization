@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 
 class LeadDataAdvArchive extends Model
@@ -13,7 +14,7 @@ class LeadDataAdvArchive extends Model
         'value',
     ];
 
-    public function lead()
+    public function lead(): BelongsTo
     {
         return $this->belongsTo(LeadArchive::class);
     }

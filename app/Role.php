@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
@@ -17,7 +18,7 @@ class Role extends Model
         'description',
     ];
 
-    public function actions()
+    public function actions(): BelongsToMany
     {
         return $this->belongsToMany(Action::class)->withPivot('id', 'role_id', 'action_id', 'permitted');
     }

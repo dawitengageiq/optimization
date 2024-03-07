@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 
 class CampaignFilterGroupFilter extends Model
@@ -30,12 +31,12 @@ class CampaignFilterGroupFilter extends Model
         }
     }
 
-    public function filter_group()
+    public function filter_group(): BelongsTo
     {
         return $this->belongsTo(\App\CampaignFilterGroup::class, 'campaign_filter_group_id', 'id');
     }
 
-    public function filter_type()
+    public function filter_type(): BelongsTo
     {
         return $this->belongsTo(\App\FilterType::class);
     }

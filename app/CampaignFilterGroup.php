@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Model;
 
 class CampaignFilterGroup extends Model
@@ -23,12 +25,12 @@ class CampaignFilterGroup extends Model
         }
     }
 
-    public function campaign()
+    public function campaign(): BelongsTo
     {
         return $this->belongsTo(\App\Campaign::class, 'campaign_id', 'id');
     }
 
-    public function filters()
+    public function filters(): HasMany
     {
         return $this->hasMany(CampaignFilterGroupFilter::class);
     }

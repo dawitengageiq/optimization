@@ -38,7 +38,7 @@ class CampaignViewReports
      *
      * @return yield
      */
-    protected function getCampaignViewReport()
+    protected function getCampaignViewReport(): yield
     {
         for ($i = 0; $i < count($this->campaignViewReports); $i++) {
             yield $this->campaignViewReports[$i];

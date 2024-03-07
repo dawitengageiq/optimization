@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 
 class ClickLogRevTrackers extends Model
@@ -21,7 +22,7 @@ class ClickLogRevTrackers extends Model
         }
     }
 
-    public function revenue_tracker()
+    public function revenue_tracker(): BelongsTo
     {
         return $this->belongsTo(AffiliateRevenueTracker::class, 'revenue_tracker_id', 'revenue_tracker_id');
     }

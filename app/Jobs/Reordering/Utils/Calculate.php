@@ -39,7 +39,7 @@ class Calculate
      *
      * @return yield
      */
-    protected function getCalculation($leads)
+    protected function getCalculation($leads): yield
     {
         for ($i = 0; $i < count($this->campaignOrder); $i++) {
             $campaignID = $this->campaignOrder[$i];

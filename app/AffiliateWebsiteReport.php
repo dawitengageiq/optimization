@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
@@ -34,7 +35,7 @@ class AffiliateWebsiteReport extends Model
         }
     }
 
-    public function website()
+    public function website(): BelongsTo
     {
         return $this->belongsTo(AffiliateWebsite::class, 'id', 'website_id');
     }

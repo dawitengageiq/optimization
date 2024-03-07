@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 
 class CampaignNoTrackerArchive extends Model
@@ -16,7 +17,7 @@ class CampaignNoTrackerArchive extends Model
         'updated_at',
     ];
 
-    public function campaign()
+    public function campaign(): BelongsTo
     {
         return $this->belongsTo(Campaign::class);
     }

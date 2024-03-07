@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 
 class CampaignFilter extends Model
@@ -21,12 +22,12 @@ class CampaignFilter extends Model
         'value_array',
     ];
 
-    public function campaign()
+    public function campaign(): BelongsTo
     {
         return $this->belongsTo(\App\Campaign::class);
     }
 
-    public function filter_type()
+    public function filter_type(): BelongsTo
     {
         return $this->belongsTo(\App\FilterType::class);
     }

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Model;
 
 class CampaignTypeOrder extends Model
@@ -20,7 +21,7 @@ class CampaignTypeOrder extends Model
         'reorder_reference_date',
     ];
 
-    public function affiliateRevenueTracker()
+    public function affiliateRevenueTracker(): HasOne
     {
         return $this->hasOne(AffiliateRevenueTracker::class, 'revenue_tracker_id', 'revenue_tracker_id');
     }

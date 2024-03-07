@@ -81,7 +81,7 @@ class RevenueTrackers
      *
      * @return yield
      */
-    public function getRevenueTracker()
+    public function getRevenueTracker(): yield
     {
         for ($i = 0; $i < count($this->revenueTrackers); $i++) {
             // Revenue tracker trait

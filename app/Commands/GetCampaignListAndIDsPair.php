@@ -20,7 +20,7 @@ class GetCampaignListAndIDsPair extends Command
     /**
      * Execute the command.
      */
-    public function handle()
+    public function handle(): int
     {
         // \Log::info('Here');
         // \Log::info($this->status);

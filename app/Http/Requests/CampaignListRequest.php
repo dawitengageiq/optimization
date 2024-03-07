@@ -87,7 +87,7 @@ class CampaignListRequest extends FormRequest
      * Determine if the user is authorized to make this request.
      * Since its a pre process, process some functions.
      */
-    public function authorize()
+    public function authorize(): bool
     {
         /*if ($this->incompleteRequestData()) {
             //return false;

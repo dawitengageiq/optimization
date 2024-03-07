@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 
 class CampaignTypeReport extends Model
@@ -18,7 +19,7 @@ class CampaignTypeReport extends Model
         's5',
     ];
 
-    public function revenueTracker()
+    public function revenueTracker(): BelongsTo
     {
         return $this->belongsTo(AffiliateRevenueTracker::class, 'revenue_tracker_id', 'revenue_tracker_id');
     }

@@ -63,7 +63,7 @@ class Limit
      *
      * @param  array  $args
      */
-    public static function bind(...$args)
+    public static function bind(array ...$args)
     {
         new static(
             $args[0],
@@ -89,7 +89,7 @@ class Limit
      *
      * @return string
      */
-    protected function resolveLimitData()
+    protected function resolveLimitData(): string
     {
         $pathTypeLimit = $this->settings->pathTypeLimit();
 
@@ -156,7 +156,7 @@ class Limit
      * @param  array  $mixedCoregs
      * @return yield
      */
-    protected function applyLimit($coregTypes, string $limit)
+    protected function applyLimit($coregTypes, string $limit): yield
     {
         // foreach($mixedCoregs as $mixedCoreg) {
         for ($i = 0; $i < count($coregTypes); $i++) {

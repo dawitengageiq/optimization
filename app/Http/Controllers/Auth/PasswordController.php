@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
@@ -28,7 +29,7 @@ class PasswordController extends Controller
         $this->middleware('guest');
     }
 
-    public function show()
+    public function show(): View
     {
         return view('auth.password');
     }

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
@@ -96,12 +97,12 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     /**
      * check if user is affiliate
      */
-    public function affiliate()
+    public function affiliate(): BelongsTo
     {
         return $this->belongsTo(Affiliate::class);
     }
 
-    public function advertiser()
+    public function advertiser(): BelongsTo
     {
         return $this->belongsTo(Advertiser::class);
     }
@@ -109,7 +110,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     /**
      * check user's role
      */
-    public function role()
+    public function role(): BelongsTo
     {
         return $this->belongsTo(Role::class);
     }

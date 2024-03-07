@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 
 class CampaignPostingInstruction extends Model
@@ -13,7 +14,7 @@ class CampaignPostingInstruction extends Model
         'posting_instruction',
     ];
 
-    public function campaign()
+    public function campaign(): BelongsTo
     {
         return $this->belongsTo(\App\Campaign::class, 'id', 'id');
     }

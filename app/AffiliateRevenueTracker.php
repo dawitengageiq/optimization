@@ -2,6 +2,9 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Model;
 
 class AffiliateRevenueTracker extends Model
@@ -59,7 +62,7 @@ class AffiliateRevenueTracker extends Model
         }
     }
 
-    public function campaignTypeOrders()
+    public function campaignTypeOrders(): HasMany
     {
         return $this->hasMany(CampaignTypeOrder::class, 'revenue_tracker_id', 'revenue_tracker_id');
     }
@@ -69,52 +72,52 @@ class AffiliateRevenueTracker extends Model
         return $this->hasone(MixedCoregCampaignOrder::class, 'revenue_tracker_id', 'revenue_tracker_id');
     }
 
-    public function affiliate()
+    public function affiliate(): BelongsTo
     {
         return $this->belongsTo(Affiliate::class);
     }
 
-    public function campaignViewReports()
+    public function campaignViewReports(): HasMany
     {
         return $this->hasMany(CampaignViewReport::class, 'revenue_tracker_id', 'revenue_tracker_id');
     }
 
-    public function affiliateCampaign()
+    public function affiliateCampaign(): HasMany
     {
         return $this->hasMany(AffiliateCampaign::class, 'affiliate_id', 'revenue_tracker_id');
     }
 
-    public function affiliateReport()
+    public function affiliateReport(): HasMany
     {
         return $this->hasMany(AffiliateReport::class, 'revenue_tracker_id', 'revenue_tracker_id');
     }
 
-    public function cpaInAffiliateReport()
+    public function cpaInAffiliateReport(): HasOne
     {
         return $this->hasOne(AffiliateReport::class, 'revenue_tracker_id', 'revenue_tracker_id');
     }
 
-    public function clicksVsRegistrationStatistics()
+    public function clicksVsRegistrationStatistics(): HasOne
     {
         return $this->hasOne(ClicksVsRegistrationStatistics::class, 'revenue_tracker_id', 'revenue_tracker_id');
     }
 
-    public function pageViewStatistics()
+    public function pageViewStatistics(): HasOne
     {
         return $this->hasOne(PageViewStatistics::class, 'revenue_tracker_id', 'revenue_tracker_id');
     }
 
-    public function revenueTrackerCakeStatistic()
+    public function revenueTrackerCakeStatistic(): HasOne
     {
         return $this->hasOne(RevenueTrackerCakeStatistic::class, 'revenue_tracker_id', 'revenue_tracker_id');
     }
 
-    public function leads()
+    public function leads(): HasMany
     {
         return $this->hasMany(Lead::class, 'affiliate_id', 'revenue_tracker_id');
     }
 
-    public function cakeRevenue()
+    public function cakeRevenue(): HasOne
     {
         return $this->hasOne(CakeRevenue::class, 'revenue_tracker_id', 'revenue_tracker_id');
     }

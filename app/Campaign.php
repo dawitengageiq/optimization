@@ -2,6 +2,10 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 
@@ -41,73 +45,73 @@ class Campaign extends Model
         }
     }
 
-    public function payouts()
+    public function payouts(): BelongsToMany
     {
         return $this->belongsToMany(Affiliate::class, 'campaign_payouts', 'campaign_id', 'affiliate_id')->withPivot('received');
     }
 
-    public function category()
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
 
-    public function advertiser()
+    public function advertiser(): BelongsTo
     {
         return $this->belongsTo(Advertiser::class);
     }
 
-    public function affiliates()
+    public function affiliates(): BelongsToMany
     {
         return $this->belongsToMany(Affiliate::class, 'affiliate_campaign', 'campaign_id', 'affiliate_id');
     }
 
-    public function affiliateCampaign()
+    public function affiliateCampaign(): HasMany
     {
         return $this->hasMany(AffiliateCampaign::class);
     }
 
-    public function firstAffiliateCampaign()
+    public function firstAffiliateCampaign(): HasOne
     {
         return $this->hasOne(AffiliateCampaign::class);
     }
 
-    public function leads()
+    public function leads(): HasMany
     {
         return $this->hasMany(Lead::class);
     }
 
     /*
-    public function leadCounts()
+    public function leadCounts(): HasMany
     {
         return $this->hasMany(LeadCount::class);
     }
     */
-    public function filters()
+    public function filters(): HasMany
     {
         return $this->hasMany(CampaignFilter::class);
     }
 
-    public function config()
+    public function config(): HasOne
     {
         return $this->hasOne(CampaignConfig::class, 'id', 'id');
     }
 
-    public function content()
+    public function content(): HasOne
     {
         return $this->hasOne(CampaignContent::class, 'id', 'id');
     }
 
-    public function noTracker()
+    public function noTracker(): HasOne
     {
         return $this->hasOne(CampaignNoTracker::class, 'campaign_id');
     }
 
-    public function linkOutCounts()
+    public function linkOutCounts(): HasOne
     {
         return $this->hasOne(LinkOutCount::class, 'campaign_id');
     }
 
-    public function leadCounts()
+    public function leadCounts(): HasMany
     {
         if (! in_array($this->campaign_type, [4, 5, 6])) {
             return $this->hasMany(LeadCount::class, 'campaign_id');
@@ -116,7 +120,7 @@ class Campaign extends Model
         }
     }
 
-    public function creatives()
+    public function creatives(): HasMany
     {
         return $this->hasMany(CampaignCreative::class, 'campaign_id');
     }
@@ -143,12 +147,12 @@ class Campaign extends Model
         $query->orderBy('id');
     }
 
-    public function filter_groups()
+    public function filter_groups(): HasMany
     {
         return $this->hasMany(CampaignFilterGroup::class)->where('status', 1);
     }
 
-    public function affiliateCampaignRequest()
+    public function affiliateCampaignRequest(): HasMany
     {
         return $this->hasMany(AffiliateCampaignRequest::class);
     }

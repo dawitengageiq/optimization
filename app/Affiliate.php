@@ -2,6 +2,9 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 
@@ -29,31 +32,31 @@ class Affiliate extends Model
         }
     }
 
-    // public function user(){
+    // public function user(): HasOne{
     //     return $this->belongsTo('App\User', 'id', 'id');
     // }
 
-    public function user()
+    public function user(): HasOne
     {
         return $this->hasOne(\App\User::class, 'affiliate_id', 'id');
     }
 
-    public function campaigns()
+    public function campaigns(): BelongsToMany
     {
         return $this->belongsToMany(\App\Campaign::class, 'affiliate_campaign', 'affiliate_id', 'campaign_id');
     }
 
-    public function revenueTracker()
+    public function revenueTracker(): HasMany
     {
         return $this->hasMany(AffiliateRevenueTracker::class);
     }
 
-    public function affiliateRevenueTracker()
+    public function affiliateRevenueTracker(): HasOne
     {
         return $this->hasOne(AffiliateRevenueTracker::class, 'revenue_tracker_id', 'id');
     }
 
-    public function oneRevenueTracker()
+    public function oneRevenueTracker(): HasOne
     {
         return $this->hasOne(AffiliateRevenueTracker::class);
     }
@@ -144,7 +147,7 @@ class Affiliate extends Model
         return $query;
     }
 
-    public function affiliateCampaignRequest()
+    public function affiliateCampaignRequest(): HasMany
     {
         return $this->hasMany(AffiliateCampaignRequest::class);
     }

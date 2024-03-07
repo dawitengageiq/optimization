@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 
 class UserMeta extends Model
@@ -27,7 +28,7 @@ class UserMeta extends Model
         }
     }
 
-    public function user()
+    public function user(): BelongsTo
     {
         $con = config('app.type') == 'reports' ? 'secondary' : 'mysql';
 

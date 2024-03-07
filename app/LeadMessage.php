@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 
 class LeadMessage extends Model
@@ -12,7 +13,7 @@ class LeadMessage extends Model
         'value',
     ];
 
-    public function lead()
+    public function lead(): BelongsTo
     {
         return $this->belongsTo(Lead::class);
     }
