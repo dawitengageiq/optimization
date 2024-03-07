@@ -8,8 +8,6 @@ class ClickLogRevTrackers extends Model
 {
     protected $connection;
 
-    protected $table = 'click_log_rev_trackers';
-
     protected $fillable = [
         'affiliate_id',
         'revenue_tracker_id',

@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class LeadSentResult extends Model
 {
-    protected $table = 'lead_sent_results';
 
     protected $fillable = [
         'id',

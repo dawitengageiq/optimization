@@ -10,8 +10,6 @@ class PageViewStatistics extends Model
 {
     protected $connection;
 
-    protected $table = 'page_view_statistics';
-
     public $timestamps = false;
 
     protected $fillable = [

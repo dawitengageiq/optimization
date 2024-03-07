@@ -9,8 +9,6 @@ class Campaign extends Model
 {
     protected $connection;
 
-    protected $table = 'campaigns';
-
     protected $fillable = [
         'name',
         'advertiser_id',

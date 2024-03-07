@@ -10,8 +10,6 @@ class Lead extends Model
 {
     protected $connection;
 
-    protected $table = 'leads';
-
     protected $fillable = [
         'campaign_id',
         'affiliate_id',

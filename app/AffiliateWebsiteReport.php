@@ -10,8 +10,6 @@ class AffiliateWebsiteReport extends Model
 {
     protected $connection;
 
-    protected $table = 'affiliate_website_reports';
-
     public $timestamps = false;
 
     protected $fillable = [

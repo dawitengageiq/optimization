@@ -12,13 +12,6 @@ class BugReport extends Model
     protected $connection;
 
     /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
-    protected $table = 'bug_reports';
-
-    /**
      * The attributes that are mass assignable.
      *
      * @var array

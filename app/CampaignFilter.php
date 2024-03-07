@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class CampaignFilter extends Model
 {
-    protected $table = 'campaign_filters';
 
     protected $fillable = [
         'campaign_id',

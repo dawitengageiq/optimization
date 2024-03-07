@@ -8,8 +8,6 @@ class LeadUser extends Model
 {
     protected $connection;
 
-    protected $table = 'lead_users';
-
     protected $fillable = [
         'first_name',
         'last_name',

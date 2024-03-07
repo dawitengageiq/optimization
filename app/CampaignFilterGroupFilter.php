@@ -8,8 +8,6 @@ class CampaignFilterGroupFilter extends Model
 {
     protected $connection;
 
-    protected $table = 'campaign_filter_group_filters';
-
     protected $fillable = [
         'campaign_filter_group_id',
         'filter_type_id',

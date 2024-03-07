@@ -8,8 +8,6 @@ class CoregReport extends Model
 {
     protected $connection;
 
-    protected $table = 'coreg_reports';
-
     public $timestamps = false;
 
     protected $fillable = [

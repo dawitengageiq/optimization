@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class MixedCoregCampaignOrder extends Model
 {
-    protected $table = 'mixed_coreg_campaign_orders';
 
     protected $fillable = [
         'revenue_tracker_id',

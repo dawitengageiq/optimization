@@ -8,8 +8,6 @@ class CampaignConfig extends Model
 {
     protected $connection;
 
-    protected $table = 'campaign_configs';
-
     protected $fillable = [
         'id',
         'post_url',

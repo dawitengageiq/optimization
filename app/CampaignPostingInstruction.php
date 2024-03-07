@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class CampaignPostingInstruction extends Model
 {
-    protected $table = 'campaign_posting_instructions';
 
     protected $fillable = [
         'id',

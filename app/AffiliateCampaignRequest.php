@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class AffiliateCampaignRequest extends Model
 {
-    protected $table = 'affiliate_campaign_requests';
 
     protected $fillable = [
         'campaign_id',

@@ -8,8 +8,6 @@ class UserMeta extends Model
 {
     protected $connection;
 
-    protected $table = 'user_metas';
-
     /**
      * The attributes that are mass assignable.
      *

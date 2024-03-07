@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class CampaignNoTrackerArchive extends Model
 {
-    protected $table = 'campaign_no_tracker_archives';
 
     protected $fillable = [
         'campaign_id',

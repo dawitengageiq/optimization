@@ -11,7 +11,6 @@ class AffiliateWebsite extends Model
     /**
      * Table
      */
-    protected $table = 'affiliate_websites';
 
     /**
      * Editable fields

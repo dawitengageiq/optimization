@@ -9,8 +9,6 @@ class PrepopStatistic extends Model
 {
     protected $connection;
 
-    protected $table = 'prepop_statistics';
-
     public $timestamps = false;
 
     protected $fillable = [

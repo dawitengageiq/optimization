@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class LeadMessage extends Model
 {
-    protected $table = 'lead_messages';
 
     protected $fillable = [
         'id',

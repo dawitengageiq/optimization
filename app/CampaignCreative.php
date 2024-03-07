@@ -8,8 +8,6 @@ class CampaignCreative extends Model
 {
     protected $connection;
 
-    protected $table = 'campaign_creatives';
-
     protected $fillable = [
         'weight',
         'campaign_id',

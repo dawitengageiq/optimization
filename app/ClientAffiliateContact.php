@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class ClientAffiliateContact extends Model
 {
-    protected $table = 'client_affiliate_contacts';
 
     protected $fillable = [
         'user_id',

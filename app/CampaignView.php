@@ -8,8 +8,6 @@ class CampaignView extends Model
 {
     protected $connection;
 
-    protected $table = 'campaign_views';
-
     protected $fillable = [
         'campaign_id',
         'affiliate_id',

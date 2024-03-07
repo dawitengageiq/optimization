@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class CampaignPartnerPayout extends Model
 {
-    protected $table = 'campaign_partner_payouts';
 
     protected $fillable = [
         'campaign_id',

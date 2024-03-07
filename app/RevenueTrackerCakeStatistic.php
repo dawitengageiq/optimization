@@ -10,13 +10,6 @@ class RevenueTrackerCakeStatistic extends Model
     protected $connection;
 
     /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
-    protected $table = 'revenue_tracker_cake_statistics';
-
-    /**
      * The attributes that are mass assignable.
      *
      * @var array

@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class CakeConversion extends Model
 {
-    protected $table = 'cake_conversions';
 
     protected $fillable = [
         'id',

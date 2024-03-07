@@ -11,8 +11,6 @@ class ClicksVsRegistrationStatistics extends Model
 {
     protected $connection;
 
-    protected $table = 'clicks_vs_registration_statistics';
-
     public $timestamps = false;
 
     protected $fillable = [

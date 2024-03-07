@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class ClientAdvertiserContact extends Model
 {
-    protected $table = 'client_advertiser_contacts';
 
     protected $fillable = [
         'user_id',

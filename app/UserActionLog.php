@@ -10,13 +10,6 @@ class UserActionLog extends Model
     protected $connection;
 
     /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
-    protected $table = 'user_action_logs';
-
-    /**
      * The attributes that are mass assignable.
      *
      * @var array

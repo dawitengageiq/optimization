@@ -9,8 +9,6 @@ class Affiliate extends Model
 {
     protected $connection;
 
-    protected $table = 'affiliates';
-
     protected $fillable = [
         'company',
         'website_url',

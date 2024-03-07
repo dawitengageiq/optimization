@@ -10,8 +10,6 @@ class ExternalPathAffiliateReport extends Model
 {
     protected $connection;
 
-    protected $table = 'external_path_affiliate_reports';
-
     public $timestamps = false;
 
     protected $fillable = [

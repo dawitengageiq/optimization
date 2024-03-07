@@ -12,13 +12,6 @@ class CampaignRevenueViewStatistic extends Model
     public $timestamps = false;
 
     /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
-    protected $table = 'campaign_revenue_view_statistics';
-
-    /**
      * The attributes that are mass assignable.
      *
      * @var array

@@ -8,8 +8,6 @@ class CampaignContent extends Model
 {
     protected $connection;
 
-    protected $table = 'campaign_contents';
-
     protected $fillable = [
         'id',
         'content',

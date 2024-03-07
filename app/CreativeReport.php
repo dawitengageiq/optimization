@@ -9,8 +9,6 @@ class CreativeReport extends Model
 {
     protected $connection;
 
-    protected $table = 'creative_reports';
-
     public $timestamps = false;
 
     protected $fillable = [

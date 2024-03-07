@@ -8,8 +8,6 @@ class Advertiser extends Model
 {
     protected $connection;
 
-    protected $table = 'advertisers';
-
     protected $fillable = [
         'company',
         'website_url',

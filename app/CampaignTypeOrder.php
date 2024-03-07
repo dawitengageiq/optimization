@@ -9,13 +9,6 @@ class CampaignTypeOrder extends Model
     public $timestamps = false;
 
     /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
-    protected $table = 'campaign_type_orders';
-
-    /**
      * The attributes that are mass assignable.
      *
      * @var array

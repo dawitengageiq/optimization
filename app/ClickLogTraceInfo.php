@@ -9,8 +9,6 @@ class ClickLogTraceInfo extends Model
 {
     protected $connection;
 
-    protected $table = 'click_log_trace_infos';
-
     protected $fillable = [
         'click_date',
         'click_id',

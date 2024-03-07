@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class CampaignTypeView extends Model
 {
-    protected $table = 'campaign_type_views';
 
     protected $fillable = [
         'campaign_type_id',

@@ -8,8 +8,6 @@ class AffiliateRevenueTracker extends Model
 {
     protected $connection;
 
-    protected $table = 'affiliate_revenue_trackers';
-
     protected $fillable = [
         'affiliate_id',
         'campaign_id',

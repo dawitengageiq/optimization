@@ -8,8 +8,6 @@ class PageView extends Model
 {
     protected $connection;
 
-    protected $table = 'page_views';
-
     public $timestamps = false;
 
     protected $fillable = [

@@ -8,8 +8,6 @@ class CampaignPayout extends Model
 {
     protected $connection;
 
-    protected $table = 'campaign_payouts';
-
     protected $fillable = [
         'campaign_id',
         'affiliate_id',
