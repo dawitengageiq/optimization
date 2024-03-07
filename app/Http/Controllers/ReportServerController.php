@@ -6,9 +6,9 @@ use App\Campaign;
 use App\Lead;
 use App\LeadArchive;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 use Excel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ReportServerController extends Controller
 {

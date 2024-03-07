@@ -12,12 +12,12 @@ class EditCampaignFilterGroupCampaignRequest extends FormRequest
     public function rules(): array
     {
         return [
-'filter_group_name'   => [
+            'filter_group_name' => [
                 'required',
             ],
-'filter_group_status' => [
+            'filter_group_status' => [
                 'required',
             ],
-];
+        ];
     }
 }

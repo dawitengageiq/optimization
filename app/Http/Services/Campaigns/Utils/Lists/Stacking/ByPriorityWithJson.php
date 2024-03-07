@@ -2,8 +2,6 @@
 
 namespace App\Http\Services\Campaigns\Utils\Lists\Stacking;
 
-use Illuminate\Support\Facades\Config;
-
 class ByPriorityWithJson
 {
     /*

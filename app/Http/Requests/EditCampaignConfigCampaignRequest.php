@@ -12,28 +12,28 @@ class EditCampaignConfigCampaignRequest extends FormRequest
     public function rules(): array
     {
         return [
-'post_url'              => [
+            'post_url' => [
                 'required',
                 'url',
             ],
-'post_header'           => [
+            'post_header' => [
                 'required',
             ],
-'post_data'             => [
+            'post_data' => [
                 'required',
             ],
-'post_data_map'         => [
+            'post_data_map' => [
                 'required',
             ],
-'post_method'           => [
+            'post_method' => [
                 'required',
             ],
-'post_success'          => [
+            'post_success' => [
                 'required',
             ],
-'post_data_fixed_value' => [
+            'post_data_fixed_value' => [
                 'required',
             ],
-];
+        ];
     }
 }

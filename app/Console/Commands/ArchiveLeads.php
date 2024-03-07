@@ -13,8 +13,8 @@ use App\LeadMessageArchive;
 use App\LeadSentResultArchive;
 use Illuminate\Console\Command;
 use Illuminate\Database\QueryException;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class ArchiveLeads extends Command
 {

@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class AffiliateApiConfigs extends Model
 {
-
     protected $fillable = [
         'affiliate_id',
         'campaign_type_order',

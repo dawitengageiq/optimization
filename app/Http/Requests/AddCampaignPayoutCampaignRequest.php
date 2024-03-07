@@ -12,20 +12,20 @@ class AddCampaignPayoutCampaignRequest extends FormRequest
     public function rules(): array
     {
         return [
-'this_campaign'     => [
+            'this_campaign' => [
                 'required',
             ],
-'payout_receivable' => [
-                'required',
-                'numeric',
-            ],
-'payout_payable'    => [
+            'payout_receivable' => [
                 'required',
                 'numeric',
             ],
-'payout'            => [
+            'payout_payable' => [
+                'required',
+                'numeric',
+            ],
+            'payout' => [
                 'required',
             ],
-];
+        ];
     }
 }

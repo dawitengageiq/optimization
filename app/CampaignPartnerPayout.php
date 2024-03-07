@@ -2,12 +2,11 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class CampaignPartnerPayout extends Model
 {
-
     protected $fillable = [
         'campaign_id',
         'affiliate_id',

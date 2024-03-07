@@ -2,20 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\EditCampaignFilterGroupCampaignRequest;
-use App\Http\Requests\AddCampaignFilterGroupCampaignRequest;
-use App\Http\Requests\EditCampaignPostingInstructionCampaignRequest;
-use App\Http\Requests\EditCampaignHighPayingContentCampaignRequest;
-use App\Http\Requests\EditCampaignStackContentCampaignRequest;
-use App\Http\Requests\EditCampaignLongContentCampaignRequest;
-use App\Http\Requests\CampaignConfigInterfaceCampaignRequest;
-use App\Http\Requests\EditCampaignConfigCampaignRequest;
-use App\Http\Requests\EditCampaignPayoutCampaignRequest;
-use App\Http\Requests\AddCampaignPayoutCampaignRequest;
-use App\Http\Requests\EditCampaignAffiliateCampaignRequest;
-use App\Http\Requests\AddCampaignAffiliateCampaignRequest;
-use App\Http\Requests\UpdateCampaignRequest;
-use App\Http\Requests\StoreCampaignRequest;
 use App\Affiliate;
 use App\AffiliateCampaign;
 use App\AffiliateCampaignRequest;
@@ -32,8 +18,22 @@ use App\CampaignPayout;
 use App\CampaignPostingInstruction;
 use App\Commands\GetUserActionPermission;
 use App\FilterType;
+use App\Http\Requests\AddCampaignAffiliateCampaignRequest;
+use App\Http\Requests\AddCampaignFilterGroupCampaignRequest;
+use App\Http\Requests\AddCampaignPayoutCampaignRequest;
+use App\Http\Requests\CampaignConfigInterfaceCampaignRequest;
 use App\Http\Requests\CampaignFilterGroupFilterRequest;
 use App\Http\Requests\CampaignFilterRequest;
+use App\Http\Requests\EditCampaignAffiliateCampaignRequest;
+use App\Http\Requests\EditCampaignConfigCampaignRequest;
+use App\Http\Requests\EditCampaignFilterGroupCampaignRequest;
+use App\Http\Requests\EditCampaignHighPayingContentCampaignRequest;
+use App\Http\Requests\EditCampaignLongContentCampaignRequest;
+use App\Http\Requests\EditCampaignPayoutCampaignRequest;
+use App\Http\Requests\EditCampaignPostingInstructionCampaignRequest;
+use App\Http\Requests\EditCampaignStackContentCampaignRequest;
+use App\Http\Requests\StoreCampaignRequest;
+use App\Http\Requests\UpdateCampaignRequest;
 use App\Http\Services;
 use App\Jobs\OfferGoesDownJob;
 use App\Jobs\UpdateCampaignPayoutJob;
@@ -41,16 +41,16 @@ use App\Jobs\UpdateCampaignTypeOrder;
 use App\Lead;
 use App\LeadCount;
 use App\LinkOutCount;
-use Illuminate\Support\Facades\Bus;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\File;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Bus;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
-use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CampaignController extends Controller
 {
@@ -855,7 +855,6 @@ class CampaignController extends Controller
     public function editCampaignAffiliate(EditCampaignAffiliateCampaignRequest $request)
     {
         // Log::info($request->all());
-
 
         // $affiliates = $request->input('select_affiliate');
         $affiliates = $request->input('selected_affiliate');

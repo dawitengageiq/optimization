@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UpdateAffiliateWebsitesPayoutsAffiliateRequest;
-use App\Http\Requests\EditWebsiteAffiliateRequest;
-use App\Http\Requests\AddWebsiteAffiliateRequest;
 use App\Advertiser;
 use App\Affiliate;
 use App\AffiliateRevenueTracker;
@@ -17,25 +14,28 @@ use App\ExternalPathAffiliateReport;
 use App\FilterType;
 use App\HandPAffiliateReport;
 use App\Http\Requests;
+use App\Http\Requests\AddWebsiteAffiliateRequest;
 use App\Http\Requests\AffiliateRequest;
 use App\Http\Requests\ChangeAffiliatePasswordRequest;
 use App\Http\Requests\ChangeContactPasswordRequest;
+use App\Http\Requests\EditWebsiteAffiliateRequest;
+use App\Http\Requests\UpdateAffiliateWebsitesPayoutsAffiliateRequest;
 use App\Http\Requests\UpdateContactInfoRequest;
 use App\Lead;
 use App\LeadSentResult;
 use App\Setting;
 use App\User;
 use App\UserMeta;
-use Illuminate\Support\Facades\Bus;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 use Excel;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Bus;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\View\View;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
+use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class AffiliateController extends Controller
@@ -1194,7 +1194,6 @@ class AffiliateController extends Controller
 
     public function updateAffiliateWebsitesPayouts(UpdateAffiliateWebsitesPayoutsAffiliateRequest $request)
     {
-
 
         $inputs = $request->all();
 

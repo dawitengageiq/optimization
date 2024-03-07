@@ -8,9 +8,9 @@ use App\Lead;
 use Carbon\Carbon;
 use DateTime;
 use Illuminate\Console\Command;
-use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use Maatwebsite\Excel\Facades\Excel;
 
 class LeadExcelEmailFeedUtility extends Command
 {

@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
 use App\Resources\Resource;
 use App\Resources\UserActionLogDatatable as ResourceCollection;
 use App\Resources\UserActionLogDetailsDatatable as ResourceDetalsCollection;
 use App\UserActionLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 class UserActionLogController extends Controller
 {

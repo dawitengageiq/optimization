@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdvertiserController;
 use App\Http\Controllers\AffiliateController;
@@ -48,6 +46,8 @@ use App\Http\Controllers\UserActionLogController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ZipCodeController;
 use App\Http\Controllers\ZipMasterController;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 /*

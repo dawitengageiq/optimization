@@ -10,9 +10,9 @@ use App\Setting;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Route;
 use Illuminate\View\View;
 use RevenueTracker;
-use Illuminate\Support\Facades\Route;
 use SurveyStack;
 use Zip;
 

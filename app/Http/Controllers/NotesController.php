@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UpdateCategoryNoteRequest;
 use App\Http\Requests\StoreCategoryNoteRequest;
+use App\Http\Requests\UpdateCategoryNoteRequest;
 use App\Note;
 use App\NoteCategory;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class NotesController extends Controller

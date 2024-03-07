@@ -6,9 +6,9 @@ use App\Campaign;
 use App\CampaignConfig;
 use App\CampaignCreative;
 use App\CampaignJsonContent;
-use Illuminate\Support\Facades\Bus;
 use Curl\Curl;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Bus;
 use RandomProbability;
 
 class EmbedController extends Controller

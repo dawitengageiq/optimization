@@ -6,10 +6,10 @@ use App\AffiliateWebsite;
 use App\Jobs\Job;
 use App\LeadUser;
 use App\WebsitesViewTracker;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class GenerateAffiliateWebsiteReport extends Job implements ShouldQueue

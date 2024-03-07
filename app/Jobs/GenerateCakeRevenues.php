@@ -8,8 +8,8 @@ use App\Helpers\Repositories\AffiliateReportCurl;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class GenerateCakeRevenues extends Job implements ShouldQueue
 {

@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class CampaignNoTracker extends Model
 {
-
     protected $fillable = [
         'campaign_id',
         'email',

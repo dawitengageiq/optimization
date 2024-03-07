@@ -12,15 +12,15 @@ class GetDashboardGraphsStatisticsProcessorAdminRequest extends FormRequest
     public function rules(): array
     {
         return [
-'from_date' => [
+            'from_date' => [
                 'required_with:to_date',
                 'date',
             ],
-'to_date'   => [
+            'to_date' => [
                 'required_with:from_date',
                 'date',
                 'date_greater_equal:from_date',
             ],
-];
+        ];
     }
 }

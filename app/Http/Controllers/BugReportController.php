@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ReceiveBugReportRequest;
 use App\BugReport;
+use App\Http\Requests\ReceiveBugReportRequest;
 use App\Jobs\Jira\CreateJIRAIssueTicket;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\File;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;

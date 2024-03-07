@@ -2,8 +2,6 @@
 
 namespace App\Http\Services\Charts;
 
-use Illuminate\Support\Facades\Config;
-
 final class OLRChart extends Factories\ChartFactory implements \App\Http\Services\Contracts\ChartContract
 {
     use Utils\DummyData;

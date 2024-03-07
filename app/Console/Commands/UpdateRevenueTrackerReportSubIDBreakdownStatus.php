@@ -3,8 +3,8 @@
 namespace App\Console\Commands;
 
 use App\AffiliateRevenueTracker;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 
 class UpdateRevenueTrackerReportSubIDBreakdownStatus extends Command
 {

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\GetDashboardGraphsStatisticsProcessorAdminRequest;
 use App\Action;
 use App\ActionRole;
 use App\Advertiser;
@@ -18,6 +17,7 @@ use App\Cron;
 use App\Events\UserActionEvent;
 use App\FilterType;
 use App\Http\Requests\AdminSettingRequest;
+use App\Http\Requests\GetDashboardGraphsStatisticsProcessorAdminRequest;
 use App\Http\Services\RejectedLeads as RejectedLeadsHandler;
 use App\Http\Services\UserActionLogger;
 use App\Lead;
@@ -32,22 +32,22 @@ use App\Path;
 use App\Setting;
 use App\User;
 use App\UserActionLog;
-use Illuminate\Support\Facades\Bus;
-use Illuminate\Support\Facades\Cache;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 use Excel;
 use GetAdvertisersCompanyIDPair;
 use GetInternalAffiliatesCompanyIDPair;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Bus;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Request as Input;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\View\View;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Session;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class AdminController extends Controller

@@ -6,8 +6,8 @@ use App\ConsolidatedGraph;
 use App\Http\Services;
 use App\Http\Services\Consolidated\Utils\Forms;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class ConsolidatedGraphController extends Controller

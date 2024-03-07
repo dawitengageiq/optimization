@@ -8,11 +8,11 @@ use App\Jobs\Job;
 use App\PrepopStatistic;
 use Carbon\Carbon;
 use Curl\Curl;
-use Illuminate\Support\Facades\DB;
 use Exception;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Sabre\Xml\Reader;
 

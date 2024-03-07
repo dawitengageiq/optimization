@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UpdateLeadUserBannedRequest;
 use App\Http\Requests\StoreLeadUserBannedRequest;
+use App\Http\Requests\UpdateLeadUserBannedRequest;
 use App\LeadUserBanned;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;

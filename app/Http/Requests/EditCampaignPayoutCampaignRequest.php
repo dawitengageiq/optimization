@@ -12,17 +12,17 @@ class EditCampaignPayoutCampaignRequest extends FormRequest
     public function rules(): array
     {
         return [
-'edit_payout_payable'    => [
+            'edit_payout_payable' => [
                 'required',
                 'numeric',
             ],
-'edit_payout_receivable' => [
+            'edit_payout_receivable' => [
                 'required',
                 'numeric',
             ],
-'selected_payout'        => [
+            'selected_payout' => [
                 'required',
             ],
-];
+        ];
     }
 }

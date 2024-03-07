@@ -12,17 +12,17 @@ class UpdatePathRequest extends FormRequest
     public function rules(): array
     {
         return [
-'name' => [
+            'name' => [
                 'required',
-                'unique:paths,name,' . $id,
+                'unique:paths,name,'.$id,
                 'max:100',
             ],
-'url'  => [
+            'url' => [
                 'required',
-                'unique:paths,url,' . $id,
+                'unique:paths,url,'.$id,
                 'max:255',
                 'url',
             ],
-];
+        ];
     }
 }

@@ -4,8 +4,8 @@ namespace App\Http\Services\Consolidated;
 
 use App\ConsolidatedGraph;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Consolidate graph class.

@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\ClickLogTraceInfo;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 use Excel;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 

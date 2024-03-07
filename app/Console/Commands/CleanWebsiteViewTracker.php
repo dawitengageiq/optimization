@@ -2,11 +2,11 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Support\Facades\Log;
 use App\WebsitesViewTracker;
 use App\WebsitesViewTrackerDuplicate;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 
 class CleanWebsiteViewTracker extends Command
 {

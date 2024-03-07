@@ -2,8 +2,8 @@
 
 namespace App\Http\Services\Consolidated\Export2Excel;
 
-use Illuminate\Support\Facades\DB;
 use App\ConsolidatedGraph;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Consolidate graph class.

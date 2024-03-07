@@ -12,20 +12,20 @@ class UpdateLeadUserBannedRequest extends FormRequest
     public function rules(): array
     {
         return [
-'first_name' => [
+            'first_name' => [
                 'required',
             ],
-'last_name'  => [
+            'last_name' => [
                 'required',
             ],
-'email'      => [
+            'email' => [
                 'email',
                 'required_without_all:phone',
             ],
-'phone'      => [
+            'phone' => [
                 'numeric',
                 'required_without_all:email',
             ],
-];
+        ];
     }
 }

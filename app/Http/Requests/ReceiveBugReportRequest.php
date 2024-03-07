@@ -12,12 +12,12 @@ class ReceiveBugReportRequest extends FormRequest
     public function rules(): array
     {
         return [
-'bug_summary'     => [
+            'bug_summary' => [
                 'required',
             ],
-'bug_description' => [
+            'bug_description' => [
                 'required',
             ],
-];
+        ];
     }
 }

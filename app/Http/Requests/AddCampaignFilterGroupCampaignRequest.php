@@ -12,13 +12,13 @@ class AddCampaignFilterGroupCampaignRequest extends FormRequest
     public function rules(): array
     {
         return [
-'filter_group_name'   => [
+            'filter_group_name' => [
                 'required',
-                'not_in:' . $campaign_filter_groups,
+                'not_in:'.$campaign_filter_groups,
             ],
-'filter_group_status' => [
+            'filter_group_status' => [
                 'required',
             ],
-];
+        ];
     }
 }

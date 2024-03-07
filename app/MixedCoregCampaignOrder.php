@@ -2,12 +2,11 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class MixedCoregCampaignOrder extends Model
 {
-
     protected $fillable = [
         'revenue_tracker_id',
         'campaign_id_order',

@@ -8,13 +8,13 @@ use App\AffiliateRevenueTracker;
 use App\AffiliateWebsite;
 use App\Campaign;
 use App\RevenueTrackerCakeStatistic;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 use PHPExcel_Cell_DataType;
-use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class AffiliateReportExcelGeneratorHelper

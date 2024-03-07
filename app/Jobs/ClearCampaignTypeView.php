@@ -2,10 +2,10 @@
 
 namespace App\Jobs;
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\DB;
 
 class ClearCampaignTypeView extends Job implements ShouldQueue
 {

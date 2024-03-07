@@ -3,8 +3,8 @@
 namespace App\Console\Commands;
 
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class CleanUpDashboardStats extends Command

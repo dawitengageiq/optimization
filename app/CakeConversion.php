@@ -4,12 +4,11 @@ namespace App;
 
 use Carbon\Carbon;
 use DateTime;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class CakeConversion extends Model
 {
-
     protected $fillable = [
         'id',
         'visitor_id',

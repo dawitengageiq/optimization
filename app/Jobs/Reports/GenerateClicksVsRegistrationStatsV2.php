@@ -8,13 +8,13 @@ use App\Jobs\Job;
 use App\LeadUser;
 use Carbon\Carbon;
 use Curl\Curl;
-use Illuminate\Support\Facades\DB;
 use Exception;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class GenerateClicksVsRegistrationStatsV2 extends Job implements ShouldQueue
 {

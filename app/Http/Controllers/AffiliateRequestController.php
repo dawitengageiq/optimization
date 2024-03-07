@@ -10,9 +10,9 @@ use App\CampaignPostingInstruction;
 use App\Http\Requests;
 use App\Jobs\Email\AdminApplyToRunRequest;
 use App\User;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 

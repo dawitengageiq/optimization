@@ -12,12 +12,12 @@ class AddCampaignAffiliateCampaignRequest extends FormRequest
     public function rules(): array
     {
         return [
-'lead_cap_type'  => [
+            'lead_cap_type' => [
                 'required',
             ],
-'lead_cap_value' => [
+            'lead_cap_value' => [
                 'numeric',
             ],
-];
+        ];
     }
 }

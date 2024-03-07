@@ -12,8 +12,8 @@ class UpdateAffiliateWebsitesPayoutsAffiliateRequest extends FormRequest
     public function rules(): array
     {
         return ['website_payout' => [
-                'required',
-                'numeric',
-            ],];
+            'required',
+            'numeric',
+        ], ];
     }
 }

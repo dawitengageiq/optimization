@@ -6,10 +6,10 @@ use App\AffiliateReport;
 use App\CampaignRevenueBreakdown;
 use App\LeadUser;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class CampaignRevenueBreakdownJob extends Job implements ShouldQueue

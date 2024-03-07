@@ -19,13 +19,13 @@ use App\RevenueTrackerCakeStatistic;
 use App\Setting;
 use Carbon\Carbon;
 use Curl\Curl;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Database\QueryException;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class AffiliateReportsV4 extends Job implements ShouldQueue
 {

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UpdatePathRequest;
 use App\Http\Requests\StorePathRequest;
+use App\Http\Requests\UpdatePathRequest;
 use App\Path;
 use Illuminate\Http\Request;
 
@@ -74,7 +74,6 @@ class PathController extends Controller
     public function update(UpdatePathRequest $request)
     {
         $id = $request->input('id');
-
 
         $path = Path::find($id);
         $path->name = $request->input('name');

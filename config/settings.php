@@ -19,7 +19,7 @@ return [
     'cpa_wall_sbg_campaign_id' => env('CPA_WALL_SBG_CAMPAIGN_ID', 0),
     'cpa_wall_survey_spot_campaign_id' => env('CPA_WALL_SURVEY_SPOT_CAMPAIGN_ID', 0),
     'cvd_feed_status' => env('CVD_FEED_STATUS', 'false'),
-    'eiq_iframe_id' => env('EIQ_IFRAME_ID',0),
+    'eiq_iframe_id' => env('EIQ_IFRAME_ID', 0),
     'email_media_buy_feed_status' => env('EMAIL_MEDIA_BUY_FEED_STATUS', 'false'),
     'encryption_applied' => env('ENCRYPTION_APPLIED', false),
     'encryption_key' => env('ENCRYPTION_KEY'),

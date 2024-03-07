@@ -27,15 +27,15 @@ use App\Path;
 use App\Setting;
 use App\ZipCode;
 use App\ZipMaster;
-use Illuminate\Support\Facades\Bus;
 use Carbon\Carbon;
 use Curl\Curl;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Bus;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use RandomProbability;
 use Illuminate\Support\Facades\Session;
+use RandomProbability;
 
 class FilterController extends Controller
 {

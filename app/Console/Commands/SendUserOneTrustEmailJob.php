@@ -2,15 +2,15 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Support\Facades\Config;
 use App\LeadUser;
 use App\LeadUserRequest;
 use App\Setting;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Log;
 use Maatwebsite\Excel\Facades\Excel;
 
 class SendUserOneTrustEmailJob extends Command

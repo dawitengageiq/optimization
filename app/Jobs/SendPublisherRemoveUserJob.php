@@ -10,12 +10,12 @@ use Curl\Curl;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 use Phar;
 use PharData;
 use SSH;
-use Illuminate\Support\Facades\Storage;
 
 class SendPublisherRemoveUserJob extends Job implements ShouldQueue
 {

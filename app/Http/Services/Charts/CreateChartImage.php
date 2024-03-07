@@ -2,7 +2,6 @@
 
 namespace App\Http\Services\Charts;
 
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
 
 final class CreateChartImage extends Factories\ChartFactory

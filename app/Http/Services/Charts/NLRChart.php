@@ -3,7 +3,6 @@
 namespace App\Http\Services\Charts;
 
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Config;
 
 final class NLRChart extends Factories\ChartFactory implements \App\Http\Services\Contracts\ChartContract
 {

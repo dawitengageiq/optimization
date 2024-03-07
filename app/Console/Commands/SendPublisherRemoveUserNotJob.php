@@ -8,12 +8,12 @@ use App\Setting;
 use Carbon\Carbon;
 use Curl\Curl;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 use Phar;
 use PharData;
 use SSH;
-use Illuminate\Support\Facades\Storage;
 
 class SendPublisherRemoveUserNotJob extends Command
 {

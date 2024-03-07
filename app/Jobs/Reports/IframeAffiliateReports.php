@@ -10,13 +10,13 @@ use App\Jobs\Job;
 use App\Lead;
 use App\RevenueTrackerWebsiteViewStatistic;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 use ErrorException;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class IframeAffiliateReports extends Job implements ShouldQueue
 {
