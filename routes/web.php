@@ -553,7 +553,7 @@ Route::get('auth/login', [AuthenticationController::class, 'getLogin']);
 Route::post('auth/login', [AuthenticationController::class, 'postLogin']);
 Route::get('auth/logout', [AuthenticationController::class, 'getLogout']);
 //Route::resource('auth','App\Http\Controllers\AuthenticationController');
-Route::resource('password', 'App\Http\Controllers\Auth\PasswordController');
+Route::resource('password', \App\Http\Controllers\Auth\PasswordController::class);
 
 Route::get('check-session', function () {
     return response()->json(['guest' => Auth::guest()]);
