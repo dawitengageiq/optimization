@@ -66,6 +66,7 @@ final class ByRevenueTracker implements \App\Http\Services\Campaigns\Utils\Lists
         if ($campaignType == 6) {
             return $this->exitChecker();
         }
+
         //Coreg Page
         return $this->coregChecker();
     }

@@ -85,8 +85,8 @@ class AffiliateReportExcelGeneratorHelper
      * Generating of reports
      *
      * @param  Request  $request
-     * @param $affiliate_type
-     * @param $snapshot_period
+     * @param  $affiliate_type
+     * @param  $snapshot_period
      */
     public function generate(): JsonResponse
     {

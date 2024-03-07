@@ -42,11 +42,11 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Request as Input;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\View\View;
 use Log;
 use Session;
-use Illuminate\Support\Facades\Storage;;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class AdminController extends Controller
@@ -431,6 +431,7 @@ class AdminController extends Controller
         //$affiliates = Affiliate::all();
         $states = config('constants.US_STATES_ABBR');
         $types = config('constants.AFFILIATE_TYPE');
+
         //return view('admin.affiliates',compact('affiliates','states'));
         return view('admin.affiliates', compact('states', 'types'));
     }
@@ -1151,7 +1152,7 @@ class AdminController extends Controller
 
                 $sheet->loadView('admin.pageoptinrate_excel', compact('activeTypes', 'campaign_types', 'campaigns', 'benchmarks', 'statsData', 'no_leads', 'external_campaigns'));
             });
-        },$title.'.xls','downloads');
+        }, $title.'.xls', 'downloads');
 
         $file_path = storage_path('downloads').'/'.$title.'.xls';
 
@@ -1518,7 +1519,7 @@ class AdminController extends Controller
                 ]);
 
             });
-        },$reportTitle.'.xls','downloads');
+        }, $reportTitle.'.xls', 'downloads');
 
         $file_path = storage_path('downloads').'/'.$reportTitle.'.xls';
 
@@ -2045,7 +2046,7 @@ class AdminController extends Controller
                     $cells->setValignment('center');
                 });
             });
-        },$reportTitle.'.xls','downloads');
+        }, $reportTitle.'.xls', 'downloads');
 
         $file_path = storage_path('downloads').'/'.$reportTitle.'.xls';
 
@@ -2247,6 +2248,7 @@ class AdminController extends Controller
             'recordsFiltered' => $totalFiltered, // total number of records after searching, if there is no searching then totalFiltered = totalData
             'data' => $leadData,   // total data array
         ];
+
         // Log::info(DB::getQueryLog());
         return response()->json($responseData, 200);
     }
@@ -2470,6 +2472,7 @@ class AdminController extends Controller
             'totalRevenue' => sprintf('%.2f', $totalRevenue),
             'totalProfit' => sprintf('%.2f', $totalProfit),
         ];
+
         // Log::info(DB::getQueryLog());
         // Log::info(DB::connection('secondary')->getQueryLog());
         return response()->json($responseData, 200);
@@ -2679,7 +2682,7 @@ class AdminController extends Controller
                     ]);
                 }
             });
-        },$title.'.xls','downloads');
+        }, $title.'.xls', 'downloads');
 
         $file_path = storage_path('downloads').'/'.$title.'.xls';
 
@@ -2928,7 +2931,7 @@ class AdminController extends Controller
                     $totalProfit,
                 ]);
             });
-        },$title.'.xls','downloads');
+        }, $title.'.xls', 'downloads');
 
         $file_path = storage_path('downloads').'/'.$title.'.xls';
 
@@ -2991,11 +2994,11 @@ class AdminController extends Controller
         //$files =  Storage::disk('public')->has('images\gallery\logo-globaltestmarket-1.png');
         $images = Storage::disk('public')->files('images/gallery');
         //$images = File::allFiles('images\gallery');
-     
+
         $col_num = 4;
         $counter = 0;
         $row = 0;
-        $gallery = array();
+        $gallery = [];
         foreach ($images as $image) {
             $gallery[$row][] = $image;
             //echo "x";
@@ -3013,7 +3016,7 @@ class AdminController extends Controller
                 }
             }
         }
-        
+
         return view('admin.gallery', compact('gallery'));
     }
 
@@ -3051,6 +3054,7 @@ class AdminController extends Controller
             'f' => 'Filter',
             'a' => 'Acceptable',
         ];
+
         // return $settings;
         // Log::info(json_decode($settings['campaign_type_benchmarks']));
         return view('admin.settings', compact('settings', 'campaign_types', 'path_order', 'statuses', 'rejection_rates', 'campaign_type_limit', 'campaigns', 'high_rejection_type_names'));
@@ -4071,7 +4075,7 @@ class AdminController extends Controller
                     $total_total,
                 ]);
             });
-        },$title.'.xls','downloads');
+        }, $title.'.xls', 'downloads');
 
         $file_path = storage_path('downloads').'/'.$title.'.xls';
 
@@ -4270,7 +4274,7 @@ class AdminController extends Controller
                     ]);
                 }
             });
-        },$title.'.xls','downloads');
+        }, $title.'.xls', 'downloads');
 
         $file_path = storage_path('downloads').'/'.$title.'.xls';
 
@@ -4491,7 +4495,7 @@ class AdminController extends Controller
                     ]);
                 }
             });
-        },$title.'.xls','downloads');
+        }, $title.'.xls', 'downloads');
 
         $file_path = storage_path('downloads').'/'.$title.'.xls';
 

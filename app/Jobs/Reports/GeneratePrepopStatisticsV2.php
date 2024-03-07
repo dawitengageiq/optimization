@@ -21,10 +21,10 @@ class GeneratePrepopStatisticsV2 extends Job implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param $skip
-     * @param $take
-     * @param $dateFromStr
-     * @param $dateToStr
+     * @param  $skip
+     * @param  $take
+     * @param  $dateFromStr
+     * @param  $dateToStr
      */
     public function __construct($date)
     {

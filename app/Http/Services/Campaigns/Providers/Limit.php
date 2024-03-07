@@ -39,8 +39,7 @@ class Limit
     /**
      * Instantiate.
      *
-     *  @param  Illuminate\Foundation\Application  $app
-     *  @param  string  $mixedCoregLimit
+     * @param  Illuminate\Foundation\Application  $app
      */
     public function __construct(
         \Illuminate\Foundation\Application $app,
@@ -131,8 +130,6 @@ class Limit
 
     /**
      * Set limits per campaign type
-     *
-     * @return string
      */
     protected function limit(): string
     {
@@ -157,7 +154,6 @@ class Limit
      * Iterate and apply limit
      *
      * @param  array  $mixedCoregs
-     * @param  string  $limit
      * @return yield
      */
     protected function applyLimit($coregTypes, string $limit)

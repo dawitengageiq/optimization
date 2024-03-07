@@ -162,14 +162,14 @@ abstract class ExportExcel extends \Maatwebsite\Excel\Excel
                 $this->generatePerSubIDSummarySheet($sheet);
             });
 
-        },$this->fileName,'downloads');
+        }, $this->fileName, 'downloads');
 
     }
 
     /**
      * Export the created file.
      *
-     * @param  'string'  $type type of file, range: xls, xlsx, pdf, csv ... etc.
+     * @param  'string'  $type  type of file, range: xls, xlsx, pdf, csv ... etc.
      */
     public function export($type)
     {

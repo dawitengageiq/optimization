@@ -11,7 +11,7 @@ use Mail;
 
 class GenerateDataByDispatch implements ShouldQueue
 {
-    use Queueable, InteractsWithQueue, SerializesModels;
+    use InteractsWithQueue, Queueable, SerializesModels;
 
     /**
      * Instantiated needed class

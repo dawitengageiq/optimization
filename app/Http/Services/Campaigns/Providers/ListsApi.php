@@ -93,7 +93,7 @@ class ListsApi
     public static function boot(\Illuminate\Foundation\Application $app)
     {
         // make sure the page is for iframe api
-        if ('frame/get_campaign_list_by_api' == $app->request->path()
+        if ($app->request->path() == 'frame/get_campaign_list_by_api'
         ) {
             new static(
                 $app,

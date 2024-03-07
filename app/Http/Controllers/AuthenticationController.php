@@ -5,10 +5,9 @@ namespace App\Http\Controllers;
 use App\Helpers\auth\AuthenticatesAndRegistersUsers;
 use App\User;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Validator;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 class AuthenticationController extends Controller
 {
@@ -25,7 +24,6 @@ class AuthenticationController extends Controller
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
     protected $redirectPath = '/';
-    
 
     /**
      * Create a new authentication controller instance.
@@ -34,10 +32,11 @@ class AuthenticationController extends Controller
     {
         $this->middleware('guest', ['except' => 'getLogout']);
     }
+
     public function username()
     {
-    return $this->loginUsername();
-    } 
+        return $this->loginUsername();
+    }
 
     /**
      * Get a validator for an incoming registration request.
@@ -50,7 +49,7 @@ class AuthenticationController extends Controller
             'password' => 'required|confirmed|min:6',
         ]);
     }
-   
+
     /**
      * Create a new user instance after a valid registration.
      */
@@ -62,5 +61,4 @@ class AuthenticationController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
-  
 }

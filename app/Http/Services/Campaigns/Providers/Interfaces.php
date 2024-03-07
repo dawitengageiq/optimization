@@ -68,7 +68,8 @@ class Interfaces
         if (array_key_exists($this->path, $this->className)) {
             return $this->className[$this->path];
         }
-       //$oVal = (object)[];
-       return '';
+
+        //$oVal = (object)[];
+        return '';
     }
 }

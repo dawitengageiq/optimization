@@ -8,24 +8,24 @@ use Carbon\Carbon;
 class RevenueAndViews
 {
     /**
-     * Calculation traits.
-     */
-    use Traits\perViews,
-        Traits\perClicks,
-        Traits\perSurveyTakers,
-        Traits\Margin,
-        Traits\Views,
-        Traits\Revenue;
-
-    /**
      * Data from eloquent traits.
      */
-    use Traits\ClicksVsRegistrationStatistics,
+    use Traits\AffiliateReport,
         Traits\CakeRevenue,
-        Traits\AffiliateReport,
-        Traits\RevenueTrackerCakeStatistic,
+        Traits\ClicksVsRegistrationStatistics,
         Traits\PageViewStatistics,
-        Traits\Payout;
+        Traits\Payout,
+        Traits\RevenueTrackerCakeStatistic;
+
+    /**
+     * Calculation traits.
+     */
+    use Traits\Margin,
+        Traits\perClicks,
+        Traits\perSurveyTakers,
+        Traits\perViews,
+        Traits\Revenue,
+        Traits\Views;
 
     /**
      * Current time container.

@@ -907,6 +907,7 @@ class CampaignList2Controller extends Controller
         $exec_time['check_cap'] = $lead_cap_total;
         $exec_time['check_campaign_filter'] = $campaign_filter_total;
         Log::info('/*** EXEC TIME: STACK PATH ***/', $exec_time);
+
         // Log::info(DB::getQueryLog());
         return $the_path;
     }

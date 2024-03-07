@@ -226,7 +226,7 @@ class UserActionLogController extends Controller
     /**
      *  Check if the arguments is valid
      */
-    protected function isInvalid(array $args, string $url = null): bool
+    protected function isInvalid(array $args, ?string $url = null): bool
     {
         foreach ($args as $required => $method) {
             if (method_exists($this, camelCase($method))) {

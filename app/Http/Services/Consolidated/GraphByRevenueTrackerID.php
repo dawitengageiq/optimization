@@ -133,6 +133,7 @@ class GraphByRevenueTrackerID extends GraphByDateRange implements \App\Http\Serv
                         if ($this->counterDatacountIsLessThanSeriesPerslide(...$param)) {
                             // #7 ....
                             $this->pushDAtaToSeries(...(array_merge($param, [$details['percentage'], $col])));
+
                             // Skip code below, next legend.
                             continue;
                         }

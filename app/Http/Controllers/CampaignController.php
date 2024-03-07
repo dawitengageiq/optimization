@@ -1389,6 +1389,7 @@ class CampaignController extends Controller
 
             $affected[$new_prio] = $id;
         }
+
         // Log::info($affected);
         return $affected;
     }
@@ -2411,6 +2412,7 @@ class CampaignController extends Controller
             // Log::info($cleaned_js);
             // Log::info($jquery_validate);
         }
+
         // Log::info($response['fields']);
         // Log::info($response);
         return response()->json($response, 200);
@@ -3524,6 +3526,7 @@ class CampaignController extends Controller
                 $errors[] = "Missing closing tag for &lt;$element&gt;";
             }
         }
+
         //return [];
         return $errors;
     }

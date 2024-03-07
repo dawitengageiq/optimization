@@ -381,6 +381,7 @@ class GraphByDateRange implements \App\Http\Services\Contracts\ConsolidatedGraph
                         if ($this->counterDatacountIsLessThanSeriesPerSlide(...$param)) {
                             // #7 ....
                             $this->pushDAtaToSeries(...(array_merge($param, [$details['percentage'], $col])));
+
                             // Skip code below, next legend.
                             continue;
                         }

@@ -19,7 +19,7 @@ trait Style
     /**
      * Excel file, header of data styling.
      *
-     * @param  string  $range column range
+     * @param  string  $range  column range
      */
     protected function headerStyle(string $range, $lastCol = 'AN')
     {
@@ -73,7 +73,7 @@ trait Style
     /**
      * Excel file, footer of data styling.
      *
-     * @param  string  $range column range
+     * @param  string  $range  column range
      */
     protected function footerStyle(string $range)
     {
@@ -154,7 +154,7 @@ trait Style
     /**
      * Excel file, legend descriptio header styling.
      *
-     * @param  string  $range column range
+     * @param  string  $range  column range
      */
     protected function legendsStyle(string $range)
     {

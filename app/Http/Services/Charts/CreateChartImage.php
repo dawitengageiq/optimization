@@ -7,8 +7,8 @@ use File;
 
 final class CreateChartImage extends Factories\ChartFactory
 {
-    use Utils\JSonData;
     use Utils\DummyData;
+    use Utils\JSonData;
 
     /**
      * Load the  needed configuration

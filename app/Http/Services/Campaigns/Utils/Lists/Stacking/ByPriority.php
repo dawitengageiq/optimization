@@ -87,7 +87,7 @@ class ByPriority implements \App\Http\Services\Campaigns\Utils\Lists\Contracts\S
      * Stack the qualified campaign
      */
     public function stackCampaign(
-         $campaign,
+        $campaign,
         int $pathType)
     {
         //Long Path
@@ -191,7 +191,7 @@ class ByPriority implements \App\Http\Services\Campaigns\Utils\Lists\Contracts\S
      *
      * @var array
      */
-    protected function stackCampaignCoreg( $campaign)
+    protected function stackCampaignCoreg($campaign)
     {
         // Pre populate
         if (! array_key_exists($campaign->campaign_type, $this->stack)) {

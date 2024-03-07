@@ -19,8 +19,8 @@ class GeneratePageViewStatistics extends Job implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param $dateFromStr
-     * @param $dateToStr
+     * @param  $dateFromStr
+     * @param  $dateToStr
      */
     public function __construct($date)
     {

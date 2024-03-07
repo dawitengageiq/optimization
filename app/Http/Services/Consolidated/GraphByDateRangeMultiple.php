@@ -401,6 +401,7 @@ class GraphByDateRangeMultiple extends GraphByDateRange implements \App\Http\Ser
 
             $selectQry = implode(', ', $s);
         }
+
         // \Log::info($selectQry);
         return $selectQry;
     }

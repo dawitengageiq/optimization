@@ -953,6 +953,7 @@ class LeadUsersController extends Controller
             'enddate' => $dateStr,
         ]);
         $response = json_decode($curl->response, true);
+
         // return count($response['Sources']);
         // return $response['Sources'][0]['Subids'];
         return $response;

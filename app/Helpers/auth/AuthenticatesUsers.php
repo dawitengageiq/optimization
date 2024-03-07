@@ -40,7 +40,7 @@ trait AuthenticatesUsers
         // the login attempts for this application. We'll key this by the username and
         // the IP address of the client making these requests into this application.
         $throttles = $this->isUsingThrottlesLoginsTrait();
-        // 
+        //
         if ($throttles && $this->hasTooManyLoginAttempts($request)) {
             return $this->sendLockoutResponse($request);
         }
@@ -149,5 +149,4 @@ trait AuthenticatesUsers
             ThrottlesLogins::class, class_uses_recursive(get_class($this))
         );
     }
-    
 }

@@ -215,7 +215,7 @@ class CampaignListRequest extends FormRequest
      */
     protected function incompleteRequestData(): bolean
     {
-       
+
         collect($this->required)->each(function ($required) {
             if (! $this->get($required)) {
                 $this->incomplete = true;

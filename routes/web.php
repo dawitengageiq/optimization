@@ -6,6 +6,7 @@ use App\Http\Controllers\AffiliateController;
 use App\Http\Controllers\AffiliateReportController;
 use App\Http\Controllers\AffiliateRequestController;
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\BannedAttemptController;
 use App\Http\Controllers\BugReportController;
 use App\Http\Controllers\CakeConversionController;
@@ -46,7 +47,6 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ZipCodeController;
 use App\Http\Controllers\ZipMasterController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthenticationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -549,11 +549,11 @@ Route::get('admin/clickLogTracer/download', [ClickLogTraceInfoController::class,
 /**
  * authentication routes
  */
-Route::get('auth/login',[AuthenticationController::class,'getLogin']);
-Route::post('auth/login',[AuthenticationController::class,'postLogin']);
-Route::get('auth/logout',[AuthenticationController::class,'getLogout']);
+Route::get('auth/login', [AuthenticationController::class, 'getLogin']);
+Route::post('auth/login', [AuthenticationController::class, 'postLogin']);
+Route::get('auth/logout', [AuthenticationController::class, 'getLogout']);
 //Route::resource('auth','App\Http\Controllers\AuthenticationController');
-Route::resource('password','App\Http\Controllers\Auth\PasswordController');
+Route::resource('password', 'App\Http\Controllers\Auth\PasswordController');
 
 Route::get('check-session', function () {
     return response()->json(['guest' => Auth::guest()]);

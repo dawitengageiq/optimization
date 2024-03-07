@@ -8,7 +8,7 @@ class LimitMixCoregByMixCoregStacking extends LimitMixCoregByPathType
      * Apply the revenue tracker limit for coreg
      *
      * @param  array  $stacks
-     * @param    $limit
+     * @param  $limit
      * @param  int  $tempIndex
      * @param  bool  $hasOrdering
      * @param  array  $pathLimit

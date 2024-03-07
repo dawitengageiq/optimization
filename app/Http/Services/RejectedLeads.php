@@ -36,7 +36,7 @@ class RejectedLeads
     /**
      * An extension to the query made in searchLeads method in AdminController.
      *
-     * @return  object eloquent
+     * @return object eloquent
      */
     public static function searchLeadByRejection(Sql $query, string $rejection = ''): object
     {

@@ -21,7 +21,7 @@ class GraphAllInbox extends GraphByDateRange implements \App\Http\Services\Contr
     /**
      * All inbox revenue.
      *
-     * @var  int
+     * @var int
      */
     protected $allInboxRevenue = 0;
 

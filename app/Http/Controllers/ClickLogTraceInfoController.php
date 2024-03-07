@@ -195,7 +195,7 @@ class ClickLogTraceInfoController extends Controller
                     ]);
                 }
             });
-        },$title.'.xls','downloads');
+        }, $title.'.xls', 'downloads');
 
         $file_path = storage_path('downloads').'/'.$title.'.xls';
 

@@ -63,6 +63,7 @@ class FilterController extends Controller
             ->whereBetween('created_at', [$start, $end])
             ->where('lead_status', 1)
             ->count();
+
         // Log::info('LEAD CAP:');
         // Log::info(DB::getQueryLog());
         return $lead;
@@ -1012,6 +1013,7 @@ class FilterController extends Controller
         $exec_time['check_cap'] = $lead_cap_total;
         $exec_time['check_campaign_filter'] = $campaign_filter_total;
         Log::info('/*** EXEC TIME: STACK PATH ***/', $exec_time);
+
         // Log::info(DB::getQueryLog());
         return $the_path;
     }
@@ -2877,6 +2879,7 @@ class FilterController extends Controller
         } else {
             $response = $contents;
         }
+
         // Log::info(DB::getQueryLog());
         return response()->json($response);
     }

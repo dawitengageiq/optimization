@@ -37,42 +37,42 @@ return [
 
         'public' => [
             'driver' => 'local',
-            'root'   => public_path(),
+            'root' => public_path(),
         ],
 
         'downloads' => [
             'driver' => 'local',
-            'root'   => storage_path('downloads'),
+            'root' => storage_path('downloads'),
         ],
 
         'reports' => [
-            'driver'   => 'sftp',
+            'driver' => 'sftp',
             'host' => env('REPORTS_FTP_HOST', 'nlr.engageiq.com'),
             'username' => env('REPORTS_FTP_USERNAME', 'USERNAME'),
             'password' => env('REPORTS_FTP_PASSWORD', 'PASSWORD'),
             'port' => env('REPORTS_FTP_PORT', '21'),
-            'passive'  => false,
-            'root' => env('REPORTS_FTP_DIR', '/var/www/html/tlr.engageiq.com/storage/downloads')
+            'passive' => false,
+            'root' => env('REPORTS_FTP_DIR', '/var/www/html/tlr.engageiq.com/storage/downloads'),
         ],
 
         'main' => [
-            'driver'   => 'sftp',
+            'driver' => 'sftp',
             'host' => env('MAIN_FTP_HOST', 'nlr.engageiq.com'),
             'username' => env('MAIN_FTP_USERNAME', 'USERNAME'),
             'password' => env('MAIN_FTP_PASSWORD', 'PASSWORD'),
             'port' => env('MAIN_FTP_PORT', '21'),
-            'passive'  => false,
-            'root' => env('MAIN_FTP_DIR', '/var/www/html/devleadreactor.engageiq.com/storage/downloads')
+            'passive' => false,
+            'root' => env('MAIN_FTP_DIR', '/var/www/html/devleadreactor.engageiq.com/storage/downloads'),
         ],
 
         'main_slave' => [
-            'driver'   => 'sftp',
+            'driver' => 'sftp',
             'host' => env('MAIN_SLAVE_FTP_HOST', 'nlr.engageiq.com'),
             'username' => env('MAIN_SLAVE_FTP_USERNAME', 'USERNAME'),
             'password' => env('MAIN_SLAVE_FTP_PASSWORD', 'PASSWORD'),
             'port' => env('MAIN_SLAVE_FTP_PORT', '21'),
-            'passive'  => false,
-            'root' => env('MAIN_SLAVE_FTP_DIR', '/var/www/html/devleadreactor.engageiq.com/storage/downloads')
+            'passive' => false,
+            'root' => env('MAIN_SLAVE_FTP_DIR', '/var/www/html/devleadreactor.engageiq.com/storage/downloads'),
         ],
 
         's3' => [
@@ -88,7 +88,6 @@ return [
         ],
 
     ],
-    
 
     /*
     |--------------------------------------------------------------------------

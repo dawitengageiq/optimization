@@ -763,7 +763,7 @@ class LeadController extends Controller
         $campaignCapType = $leadCapTypes[$campaign->lead_cap_type];
         $aCCD = is_array($affiliateCampaignCapDetails) ? count($affiliateCampaignCapDetails) : 0;
         //get the cap type for affiliate campaign
-        if ( $aCCD > 0) {
+        if ($aCCD > 0) {
             $affiliateCampaignCapType = $leadCapTypes[$affiliateCampaignCapDetails->lead_cap_type];
         } else {
             //no existing affiliate campaign record therefore it is considered
@@ -924,12 +924,14 @@ class LeadController extends Controller
 
         if ($isCampaignCapReached) {
             Log::info('cap reached!');
+
             //this means cap already reached set the lead to cap reached
             return true;
         }
 
         if ($isAffiliateCampaignCapReached) {
             Log::info('cap reached!');
+
             //this means cap already reached set the lead to cap reached
             return true;
         }

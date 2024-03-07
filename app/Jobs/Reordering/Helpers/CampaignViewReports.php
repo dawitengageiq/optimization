@@ -15,9 +15,8 @@ class CampaignViewReports
      * Set the campaign view reports Model
      * The model was already fetch in revenuTrackers::query
      *
-     * @param  eloquentCollection  $campaignViewReports
      *
-     * @var  coleection
+     * @var coleection
      */
     public function set(eloquentCollection $campaignViewReports)
     {
@@ -50,9 +49,6 @@ class CampaignViewReports
      * Reset the count to 0 and save.
      * Status should not be private or hiddem.
      * If status is public but record count is 0, exlude.
-     *
-     * @param  eloquentCollection  $campaignViewReport
-     * @return void
      */
     protected function saveReset(eloquentCollection $campaignViewReport): void
     {
