@@ -16,7 +16,7 @@ final class CreateChartImage extends Factories\ChartFactory
     public function __construct()
     {
         //Initial Vars
-        $this->config = Config::get('charts');
+        $this->config = config('charts');
     }
 
     /**

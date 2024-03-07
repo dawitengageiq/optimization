@@ -27,7 +27,7 @@ class ByPriorityWithJson
     public function insertIntoStack(collection $campaign)
     {
         // Mixed Coregs
-        if (in_array($campaign->campaign_type, array_keys(Config::get('constants.MIXED_COREG_TYPE_FOR_ORDERING')))) {
+        if (in_array($campaign->campaign_type, array_keys(config('constants.MIXED_COREG_TYPE_FOR_ORDERING')))) {
             $this->stackCampaignCoreg($campaign);
 
             return;

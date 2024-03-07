@@ -53,7 +53,7 @@ final class NLRChart extends Factories\ChartFactory implements \App\Http\Service
     public function __construct()
     {
         //Initial Vars
-        $this->config = Config::get('charts');
+        $this->config = config('charts');
     }
 
     /**

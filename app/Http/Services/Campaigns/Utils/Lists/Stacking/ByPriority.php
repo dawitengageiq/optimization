@@ -150,7 +150,7 @@ class ByPriority implements \App\Http\Services\Campaigns\Utils\Lists\Contracts\S
                     }
 
                     // If exit page, do random
-                    if ($type == array_search('Exit Page', Config::get('constants.CAMPAIGN_TYPES'))) {
+                    if ($type == array_search('Exit Page', config('constants.CAMPAIGN_TYPES'))) {
                         // Return random in array
                         return $this->exitPage->randomID($this->stack, $type);
                     }
