@@ -133,12 +133,12 @@
 	<script>
 		var date_from = '{!! $highcharts['date_from'] !!}',
 			date_to = '{!! $highcharts['date_to'] !!}';
-		var campaigns = {!! json_encode($highcharts['campaigns'], JSON_NUMERIC_CHECK) !!};
-		var group_categories = {!! json_encode($highcharts['categories'], JSON_NUMERIC_CHECK) !!};
-		var series = {!! json_encode($highcharts['series'], JSON_NUMERIC_CHECK) !!};
-		var data = {!! json_encode($highcharts['actual'], JSON_NUMERIC_CHECK) !!};
+		var campaigns = @json($highcharts['campaigns'], JSON_NUMERIC_CHECK);
+		var group_categories = @json($highcharts['categories'], JSON_NUMERIC_CHECK);
+		var series = @json($highcharts['series'], JSON_NUMERIC_CHECK);
+		var data = @json($highcharts['actual'], JSON_NUMERIC_CHECK);
 
-		console.log({!! json_encode($highcharts, JSON_NUMERIC_CHECK) !!});
+		console.log(@json($highcharts, JSON_NUMERIC_CHECK));
 
 		Highcharts.setOptions({
 			chart: {

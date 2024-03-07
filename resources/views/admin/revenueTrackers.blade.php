@@ -38,10 +38,10 @@
 
     <button id="setExitPageBtn" class="btn btn-primary addBtn" type="button">Set Exit Page</button>
 
-    <textarea id="default_campaign_order" class="hidden" name="default_campaign_order">{!! json_encode($default_order) !!}</textarea>
-    <textarea id="default_mixed_coreg_campaign_order" class="hidden" name="default_mixed_coreg_campaign_order">{!! json_encode($default_mixed_coreg_campaign_order) !!}</textarea>
-    <textarea id="campaign_names" class="hidden" name="campaign_names">{!! json_encode($campaign_names) !!}</textarea>
-    <textarea id="campaign_statuses" class="hidden" name="campaign_statuses">{!! json_encode($campaign_statuses) !!}</textarea>
+    <textarea id="default_campaign_order" class="hidden" name="default_campaign_order">@json($default_order)</textarea>
+    <textarea id="default_mixed_coreg_campaign_order" class="hidden" name="default_mixed_coreg_campaign_order">@json($default_mixed_coreg_campaign_order)</textarea>
+    <textarea id="campaign_names" class="hidden" name="campaign_names">@json($campaign_names)</textarea>
+    <textarea id="campaign_statuses" class="hidden" name="campaign_statuses">@json($campaign_statuses)</textarea>
 
     <div class="modal fade" id="TrkFormModal" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog modal-lg" role="document">
