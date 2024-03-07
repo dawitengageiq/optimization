@@ -58,7 +58,7 @@ class GenerateLeadFailTimeoutReport extends Job implements ShouldQueue
             }
         }
 
-        $emailNotificationRecipient = env('REPORTS_EMAIL_NOTIFICATION_RECIPIENT', 'marwilburton@hotmail.com');
+        $emailNotificationRecipient = config('settings.reports_email_notification_recipient');
 
         //$recipients=[$defaultAdminEmail => 'EngageIQ Admin'];
         $recipients = [$defaultAdminEmail, $emailNotificationRecipient];

@@ -97,7 +97,7 @@ class GenerateClicksVsRegistrationStatistics extends Job implements ShouldQueue
             // $this->touch();
         }
 
-        $emailNotificationRecipient = env('REPORTS_EMAIL_NOTIFICATION_RECIPIENT', 'marwilburton@hotmail.com');
+        $emailNotificationRecipient = config('settings.reports_email_notification_recipient');
 
         //send email to Burt to notify that Affiliate Report Queue was successfully finished
         Mail::send('emails.clicks_vs_registrations',

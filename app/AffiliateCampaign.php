@@ -94,7 +94,7 @@ class AffiliateCampaign extends Model
             }
         }
 
-        $query->where('campaigns.id', '!=', env('EIQ_IFRAME_ID', 0));
+        $query->where('campaigns.id', '!=', config('settings.eiq_iframe_id'));
 
         if ($order_col != null && $order_dir != null) {
             if ($order_col > -1) {

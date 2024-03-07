@@ -1130,7 +1130,7 @@ class AffiliateReportsV4 extends Job implements ShouldQueue
         // $s5Breakdown = $this->subIDBreakdown[$revenue_tracker_id]['s5'];
         $cakeBaseClicksURL = config('constants.CAKE_CLICKS_REPORTS_API_V12_UNIQUE');
         $cakeBaseConversionsURL = config('constants.CAKE_CONVERSIONS_API_V15');
-        $cakeLRID = env('CPA_WALL_ENGAGEIQ_CAMPAIGN_ID', 94);
+        $cakeLRID = config('settings.cpa_wall_engageiq_campaign_id');
         $rt_data = [];
         $cr_data = [];
         $rowStart = 1;
@@ -1488,7 +1488,7 @@ class AffiliateReportsV4 extends Job implements ShouldQueue
     public function getAffluentRevenue()
     {
         $start = Carbon::now();
-        $affluent_lr_id = env('CPA_WALL_AFFLUENT_CAMPAIGN_ID', 96);
+        $affluent_lr_id = config('settings.cpa_wall_affluent_campaign_id');
         $clicks_url = config('constants.AFFLUENT_CLICKS_REPORT_API_V11');
         $clicks_url .= "&start_date=$this->dateFromStr&end_date=$this->dateToStr";
         $conversions_url = config('constants.AFFLUENT_CONVERSIONS_REPORT_API_V4');
@@ -1640,7 +1640,7 @@ class AffiliateReportsV4 extends Job implements ShouldQueue
     public function getSBGRevenue()
     {
         $start = Carbon::now();
-        $sbg_lr_id = env('CPA_WALL_SBG_CAMPAIGN_ID', 95);
+        $sbg_lr_id = config('settings.cpa_wall_sbg_campaign_id');
         $clicks_url = config('constants.SBG_CLICKS_REPORT_API_V11');
         $clicks_url .= "&start_date=$this->dateFromStr&end_date=$this->dateToStr";
         $conversions_url = config('constants.SBG_CONVERSIONS_REPORT_API_V4');
@@ -1790,7 +1790,7 @@ class AffiliateReportsV4 extends Job implements ShouldQueue
     public function getEPollRevenue()
     {
         $start = Carbon::now();
-        $lr_id = env('CPA_WALL_EPOLL_CAMPAIGN_ID', 285);
+        $lr_id = config('settings.cpa_wall_epoll_campaign_id');
         $url = config('constants.EPOLL_REPORTS_API');
         $url .= "&data_start=$this->dateFromStr&data_end=$this->dateFromStr";
 
@@ -1902,7 +1902,7 @@ class AffiliateReportsV4 extends Job implements ShouldQueue
     public function getJobs2ShopRevenue()
     {
         $start = Carbon::now();
-        $lr_id = env('CPA_WALL_JOB_TO_SHOP_CAMPAIGN_ID', 297);
+        $lr_id = config('settings.cpa_wall_job_to_shop_campaign_id');
         $url = config('constants.JOBS2SHOP_REPORTS_API');
         $url .= "&data_start=$this->dateFromStr&data_end=$this->dateFromStr";
 
@@ -2014,7 +2014,7 @@ class AffiliateReportsV4 extends Job implements ShouldQueue
     public function getTiburonRevenue()
     {
         $start = Carbon::now();
-        $lr_id = env('EXTERNAL_PATH_TIBURON_CAMPAIGN_ID', 290);
+        $lr_id = config('settings.external_path_tiburon_campaign_id');
         $url = config('constants.TIBURON_NEW_REPORTS_API');
         $from = urlencode($this->dateFromStr.'T00:00:00');
         $to = urlencode($this->dateFromStr.'T23:59:59');
@@ -2124,7 +2124,7 @@ class AffiliateReportsV4 extends Job implements ShouldQueue
     {
         $start = Carbon::now();
         $affiliates = $this->affiliates;
-        $lr_id = env('EXTERNAL_PATH_IFFICIENT_CAMPAIGN_ID', 287);
+        $lr_id = config('settings.external_path_ifficient_campaign_id');
         $url = 'https://api.ifficient.com/inquiry/pubrevenue';
         $date = Carbon::parse($this->dateFromStr);
         $dateStr = $date->month.'/'.$date->day.'/'.$date->year;
@@ -2239,7 +2239,7 @@ class AffiliateReportsV4 extends Job implements ShouldQueue
     {
         $start = Carbon::now();
         $affiliates = $this->affiliates;
-        $lr_id = env('EXTERNAL_PATH_REXADS_CAMPAIGN_ID', 289);
+        $lr_id = config('settings.external_path_rexads_campaign_id');
         $url = 'http://rexadz.com/api/?key=UGMzdVBlU3FkMWhBOUtiR2pwUjFCUT09';
         $date = Carbon::parse($this->dateFromStr);
         $dateStr = $date->month.'/'.$date->day.'/'.$date->year;
@@ -2344,7 +2344,7 @@ class AffiliateReportsV4 extends Job implements ShouldQueue
         $start = Carbon::now();
         $date = Carbon::parse($this->dateFromStr)->format('Y-m-d');
         $affiliates = $this->affiliates;
-        $lr_id = env('EXTERNAL_PATH_PERMISSION_DATA_CAMPAIGN_ID', 283);
+        $lr_id = config('settings.external_path_permission_data_campaign_id');
         $settings = Setting::where('code', 'permission_data_pub_codes')->select('description')->first();
         $pub_codes = json_decode($settings->description, true);
         $data = [];
@@ -2459,7 +2459,7 @@ class AffiliateReportsV4 extends Job implements ShouldQueue
     public function pushCrewRevenue()
     {
         $start = Carbon::now();
-        $lr_id = env('PUSH_CREW_NOTIFICATIONS_CAMPAIGN_ID', 304);
+        $lr_id = config('settings.push_crew_notifications_campaign_id');
         $cakeBaseClicksURL = config('constants.CAKE_CLICKS_REPORTS_API_V12_UNIQUE');
         $cakeBaseConversionsURL = config('constants.CAKE_CONVERSIONS_API_V15');
         $pushCrewAffiliateID = config('constants.PUSH_CREW_NOTIFICATIONS_CAKE_AFFILIATE_ID');
@@ -2689,7 +2689,7 @@ class AffiliateReportsV4 extends Job implements ShouldQueue
     public function setRevenueForNoRevenue()
     {
         $start = Carbon::now();
-        $cakeLRID = env('CPA_WALL_ENGAGEIQ_CAMPAIGN_ID', 94);
+        $cakeLRID = config('settings.cpa_wall_engageiq_campaign_id');
         $date = $this->dateFromStr;
         // DB::enableQueryLog();
         //Get Rev Trackers with no revenue
@@ -2753,7 +2753,7 @@ class AffiliateReportsV4 extends Job implements ShouldQueue
     public function setPayoutforNoClicks()
     {
         $start = Carbon::now();
-        $cakeLRID = env('CPA_WALL_ENGAGEIQ_CAMPAIGN_ID', 94);
+        $cakeLRID = config('settings.cpa_wall_engageiq_campaign_id');
         $date = $this->dateFromStr;
         // DB::enableQueryLog();
         $rev_campaigns = AffiliateRevenueTracker::pluck('campaign_id', 'revenue_tracker_id')->toArray();
@@ -3141,55 +3141,55 @@ class AffiliateReportsV4 extends Job implements ShouldQueue
         switch ($this->restriction) {
             case 'epoll':
                 Log::info('EPOLL');
-                $lr_id = env('CPA_WALL_EPOLL_CAMPAIGN_ID', 285);
+                $lr_id = config('settings.cpa_wall_epoll_campaign_id');
                 $this->deleteCurrentRecord(null, null, $lr_id);
                 $this->getEPollRevenue();
                 break;
             case 'affluent':
                 Log::info('Affluent');
-                $lr_id = env('CPA_WALL_AFFLUENT_CAMPAIGN_ID', 96);
+                $lr_id = config('settings.cpa_wall_affluent_campaign_id');
                 $this->deleteCurrentRecord(null, null, $lr_id);
                 $this->getAffluentRevenue();
                 break;
             case 'sbg':
                 Log::info('SBG');
-                $lr_id = env('CPA_WALL_SBG_CAMPAIGN_ID', 95);
+                $lr_id = config('settings.cpa_wall_sbg_campaign_id');
                 $this->deleteCurrentRecord(null, null, $lr_id);
                 $this->getSBGRevenue();
                 break;
             case 'jobs2shop':
                 Log::info('Jobs2Shop');
-                $lr_id = env('CPA_WALL_JOB_TO_SHOP_CAMPAIGN_ID', 297);
+                $lr_id = config('settings.cpa_wall_job_to_shop_campaign_id');
                 $this->deleteCurrentRecord(null, null, $lr_id);
                 $this->getJobs2ShopRevenue();
                 break;
             case 'tiburon':
                 Log::info('Tiburon');
-                $lr_id = env('EXTERNAL_PATH_TIBURON_CAMPAIGN_ID', 290);
+                $lr_id = config('settings.external_path_tiburon_campaign_id');
                 $this->deleteCurrentRecord(null, null, $lr_id);
                 $this->getTiburonRevenue();
                 break;
             case 'ifficient':
                 Log::info('Ifficient');
-                $lr_id = env('EXTERNAL_PATH_IFFICIENT_CAMPAIGN_ID', 287);
+                $lr_id = config('settings.external_path_ifficient_campaign_id');
                 $this->deleteCurrentRecord(null, null, $lr_id);
                 $this->getIfficientRevenue();
                 break;
             case 'rexadz':
                 Log::info('Rexadz');
-                $lr_id = env('EXTERNAL_PATH_REXADS_CAMPAIGN_ID', 289);
+                $lr_id = config('settings.external_path_rexads_campaign_id');
                 $this->deleteCurrentRecord(null, null, $lr_id);
                 $this->getRexadzRevenue();
                 break;
             case 'permission_data':
                 Log::info('Permission Data');
-                $lr_id = env('EXTERNAL_PATH_PERMISSION_DATA_CAMPAIGN_ID', 283);
+                $lr_id = config('settings.external_path_permission_data_campaign_id');
                 $this->deleteCurrentRecord(null, null, $lr_id);
                 $this->getPermissionDataRevenue();
                 break;
             case 'push_crew':
                 Log::info('Push Crew');
-                $lr_id = env('PUSH_CREW_NOTIFICATIONS_CAMPAIGN_ID', 304);
+                $lr_id = config('settings.push_crew_notifications_campaign_id');
                 $this->deleteCurrentRecord(null, null, $lr_id);
                 $this->pushCrewRevenue();
             case 'no_revenue':
@@ -3222,7 +3222,7 @@ class AffiliateReportsV4 extends Job implements ShouldQueue
     {
         $diffInHours = $this->startLog->diffInMinutes($this->endLog).' minute/s';
 
-        $emailNotificationRecipient = env('REPORTS_EMAIL_NOTIFICATION_RECIPIENT', 'marwilburton@hotmail.com');
+        $emailNotificationRecipient = config('settings.reports_email_notification_recipient');
 
         //send email to Burt to notify that Affiliate Report Queue was successfully finished
         Mail::send('emails.affiliate_report_execution_email',

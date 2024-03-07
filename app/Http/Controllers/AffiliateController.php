@@ -167,7 +167,7 @@ class AffiliateController extends Controller
         $length = $inputs['length'];
         $category = $inputs['datatable_category'];
         $status = $inputs['datatable_status'];
-        $eiq_iframe_id = env('EIQ_IFRAME_ID', 0);
+        $eiq_iframe_id = config('settings.eiq_iframe_id');
 
         $columns = [
             // datatable column index  => database column name

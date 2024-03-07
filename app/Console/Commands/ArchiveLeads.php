@@ -277,7 +277,7 @@ class ArchiveLeads extends Command
         // // delete the tracker
         // CampaignNoTracker::whereIn('id', $idsToDelete);
 
-        $emailNotificationRecipient = env('REPORTS_EMAIL_NOTIFICATION_RECIPIENT', 'marwilburton@hotmail.com');
+        $emailNotificationRecipient = config('settings.reports_email_notification_recipient');
 
         //send email to Burt to notify that Atchive Leads Queue was successfully finished
         Mail::send('emails.archive_leads',

@@ -656,7 +656,7 @@ class CampaignController extends Controller
 
     public function getCampaignInfo(Request $request): JsonResponse
     {
-        $eiq_iframe_id = env('EIQ_IFRAME_ID', 0);
+        $eiq_iframe_id = config('settings.eiq_iframe_id');
         $campaign = $request->input('id');
 
         /* FILTER GROUPS */
@@ -923,7 +923,7 @@ class CampaignController extends Controller
         $affiliates = $request->input('select_affiliate');
         $campaign = AffiliateCampaign::find($affiliates[0])->campaign_id;
         $the_affiliates = [];
-        $eiq_frame = env('EIQ_IFRAME_ID', 0);
+        $eiq_frame = config('settings.eiq_iframe_id');
 
         foreach ($affiliates as $id) {
             /* FIND AFFILIATE CAMPAIGN DATA*/
@@ -2757,7 +2757,7 @@ class CampaignController extends Controller
     {
         $operation = $request->input('operation');
         $affiliates = $request->input('affiliates');
-        $eiq_frame = env('EIQ_IFRAME_ID', 0);
+        $eiq_frame = config('settings.eiq_iframe_id');
 
         if ($operation == 1) {
             $campaigns = Campaign::where('campaigns.id', '!=', $eiq_frame)->select('id', 'name', 'campaign_type', 'status')
@@ -2787,7 +2787,7 @@ class CampaignController extends Controller
         $lead_cap_type = $inputs['lead_cap_type'];
         $lead_cap_value = isset($inputs['lead_cap_value']) ? $inputs['lead_cap_value'] : 0;
         $exp_date = $this->getLinkOutCapExpDate($lead_cap_type);
-        $eiq_frame = env('EIQ_IFRAME_ID', 0);
+        $eiq_frame = config('settings.eiq_iframe_id');
 
         if (isset($inputs['all_cam_campaigns']) && $inputs['all_cam_campaigns'] == 'ALL') {
             $getCampaigns = Campaign::pluck('campaign_type', 'id')->toArray();

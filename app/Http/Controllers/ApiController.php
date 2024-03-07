@@ -34,9 +34,9 @@ class ApiController extends Controller
         $userPassword = $request->header('userpassword');
 
         //for encryption and decryption
-        $encryptionKey = env('ENCRYPTION_KEY');
-        $macKey = env('MAC_KEY');
-        $encryptionApplied = env('ENCRYPTION_APPLIED', false);
+        $encryptionKey = config('settings.encryption_key');
+        $macKey = config('settings.mac_key');
+        $encryptionApplied = config('settings.encryption_applied');
         $encryptor = new Simple($encryptionKey, $macKey);
 
         //decrypt if needed the encrypted useremail and password

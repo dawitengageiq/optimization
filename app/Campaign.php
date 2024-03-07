@@ -276,13 +276,13 @@ class Campaign extends Model
             $query->join('affiliate_campaign', function ($join) use ($affiliate) {
                 $join->on('campaigns.id', '=', 'affiliate_campaign.campaign_id')
                     ->where('affiliate_campaign.affiliate_id', '=', $affiliate)
-                    ->where('campaigns.id', '!=', env('EIQ_IFRAME_ID', 0));
+                    ->where('campaigns.id', '!=', config('settings.eiq_iframe_id'));
             });
         } else {
             $query->leftJoin('affiliate_campaign', function ($join) use ($affiliate) {
                 $join->on('campaigns.id', '=', 'affiliate_campaign.campaign_id')
                     ->where('affiliate_campaign.affiliate_id', '=', $affiliate)
-                    ->where('campaigns.id', '!=', env('EIQ_IFRAME_ID', 0));
+                    ->where('campaigns.id', '!=', config('settings.eiq_iframe_id'));
             });
         }
 

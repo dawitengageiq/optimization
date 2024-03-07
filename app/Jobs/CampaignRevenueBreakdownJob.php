@@ -42,7 +42,7 @@ class CampaignRevenueBreakdownJob extends Job implements ShouldQueue
 
         $this->thirty_date = Carbon::parse($date)->subDay(30)->toDateString();
 
-        $this->all_inbox_id = env('ALL_INBOX_CAMPAIGN_ID', 286);
+        $this->all_inbox_id = config('settings.all_inbox_campaign_id');
 
         // Log::info($this->campaign);
         // Log::info($this->date);

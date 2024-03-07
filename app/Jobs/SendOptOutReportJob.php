@@ -249,7 +249,7 @@ class SendOptOutReportJob extends Job implements ShouldQueue
 
         $report_recipients = $this->recipients;
 
-        $lr_build = env('APP_BUILD', 'NLR');
+        $lr_build = config('settings.app_build');
         Mail::send('emails.opt_out_report', ['date' => $date],
             function ($message) use ($excelAttachment, $lr_build, $report_recipients) {
 

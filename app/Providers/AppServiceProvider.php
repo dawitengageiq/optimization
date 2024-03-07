@@ -67,7 +67,7 @@ class AppServiceProvider extends ServiceProvider
             \App\Helpers\Repositories\SettingsInterface::class,
             \App\Helpers\Repositories\Settings::class);
 
-        if (env('APP_DEBUG') == true && env('APP_BUILD') == 'JTLR') {
+        if (config('app.debug') == true && config('settings.app_build') == 'JTLR') {
             $this->app->register(\Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class);
             $this->app->register(\Barryvdh\Debugbar\ServiceProvider::class);
 

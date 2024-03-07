@@ -77,8 +77,8 @@ class TokenHelper
             */
 
             //decrypt the token
-            $encryptionKey = env('ENCRYPTION_KEY');
-            $macKey = env('MAC_KEY');
+            $encryptionKey = config('settings.encryption_key');
+            $macKey = config('settings.mac_key');
 
             $encryptor = new Simple($encryptionKey, $macKey);
             $decryptedToken = $encryptor->decrypt($token);

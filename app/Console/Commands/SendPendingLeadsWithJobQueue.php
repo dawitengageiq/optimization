@@ -46,7 +46,7 @@ class SendPendingLeadsWithJobQueue extends Command
         $this->info('Executing send pending leads...');
 
         //this is to prevent slave to execute at the same time as master server
-        if (env('APP_SERVER', 'master') == 'slave') {
+        if (config('settings.app_server') == 'slave') {
             sleep(5);
         }
 

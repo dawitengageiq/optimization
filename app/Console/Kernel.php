@@ -36,128 +36,128 @@ class Kernel extends ConsoleKernel
                  ->hourly();
         */
 
-        if (env('EXECUTE_REORDER_CAMPAIGNS', true)) {
+        if (config('settings.execute_reorder_campaigns')) {
             $schedule->command('reorder-campaigns')
                 ->withoutOverlapping()
                 ->everyMinute();
         }
 
-        if (env('EXECUTE_TRANSFER_FINISHED_CRON_JOBS', true)) {
+        if (config('settings.execute_transfer_finished_cron_jobs')) {
             $schedule->command('transfer:finished-cron-jobs')
                 ->withoutOverlapping()
                 ->hourly()
                 ->appendOutputTo(storage_path('logs').'/TransferFinishedCronJobs.log');
         }
 
-        if (env('EXECUTE_SEND_PENDING_LEADS_WITH_JOB_QUEUE', true)) {
+        if (config('settings.execute_send_pending_leads_with_job_queue')) {
             $schedule->command('send:pending-leads-job-queue')
                 ->everyMinute();
         }
 
-        if (env('EXECUTE_SEND_PENDING_LEADS', true)) {
+        if (config('settings.execute_send_pending_leads')) {
             $schedule->command('send:pending-leads')
                 ->everyMinute();
         }
 
-        if (env('EXECUTE_GET_CAKE_CONVERSIONS', true)) {
+        if (config('settings.execute_get_cake_conversions')) {
             $schedule->command('get:cake-conversions')
                 ->hourly()
                 ->withoutOverlapping()
                 ->appendOutputTo(storage_path('logs').'/GetCakeConversions.log');
         }
 
-        if (env('EXECUTE_BUG_REPORTS', true)) {
+        if (config('settings.execute_bug_reports')) {
             $schedule->command('send:bug-reports')
                 ->withoutOverlapping()
                 ->hourly()
                 ->appendOutputTo(storage_path('logs').'/SendBugReports.log');
         }
 
-        if (env('EXECUTE_ALL_INBOX', true)) {
+        if (config('settings.execute_all_inbox')) {
             $schedule->command('all-inbox')
                 ->hourly()
                 ->withoutOverlapping()
                 ->appendOutputTo(storage_path('logs').'/AllInbox.log');
         }
 
-        if (env('EXECUTE_REV_TRACKER_UPDATE_SUBID_BREAKDOWN', true)) {
+        if (config('settings.execute_rev_tracker_update_subid_breakdown')) {
             $schedule->command('update:rev-tracker-subid-breakdown-status')
                 ->withoutOverlapping()
                      // ->daily();
                 ->dailyAt('23:58');
         }
 
-        if (env('EXECUTE_REORDER_MIXED_COREG_CAMPAIGNS', true)) {
+        if (config('settings.execute_reorder_mixed_coreg_campaigns')) {
             $schedule->command('reorder-mixed-coreg-campaigns')
                 ->withoutOverlapping()
                      // ->hourly();
                 ->daily();
         }
 
-        if (env('EXECUTE_DAILY_REORDER_MIXED_COREG_CAMPAIGNS', true)) {
+        if (config('settings.execute_daily_reorder_mixed_coreg_campaigns')) {
             // Daily reordering
             $schedule->command('daily-reordering:mixed-coreg-campaigns')
                 ->daily()
                 ->appendOutputTo(storage_path('logs').'/DailyMixCoregOrderingCronJobs.log');
         }
 
-        if (env('EXECUTE_RESET_LEAD_COUNTERS', true)) {
+        if (config('settings.execute_reset_lead_counters')) {
             $schedule->command('reset:lead-counters')
                 ->daily()
                 ->withoutOverlapping()
                 ->appendOutputTo(storage_path('logs').'/ResetLeadCounts.log');
         }
 
-        if (env('EXECUTE_ARCHIVE_CAKE_CONVERSIONS', true)) {
+        if (config('settings.execute_archive_cake_conversions')) {
             $schedule->command('archive:cake-conversions')
                 ->daily()
                 ->withoutOverlapping()
                 ->appendOutputTo(storage_path('logs').'/ArchiveCakeConversions.log');
         }
 
-        if (env('EXECUTE_RESET_CAMPAIGN_TYPE_VIEWS', true)) {
+        if (config('settings.execute_reset_campaign_type_views')) {
             $schedule->command('reset:campaign_type_views')
                 ->withoutOverlapping()
                 ->daily();
         }
 
-        if (env('EXECUTE_LEAD_FAIL_TIMEOUT_REPORT', true)) {
+        if (config('settings.execute_lead_fail_timeout_report')) {
             $schedule->command('generate:leads-fail-timeout-report')
                 ->withoutOverlapping()
                 ->daily();
         }
 
-        if (env('EXECUTE_FTP_LEAD_FEED_CSV', true)) {
+        if (config('settings.execute_ftp_lead_feed_csv')) {
             $schedule->command('generate:ftp-lead-feed-csv')
                 ->withoutOverlapping()
                 ->daily();
         }
 
-        if (env('EXECUTE_LEAD_ADVERTISER_DATA_CSV', true)) {
+        if (config('settings.execute_lead_advertiser_data_csv')) {
             $schedule->command("generate:lead-advertiser-data-csv --campaign_name='childsafekit'")
                 ->withoutOverlapping()
                 ->daily();
         }
 
-        if (env('EXECUTE_CLEAN_DASHBOARD_STATS', true)) {
+        if (config('settings.execute_clean_dashboard_stats')) {
             $schedule->command('clean:dashboard-stats')
                 ->daily()
                 ->withoutOverlapping();
         }
 
-        if (env('EXECUTE_UPDATE_CPAWALL_STATUS', true)) {
+        if (config('settings.execute_update_cpawall_status')) {
             $schedule->command('update:cpawall-status')
                 ->withoutOverlapping()
                 ->daily();
         }
 
-        if (env('EXECUTE_NOCPL_REMINDER', true)) {
+        if (config('settings.execute_nocpl_reminder')) {
             $schedule->command('cpl-check')
                 ->withoutOverlapping()
                 ->weekly()->fridays()->at('13:00');
         }
 
-        if (env('EXECUTE_ARCHIVE_LEADS', true)) {
+        if (config('settings.execute_archive_leads')) {
             $schedule->command('archive:leads')
                      //->daily()
                 ->dailyAt('01:00')
@@ -165,7 +165,7 @@ class Kernel extends ConsoleKernel
                 ->appendOutputTo(storage_path('logs').'/ArchiveLeads.log');
         }
 
-        if (env('EXECUTE_GENERATE_AFFILIATE_REPORTS_HOURLY', true)) {
+        if (config('settings.execute_generate_affiliate_reports_hourly')) {
             $currentHour = Carbon::now()->hour;
 
             if (! ($currentHour >= 0 && $currentHour <= 3)) {
@@ -180,7 +180,7 @@ class Kernel extends ConsoleKernel
             }
         }
 
-        if (env('EXECUTE_GENERATE_CLICKS_VS_REGISTRATION_STATISTICS', true)) {
+        if (config('settings.execute_generate_clicks_vs_registration_statistics')) {
             // $schedule->command('generate:clicks-registration-stats')
             //->dailyAt('1:00')
             //->dailyAt('18:30')
@@ -191,7 +191,7 @@ class Kernel extends ConsoleKernel
                 ->appendOutputTo(storage_path('logs').'/GenerateClicksVsRegistrationStats.log');
         }
 
-        if (env('EXECUTE_CLEAN_QUEUED_LEADS', true)) {
+        if (config('settings.execute_clean_queued_leads')) {
             // $schedule->command('generate:clicks-registration-stats')
             //->dailyAt('1:00')
             //->dailyAt('18:30')
@@ -200,7 +200,7 @@ class Kernel extends ConsoleKernel
                 ->withoutOverlapping();
         }
 
-        if (env('EXECUTE_GENERATE_AFFILIATE_REPORTS', true)) {
+        if (config('settings.execute_generate_affiliate_reports')) {
             $schedule->command('generate:affiliate-reports')
                 ->dailyAt('3:00')
                      //->dailyAt('18:00')
@@ -214,7 +214,7 @@ class Kernel extends ConsoleKernel
             //          ->appendOutputTo(storage_path('logs').'/GenerateAffiliateReports.log');
         }
 
-        if (env('EXECUTE_GENERATE_PAGE_VIEW_STATISTICS', true)) {
+        if (config('settings.execute_generate_page_view_statistics')) {
             $schedule->command('generate:page-view-statistics')
                 //->dailyAt('1:00')
                 // ->dailyAt('19:00')
@@ -232,7 +232,7 @@ class Kernel extends ConsoleKernel
                 ->appendOutputTo(storage_path('logs').'/GeneratePageViewStatistics.log');
         }
 
-        if (env('EXECUTE_GENERATE_AFFILIATE_WEBSITE_REPORT', true)) {
+        if (config('settings.execute_generate_affiliate_website_report')) {
             $schedule->command('generate:affiliate-website-report')
                 ->dailyAt('00:05')
                 ->withoutOverlapping();
@@ -242,7 +242,7 @@ class Kernel extends ConsoleKernel
                 ->withoutOverlapping();
         }
 
-        if (env('EXECUTE_SEND_AFFILIATE_REG_REVENUE_REPORT', true)) {
+        if (config('settings.execute_send_affiliate_reg_revenue_report')) {
             $schedule->command('send:affiliate-reg-path-revenue-report')
                 ->dailyAt('00:30')
                 ->withoutOverlapping();
@@ -258,7 +258,7 @@ class Kernel extends ConsoleKernel
         //              ->appendOutputTo(storage_path('logs').'/GenerateCakeRevenues.log');
         // }
 
-        if (env('EXECUTE_GENERATE_HANDP_REPORTS', true)) {
+        if (config('settings.execute_generate_handp_reports')) {
             $schedule->command('generate:hosted-and-posted-affiliate-reports')
                      //->dailyAt('1:00')
                      // ->dailyAt('20:00')
@@ -267,7 +267,7 @@ class Kernel extends ConsoleKernel
                 ->appendOutputTo(storage_path('logs').'/GenerateHandPAffiliateReports.log');
         }
 
-        if (env('EXECUTE_GENERATE_IFRAME_REPORTS', true)) {
+        if (config('settings.execute_generate_iframe_reports')) {
             $schedule->command('generate:iframe-affiliate-reports')
                      //->dailyAt('1:00')
                      //->dailyAt('20:30')
@@ -276,7 +276,7 @@ class Kernel extends ConsoleKernel
                 ->appendOutputTo(storage_path('logs').'/GenerateIframeAffiliateReports.log');
         }
 
-        if (env('EXECUTE_GENERATE_EXTERNAL_PATH_REPORTS', true)) {
+        if (config('settings.execute_generate_external_path_reports')) {
             $schedule->command('generate:external-path-affiliate-reports')
                      //->dailyAt('1:00')
                      //->dailyAt('20:30')
@@ -285,7 +285,7 @@ class Kernel extends ConsoleKernel
                 ->appendOutputTo(storage_path('logs').'/GenerateExternalPathAffiliateReports.log');
         }
 
-        if (env('EXECUTE_EMAIL_LEAD_CSV_DATA_FEED', true)) {
+        if (config('settings.execute_email_lead_csv_data_feed')) {
             $dateNowStr = Carbon::now()->subDay()->toDateString();
             $schedule->command('email:lead-csv-data-feed --campaign=255 --from="'.$dateNowStr.'" --to="'.$dateNowStr.'" --email="burt@engageiq.com" --name="marwil burton"')
                      //->dailyAt('03:00')
@@ -294,7 +294,7 @@ class Kernel extends ConsoleKernel
                 ->appendOutputTo(storage_path('logs').'/EmailLeadCSVDataFeed.log');
         }
 
-        if (env('EXECUTE_COREG_PERFORMANCE_REPORTS', true)) {
+        if (config('settings.execute_coreg_performance_reports')) {
             $schedule->command('generate:coreg-performance-report')
                      //->dailyAt('03:00')
                 ->dailyAt('06:30')
@@ -302,7 +302,7 @@ class Kernel extends ConsoleKernel
                 ->appendOutputTo(storage_path('logs').'/CoregPerformanceReports.log');
         }
 
-        if (env('EXECUTE_GENERATE_HIGH_REJECTION_ALERT_REPORT', true)) {
+        if (config('settings.execute_generate_high_rejection_alert_report')) {
             $schedule->command('generate:high-rejection-alert-report')
                      //->dailyAt('03:00')
                 ->dailyAt('07:30')
@@ -310,21 +310,21 @@ class Kernel extends ConsoleKernel
                 ->appendOutputTo(storage_path('logs').'/GenerateHighRejectionAlertReport.log');
         }
 
-        if (env('EXECUTE_CREATIVE_REVENUE_REPORT', true)) {
+        if (config('settings.execute_creative_revenue_report')) {
             $schedule->command('generate:creative-revenue-report')
                 ->withoutOverlapping()
                 ->dailyAt('08:00')
                 ->appendOutputTo(storage_path('logs').'/GenerateCreativeRevenueReport.log');
         }
 
-        if (env('EXECUTE_REV_TRACKER_UPDATE_SUBID_BREAKDOWN', true)) {
+        if (config('settings.execute_rev_tracker_update_subid_breakdown')) {
             $schedule->command('update:rev-tracker-report-subid-breakdown-status')
                 ->withoutOverlapping()
                 ->dailyAt('08:15');
         }
 
         //consolidated job here
-        if (env('EXECUTE_GENERATE_CONSOLIDATED_GRAPH', true)) {
+        if (config('settings.execute_generate_consolidated_graph')) {
             // $schedule->command('consolidated-graph:data-generator')
             //     ->dailyAt('7:00')
             //     ->withoutOverlapping()
@@ -335,51 +335,51 @@ class Kernel extends ConsoleKernel
                 ->withoutOverlapping();
         }
 
-        if (env('EXECUTE_CAMPAIGN_REVENUE_BREAKDOWN', true)) {
-            $all_inbox = env('ALL_INBOX_CAMPAIGN_ID', 286);
+        if (config('settings.execute_campaign_revenue_breakdown')) {
+            $all_inbox = config('settings.all_inbox_campaign_id');
             $schedule->command('generate:campaign-revenue-breakdown --campaign='.$all_inbox)
                 ->dailyAt('12:00')
                 ->withoutOverlapping();
-            $push_pro = env('PUSH_PRO_CAMPAIGN_ID', 1672);
+            $push_pro = config('settings.push_pro_campaign_id');
             $schedule->command('generate:campaign-revenue-breakdown --campaign='.$push_pro)
                 ->dailyAt('12:30')
                 ->withoutOverlapping();
         }
 
-        if (env('EXECUTE_ALL_INBOX', true)) {
+        if (config('settings.execute_all_inbox')) {
             $schedule->command('all-inbox-cleaner')
                 ->withoutOverlapping()
                 ->dailyAt('23:00');
 
         }
 
-        if (env('EXECUTE_GET_ONE_TRUST_EMAIL', true)) {
+        if (config('settings.execute_get_one_trust_email')) {
             $schedule->command('get:one-trust-emails')
                 ->daily();
         }
 
-        if (env('EXECUTE_GET_SUBSCRIBED_CAMPAIGNS', true)) {
+        if (config('settings.execute_get_subscribed_campaigns')) {
             $schedule->command('get:user-subscribed-campaigns')
                     // ->dailyAt('01:00');
                 ->weekly()->sundays()->at('01:00');
         }
 
-        if (env('EXECUTE_SEND_USER_ONE_TRUST_EMAIL', true)) {
+        if (config('settings.execute_send_user_one_trust_email')) {
             $schedule->command('send:user-one-trust-request-email')
                 ->weekly()->sundays()->at('01:00');
         }
 
-        if (env('EXECUTE_SEND_PUBLISHER_REMOVE_USER', true)) {
+        if (config('settings.execute_send_publisher_remove_user')) {
             $schedule->command('send:publisher-remove-user --state=CA,NV')
                 ->weekly()->sundays()->at('03:00');
         }
 
-        if (env('EXECUTE_DELETE_OPT_OUT_USER', true)) {
+        if (config('settings.execute_delete_opt_out_user')) {
             $schedule->command('delete:opt-out-users')
                 ->weekly()->sundays()->at('04:30');
         }
 
-        if (env('EXECUTE_SEND_OPT_OUT_REPORT', true)) {
+        if (config('settings.execute_send_opt_out_report')) {
             $schedule->command('send:opt-out-report')
                 ->weekly()->sundays()->at('08:00');
         }

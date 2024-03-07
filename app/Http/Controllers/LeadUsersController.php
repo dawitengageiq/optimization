@@ -265,14 +265,14 @@ class LeadUsersController extends Controller
         if ($status != 0 && $status != 2) {
             return 'status should only be either 0 or 2';
         }
-        $allInboxFeedStatus = env('ALL_INBOX_FEED_STATUS', 'false');
-        $phoneFeedStatus = env('PHONE_FEED_STATUS', 'false');
-        $addFeedStatus = env('ADDRESS_FEED_STATUS', 'false');
-        $cvdFeedStatus = env('CVD_FEED_STATUS', 'false');
-        $embFeedStatus = env('EMAIL_MEDIA_BUY_FEED_STATUS', 'false');
-        $aoFeedStatus = env('ADMIRED_OPINION_FEED_STATUS', 'false');
-        $allowLog = env('ALL_INBOX_LOGGER', 'true');
-        $edAllInboxFeedStatus = env('EP_ALL_INBOX_FEED_STATUS', 'false');
+        $allInboxFeedStatus = config('settings.all_inbox_feed_status');
+        $phoneFeedStatus = config('settings.phone_feed_status');
+        $addFeedStatus = config('settings.address_feed_status');
+        $cvdFeedStatus = config('settings.cvd_feed_status');
+        $embFeedStatus = config('settings.email_media_buy_feed_status');
+        $aoFeedStatus = config('settings.admired_opinion_feed_status');
+        $allowLog = config('settings.all_inbox_logger');
+        $edAllInboxFeedStatus = config('settings.ep_all_inbox_feed_status');
 
         //get affiliates
         $settings = Setting::whereIn('code', ['phone_feed_affiliates', 'address_feed_affiliates', 'cvd_feed_affiliates', 'email_media_buy_affiliates', 'all_inbox_feed_affiliates', 'epic_demand_all_inbox_feed_affiliates', 'data_feed_excluded_affiliates'])->get();

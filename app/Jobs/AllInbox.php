@@ -40,7 +40,7 @@ class AllInbox extends Job implements ShouldQueue
 
         // Log::info("AllInbox response: $curl->response");
 
-        $emailNotificationRecipient = env('REPORTS_EMAIL_NOTIFICATION_RECIPIENT', 'marwilburton@hotmail.com');
+        $emailNotificationRecipient = config('settings.reports_email_notification_recipient');
 
         Mail::send('emails.all_inbox', [], function ($m) use ($emailNotificationRecipient) {
             $m->from('ariel@engageiq.com', 'Ariel Magbanua');

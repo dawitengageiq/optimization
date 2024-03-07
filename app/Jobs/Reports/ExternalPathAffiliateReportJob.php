@@ -110,7 +110,7 @@ class ExternalPathAffiliateReportJob extends Job implements ShouldQueue
         $endLog = Carbon::now();
         $diffInHours = $startLog->diffInHours($endLog).' hours';
 
-        $emailNotificationRecipient = env('REPORTS_EMAIL_NOTIFICATION_RECIPIENT', 'marwilburton@hotmail.com');
+        $emailNotificationRecipient = config('settings.reports_email_notification_recipient');
 
         //send email to Burt to notify that Internal Iframe Affiliate Report Queue was successfully finished
         Mail::send('emails.affiliate_report_execution_email',

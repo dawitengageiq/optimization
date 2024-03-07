@@ -50,17 +50,17 @@ class SendBugReportsV2 extends Job implements ShouldQueue
         }
 
         if (count($qa_recipients) == 0) {
-            $qa_recipients[] = env('REPORTS_EMAIL_NOTIFICATION_RECIPIENT', 'marwilburton@hotmail.com');
+            $qa_recipients[] = config('settings.reports_email_notification_recipient');
         }
 
-        $projectKey = env('JIRA_PROJECT_KEY', 'NLR');
+        $projectKey = config('settings.jira_project_key');
         $issueTypeName = 'Bug';
-        $assigneeUsername = env('JIRA_ISSUE_ASSIGNEE_USERNAME', 'Ariel'); //default is Ariel
-        $jiraUserName = env('JIRA_USERNAME', 'monty');
-        $jiraUserPassword = env('JIRA_USER_PASSWORD', 'magbanua2016');
+        $assigneeUsername = config('settings.jira_issue_assignee_username'); //default is Ariel
+        $jiraUserName = config('settings.jira_username');
+        $jiraUserPassword = config('settings.jira_user_password');
 
         //this will return the engageiq atlassian base url if it is not specified in env
-        $baseURI = env('JIRA_API_BASE_URL', 'https://engageiq.atlassian.net');
+        $baseURI = config('settings.jira_api_base_url');
 
         $inputs = [];
 

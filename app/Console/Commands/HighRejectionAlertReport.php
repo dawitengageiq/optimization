@@ -56,7 +56,7 @@ class HighRejectionAlertReport extends Command
      */
     public function handle(): void
     {
-        $lr_build = env('APP_BUILD', 'NLR');
+        $lr_build = config('settings.app_build');
         $date = $this->option('date');
         if (empty($date)) {
             $date = Carbon::yesterday()->toDateString();

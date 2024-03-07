@@ -22,8 +22,8 @@ class ApiBasicAuthorization
             'message' => 'Invalid Credentials',
         ];
 
-        $envAPIUser = env('API_USER', 'api@engageiq.com');
-        $envAPIKey = env('API_KEY', '00b462d748d32231540d3dee001dbbadec723a56+e67f380c13a5664c91d48f38d822b3272f2c62a2');
+        $envAPIUser = config('settings.api_user');
+        $envAPIKey = config('settings.api_key');
 
         if ($userEmail == $envAPIUser && $password == $envAPIKey) {
             return $next($request);

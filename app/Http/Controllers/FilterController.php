@@ -1083,14 +1083,14 @@ class FilterController extends Controller
 
         //Check Mixed Coreg Reorder Global Settings
         $mcReorder = false;
-        if (env('EXECUTE_REORDER_MIXED_COREG_CAMPAIGNS', false) || env('EXECUTE_DAILY_REORDER_MIXED_COREG_CAMPAIGNS', false)) {
+        if (config('settings.execute_reorder_mixed_coreg_campaigns') || config('settings.execute_daily_reorder_mixed_coreg_campaigns')) {
             if (isset($rs['mixed_coreg_campaign_reordering_status']) && $rs['mixed_coreg_campaign_reordering_status'] == 1) {
                 $mcReorder = true;
             }
         }
         //Check Campaign Type Reorder Global Settings
         $ctReorder = false;
-        if (env('EXECUTE_REORDER_CAMPAIGNS', false)) {
+        if (config('settings.execute_reorder_campaigns')) {
             if (isset($rs['campaign_reordering_status']) && $rs['campaign_reordering_status'] == 1) {
                 $ctReorder = true;
             }
@@ -2431,14 +2431,14 @@ class FilterController extends Controller
 
         //Check Mixed Coreg Reorder Global Settings
         $mcReorder = false;
-        if (env('EXECUTE_REORDER_MIXED_COREG_CAMPAIGNS', false) || env('EXECUTE_DAILY_REORDER_MIXED_COREG_CAMPAIGNS', false)) {
+        if (config('settings.execute_reorder_mixed_coreg_campaigns') || config('settings.execute_daily_reorder_mixed_coreg_campaigns')) {
             if (isset($rs['mixed_coreg_campaign_reordering_status']) && $rs['mixed_coreg_campaign_reordering_status'] == 1) {
                 $mcReorder = true;
             }
         }
         //Check Campaign Type Reorder Global Settings
         $ctReorder = false;
-        if (env('EXECUTE_REORDER_CAMPAIGNS', false)) {
+        if (config('settings.execute_reorder_campaigns')) {
             if (isset($rs['campaign_reordering_status']) && $rs['campaign_reordering_status'] == 1) {
                 $ctReorder = true;
             }
@@ -2702,14 +2702,14 @@ class FilterController extends Controller
 
         //Check Mixed Coreg Reorder Global Settings
         $mcReorder = false;
-        if (env('EXECUTE_REORDER_MIXED_COREG_CAMPAIGNS', false) || env('EXECUTE_DAILY_REORDER_MIXED_COREG_CAMPAIGNS', false)) {
+        if (config('settings.execute_reorder_mixed_coreg_campaigns') || config('settings.execute_daily_reorder_mixed_coreg_campaigns')) {
             if (isset($rs['mixed_coreg_campaign_reordering_status']) && $rs['mixed_coreg_campaign_reordering_status'] == 1) {
                 $mcReorder = true;
             }
         }
         //Check Campaign Type Reorder Global Settings
         $ctReorder = false;
-        if (env('EXECUTE_REORDER_CAMPAIGNS', false)) {
+        if (config('settings.execute_reorder_campaigns')) {
             if (isset($rs['campaign_reordering_status']) && $rs['campaign_reordering_status'] == 1) {
                 $ctReorder = true;
             }

@@ -109,7 +109,7 @@ class NoCPLReminder extends Job implements ShouldQueue
                 ];
 
                 Mail::send('emails.campaign_no_cpl_reminder',
-                    ['campaign' => $name, 'url' => env('APP_BASE_URL', 'https://leadreactor.engageiq.com').'/admin/campaigns'],
+                    ['campaign' => $name, 'url' => config('settings.app_base_url').'/admin/campaigns'],
                     function ($m) use ($name, $recipients) {
                         foreach ($recipients as $recipient) {
                             $m->to($recipient);
