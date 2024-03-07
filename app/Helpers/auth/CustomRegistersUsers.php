@@ -33,6 +33,6 @@ trait CustomRegistersUsers
 
         Auth::login($this->create($request->all()));
 
-        return redirect($this->redirectPath());
+        return redirect()->to($this->redirectPath());
     }
 }

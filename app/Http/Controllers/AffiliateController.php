@@ -562,7 +562,7 @@ class AffiliateController extends Controller
             // Log::info($setting);
         }
 
-        return redirect('/affiliate/edit_account');
+        return redirect()->to('/affiliate/edit_account');
 
         // $responseData = [
         //     'id' => $user->id,
