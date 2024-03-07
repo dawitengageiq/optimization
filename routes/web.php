@@ -62,13 +62,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 //home route
-Route::get('/', function () {
-    return view('welcome');
-})->middleware('auth', 'guest');
+Route::view('/', 'welcome')->middleware('auth', 'guest');
 
-Route::get('home', function () {
-    return view('welcome');
-})->middleware('auth', 'guest');
+Route::view('home', 'welcome')->middleware('auth', 'guest');
 
 Route::get('build_number', function () {
 
