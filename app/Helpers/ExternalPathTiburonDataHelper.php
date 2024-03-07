@@ -13,7 +13,7 @@ use App\AffiliateRevenueTracker;
 use App\Campaign;
 use Carbon\Carbon;
 use Illuminate\Database\QueryException;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 class ExternalPathTiburonDataHelper
 {

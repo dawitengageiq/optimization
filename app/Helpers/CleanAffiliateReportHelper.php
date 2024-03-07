@@ -4,8 +4,8 @@ namespace App\Helpers;
 
 use App\AffiliateReport;
 use App\RevenueTrackerCakeStatistic;
-use DB;
-use Log;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class CleanAffiliateReportHelper
 {

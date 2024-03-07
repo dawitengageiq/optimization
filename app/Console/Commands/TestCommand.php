@@ -7,9 +7,9 @@ use App\Commands\RandomProbability;
 use App\Helpers\Repositories\LeadData;
 use App\Jobs\TestJob;
 use App\Lead;
-use Bus;
+use Illuminate\Support\Facades\Bus;
 use Illuminate\Console\Command;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 class TestCommand extends Command
 {

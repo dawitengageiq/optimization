@@ -7,11 +7,11 @@ use App\Setting;
 use Carbon\Carbon;
 use Curl\Curl;
 use DateTime;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Excel;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Log;
+use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class LeadUsersController extends Controller

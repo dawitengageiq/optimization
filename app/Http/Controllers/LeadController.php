@@ -21,11 +21,11 @@ use App\LeadMessage;
 use App\LeadSentResult;
 use Carbon\Carbon;
 use Curl\Curl;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 class LeadController extends Controller
 {

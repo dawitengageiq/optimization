@@ -9,7 +9,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 class SendBugReports extends Job implements ShouldQueue
 {

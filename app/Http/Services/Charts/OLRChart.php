@@ -2,7 +2,7 @@
 
 namespace App\Http\Services\Charts;
 
-use Config;
+use Illuminate\Support\Facades\Config;
 
 final class OLRChart extends Factories\ChartFactory implements \App\Http\Services\Contracts\ChartContract
 {

@@ -8,7 +8,7 @@ use App\Lead;
 use App\LeadCount;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 class SendPendingLeadsWithJobQueue extends Command
 {

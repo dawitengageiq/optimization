@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\User;
 use Illuminate\Foundation\Http\FormRequest;
-use Validator;
+use Illuminate\Support\Facades\Validator;
 
 class UpdateContactRequest extends FormRequest
 {

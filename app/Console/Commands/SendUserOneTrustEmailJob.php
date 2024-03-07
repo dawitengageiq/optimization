@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use Illuminate\Support\Facades\Config;
 use App\LeadUser;
 use App\LeadUserRequest;
 use App\Setting;
@@ -9,7 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
-use Log;
+use Illuminate\Support\Facades\Log;
 use Maatwebsite\Excel\Facades\Excel;
 
 class SendUserOneTrustEmailJob extends Command
@@ -116,7 +117,7 @@ class SendUserOneTrustEmailJob extends Command
                 }
 
                 $feedTitle = 'user_data';
-                \Config::set('excel.csv.enclosure', '');
+                Config::set('excel.csv.enclosure', '');
                 Excel::create($feedTitle, function ($excel) use ($leadUser, $hasInfo) {
                     $excel->sheet('data', function ($sheet) use ($leadUser, $hasInfo) {
                         //set up the title header row

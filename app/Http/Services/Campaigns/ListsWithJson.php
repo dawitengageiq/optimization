@@ -6,7 +6,7 @@ use App\Campaign;
 use App\FilterType;
 use App\Lead;
 use CampaignSettings;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class ListsWithJson
 {

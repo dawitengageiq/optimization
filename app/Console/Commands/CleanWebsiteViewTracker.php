@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use Illuminate\Support\Facades\Log;
 use App\WebsitesViewTracker;
 use App\WebsitesViewTrackerDuplicate;
 use Carbon\Carbon;
@@ -40,7 +41,7 @@ class CleanWebsiteViewTracker extends Command
     public function handle(): void
     {
         $this->info('Initiating website view cleanup');
-        \Log::info('Initiating website view cleanup');
+        Log::info('Initiating website view cleanup');
         $date = $this->option('date');
 
         //NEW VERSION
@@ -55,6 +56,6 @@ class CleanWebsiteViewTracker extends Command
         $views = WebsitesViewTrackerDuplicate::where('created_at', '<=', $date.' 23:59:59')->delete();
 
         $this->info('Website view Cleanup Done!');
-        \Log::info('Website view Cleanup Done!');
+        Log::info('Website view Cleanup Done!');
     }
 }

@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Commands\GetUserActionPermission;
 use App\FilterType;
-use Bus;
-use DB;
+use Illuminate\Support\Facades\Bus;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 

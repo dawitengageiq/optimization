@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Affiliate;
 use App\AffiliateRevenueTracker;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 /**
  * This Controller is primarily used as ajax remote data provider for Select2 select drop downs.

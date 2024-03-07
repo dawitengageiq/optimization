@@ -8,17 +8,17 @@ use App\Campaign;
 use App\Http\Services;
 use App\Lead;
 use App\Setting;
-use Artisan;
-use Cache;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Cache;
 use Carbon\Carbon;
-use Config;
-use DB;
-use File;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Console\Command;
-use Log;
+use Illuminate\Support\Facades\Log;
 use Maatwebsite\Excel\Facades\Excel;
-use Mail;
-use Storage;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 
 class HighRejectionAlertReport extends Command
 {

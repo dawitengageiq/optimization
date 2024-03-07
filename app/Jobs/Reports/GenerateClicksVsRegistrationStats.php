@@ -11,7 +11,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 class GenerateClicksVsRegistrationStats extends Job implements ShouldQueue
 {

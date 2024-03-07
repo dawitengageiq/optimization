@@ -7,7 +7,7 @@ namespace App\Console;
 use Carbon\Carbon;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 class Kernel extends ConsoleKernel
 {

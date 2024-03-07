@@ -6,12 +6,12 @@ use App\HandPAffiliateReport;
 use App\Jobs\Job;
 use App\Lead;
 use Carbon\Carbon;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 class HandPReports extends Job implements ShouldQueue
 {

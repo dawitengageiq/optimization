@@ -6,7 +6,7 @@ use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
-use View;
+use Illuminate\Support\Facades\View;
 
 class Handler extends ExceptionHandler
 {

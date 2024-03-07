@@ -17,7 +17,7 @@ use Illuminate\Database\QueryException;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 class ArchiveLeads extends Job implements ShouldQueue
 {

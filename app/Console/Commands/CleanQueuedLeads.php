@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use Illuminate\Support\Facades\Log;
 use App\Lead;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
@@ -38,7 +39,7 @@ class CleanQueuedLeads extends Command
     public function handle(): void
     {
         $this->info('Initiating Queued Leads Cleanup');
-        \Log::info('Initiating Queued Leads Cleanup');
+        Log::info('Initiating Queued Leads Cleanup');
         $date = $this->option('date');
 
         //NEW VERSION
@@ -50,15 +51,15 @@ class CleanQueuedLeads extends Command
             $to = Carbon::parse($date)->endOfDay();
         }
         $this->info('Date: '.$from.' to '.$to);
-        \Log::info('Date: '.$from.' to '.$to);
+        Log::info('Date: '.$from.' to '.$to);
 
         $from = Carbon::yesterday()->startOfDay();
         $to = Carbon::yesterday()->endOfDay();
         $total = Lead::where('lead_status', 4)->whereBetween('created_at', [$from, $to])->update(['lead_status' => 3]);
         $this->info('Total leads returned to pending: '.$total);
-        \Log::info('Total leads returned to pending: '.$total);
+        Log::info('Total leads returned to pending: '.$total);
 
         $this->info('Queued Leads Cleanup Done!');
-        \Log::info('Queued Leads Cleanup Done!');
+        Log::info('Queued Leads Cleanup Done!');
     }
 }

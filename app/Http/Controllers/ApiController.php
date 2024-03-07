@@ -9,16 +9,16 @@ use App\LeadDataCsv;
 use App\PageView;
 use App\PageViewStatistics;
 use App\User;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Exception;
 use Faker\Factory;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
-use Log;
+use Illuminate\Support\Facades\Log;
 use PHPEncryptData\Simple;
 
 class ApiController extends Controller

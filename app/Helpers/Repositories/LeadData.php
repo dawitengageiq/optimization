@@ -7,7 +7,7 @@ use App\LeadDataAdv;
 use App\LeadDataCsv;
 use App\LeadMessage;
 use App\LeadSentResult;
-use Log;
+use Illuminate\Support\Facades\Log;
 use PDOException;
 
 class LeadData implements LeadDataInterface

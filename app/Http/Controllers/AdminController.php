@@ -31,10 +31,10 @@ use App\Path;
 use App\Setting;
 use App\User;
 use App\UserActionLog;
-use Bus;
-use Cache;
+use Illuminate\Support\Facades\Bus;
+use Illuminate\Support\Facades\Cache;
 use Carbon\Carbon;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Excel;
 use GetAdvertisersCompanyIDPair;
 use GetInternalAffiliatesCompanyIDPair;
@@ -45,8 +45,8 @@ use Illuminate\Support\Facades\Request as Input;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\View\View;
-use Log;
-use Session;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class AdminController extends Controller

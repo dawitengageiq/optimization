@@ -3,7 +3,7 @@
 namespace App\Http\Services\Campaigns\Utils\Lists\Caping;
 
 use App\AffiliateCampaign;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 final class Affilate
 {

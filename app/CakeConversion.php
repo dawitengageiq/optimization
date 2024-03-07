@@ -4,7 +4,7 @@ namespace App;
 
 use Carbon\Carbon;
 use DateTime;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 
 class CakeConversion extends Model

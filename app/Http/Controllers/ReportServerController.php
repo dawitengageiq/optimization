@@ -6,7 +6,7 @@ use App\Campaign;
 use App\Lead;
 use App\LeadArchive;
 use Carbon\Carbon;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Excel;
 use Illuminate\Http\Request;
 

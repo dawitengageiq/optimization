@@ -5,7 +5,7 @@ namespace App\Helpers;
 use App\User;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Support\Facades\Crypt;
-use Log;
+use Illuminate\Support\Facades\Log;
 use Mockery\CountValidator\Exception;
 use PHPEncryptData\Simple;
 

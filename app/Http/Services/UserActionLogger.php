@@ -3,7 +3,7 @@
 namespace App\Http\Services;
 
 use Illuminate\Support\Facades\Auth;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 class UserActionLogger
 {

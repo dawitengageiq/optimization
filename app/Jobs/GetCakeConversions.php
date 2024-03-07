@@ -7,13 +7,13 @@ use App\Campaign;
 use App\LinkOutCount;
 use Carbon\Carbon;
 use Curl\Curl;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Database\QueryException;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
-use Log;
+use Illuminate\Support\Facades\Log;
 use Sabre\Xml\Reader;
 
 class GetCakeConversions extends Job implements ShouldQueue

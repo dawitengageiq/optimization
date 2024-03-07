@@ -3,7 +3,7 @@
 namespace App\Commands;
 
 use App\Campaign;
-use Cache;
+use Illuminate\Support\Facades\Cache;
 
 class GetCampaignListAndIDsPair extends Command
 {

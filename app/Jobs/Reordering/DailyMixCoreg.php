@@ -3,7 +3,7 @@
 namespace App\Jobs\Reordering;
 
 use Carbon\Carbon;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 class DailyMixCoreg
 {

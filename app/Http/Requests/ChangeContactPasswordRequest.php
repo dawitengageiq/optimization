@@ -3,10 +3,10 @@
 namespace App\Http\Requests;
 
 use App\User;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
-use Session;
-use Validator;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class ChangeContactPasswordRequest extends FormRequest
 {

@@ -11,12 +11,12 @@ use App\PageViewStatistics;
 use App\RevenueTrackerCakeStatistic;
 use App\Setting;
 use Carbon\Carbon;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Log;
-use Mail;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class ConsolidatedGraphGenerator extends Job implements ShouldQueue
 {

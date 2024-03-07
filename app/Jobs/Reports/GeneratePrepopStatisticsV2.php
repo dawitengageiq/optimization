@@ -6,11 +6,11 @@ use App\AffiliateReport;
 use App\Jobs\Job;
 use App\PrepopStatistic;
 use App\RevenueTrackerCakeStatistic;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 class GeneratePrepopStatisticsV2 extends Job implements ShouldQueue
 {

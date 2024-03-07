@@ -8,12 +8,12 @@ use App\Jobs\Job;
 use App\PrepopStatistic;
 use App\RevenueTrackerCakeStatistic;
 use Curl\Curl;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Exception;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 class GetUniqueClicksReport extends Job implements ShouldQueue
 {

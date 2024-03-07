@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Cache;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -36,17 +37,17 @@ class ChartController extends Controller
      */
     public function view(Request $request, $version = 'nlr')
     {
-        $date = \Cache::has($version.'_rejection_report_date') ? \Cache::get($version.'_rejection_report_date') : Carbon::yesterday();
+        $date = Cache::has($version.'_rejection_report_date') ? Cache::get($version.'_rejection_report_date') : Carbon::yesterday();
         $date = Carbon::parse($date)->toFormattedDateString();
         // Flag for script process
         $highcharts = ['has_data' => false, 'date' => $date];
 
-        if (\Cache::has($version.'_rejection_report')) {
+        if (Cache::has($version.'_rejection_report')) {
             $highcharts['has_data'] = true;
 
             // Data needed for chart,
             // The data was saved in cached done in app\console\commands\HighRejectionAlertReport
-            $this->chart->setData(\Cache::get($version.'_rejection_report'));
+            $this->chart->setData(Cache::get($version.'_rejection_report'));
 
             // format data for highchart.
             $this->chart->formatData();

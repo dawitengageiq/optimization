@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Validator;
+use Illuminate\Support\Facades\Validator;
 
 class AddContactRequest extends FormRequest
 {

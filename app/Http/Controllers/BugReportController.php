@@ -5,13 +5,13 @@ namespace App\Http\Controllers;
 use App\BugReport;
 use App\Jobs\Jira\CreateJIRAIssueTicket;
 use Carbon\Carbon;
-use File;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
-use Log;
-use Mail;
-use Storage;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 
-// use Validator;
+// use Illuminate\Support\Facades\Validator;
 
 class BugReportController extends Controller
 {

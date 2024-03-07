@@ -14,7 +14,7 @@ use App\LeadSentResultArchive;
 use Illuminate\Console\Command;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Mail;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 class ArchiveLeads extends Command
 {

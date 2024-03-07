@@ -3,9 +3,9 @@
 namespace App;
 
 use Carbon\Carbon;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 class ClicksVsRegistrationStatistics extends Model
 {

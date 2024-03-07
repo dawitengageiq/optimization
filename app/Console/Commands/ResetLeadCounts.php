@@ -7,10 +7,10 @@ use App\Campaign;
 use App\Helpers\Repositories\LeadCounts;
 use App\LeadCount;
 use Carbon\Carbon;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Console\Command;
 use Illuminate\Database\QueryException;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 class ResetLeadCounts extends Command
 {

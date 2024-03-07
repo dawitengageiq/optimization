@@ -17,13 +17,13 @@ use App\Lead;
 use App\RevenueTrackerCakeStatistic;
 use Carbon\Carbon;
 use Curl\Curl;
-use DB;
+use Illuminate\Support\Facades\DB;
 use ErrorException;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
-use Log;
+use Illuminate\Support\Facades\Log;
 use PDOException;
 use Sabre\Xml\Reader;
 

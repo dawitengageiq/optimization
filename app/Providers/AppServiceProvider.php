@@ -6,9 +6,9 @@ use App\Http\Services\Consolidated\Providers\Graph;
 use Illuminate\Support\ServiceProvider;
 use League\Flysystem\Filesystem;
 use League\Flysystem\Sftp\SftpAdapter;
-use Log;
-use Queue;
-use Storage;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Queue;
+use Illuminate\Support\Facades\Storage;
 
 class AppServiceProvider extends ServiceProvider
 {

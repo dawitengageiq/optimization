@@ -14,7 +14,7 @@ use App\MixedCoregCampaignOrder;
 use App\Setting;
 use App\WebsitesViewTracker;
 use App\ZipCode;
-use Bus;
+use Illuminate\Support\Facades\Bus;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;

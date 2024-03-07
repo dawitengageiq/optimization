@@ -23,16 +23,16 @@ use App\LeadSentResult;
 use App\Setting;
 use App\User;
 use App\UserMeta;
-use Bus;
+use Illuminate\Support\Facades\Bus;
 use Carbon\Carbon;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Excel;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
-use Log;
-use Session;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class AffiliateController extends Controller

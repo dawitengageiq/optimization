@@ -6,7 +6,7 @@ use App\Events\UserActionEvent;
 use App\UserActionLog;
 use Carbon\Carbon;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 class UserActionListener implements ShouldQueue
     // class UserActionListener

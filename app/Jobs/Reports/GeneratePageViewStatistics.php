@@ -4,11 +4,11 @@ namespace App\Jobs\Reports;
 
 use App\Jobs\Job;
 use App\PageView;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 class GeneratePageViewStatistics extends Job implements ShouldQueue
 {

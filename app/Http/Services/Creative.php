@@ -6,7 +6,7 @@ use App\Lead;
 use App\LeadArchive;
 use Carbon\Carbon;
 use Excel;
-use File;
+use Illuminate\Support\Facades\File;
 
 class Creative
 {

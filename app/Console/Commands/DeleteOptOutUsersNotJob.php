@@ -18,7 +18,7 @@ use Carbon\Carbon;
 use ErrorException;
 use Illuminate\Console\Command;
 use Illuminate\Database\QueryException;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 class DeleteOptOutUsersNotJob extends Command
 {

@@ -2,7 +2,7 @@
 
 namespace App\Http\Services\Campaigns\Repos;
 
-use DB;
+use Illuminate\Support\Facades\DB;
 
 final class CampaignList
 {

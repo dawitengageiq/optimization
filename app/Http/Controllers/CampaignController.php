@@ -27,16 +27,16 @@ use App\Jobs\UpdateCampaignTypeOrder;
 use App\Lead;
 use App\LeadCount;
 use App\LinkOutCount;
-use Bus;
+use Illuminate\Support\Facades\Bus;
 use Carbon\Carbon;
-use DB;
-use File;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Log;
+use Illuminate\Support\Facades\Log;
 use Maatwebsite\Excel\Facades\Excel;
-use Storage;
+use Illuminate\Support\Facades\Storage;
 
 class CampaignController extends Controller
 {

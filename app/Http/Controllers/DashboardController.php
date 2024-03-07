@@ -6,12 +6,12 @@ use App\CampaignRevenueBreakdown;
 use App\OfferGoesDown;
 use App\PathSpeed;
 use App\Setting;
-use Cache;
+use Illuminate\Support\Facades\Cache;
 use Carbon\Carbon;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 class DashboardController extends Controller
 {

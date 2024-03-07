@@ -7,10 +7,10 @@ use App\CampaignFullRejectionStatistics;
 use App\CampaignRejectionStatistic;
 use App\Helpers\GetDateByRangeHelper;
 use App\Setting;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 class CampaignRejectionController extends Controller
 {

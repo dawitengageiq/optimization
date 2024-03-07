@@ -6,10 +6,10 @@ use App\Cron;
 use App\CronHistory;
 use Carbon\Carbon;
 use DateTime;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 class CronController extends Controller
 {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use App\Resources\Resource;
 use App\Resources\UserActionLogDatatable as ResourceCollection;
 use App\Resources\UserActionLogDetailsDatatable as ResourceDetalsCollection;
@@ -43,11 +44,11 @@ class UserActionLogController extends Controller
 
         $activities = $userLog
             ->select(
-                \DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d") as date, SUBSTRING_INDEX(summary, " ", 1) AS action'),
+                DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d") as date, SUBSTRING_INDEX(summary, " ", 1) AS action'),
                 ...$this->selection
             )
             ->with(['user' => function ($q) {
-                return $q->select('id', \DB::raw('CONCAT(first_name, " ", middle_name, " ", last_name) AS full_name'));
+                return $q->select('id', DB::raw('CONCAT(first_name, " ", middle_name, " ", last_name) AS full_name'));
             }])
             ->groupBy(['sub_section_id', 'reference_id', 'action', 'date'])
             ->orderBy('created_at', 'desc')
@@ -91,7 +92,7 @@ class UserActionLogController extends Controller
         // Query the selection
         $query = $userLog
             ->select(
-                \DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d") as date, SUBSTRING_INDEX(summary, " ", 1) AS action'),
+                DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d") as date, SUBSTRING_INDEX(summary, " ", 1) AS action'),
                 ...$this->selection
             )
             ->where('section_id', $sectionID)
@@ -103,7 +104,7 @@ class UserActionLogController extends Controller
         // Take only the requeste from query
         $activities = $query
             ->with(['user' => function ($q) {
-                return $q->select('id', \DB::raw('CONCAT(first_name, " ", middle_name, " ", last_name) AS full_name'));
+                return $q->select('id', DB::raw('CONCAT(first_name, " ", middle_name, " ", last_name) AS full_name'));
             }])
             ->skip($request->get('start'))
             ->take($request->get('length'))
@@ -139,7 +140,7 @@ class UserActionLogController extends Controller
         // Query the selection
         $query = $userLog
             ->select(
-                \DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d") as date, SUBSTRING_INDEX(summary, " ", 1) AS action'),
+                DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d") as date, SUBSTRING_INDEX(summary, " ", 1) AS action'),
                 ...$this->selection
             )
             ->where('section_id', $sectionID)
@@ -152,7 +153,7 @@ class UserActionLogController extends Controller
         // Take only the requeste from query
         $activities = $query
             ->with(['user' => function ($q) {
-                return $q->select('id', \DB::raw('CONCAT(first_name, " ", middle_name, " ", last_name) AS full_name'));
+                return $q->select('id', DB::raw('CONCAT(first_name, " ", middle_name, " ", last_name) AS full_name'));
             }])
             ->skip($request->get('start'))
             ->take($request->get('length'))
@@ -184,12 +185,12 @@ class UserActionLogController extends Controller
         }
 
         $query = $userLog->select(
-            \DB::raw('SUBSTRING_INDEX(summary, " ", 1) AS action'),
+            DB::raw('SUBSTRING_INDEX(summary, " ", 1) AS action'),
             ...$this->detailSelection
         )
             ->where('section_id', $sectionID)
             ->where('reference_id', $referenceID)
-            ->where(\DB::raw('SUBSTRING_INDEX(summary, " ", 1)'), ucwords(strtolower($action)));
+            ->where(DB::raw('SUBSTRING_INDEX(summary, " ", 1)'), ucwords(strtolower($action)));
 
         if ($request->has('date')) {
             $query->whereDate('created_at', '=', $request->get('date'));
