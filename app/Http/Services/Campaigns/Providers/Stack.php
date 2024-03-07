@@ -45,8 +45,6 @@ class Stack
 
     /**
      * Instantiate.
-     *
-     * @param  Illuminate\Foundation\Application  $app
      */
     public function __construct(
         \Illuminate\Foundation\Application $app,
@@ -62,8 +60,6 @@ class Stack
 
     /**
      * Static function.
-     *
-     * @param  Illuminate\Foundation\Application  $app
      */
     public static function bind(
         \Illuminate\Foundation\Application $app,
